@@ -1,10 +1,2 @@
-## This is the header
-
-Here is some regular text.
-
-*bullet 1
-*bullet 2
-
-[Link to Google] (https://www.youtube.com/watch?v=ruieT3Nkg2M)
-
-Even more text
+this is a practice and mini projects files goes to
+You are welcome to copy them, fork them and/or download them as needed
