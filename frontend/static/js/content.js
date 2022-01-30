@@ -15,7 +15,7 @@ const portfolioProjects = [
     },
     {
         projectName: "TodoList App",
-        ProjectDescription: "Develop helpdesk ticketing software application for documentation of client request and resolution",
+        ProjectDescription: "A simple todo app to showcase understanding of web development",
         projectImageDisplay: "https://res.cloudinary.com/practicaldev/image/fetch/s--pyyuGSZ9--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/o96lsrld21tk232kidu4.png",
         TechnologyToolsUsed:"ASP.NET Core, MS/SQL with frontend Angular.",
         projectURLAddress: "https://github.com/mrjeanjoseph/CRUD_AllDay/tree/master/js-jq-fundamentals/todolist-app"
