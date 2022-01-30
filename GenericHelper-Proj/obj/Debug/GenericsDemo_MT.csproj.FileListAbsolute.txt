@@ -1,6 +1,0 @@
-C:\Users\Computer\source\repos\GenericsDemoApp\GenericsDemo_MT\obj\Debug\GenericsDemo_MT.csproj.CoreCompileInputs.cache
-C:\Users\Computer\source\repos\GenericsDemoApp\GenericsDemo_MT\bin\Debug\GenericsDemo_MT.exe.config
-C:\Users\Computer\source\repos\GenericsDemoApp\GenericsDemo_MT\bin\Debug\GenericsDemo_MT.exe
-C:\Users\Computer\source\repos\GenericsDemoApp\GenericsDemo_MT\bin\Debug\GenericsDemo_MT.pdb
-C:\Users\Computer\source\repos\GenericsDemoApp\GenericsDemo_MT\obj\Debug\GenericsDemo_MT.exe
-C:\Users\Computer\source\repos\GenericsDemoApp\GenericsDemo_MT\obj\Debug\GenericsDemo_MT.pdb
