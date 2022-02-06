@@ -56,7 +56,7 @@ $.each(portfolioProjects, function(index, item) {
             <a class="" target="_blank" href="${item.projectURLAddress}"><img
                     src=" ${item.projectImageDisplay}" width="400" height="175" /></a>
             <div class="content">
-                <h1><a target="_blank">Restaurant AGoGo</a></h1>
+                <h1><a target="_blank"></a>${item.projectName}</h1>
                 <p>${item.ProjectDescription}</p>
                 <p><a target="_blank" href="${item.projectURLAddress}">Click here for more details</a></p>
             </div>
