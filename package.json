@@ -20,6 +20,6 @@
   "homepage": "https://github.com/mrjeanjoseph/mrjeanjoseph.github.io#readme",
   "dependencies": {
     "express": "^4.17.2",
-    "npm": "^8.4.0"
+    "npm": "^8.11.0"
   }
 }
