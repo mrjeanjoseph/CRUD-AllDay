@@ -1,0 +1,296 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+
+<div class="container-body">
+
+    <section class="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="logo-web-component"></ion-icon>
+                    </span>
+                    <span class="title">CRUD All Day</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </span>
+                    <span class="title">Customers</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </span>
+                    <span class="title">Messages</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="help-circle-outline"></ion-icon>
+                    </span>
+                    <span class="title">Help</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="hammer-outline"></ion-icon>
+                    </span>
+                    <span class="title">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                    </span>
+                    <span class="title">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </span>
+                    <span class="title">Sign Out</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- main page -->
+    <section class="main">
+        <!-- topheader -->
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="grid-outline"></ion-icon>
+            </div>
+            <!-- search -->
+            <div class="search">
+                <label for="">
+                    <input type="text" placeholder="Search here">
+                    <ion-icon name="search-outline"></ion-icon>
+                </label>
+            </div>
+            <!-- User image -->
+            <div class="user">
+                <img src="https://cdn.pixabay.com/photo/2017/11/28/10/52/man-2983328_960_720.jpg" alt="">
+            </div>
+        </div>
+        <!-- cards -->
+        <div class="cardBox">
+            <div class="card">
+                <div>
+                    <div class="numbers">1,504</div>
+                    <div class="cardName">Daily Views</div>
+                </div>
+                <div class="iconBox">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="numbers">159</div>
+                    <div class="cardName">Sales</div>
+                </div>
+                <div class="iconBox">
+                    <ion-icon name="cart-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="numbers">811</div>
+                    <div class="cardName">Comments</div>
+                </div>
+                <div class="iconBox">
+                    <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="numbers">$9,912</div>
+                    <div class="cardName">Profits</div>
+                </div>
+                <div class="iconBox">
+                    <ion-icon name="cash-outline"></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="details">
+            <!-- Order details list -->
+            <div class="recentOrders">
+                <div class="cardHeader">
+                    <h2>Recent Orders</h2>
+                    <a href="#" class="btn">View All</a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Price</td>
+                            <td>Payment</td>
+                            <td>Status</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Apple Macbook</td>
+                            <td>$2,425.00</td>
+                            <td>Not Paid</td>
+                            <td><span class="status processing">processing</span></td>
+                        </tr>
+                        <tr>
+                            <td>Samsung 70inch</td>
+                            <td>$1,821.98</td>
+                            <td>Paid</td>
+                            <td><span class="status delivered">delivered</span></td>
+                        </tr>
+                        <tr>
+                            <td>Telsa 600 Series</td>
+                            <td>$82,550.00</td>
+                            <td>On Account</td>
+                            <td><span class="status processing">Processing</span></td>
+                        </tr>
+                        <tr>
+                            <td>HP Envy</td>
+                            <td>$2,425.00</td>
+                            <td>On Account</td>
+                            <td><span class="status returned">Returned</span></td>
+                        </tr>
+                        <tr>
+                            <td>Dell M800</td>
+                            <td>$925.88</td>
+                            <td>Not Paid</td>
+                            <td><span class="status delivered">delivered</span></td>
+                        </tr>
+                        <tr>
+                            <td>Macbook Big Sur</td>
+                            <td>$1,495.98</td>
+                            <td>Not Paid</td>
+                            <td><span class="status processing">Processing</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- New Customer -->
+            <div class="recentCustomers">
+                <div class="cardHeader">
+                    <h2>Recent Customers</h2>
+                </div>
+                <table>
+                    <tr>
+                        <td width="60px">
+                            <div class="imgBox">
+                                <img src="https://gabaptist.org/wp-content/uploads/2020/08/blog-disc-senior-adult-1024x585.jpg" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h4>James<br><span>Brown</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60px">
+                            <div class="imgBox">
+                                <img src="https://i0.wp.com/www.nfid.org/wp-content/uploads/2019/08/AdobeStock_27254483-Asian-Couple-e1573508055701.jpeg?ssl=1" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h4>Eric<br><span>Wong</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60px">
+                            <div class="imgBox">
+                                <img src="https://assets-us-01.kc-usercontent.com/ffacfe7d-10b6-0083-2632-604077fd4eca/0d65e8b6-867e-4708-b54e-579c3720deb5/Senior-caucasian-woman-with-cane_Category-Hero_iStock-1218964202_2021-02_770x614.jpg?w=486&dpr=2&fm=pjpg&q=60" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h4>Bernadine<br><span>White</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60px">
+                            <div class="imgBox">
+                                <img src="https://i0.wp.com/www.nfid.org/wp-content/uploads/2019/08/AdobeStock_27254483-Asian-Couple-e1573508055701.jpeg?ssl=1" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h4>Eric<br><span>Wong</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60px">
+                            <div class="imgBox">
+                                <img src="https://i0.wp.com/www.nfid.org/wp-content/uploads/2019/08/AdobeStock_27254483-Asian-Couple-e1573508055701.jpeg?ssl=1" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h4>Eric<br><span>Wong</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60px">
+                            <div class="imgBox">
+                                <img src="https://i0.wp.com/www.nfid.org/wp-content/uploads/2019/08/AdobeStock_27254483-Asian-Couple-e1573508055701.jpeg?ssl=1" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h4>Eric<br><span>Wong</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60px">
+                            <div class="imgBox">
+                                <img src="https://i0.wp.com/www.nfid.org/wp-content/uploads/2019/08/AdobeStock_27254483-Asian-Couple-e1573508055701.jpeg?ssl=1" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h4>Eric<br><span>Wong</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60px">
+                            <div class="imgBox">
+                                <img src="https://i0.wp.com/www.nfid.org/wp-content/uploads/2019/08/AdobeStock_27254483-Asian-Couple-e1573508055701.jpeg?ssl=1" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h4>Eric<br><span>Wong</span></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="60px">
+                            <div class="imgBox">
+                                <img src="https://i0.wp.com/www.nfid.org/wp-content/uploads/2019/08/AdobeStock_27254483-Asian-Couple-e1573508055701.jpeg?ssl=1" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h4>Eric<br><span>Wong</span></h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
