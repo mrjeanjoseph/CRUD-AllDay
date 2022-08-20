@@ -13,9 +13,6 @@ namespace Dashboard.Controllers {
         public IActionResult Index() {
             return View();
         }
-        public IActionResult Dashboard() {
-            return View();
-        }
 
         public IActionResult Privacy() {
             return View();
