@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Dashboard.Controllers {
+namespace Dashboard.Main.Controllers {
     public class HomeController : Controller {
         public ActionResult Index() {
             return View();
