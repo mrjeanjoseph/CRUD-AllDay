@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Dashboard.Main.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Employee</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.Gender)</th>
+            <th>@Html.DisplayNameFor(m => m.Age)</th>
+            <th>@Html.DisplayNameFor(m => m.Position)</th>
+            <th>@Html.DisplayNameFor(m => m.Office)</th>
+            <th>@Html.DisplayNameFor(m => m.HireDate)</th>
+            <th>@Html.DisplayNameFor(m => m.Salary)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model) {
+            <tr>
+                <td>@emp.Name</td>
+                <td>@emp.Gender</td>
+                <td>@emp.Age</td>
+                <td>@emp.Position</td>
+                <td>@emp.Office</td>
+                <td>
+                    @if (emp.HireDate != null) {
+                        @emp.HireDate
+                    }
+                </td>
+                <td>@emp.Salary</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
