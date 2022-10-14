@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Dashboard.Main.Models.Cards>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Cards</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(c => c.CardID)</th>
+            <th>@Html.DisplayNameFor(c => c.CardDescription)</th>
+            <th>@Html.DisplayNameFor(c => c.DateCreated)</th>
+            <th>@Html.DisplayNameFor(c => c.DateUpdated)</th>
+            <th>@Html.DisplayNameFor(c => c.Status)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model) {
+        <tr>
+            <td>@c.CardID</td>
+            <td>@c.CardDescription</td>
+            <td>
+                @if (c.DateCreated != null) {
+                    @c.DateCreated
+                }
+            </td>
+            <td>
+                @if (c.DateUpdated != null) {
+                    @c.DateUpdated
+                }
+            </td>
+            <td>@c.Status</td>
+        </tr>
+
+        }
+    </tbody>
+</table>
