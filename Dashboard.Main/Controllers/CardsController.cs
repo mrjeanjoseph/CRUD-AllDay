@@ -26,11 +26,11 @@ namespace Dashboard.Main.Controllers
                 while (rdr.Read()) {
                     var card = new Cards();
 
-                    //card.CardID = Convert.ToInt32(rdr["CardID"]);
-                    card.CardDescription = rdr["CardDescription"].ToString();
-                    card.DateCreated = Convert.ToDateTime(rdr["DateCreated"]);
-                    card.DateUpdated = Convert.ToDateTime(rdr["DateUpdated"]);
-                    card.Status = rdr["Status"].ToString();
+                    card.CardID = Convert.ToInt32(rdr["card_id"]);
+                    card.CardDescription = rdr["card_description"].ToString();
+                    card.DateCreated = Convert.ToDateTime(rdr["date_created"]);
+                    card.DateUpdated = Convert.ToDateTime(rdr["date_updated"]);
+                    card.Status = rdr["status"].ToString();
                     cardList.Add(card);
                 }
             }
