@@ -15,9 +15,9 @@ namespace Dashboard.Main.Controllers
         // GET: Employee
         public ActionResult Index() {
             List<Employee> employeeList = new List<Employee>();
-            string CS = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            string CS = ConfigurationManager.ConnectionStrings["crudconn"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS)) {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Employees", con);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM [crud].[Employees]", con);
                 cmd.CommandType = CommandType.Text;
                 con.Open();
 
