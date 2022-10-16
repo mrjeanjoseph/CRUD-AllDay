@@ -4,38 +4,56 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Rehearsals</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Site.css")
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
 
-
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                @Html.ActionLink("NAV-BAR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">@Html.ActionLink("Home", "Index", "Home")</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">@Html.ActionLink("About", "About", "Home")</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">@Html.ActionLink("Contact", "Contact", "Home")</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                </ul>
+    @*<nav class="navbar navbar-expand-lg bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    @Html.ActionLink("NAV-BAR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">@Html.ActionLink("Home", "Index", "Home")</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">@Html.ActionLink("About", "About", "Home")</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">@Html.ActionLink("Contact", "Contact", "Home")</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </nav>*@
+
+    <nav class="nav">
+        <a href="/" class="logo">logo</a>
+
+        <div class="hamburger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+
+        <div class="nav__link hide">
+            <a href="#">home</a>
+            <a href="#">about</a>
+            <a href="#">contact</a>
+            <a href="#">blog</a>
         </div>
     </nav>
+
 
     <div class="container body-content">
         @RenderBody()
