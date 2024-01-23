@@ -23,3 +23,13 @@ BEGIN;
 
 	SET NOCOUNT OFF;
 END;
+GO
+
+DECLARE @ContactIdOut INT;
+--Inserting Values
+EXEC dbo.InsertContact 
+	@firstName = 'Raoul', 
+	@LastName = 'Jean-Joseph', 
+	@AllowContactByPhone = 0,
+	@ContactId = @ContactIdOut OUTPUT;
+SELECT @ContactIdOut AS [ContactIdOut];
