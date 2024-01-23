@@ -1,32 +1,25 @@
 USE Contacts;
-
-DROP PROCEDURE IF EXISTS dbo.InsertContact;
-
 GO
 
-CREATE PROCEDURE dbo.InsertContact
-(
+DROP PROCEDURE IF EXISTS dbo.InsertContact;
+GO
+
+CREATE PROCEDURE dbo.InsertContact (
  @FirstName				VARCHAR(40),
  @LastName				VARCHAR(40),
  @DateOfBirth			DATE = NULL,
  @AllowContactByPhone	BIT,
- @ContactId				INT OUTPUT
-)
+ @ContactId				INT OUTPUT )
 AS
 BEGIN;
+	SET NOCOUNT ON;
+	INSERT INTO dbo.Contacts (FirstName, LastName, DateOfBirth, AllowContactByPhone)
+	VALUES (@FirstName, @LastName, @DateOfBirth, @AllowContactByPhone);
 
-SET NOCOUNT ON;
+	SELECT @ContactId = SCOPE_IDENTITY();
+	SELECT ContactId, FirstName, LastName, DateOfBirth, AllowContactByPhone
+		FROM dbo.Contacts
+	WHERE ContactId = @ContactId;
 
-INSERT INTO dbo.Contacts
-	(FirstName, LastName, DateOfBirth, AllowContactByPhone)
-VALUES
-	(@FirstName, @LastName, @DateOfBirth, @AllowContactByPhone);
-
-SELECT @ContactId = SCOPE_IDENTITY();
-SELECT ContactId, FirstName, LastName, DateOfBirth, AllowContactByPhone
-	FROM dbo.Contacts
-WHERE ContactId = @ContactId;
-
-SET NOCOUNT OFF;
-
+	SET NOCOUNT OFF;
 END;
