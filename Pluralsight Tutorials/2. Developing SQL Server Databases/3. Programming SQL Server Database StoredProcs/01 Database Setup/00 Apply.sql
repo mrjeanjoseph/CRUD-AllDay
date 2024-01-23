@@ -1,6 +1,6 @@
 USE master
 
-:setvar path "C:\temp\contactsdb\"
+:setvar path "C:\devtrunk\database-setup\"
 
 :setvar currentFile "01 Create AddressBook Database.sql"
 PRINT 'Executing $(path)$(currentFile)'
