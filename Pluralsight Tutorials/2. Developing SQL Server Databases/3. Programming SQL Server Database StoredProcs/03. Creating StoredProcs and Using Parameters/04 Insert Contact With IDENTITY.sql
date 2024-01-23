@@ -18,11 +18,11 @@ BEGIN;
 
 	SELECT @ContactId = @@IDENTITY;
 	SELECT ContactId, FirstName, LastName, DateOfBirth, AllowContactByPhone
-		FROM dbo.Contacts
+	FROM dbo.Contacts
 	WHERE ContactId = @ContactId;
 END;
-
 GO
+RETURN; 
 --Inserting Values
 EXEC dbo.InsertContact 
 	@firstName = 'Julie', 

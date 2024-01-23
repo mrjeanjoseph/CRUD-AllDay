@@ -24,6 +24,11 @@ BEGIN;
 	SET NOCOUNT OFF;
 END;
 GO
+RETURN;
+
+
+USE [Contacts]
+
 
 DECLARE @ContactIdOut INT;
 --Inserting Values
@@ -32,4 +37,6 @@ EXEC dbo.InsertContact
 	@LastName = 'Jean-Joseph', 
 	@AllowContactByPhone = 0,
 	@ContactId = @ContactIdOut OUTPUT;
+
 SELECT @ContactIdOut AS [ContactIdOut];
+SELECT * FROM dbo.Contacts WHERE ContactId = @ContactIdOut ORDER BY ContactId DESC;
