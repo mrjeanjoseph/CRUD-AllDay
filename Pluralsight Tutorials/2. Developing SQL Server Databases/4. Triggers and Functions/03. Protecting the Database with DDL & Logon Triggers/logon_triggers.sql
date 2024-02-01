@@ -6,6 +6,7 @@ GO
 
   ONLY do something like this in a local, non-shared environment!
 */
+DROP LOGIN Login_test
 CREATE LOGIN login_test WITH PASSWORD = 'abc123!'; 
 GO  
 

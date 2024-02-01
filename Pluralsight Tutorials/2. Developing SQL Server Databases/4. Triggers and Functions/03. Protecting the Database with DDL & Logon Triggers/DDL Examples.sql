@@ -46,7 +46,8 @@ GO
 * Log DDL Events to a table
 *
 *************************************/
-
+SELECT * FROM Application.AuditLogDDL
+DROP TABLE IF EXISTS Application.AuditLogDDL
 CREATE TABLE Application.AuditLogDDL ( 
 	Id INT IDENTITY,  
 	EventTime DATETIME,
@@ -63,7 +64,7 @@ GO
   on specific types OR this audit table should be aggressively
   managed to only keep relevant events and table size small.
 */
-CREATE TRIGGER AuditLogDDLEvents
+CREATE OR ALTER TRIGGER AuditLogDDLEvents
 ON DATABASE
 FOR DDL_DATABASE_LEVEL_EVENTS
 AS
