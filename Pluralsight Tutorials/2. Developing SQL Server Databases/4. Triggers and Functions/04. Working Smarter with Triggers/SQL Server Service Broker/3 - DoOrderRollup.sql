@@ -1,3 +1,7 @@
+USE [WideWorldImporters]
+GO
+
+
 CREATE OR ALTER PROCEDURE Sales.DoOrderRollup @id INT
 AS
 BEGIN

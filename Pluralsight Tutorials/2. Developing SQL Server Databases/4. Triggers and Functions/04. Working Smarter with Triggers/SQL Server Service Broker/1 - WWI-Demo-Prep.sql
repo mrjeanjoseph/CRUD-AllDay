@@ -1,3 +1,6 @@
+USE [WideWorldImporters]
+GO
+
 /*
   Create a simple rollup table that will utilize the Sales.Order and Sales.OrderDetail data.
 
@@ -5,7 +8,7 @@
   from the database to do filtering and charting in Power BI.
 
   Again, this is a quick demo.  :-)!
-
+  This is the section we were missing
 */
 CREATE TABLE [Sales].[SalesRollup] (
 	CustomerID INT FOREIGN KEY REFERENCES Sales.[Customers]([CustomerID]) NOT NULL,
@@ -37,6 +40,4 @@ MONTH(O.[OrderDate]) AS [month], YEAR(O.[OrderDate]) AS [Year],
 	--WHERE O.[LastEditedWhen]> '2017-06-02 00:52:20'
 	GROUP BY C.[CustomerID], [SI].[StockItemID], SI.[StockItemName], 
 	YEAR(O.[OrderDate]), MONTH(O.[OrderDate])
-	ORDER BY Year, month, [C].[CustomerID], [SI].[StockItemID]
-
-
+	ORDER BY YEAR, MONTH, [C].[CustomerID], [SI].[StockItemID]

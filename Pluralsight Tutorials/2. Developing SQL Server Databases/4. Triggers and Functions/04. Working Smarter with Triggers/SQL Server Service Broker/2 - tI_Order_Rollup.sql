@@ -1,3 +1,6 @@
+USE [WideWorldImporters]
+GO
+
 
 --IF OBJECT_ID('Sales.tI_Order_Rollup','TR') IS NOT NULL
 --BEGIN
@@ -6,18 +9,18 @@
 --GO
 
 /****** Object:  Trigger [tI_Order_Rollup]  ******/
-create or alter trigger [Sales].[tI_Order_Rollup] on Sales.[Orders]
+CREATE OR ALTER TRIGGER [Sales].[tI_Order_Rollup] ON Sales.[Orders]
   FOR INSERT
-  as
-begin
-  declare  @numrows int,
-           @nullcnt int,
-           @validcnt int,
-           @insbillID int,
-           @errno   int,
-           @errmsg  varchar(255)
+  AS
+BEGIN
+  DECLARE  @numrows INT,
+           @nullcnt INT,
+           @validcnt INT,
+           @insbillID INT,
+           @errno   INT,
+           @errmsg  VARCHAR(255)
 
-  select @numrows = @@rowcount
+  SELECT @numrows = @@ROWCOUNT
 
     IF @numrows = 0 
         RETURN;
