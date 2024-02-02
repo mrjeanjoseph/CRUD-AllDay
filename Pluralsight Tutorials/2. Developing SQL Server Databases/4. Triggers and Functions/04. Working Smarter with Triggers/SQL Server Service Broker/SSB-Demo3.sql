@@ -23,7 +23,7 @@ CREATE TABLE [Application].[SBErrorLog](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [Application].[SBErrorLog] ADD  CONSTRAINT [DF_SBErrorLog_errorDate]  DEFAULT (getdate()) FOR [errorDate]
+ALTER TABLE [Application].[SBErrorLog] ADD  CONSTRAINT [DF_SBErrorLog_errorDate]  DEFAULT (GETDATE()) FOR [errorDate]
 GO
 
 
@@ -78,7 +78,7 @@ BEGIN
 
 			DECLARE @XACT_STATE INT = XACT_STATE();
 			DECLARE @error INT, @message NVARCHAR(3000);
-			SELECT @error = ERROR_NUMBER(), @message = @message_type_name + ' | ' + CAST(CAST(@message_body as XML) as varchar(2000)) + ' | ' + ERROR_MESSAGE();
+			SELECT @error = ERROR_NUMBER(), @message = @message_type_name + ' | ' + CAST(CAST(@message_body AS XML) AS VARCHAR(2000)) + ' | ' + ERROR_MESSAGE();
 			END CONVERSATION @conversation_handle WITH error = @error DESCRIPTION = @message;
 			
 			IF (@XACT_STATE = -1)
@@ -148,11 +148,11 @@ BEGIN
 				*/
 				ELSE IF (@message_type_name = N'http://schemas.microsoft.com/SQL/ServiceBroker/Error')
 				BEGIN				
-					SET @errorXML = CAST(@message_body as XML);
+					SET @errorXML = CAST(@message_body AS XML);
 					DECLARE @Code INT, @Description NVARCHAR(3000);
 				
 					WITH XMLNAMESPACES(N'http://schemas.microsoft.com/SQL/ServiceBroker/Error' AS ns)
-					select @Code=(SELECT @errorXML.value('(/ns:Error/ns:Code)[1]','int')),
+					SELECT @Code=(SELECT @errorXML.value('(/ns:Error/ns:Code)[1]','int')),
 						@Description=(SELECT @errorXML.value('(/ns:Error/ns:Description)[1]','nvarchar(3000)'));
 
 					INSERT INTO [Application].[SBErrorLog] (service_contract_name, errorCode, errorDescription) VALUES (@service_contract_name, @Code, @Description);
@@ -168,15 +168,15 @@ BEGIN
 			-- If for some reason either of the above failed, log it so that we have the message body with a unique errorCode and then commit (remove) the message from the queue.
 			
 			--Test whether the transaction is uncommittable.
-            if (XACT_STATE()) = -1
+            IF (XACT_STATE()) = -1
             BEGIN
                   rollback transaction;
             END
  
             -- Test wether the transaction is active and valid.
-            if (XACT_STATE()) = 1
+            IF (XACT_STATE()) = 1
             BEGIN
-				SET @errorXML = CAST(@message_body as XML);
+				SET @errorXML = CAST(@message_body AS XML);
 				DECLARE @errorText NVARCHAR(3000) = CAST(@errorXML AS NVARCHAR(3000));
 
 				/*
@@ -286,12 +286,12 @@ EXEC [Application].[SBActivated_OrderRollupQueue]
   Alter the database to set the activation in motion
 */
 
-SELECT COUNT(*) from [Sales].[SalesRollup]
+SELECT COUNT(*) FROM [Sales].[SalesRollup]
 
 ALTER QUEUE MonologueSenderQueue WITH ACTIVATION (STATUS = ON, MAX_QUEUE_READERS = 1)
 ALTER QUEUE OrderRollupQueue WITH ACTIVATION (STATUS = ON, MAX_QUEUE_READERS = 1)
 
-SELECT COUNT(*) from [Sales].[SalesRollup]
+SELECT COUNT(*) FROM [Sales].[SalesRollup]
 
 /*
   Clean everything up for next demo

@@ -1,5 +1,5 @@
 USE [WideWorldImporters]
-
+GO
 
 SELECT TOP 100 * FROM SALES.Orders
 

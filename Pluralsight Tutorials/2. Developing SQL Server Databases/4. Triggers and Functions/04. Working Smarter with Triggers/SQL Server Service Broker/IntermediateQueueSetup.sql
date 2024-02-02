@@ -1,3 +1,6 @@
+USE [WideWorldImporters]
+GO
+
 CREATE QUEUE [IntermediateMessageQueue] WITH
 		 STATUS = ON,
 		 RETENTION = OFF,

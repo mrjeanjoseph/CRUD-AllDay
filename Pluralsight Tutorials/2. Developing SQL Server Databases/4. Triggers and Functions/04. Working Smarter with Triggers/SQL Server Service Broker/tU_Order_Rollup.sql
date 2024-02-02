@@ -1,3 +1,5 @@
+USE [WideWorldImporters]
+GO
 
 --IF OBJECT_ID('Sales.tI_Order_Rollup','TR') IS NOT NULL
 --BEGIN
@@ -6,20 +8,20 @@
 --GO
 
 /****** Object:  Trigger [tU_OrderLines_Rollup]  ******/
-create or alter trigger [Sales].[tU_OrderLines_Rollup] on [Sales].[OrderLines]
+CREATE OR ALTER TRIGGER [Sales].[tU_OrderLines_Rollup] ON [Sales].[OrderLines]
   FOR UPDATE
-  as
-begin
-  declare  @numrows int,
-           @nullcnt int,
-           @validcnt int,
-           @insbillID int,
-           @errno   int,
-           @errmsg  varchar(255)
+  AS
+BEGIN
+  DECLARE  @numrows INT,
+           @nullcnt INT,
+           @validcnt INT,
+           @insbillID INT,
+           @errno   INT,
+           @errmsg  NVARCHAR(255)
 
-  select @numrows = @@rowcount
+  SELECT @numrows = @@ROWCOUNT
 
-    IF @numrows = 0 
+    IF @numrows = 0
         RETURN;
 
     SET NOCOUNT ON;
@@ -30,8 +32,8 @@ begin
 			
 			SELECT
 				OrderID
-			INTO 
-				#orders 
+			INTO
+				#orders
 			FROM
 				(
 				SELECT OrderID, Quantity, UnitPrice, TaxRate FROM inserted
@@ -43,7 +45,7 @@ begin
 			IF EXISTS(SELECT 1 FROM #orders)
 			BEGIN
 				SELECT @messageData =
-					( 
+					(
 					  SELECT DISTINCT
 						OrderID
 					  FROM
@@ -51,10 +53,10 @@ begin
 					  FOR XML PATH('row'), ROOT('data')
 					);
 			
-				IF DATALENGTH(@messageData) > 0	
+				IF DATALENGTH(@messageData) > 0
 				BEGIN
-					EXECUTE [Application].[SB_SendIntermediateMessages] N'OrderRollupService', 
-						N'OrderRollupContract', 
+					EXECUTE [Application].[SB_SendIntermediateMessages] N'OrderRollupService',
+						N'OrderRollupContract',
 						N'OrderIDMsg',
 						@messageData;
 				END
@@ -82,8 +84,8 @@ begin
 			   @ErrorSeverity = ERROR_SEVERITY(),
 			   @ErrorState = ERROR_STATE();
 
-		-- Use RAISERROR inside the CATCH block to return 
-		-- error information about the original error that 
+		-- Use RAISERROR inside the CATCH block to return
+		-- error information about the original error that
 		-- caused execution to jump to the CATCH block.
 		RAISERROR (@ErrorMessage, -- Message text.
 				   @ErrorSeverity, -- Severity.

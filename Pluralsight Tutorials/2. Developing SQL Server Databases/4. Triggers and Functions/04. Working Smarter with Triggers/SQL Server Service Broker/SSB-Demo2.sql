@@ -54,19 +54,19 @@ BEGIN
 		END TRY
 		BEGIN CATCH
 			--Test whether the transaction is uncommittable.
-            if (XACT_STATE()) = -1
-            begin
-                  rollback transaction;
-            end;
+            IF (XACT_STATE()) = -1
+            BEGIN
+                  ROLLBACK TRANSACTION;
+            END;
  
             -- Test wether the transaction is active and valid.
-            if (XACT_STATE()) = 1
-            begin
+            IF (XACT_STATE()) = 1
+            BEGIN
 				DECLARE @error INT, @message NVARCHAR(3000);
 				SELECT @error = ERROR_NUMBER(), @message = ERROR_MESSAGE();
 				END CONVERSATION @conversation_handle WITH error = @error DESCRIPTION = @message;
-			    commit;
-            end
+			    COMMIT;
+            END
 
 		END CATCH;
 
@@ -140,15 +140,15 @@ BEGIN
 			-- If for some reason either of the above failed, log it so that we have the message body with a unique errorCode and then commit (remove) the message from the queue.
 			
 			--Test whether the transaction is uncommittable.
-            if (XACT_STATE()) = -1
+            IF (XACT_STATE()) = -1
             BEGIN
-                  rollback transaction;
+                  ROLLBACK TRANSACTION;
             END
  
             -- Test wether the transaction is active and valid.
-            if (XACT_STATE()) = 1
+            IF (XACT_STATE()) = 1
             BEGIN
-				SET @errorXML = CAST(@message_body as XML);
+				SET @errorXML = CAST(@message_body AS XML);
 				DECLARE @errorText NVARCHAR(3000) = CAST(@errorXML AS NVARCHAR(3000));
 
 				/*
