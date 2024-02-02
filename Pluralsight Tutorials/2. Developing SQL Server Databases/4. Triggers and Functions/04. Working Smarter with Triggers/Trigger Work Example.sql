@@ -1,3 +1,6 @@
+USE [WideWorldImporters]
+
+DROP TABLE IF EXISTS [Application].[AuditLog]
 CREATE TABLE Application.AuditLog (
 	AuditLogID int identity,
 	ModifiedTime DATETIME,

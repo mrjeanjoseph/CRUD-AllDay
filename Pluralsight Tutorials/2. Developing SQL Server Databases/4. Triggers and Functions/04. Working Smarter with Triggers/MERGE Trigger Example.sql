@@ -1,6 +1,12 @@
+USE [WideWorldImporters]
+GO
+
+
 /*
   Insert a new user with the minimum amount of data required
 */
+
+SELECT * FROM Application.People WHERE LogonName = 'ryan@softwareandbooz.com';
 INSERT INTO Application.People (FullName, PreferredName, IsPermittedToLogon, LogonName, IsExternalLogonProvider, IsSystemUser, IsEmployee,IsSalesperson, LastEditedBy)
 VALUES ('Ryan Booz', 'Ryan',1,'ryan@softwareandbooz.com',0,1,0,0,1);
 
@@ -12,41 +18,44 @@ VALUES ('Ryan Booz', 'Ryan',1,'ryan@softwareandbooz.com',0,1,0,0,1);
   This will become the SOURCE table of our MERGE below
 
 */
+DROP TABLE IF EXISTS #TempUsers
 CREATE TABLE #TempUsers (
-	PersonId int,
-	FullName nvarchar(50),
-	PreferredName nvarchar(50),
-	IsPermittedToLogon bit default(1),
-	LogonName nvarchar(50),
-	IsExternalLogonProvider bit default(0),
-	IsSystemUser bit default(1),
-	IsEmployee bit default(0),
-	IsSalesPerson bit default(0),
-	LastEditedBy int default(1)
+	PersonId INT,
+	FullName NVARCHAR(50),
+	PreferredName NVARCHAR(50),
+	IsPermittedToLogon BIT DEFAULT(1),
+	LogonName NVARCHAR(50),
+	IsExternalLogonProvider BIT DEFAULT(0),
+	IsSystemUser BIT DEFAULT(1),
+	IsEmployee BIT DEFAULT(0),
+	IsSalesPerson BIT DEFAULT(0),
+	LastEditedBy BIT DEFAULT(1)
 );
 
+DELETE FROM [Application].[People] WHERE LogonName = 'fakeryan@softwareandbooz.com';
+SELECT COUNT(*) FROM #TempUsers
+DELETE FROM #TempUsers
 
 /*
   INSERT all of the users in our current table (which includes my temporary user)
   into the Temporary Table created above
 */
 INSERT INTO #TempUsers 
-	select PersonId, FullName, PreferredName, IsPermittedToLogon, LogonName, IsExternalLogonProvider, IsSystemUser, IsEmployee, IsSalesperson, LastEditedBy from Application.People
+	SELECT PersonId, FullName, PreferredName, IsPermittedToLogon, LogonName, IsExternalLogonProvider, IsSystemUser, IsEmployee, IsSalesperson, LastEditedBy from Application.People
 
 
 /*
   Now insert a new user into the Temporary table that does not exist in the 
   real Application.People table
 */
-insert into #TempUsers (FullName, PreferredName, IsPermittedToLogon, LogonName, IsExternalLogonProvider, IsSystemUser, IsEmployee,IsSalesperson, LastEditedBy)
-VALUES
-('Fake Ryan Booz', 'Fake Ryan',1,'fakeryan@softwareandbooz.com',0,1,0,0,1);
+INSERT INTO #TempUsers (FullName, PreferredName, IsPermittedToLogon, LogonName, IsExternalLogonProvider, IsSystemUser, IsEmployee,IsSalesperson, LastEditedBy)
+VALUES ('Fake Ryan Booz', 'Fake Ryan',1,'fakeryan@softwareandbooz.com',0,1,0,0,1);
 
 
 /*
   DELETE the original "real" user from the temporary table
 */
-delete from #TempUsers where LogonName = 'ryan@softwareandbooz.com';
+DELETE FROM #TempUsers WHERE LogonName = 'fakeryan@softwareandbooz.com';
 GO
 
 
@@ -55,37 +64,37 @@ GO
   People table.  This will allow us to see how the trigger
   is called in different combinations of the MERGE statement.
 */
-CREATE OR ALTER TRIGGER Application.TIUD_People
- ON Application.People
- FOR INSERT, UPDATE, DELETE
+CREATE OR ALTER TRIGGER [Application].[TIUD_People]
+	ON [Application].[People]
+	FOR INSERT, UPDATE, DELETE
 AS
 BEGIN
-  DECLARE @TriggerRowCount VARCHAR(100);
-  SET @TriggerRowCount = CAST(ROWCOUNT_BIG() AS varchar(100));
-  PRINT ' Total Row count reported to Trigger: ' + @TriggerRowCount;
-  /*
-    Remember that normally we would at least check ROWCOUNT_BIG() to see
+	DECLARE @TriggerRowCount VARCHAR(100);
+	SET @TriggerRowCount = CAST(ROWCOUNT_BIG() AS varchar(100));
+	PRINT ' Total Row count reported to Trigger: ' + @TriggerRowCount;
+	/*
+	Remember that normally we would at least check ROWCOUNT_BIG() to see
 	if any rows were modified. As we'll see, we get unexpected results
 	of the row count.
 
-    Therefore, we have intentionally left out the usual checks below to prevent work
+	Therefore, we have intentionally left out the usual checks below to prevent work
 	so that we can see how many rows each Trigger thinks it would be working
 	with if we didn't have additional checks
-  */
+	*/
 
-  IF EXISTS (SELECT 1 FROM inserted) AND NOT EXISTS (SELECT 1 FROM deleted)
-  BEGIN
-    PRINT ' INSERT Trigger Received Rows';
-  END
-  IF EXISTS (SELECT 1 FROM inserted) AND EXISTS (SELECT 1 FROM deleted)
-  BEGIN
-    PRINT ' UPDATE Trigger Received Rows';
-  END
-  IF NOT EXISTS (SELECT 1 FROM inserted) AND EXISTS (SELECT 1 FROM deleted)
-  BEGIN
-    PRINT ' DELETE Trigger Received Rows';
-  END
-END
+	IF EXISTS (SELECT 1 FROM inserted) AND NOT EXISTS (SELECT 1 FROM deleted)
+		BEGIN
+			PRINT ' INSERT Trigger Received Rows';
+		END
+	IF EXISTS (SELECT 1 FROM inserted) AND EXISTS (SELECT 1 FROM deleted)
+		BEGIN
+			PRINT ' UPDATE Trigger Received Rows';
+		END
+	IF NOT EXISTS (SELECT 1 FROM inserted) AND EXISTS (SELECT 1 FROM deleted)
+		BEGIN
+			PRINT ' DELETE Trigger Received Rows';
+		END
+	END
 GO
 
 /*

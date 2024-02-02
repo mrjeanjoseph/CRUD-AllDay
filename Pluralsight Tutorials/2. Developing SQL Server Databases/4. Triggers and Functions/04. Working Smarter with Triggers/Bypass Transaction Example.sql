@@ -1,3 +1,5 @@
+USE [WideWorldImporters]
+
 /*
   Prep
 
@@ -10,13 +12,13 @@
   Second, empty the audit table.
 
 */
-select * from sales.orders where orderID < 50;
-update Sales.OrderLines set ORderId = 10 where ORderId is null;
+SELECT * FROM sales.orders WHERE orderID < 50;
+update Sales.OrderLines SET ORderId = 10 WHERE ORderId is null;
 
-UPDATE Sales.Invoices set OrderID = NULL where OrderId < 50;
+UPDATE Sales.Invoices SET OrderID = NULL WHERE OrderId < 50;
 GO
 
-TRUNCATE TABLE Application.AuditLog;
+TRUNCATE TABLE [Application].[AuditLog];
 GO
 
 /*
@@ -73,8 +75,7 @@ CREATE OR ALTER TRIGGER [Sales].[TD_Orders_AFTER]ON
 
 	
 		-- Has the order been picked for delivery yet?
-		IF EXISTS 
-		(
+		IF EXISTS (
 			SELECT 1 FROM DELETED d WHERE d.PickingCompletedWhen is not null
 		)
 		BEGIN
@@ -89,9 +90,7 @@ CREATE OR ALTER TRIGGER [Sales].[TD_Orders_AFTER]ON
 		*/
 		IF EXISTS (SELECT 1 FROM @deleted) AND (@operationType = 'ATTEMPTED DELETE')
 		BEGIN
-			/*
-			  Using the Temp table that has the deleted rows
-			*/
+			/* Using the Temp table that has the deleted rows */
 			INSERT INTO Application.AuditLog 
 					([ModifiedTime], [ModifiedBy], [Operation], [SchemaName], [TableName], [TableID], [LogData])
 				SELECT GETDATE(), SYSTEM_USER, @operationType, 'Sales','Orders',D1.OrderId, NULL
@@ -108,35 +107,32 @@ CREATE OR ALTER TRIGGER [Sales].[TD_Orders_AFTER]ON
 			  Using the Temp table that has the deleted rows
 			*/
 			INSERT INTO Application.AuditLog 
-					([ModifiedTime], [ModifiedBy], [Operation], [SchemaName], [TableName], [TableID], [LogData])
-				SELECT GETDATE(), SYSTEM_USER, @operationType, 'Sales','Orders',D1.OrderId, D2.LogData
-					FROM @deleted D1
-					CROSS APPLY (
-						SELECT LogData=(select * from @deleted WHERE 
-										OrderID = D1.OrderID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)
-					) AS D2;
-		END;
-
-		
+				([ModifiedTime], [ModifiedBy], [Operation], [SchemaName], [TableName], [TableID], [LogData])
+			SELECT GETDATE(), SYSTEM_USER, @operationType, 'Sales','Orders',D1.OrderId, D2.LogData
+			FROM @deleted D1
+			CROSS APPLY (
+				SELECT LogData=(select * from @deleted 
+				WHERE OrderID = D1.OrderID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)) AS D2;					
+		END;		
 	END; -- The overall Trigger BEGIN/END
 GO
 
 /*
   Delete rows of data
 */
-DELETE FROM Sales.Orders WHERE OrderID < 20;
+DELETE FROM Sales.Orders WHERE OrderID < 22;
 GO
 
 /*
    Remember, Foreign Key constraints preempt AFTER Triggers. Our 
    logic was never executed.
 */
-DELETE FROM Sales.OrderLines where OrderID < 20;
+DELETE FROM Sales.OrderLines where OrderID < 22;
 
 /*
   Delete rows of data
 */
-DELETE FROM Sales.Orders WHERE OrderID < 20;
+DELETE FROM Sales.Orders WHERE OrderID < 25;
 GO
 
 
@@ -198,27 +194,29 @@ CREATE OR ALTER TRIGGER [Sales].[TD_Orders_AFTER]ON
 	  This is a normal delete, go ahead and take the additional step of saving the
 	  row data to a JSON object and saving it in the audit log table
 	*/
-	if exists (select 1 from #deletedTemp) AND (@operationType = 'DELETE')
-	begin
+	IF exists (SELECT 1 FROM #deletedTemp) AND (@operationType = 'DELETE')
+	BEGIN
 	    /*
 		  Using the Temp table that has the deleted rows
 		*/
-		INSERT INTO Application.AuditLog 
+		INSERT INTO [Application].[AuditLog]
 				([ModifiedTime], [ModifiedBy], [Operation], [SchemaName], [TableName], [TableID], [LogData])
 			SELECT GETDATE(), SYSTEM_USER, @operationType, 'Sales','Orders',D1.OrderId, D2.LogData
 				FROM #deletedTemp D1
 				CROSS APPLY (
-					SELECT LogData=(select * from #deletedTemp WHERE 
+					SELECT LogData=(SELECT * FROM #deletedTemp WHERE 
 									OrderID = D1.OrderID FOR JSON PATH, WITHOUT_ARRAY_WRAPPER)
 				) AS D2;
-	end;
+	END;
 GO
 
 TRUNCATE TABLE Application.AuditLog;
 GO
 
-DELETE FROM Sales.Orders WHERE OrderID < 20;
+DELETE FROM Sales.Orders WHERE OrderID < 30;
 GO
 
 SELECT * FROM Application.AuditLog;
 GO
+
+SELECT SYSTEM_USER, GETDATE()
