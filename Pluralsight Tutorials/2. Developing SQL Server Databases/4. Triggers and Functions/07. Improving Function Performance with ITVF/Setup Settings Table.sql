@@ -1,3 +1,10 @@
+USE [WideWorldImporters]
+GO
+
+DROP TABLE IF EXISTS [Application].[Settings]
+GO
+
+
 CREATE TABLE Application.Settings (
 	SettingsID INT IDENTITY,
 	SettingName NVARCHAR(100),
