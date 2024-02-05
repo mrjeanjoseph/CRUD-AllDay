@@ -48,7 +48,7 @@ GO
 /*
 	See the plan difference in real life between a MSTVF and ITVF
 */
-CREATE OR ALTER FUNCTION dbo.FiscalYearEndingDB(@SaleDate DATETIME)
+CREATE OR ALTER FUNCTION [dbo].[FiscalYearEndingDB](@SaleDate DATETIME)
 RETURNS @FiscalYearTable TABLE
 (FiscalYear INT)
 WITH SCHEMABINDING
@@ -228,5 +228,15 @@ SELECT C.CustomerID, ACS.* FROM Sales.Customers C
 GO
 
 
-OPTION(RECOMPILE)
-OPTIMIZE FOR UNKNOWN
+/*
+	Fixing Parameter Sniffing
+	Query Hinnts
+		OPTION(RECOMPILE)
+		OPTIMIZE FOR UNKNOWN
+		-OPTIMIZE FOR (@X=Y)
+
+	Dynamic SQL
+	Disable Plan Caching
+	Manual Inlining of the query
+
+*/

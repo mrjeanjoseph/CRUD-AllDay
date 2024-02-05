@@ -64,5 +64,3 @@ DECLARE @Id INT = 976
 SELECT * FROM dbo.SaleTransactionAmount(@Id) STC
 OPTION (RECOMPILE);
 GO
-
-
