@@ -1,4 +1,4 @@
-USE BobsShoes;
+USE [RHJsShoes];
 GO
 
 -- Check setting of implicit transactions

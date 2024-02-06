@@ -1,4 +1,4 @@
-USE BobsShoes;
+USE [RHJsShoes];
 GO
 
 -- Create a test table
