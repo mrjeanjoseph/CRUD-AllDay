@@ -1,9 +1,9 @@
 DECLARE
 	@MaxOrderID   int = -1,
 	@NextOrderID  int,
-  @BatchSize    int = 1000,
+	@BatchSize    int = 1000,
 	@RC           int = 1,
-  @Delay        datetime = '00:00:00.01';
+	@Delay        datetime = '00:00:00.01';
  
 -- Delete rows in batches
 WHILE (@RC > 0)
