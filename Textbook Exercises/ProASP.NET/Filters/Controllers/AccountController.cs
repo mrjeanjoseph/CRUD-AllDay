@@ -19,7 +19,7 @@ namespace Filters.Controllers {
                 FormsAuthentication.SetAuthCookie(username, false);
                 return Redirect(returnUrl ?? Url.Action("Index", "Admin"));
             } else {
-                ModelState.AddModelError("", "Icorrect Username or password");
+                ModelState.AddModelError("", "Incorrect Username or password");
                 return View();
             }
         }
