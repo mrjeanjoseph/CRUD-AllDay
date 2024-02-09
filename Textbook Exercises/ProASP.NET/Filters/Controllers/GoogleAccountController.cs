@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Filters.Infrastructure;
+using System.Web.Mvc;
 using System.Web.Security;
 
 namespace Filters.Controllers {
@@ -18,6 +19,11 @@ namespace Filters.Controllers {
                 return View();
 
             }
+        }
+
+        [GoogleAuth]
+        public string List() {
+            return "This is the list of on the home controller.";
         }
     }
 }

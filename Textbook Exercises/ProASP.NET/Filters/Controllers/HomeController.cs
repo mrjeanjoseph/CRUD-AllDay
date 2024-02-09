@@ -10,5 +10,10 @@ namespace Filters.Controllers {
         public string Index() {
             return "If you're seeing the page, then you are authenticated.";
         }
+
+        [GoogleAuth][Authorize(Users = "rhj@google.com")]
+        public string List() {
+            return "This is the List action on the home controller";
+        }
     }
 }
