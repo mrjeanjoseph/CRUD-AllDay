@@ -1,10 +1,16 @@
 ﻿
+@model int
+
+@{ 
+    var count = 0;
+    var number = Model / count;
+}
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title>Range Error</title>
-
     <style>
         body {
             background-color: whitesmoke;
@@ -22,13 +28,15 @@
             border-radius: 5px;
         }
     </style>
-
 </head>
 
 <body>
     <div class="centered-div">
         <h2>Sorry Buddy,</h2>
         <span>One of the arguments was out of the expected range</span>
+        <div>
+            @Html.ActionLink("Change Value and try again", "Index");
+        </div>
     </div>
 </body>
 </html>
