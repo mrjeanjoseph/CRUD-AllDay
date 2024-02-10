@@ -8,6 +8,7 @@ namespace Filters.Infrastructure {
                     filterContext.Exception is ArgumentOutOfRangeException) {
 
                 int val = (int)((ArgumentOutOfRangeException)filterContext.Exception).ActualValue;
+
                 filterContext.Result = new ViewResult {
                     ViewName = "RangeError",
                     ViewData = new ViewDataDictionary<int>(val)
