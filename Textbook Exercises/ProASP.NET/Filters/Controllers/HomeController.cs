@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Web.Mvc;
 using Filters.Infrastructure;
 
 namespace Filters.Controllers {
     public class HomeController : Controller {
+        private Stopwatch _timer;
         // GET: Home
 
         //[CustomAuth(true)]
@@ -29,9 +31,22 @@ namespace Filters.Controllers {
         }
 
         //[CustomAction]
-        [ProfileAction][ProfileResult]
+        //[ProfileAction]
+        //[ProfileResult]
+        //[ProfileAll]
         public string FilterTest() {
             return "This is the Filter Test Action";
+        }
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext) {
+            _timer = Stopwatch.StartNew();
+        }
+
+        protected override void OnActionExecuted(ActionExecutedContext filterContext) {
+            _timer.Stop();
+
+            string htmlContent = string.Format("<div>In Controller Total elapsed time: {0:F6}</div>", _timer.Elapsed.TotalSeconds);
+            filterContext.HttpContext.Response.Write(htmlContent);
         }
     }
 }
