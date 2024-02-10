@@ -3,7 +3,7 @@
 namespace Filters.Infrastructure {
     public class CustomActionAttribute : FilterAttribute, IActionFilter {
         public void OnActionExecuting(ActionExecutingContext filterContext) {
-            if(filterContext.HttpContext.Request.IsLocal) {
+            if (filterContext.HttpContext.Request.IsLocal) {
                 filterContext.Result = new HttpNotFoundResult();
             }
         }

@@ -3,7 +3,8 @@ using System.Web.Mvc;
 
 namespace Filters.Infrastructure {
 
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    //[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class SimpleMessageAttribute : FilterAttribute, IActionFilter {
         public string Message { get; set; }
         public void OnActionExecuting(ActionExecutingContext filterContext) {

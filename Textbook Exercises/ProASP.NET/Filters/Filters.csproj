@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="Infrastructure\CustomActionAttribute.cs" />
     <Compile Include="Infrastructure\CustomAuthAttribute.cs" />
+    <Compile Include="Infrastructure\CustomOverrideActionFiltersAttribute.cs" />
     <Compile Include="Infrastructure\GoogleAuthAttribute.cs" />
     <Compile Include="Infrastructure\ProfileActionAttribute.cs" />
     <Compile Include="Infrastructure\ProfileAllAttribute.cs" />
