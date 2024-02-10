@@ -18,5 +18,6 @@ namespace Filters.Infrastructure {
                 filterContext.ExceptionHandled = true;
             }
         }
+
     }
 }

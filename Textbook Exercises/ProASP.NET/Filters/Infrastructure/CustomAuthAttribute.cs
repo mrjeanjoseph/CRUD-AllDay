@@ -14,5 +14,6 @@ namespace Filters.Infrastructure {
                 return localAllowed;
             } else { return true; }
         }
+
     }
 }

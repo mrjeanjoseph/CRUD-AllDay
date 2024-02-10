@@ -34,6 +34,18 @@ CREATE TABLE MemoryOptimizedTableNonDurable (
             )
 GO
 
+-- Non Durable Memory Optimize Table will throw error b/c Clustered indexes
+CREATE TABLE MemoryOptimizedTableNonDurable1 (
+    ID INT IDENTITY NOT NULL PRIMARY KEY CLUSTERED 
+    ,FName VARCHAR(20) NOT NULL
+    ,LName VARCHAR(20) NOT NULL
+    )
+    WITH (
+            MEMORY_OPTIMIZED = ON
+            ,DURABILITY = SCHEMA_ONLY
+            )
+GO
+
 --  Check DMV
 SELECT	SCHEMA_NAME(Schema_id) SchemaName, 
 		name TableName,

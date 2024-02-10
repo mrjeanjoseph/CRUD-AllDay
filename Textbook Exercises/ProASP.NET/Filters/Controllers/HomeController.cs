@@ -29,7 +29,7 @@ namespace Filters.Controllers {
         }
 
         //[CustomAction]
-        [ProfileAction]
+        [ProfileAction][ProfileResult]
         public string FilterTest() {
             return "This is the Filter Test Action";
         }

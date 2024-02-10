@@ -16,5 +16,6 @@ namespace Filters.Infrastructure {
                 filterContext.HttpContext.Response.Write(htmlContent);
             }
         }
+
     }
 }

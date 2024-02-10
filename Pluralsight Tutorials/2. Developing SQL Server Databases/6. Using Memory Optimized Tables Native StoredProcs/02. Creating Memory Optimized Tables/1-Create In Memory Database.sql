@@ -17,3 +17,4 @@ GO
 
 
 SELECT @@VERSION
+
