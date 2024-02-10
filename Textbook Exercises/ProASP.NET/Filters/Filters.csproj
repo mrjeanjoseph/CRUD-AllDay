@@ -109,6 +109,7 @@
     <Compile Include="Infrastructure\ProfileAllAttribute.cs" />
     <Compile Include="Infrastructure\ProfileResultAttribute.cs" />
     <Compile Include="Infrastructure\RangeExceptionAttribute.cs" />
+    <Compile Include="Infrastructure\SimpleMessageAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

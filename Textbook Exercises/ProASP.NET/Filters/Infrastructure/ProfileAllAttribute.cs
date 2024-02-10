@@ -15,7 +15,5 @@ namespace Filters.Infrastructure {
             string htmlContent = string.Format("<div>Total elapsed time: {0:F6}</div>", _timer.Elapsed.TotalSeconds);
             resultContext.HttpContext.Response.Write(htmlContent);
         }
-
-
     }
 }
