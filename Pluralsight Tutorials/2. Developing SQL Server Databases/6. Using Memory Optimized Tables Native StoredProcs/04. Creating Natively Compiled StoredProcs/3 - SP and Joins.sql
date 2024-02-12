@@ -29,18 +29,19 @@ GO
 -- Execute SP
 EXEC [NativeSP-Stream]
 GO
+
 EXEC [InterpretedSP-Hash]
 GO
 
 -- Execute SP
 SET SHOWPLAN_XML ON  
 GO
+
 EXEC [NativeSP-Stream]
 GO
+
 SET SHOWPLAN_XML OFF  
-GO 
-EXEC [InterpretedSP-Hash]
 GO
 
-
-
+EXEC [InterpretedSP-Hash]
+GO
