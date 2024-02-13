@@ -10,7 +10,7 @@ SELECT @Status AS 'Current Status of Statistics Collection (SP Level)'
 GO
 
 -- Enable Statistics Collection for Natively Compiled SP at SP Level
-EXEC sys.sp_xtp_control_proc_exec_stats @new_collection_value = 1
+EXEC sys.sp_xtp_control_proc_exec_stats @new_collection_value = 0
 GO
 
 -- Current Status of Statistics Collection
@@ -35,7 +35,7 @@ SELECT @Status AS 'Current Status of Statistics Collection (Query Level)'
 GO
 
 -- Enable Statistics Collection for Natively Compiled SP at SP Level
-EXEC sys.sp_xtp_control_query_exec_stats @new_collection_value = 1
+EXEC sys.sp_xtp_control_query_exec_stats @new_collection_value = 0
 GO
 
 -- Current Status of Statistics Collection

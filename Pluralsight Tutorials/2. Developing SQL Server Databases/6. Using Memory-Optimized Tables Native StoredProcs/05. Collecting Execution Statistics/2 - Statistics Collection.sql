@@ -1,5 +1,6 @@
 USE Pluralsight
 GO
+
 -- Create first Native Compiled Stored Procedure
 CREATE OR ALTER PROCEDURE [dbo].[NativeSP1] @iID INT, @jID INT    
     WITH NATIVE_COMPILATION
