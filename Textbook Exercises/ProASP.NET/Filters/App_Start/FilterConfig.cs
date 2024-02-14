@@ -1,11 +1,11 @@
-﻿using Filters.Infrastructure;
+﻿using Ch19_Filters.Infrastructure;
 using System.Web.Mvc;
 
-namespace Filters {
+namespace Ch19_Filters {
     public class FilterConfig {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters) {
-            filters.Add(new HandleErrorAttribute());
-            filters.Add(new ProfileAllAttribute());
+        public static void RegisterGlobalFilters(GlobalFilterCollection Ch19_Filters) {
+            Ch19_Filters.Add(new HandleErrorAttribute());
+            Ch19_Filters.Add(new ProfileAllAttribute());
         }
     }
 }

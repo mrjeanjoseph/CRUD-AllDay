@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace Filters.Infrastructure {
+namespace Ch19_Filters.Infrastructure {
     public class RangeExceptionAttribute : FilterAttribute, IExceptionFilter {
         public void OnException(ExceptionContext filterContext) {
             if(!filterContext.ExceptionHandled && 

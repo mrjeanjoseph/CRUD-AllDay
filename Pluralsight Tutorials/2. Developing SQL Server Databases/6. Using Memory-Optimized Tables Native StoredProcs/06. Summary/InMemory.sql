@@ -15,13 +15,13 @@ GO
 
 CREATE DATABASE InMemory
 ON PRIMARY(NAME = InMemoryData, 
-FILENAME = 'D:\Data\InMemoryData.mdf', size=200MB), 
+FILENAME = 'C:\devtrunk\sql-files\InMemoryData.mdf', size=200MB), 
 -- Memory Optimized Data
 FILEGROUP [InMem_FG] CONTAINS MEMORY_OPTIMIZED_DATA(
 NAME = [InMemory_InMem_dir], 
-FILENAME = 'D:\Data\InMemory_InMem_dir') 
+FILENAME = 'C:\devtrunk\sql-files\InMemory_InMem_dir') 
 --
-LOG ON (name = [InMem_demo_log], Filename='D:\Data\InMemory.ldf', size=100MB)
+LOG ON (name = [InMem_demo_log], Filename='C:\devtrunk\sql-files\InMemory.ldf', size=100MB)
 GO
 
 USE InMemory

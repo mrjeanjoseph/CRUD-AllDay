@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Web.Mvc;
 
-namespace Filters.Infrastructure {
+namespace Ch19_Filters.Infrastructure {
     public class ProfileActionAttribute : FilterAttribute, IActionFilter {
         private Stopwatch _timer;
 

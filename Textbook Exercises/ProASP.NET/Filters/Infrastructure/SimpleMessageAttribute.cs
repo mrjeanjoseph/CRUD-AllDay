@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace Filters.Infrastructure {
+namespace Ch19_Filters.Infrastructure {
 
     //[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]

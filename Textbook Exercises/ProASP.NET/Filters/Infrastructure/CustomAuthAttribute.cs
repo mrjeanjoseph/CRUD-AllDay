@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Filters.Infrastructure {
+namespace Ch19_Filters.Infrastructure {
     public class CustomAuthAttribute : AuthorizeAttribute {
         private readonly bool localAllowed;
 

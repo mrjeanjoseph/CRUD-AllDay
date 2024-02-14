@@ -1,8 +1,8 @@
-﻿using Filters.Infrastructure;
+﻿using Ch19_Filters.Infrastructure;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Filters.Controllers {
+namespace Ch19_Filters.Controllers {
     public class GoogleAccountController : Controller {
         public ActionResult Index() {
             return View();
