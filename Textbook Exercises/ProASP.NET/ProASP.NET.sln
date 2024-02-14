@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch18_Filters", "Filters\Ch18_Filters.csproj", "{965DC80B-11CD-42B0-A1F5-25DA3D85F1D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerExtensibility", "ControllerExtensibility\ControllerExtensibility.csproj", "{8996F15E-4EFC-45CA-BA82-E9CD36E47B88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch19_ControllerExtensibility", "ControllerExtensibility\Ch19_ControllerExtensibility.csproj", "{8996F15E-4EFC-45CA-BA82-E9CD36E47B88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
