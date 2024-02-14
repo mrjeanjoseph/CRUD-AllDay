@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Ch19_Filters.Controllers {
+namespace Filters.Controllers {
     public class AccountController : Controller {
         // GET: Account
         public ActionResult Login() {

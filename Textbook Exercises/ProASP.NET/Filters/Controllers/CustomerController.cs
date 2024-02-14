@@ -1,7 +1,7 @@
-﻿using Ch19_Filters.Infrastructure;
+﻿using Filters.Infrastructure;
 using System.Web.Mvc;
 
-namespace Ch19_Filters.Controllers {
+namespace Filters.Controllers {
 
     [SimpleMessage(Message = "A")]
     public class CustomerController : Controller {

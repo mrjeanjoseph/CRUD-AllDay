@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
 
-namespace Ch19_Filters.Infrastructure {
+namespace Filters.Infrastructure {
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
     public class CustomOverrideActionFiltersAttribute

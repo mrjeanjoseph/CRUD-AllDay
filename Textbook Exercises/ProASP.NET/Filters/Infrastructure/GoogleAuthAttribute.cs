@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Security.Principal;
 using System.Web.Mvc;
-using System.Web.Mvc.Ch19_Filters;
+using System.Web.Mvc.Filters;
 using System.Web.Routing;
 using System.Web.Security;
 
-namespace Ch19_Filters.Infrastructure {
+namespace Filters.Infrastructure {
     public class GoogleAuthAttribute : FilterAttribute, IAuthorizationFilter {
         public void OnAuthorization(AuthorizationContext filterContext) {
             throw new NotImplementedException();

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Web.Mvc;
-using Ch19_Filters.Infrastructure;
+using Filters.Infrastructure;
 
-namespace Ch19_Filters.Controllers {
+namespace Filters.Controllers {
     public class HomeController : Controller {
         private Stopwatch _timer;
         // GET: Home

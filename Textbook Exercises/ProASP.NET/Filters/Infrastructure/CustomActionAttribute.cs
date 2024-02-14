@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Ch19_Filters.Infrastructure {
+namespace Filters.Infrastructure {
     public class CustomActionAttribute : FilterAttribute, IActionFilter {
         public void OnActionExecuting(ActionExecutingContext filterContext) {
             if (filterContext.HttpContext.Request.IsLocal) {
