@@ -10,11 +10,9 @@ namespace ControllerExtensibility.Infrastructure {
         public IController CreateController(RequestContext requestContext, string controllerName) {
             Type targetType;
             switch (controllerName) {
-                case "Product":
-                    targetType = typeof(ProductController);
+                case "Product": targetType = typeof(ProductController);
                 break;
-                case "Customer":
-                    targetType = typeof(CustomerController);
+                case "Customer": targetType = typeof(CustomerController);
                 break;
                 default:
                     requestContext.RouteData.Values["controller"] = "Product";

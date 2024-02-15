@@ -9,6 +9,11 @@ namespace ControllerExtensibility {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             ControllerBuilder.Current.SetControllerFactory(new CustomControllerFactory());
+            ControllerBuilder.Current.DefaultNamespaces.Add("ControllerExtensibility.*");
+
+            ControllerBuilder.Current.SetControllerFactory(
+                new DefaultControllerFactory(
+                    new CustomControllerActivator()));
         }
     }
 }
