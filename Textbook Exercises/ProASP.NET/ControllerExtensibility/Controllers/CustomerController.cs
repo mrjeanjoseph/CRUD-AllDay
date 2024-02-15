@@ -7,8 +7,13 @@ namespace ControllerExtensibility.Controllers {
             return View("Result", new Result { ControllerName = "Customer", ActionName = "Index" });
         }
 
+        [ActionName("User-Registration")]
         public ViewResult List() {
             return View("Result", new Result { ControllerName = "Customer", ActionName = "List" });
+        }
+
+        [NonAction] public ActionResult FaveAction() {
+            return View();
         }
     }
 }
