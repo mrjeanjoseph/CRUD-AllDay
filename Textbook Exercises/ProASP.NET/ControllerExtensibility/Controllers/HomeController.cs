@@ -1,5 +1,5 @@
 ﻿using ControllerExtensibility.Infrastructure;
-using ControllerExtensibility.Models;
+using System.Runtime.Remoting.Messaging;
 using System.Web.Mvc;
 
 namespace ControllerExtensibility.Controllers {
