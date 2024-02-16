@@ -1,3 +1,4 @@
+using RenderViews.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace RenderViews
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new DebugDataViewEngine());
         }
     }
 }
