@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch18_Filters", "Filters\Ch1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch19_ControllerExtensibility", "ControllerExtensibility\Ch19_ControllerExtensibility.csproj", "{8996F15E-4EFC-45CA-BA82-E9CD36E47B88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch20_RenderViews", "RenderViews\Ch20_RenderViews.csproj", "{230C8058-E3D0-4C68-BE12-B5346D8CF057}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,16 +36,6 @@ Global
 		{8996F15E-4EFC-45CA-BA82-E9CD36E47B88}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8996F15E-4EFC-45CA-BA82-E9CD36E47B88}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{8996F15E-4EFC-45CA-BA82-E9CD36E47B88}.Test|Any CPU.Build.0 = Debug|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Dev|Any CPU.Build.0 = Debug|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Prod|Any CPU.ActiveCfg = Debug|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Prod|Any CPU.Build.0 = Debug|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Release|Any CPU.Build.0 = Release|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Test|Any CPU.ActiveCfg = Debug|Any CPU
-		{230C8058-E3D0-4C68-BE12-B5346D8CF057}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
