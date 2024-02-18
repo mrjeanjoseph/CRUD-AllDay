@@ -1,3 +1,6 @@
+USE [InterstellarTransport];
+GO
+
 SELECT OBJECT_SCHEMA_NAME(i.object_id) AS SchemaName,
        OBJECT_NAME(i.object_id) AS TableName,
        i.name,
@@ -15,3 +18,6 @@ WHERE OBJECTPROPERTYEX(i.object_id, 'IsMSShipped') = 0
 GROUP BY i.object_id,
          i.name,
          i.type_desc;
+
+
+

@@ -1,3 +1,6 @@
+USE [InterstellarTransport];
+GO
+
 SELECT DB_NAME(mid.database_id) AS DatabaseName,
        OBJECT_SCHEMA_NAME(mid.object_id, mid.database_id) AS SchemaName,
        OBJECT_NAME(mid.object_id, mid.database_id) AS ObjectName,
