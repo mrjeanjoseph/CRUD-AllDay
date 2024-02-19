@@ -23,6 +23,8 @@ namespace WorkingWithRazor.Controllers {
         public ActionResult IndexOld() {
             ViewBag.Message = "Hello MVC";
             ViewBag.Time = DateTime.Now.ToShortTimeString();
-
+            return View();
         }
     }
+
+}
