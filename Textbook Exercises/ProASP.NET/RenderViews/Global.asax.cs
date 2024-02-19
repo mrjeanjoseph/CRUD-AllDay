@@ -15,8 +15,6 @@ namespace RenderViews
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new DebugDataViewEngine());
         }
     }
 }
