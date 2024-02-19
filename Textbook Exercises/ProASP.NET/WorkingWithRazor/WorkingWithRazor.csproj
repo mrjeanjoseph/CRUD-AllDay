@@ -108,6 +108,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Common\List.cshtml" />
+    <Content Include="Views\Shared\_OurPartialView.cshtml" />
+    <Content Include="Views\Shared\_OurStronglyTyped.cshtml" />
+    <Content Include="Views\Shared\OurTime.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
