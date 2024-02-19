@@ -4,22 +4,36 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style>
+        div.layout{
+            background-color:lightgray;           
+        }
+        div.view{
+            border:thin solid black; margin: 10px 0;
+        }
+    </style>
 </head>
 <body>
+    @RenderSection("Header")
 
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="layout">
+        This is part of the layout
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Body")
+    <div class="layout">
+        This is part of the body
+    </div>
+
+    @if (IsSectionDefined("Footer")) {
+        @RenderSection("Footer")
+    } else {
+        <h4>Footer has not been defined</h4>
+    }
+
+    @RenderSection("scripts", false)
+    <div class="layout">
+        This is part of the layout
+    </div>
 </body>
 </html>
