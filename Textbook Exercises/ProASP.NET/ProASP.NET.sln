@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch19_ControllerExtensibilit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch20_RenderViews", "RenderViews\Ch20_RenderViews.csproj", "{B2CA800D-0010-4160-A90C-5A9349326833}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithRazor", "WorkingWithRazor\WorkingWithRazor.csproj", "{FEDAB050-FEA7-493F-9656-C95A69A63AA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch20_WorkingWithRazor", "WorkingWithRazor\Ch20_WorkingWithRazor.csproj", "{FEDAB050-FEA7-493F-9656-C95A69A63AA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,11 +6,7 @@ using System.Web.Mvc;
 
 namespace RenderViews.Controllers {
     public class HomeController : Controller {
-        // GET: Home
-        public ActionResult Index() {
-            ViewBag.Message = "Hello MVC";
-            ViewBag.Time = DateTime.Now.ToShortTimeString();
-            return View("DebugData");
+        // GET: Homereturn View("DebugData");
         }
 
         public ActionResult About() {
