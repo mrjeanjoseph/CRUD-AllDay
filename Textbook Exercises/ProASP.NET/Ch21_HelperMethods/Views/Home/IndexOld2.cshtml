@@ -1,0 +1,35 @@
+﻿@model string
+@{
+    Layout = null;
+}
+
+
+@helper ListArrayItems(string[] items) { 
+    <ul>
+        @foreach (string str in items) {
+            <li>@str</li>
+        }
+    </ul>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>Using Helper Methods - Updated</h1>
+    <div>
+        Here are the fruits: @ListArrayItems(ViewBag.Fruits)
+    </div>
+    <div>
+        Here are the cities: @ListArrayItems(ViewBag.Cities)
+    </div>
+    <div>
+        Here is the message: <p>@Model</p>
+    </div>
+
+</body>
+</html>
