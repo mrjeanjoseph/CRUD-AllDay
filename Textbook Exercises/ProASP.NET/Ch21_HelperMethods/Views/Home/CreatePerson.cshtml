@@ -4,20 +4,28 @@
     ViewBag.Title = "CreatePerson";
 }
 
-<h2>CreatePerson</h2>
+<h2>Create Person</h2>
 
-<form action="/Home/CreateForm" method="post">
+@using(Html.BeginRouteForm("FormRoute", 
+    new {}, FormMethod.Post, 
+    new {@class="personClass", data_formType="person"})){ 
+
     <div class="dataElem">
-        <label>PersonId</label>
-        <input name="personId" value="@Model.PersonId" />
+        <label>Person Id</label>
+        @Html.TextBoxFor(x => x.PersonId)
     </div>
     <div class="dataElem">
         <label>First Name</label>
-        <input name="FirstName" value="@Model.FirstName" />
+        @Html.TextBoxFor(x => x.FirstName)
     </div>
     <div class="dataElem">
         <label>Last Name</label>
-        <input name="LastName" value="@Model.LastName" />
+        @Html.TextBoxFor(x => x.LastName)
+    </div>
+    <div class="dataElem">
+        <label>Role</label>
+        @Html.DropDownListFor(x => x.Role, 
+                new SelectList(Enum.GetNames(typeof(Ch21_HelperMethods.Models.Role))))
     </div>
     <input type="submit" value="Submit" />
-</form>
+}
