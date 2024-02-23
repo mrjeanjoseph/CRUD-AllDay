@@ -19,7 +19,7 @@ namespace Ch21_HelperMethods.Controllers {
 
         [HttpPost]
         public ActionResult CreatePerson(Person person) {
-            return View(person);
+            return View("DisplayPerson", person);
         }
     }
 }

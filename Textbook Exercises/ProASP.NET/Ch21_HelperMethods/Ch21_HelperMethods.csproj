@@ -113,6 +113,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\CreatePerson.cshtml" />
     <Content Include="Views\Home\CreatePersonOld1.cshtml" />
+    <Content Include="Views\Home\CreatePersonOld2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
