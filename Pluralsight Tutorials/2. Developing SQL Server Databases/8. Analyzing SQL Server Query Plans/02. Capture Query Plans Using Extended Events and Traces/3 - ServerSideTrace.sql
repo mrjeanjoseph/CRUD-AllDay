@@ -1,3 +1,5 @@
+USE [WideWorldImporters];
+GO
 
 exec sp_trace_setstatus 2, 1 -- Start the Trace
 GO

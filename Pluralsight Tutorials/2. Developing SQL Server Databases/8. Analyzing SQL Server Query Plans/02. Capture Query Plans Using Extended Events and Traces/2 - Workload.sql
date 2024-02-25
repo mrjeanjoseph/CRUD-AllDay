@@ -1,3 +1,6 @@
+USE [WideWorldImporters];
+GO
+
 SELECT *
 FROM WideWorldImporters.Sales.Invoices;
 GO

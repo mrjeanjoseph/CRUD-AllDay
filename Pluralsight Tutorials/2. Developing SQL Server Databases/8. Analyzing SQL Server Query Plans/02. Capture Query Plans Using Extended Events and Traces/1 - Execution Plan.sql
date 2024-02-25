@@ -1,3 +1,5 @@
+USE [WideWorldImporters];
+GO
 
 -- Actual Execution Plans
 
@@ -7,9 +9,6 @@ SELECT *
 FROM WideWorldImporters.Sales.Invoices
 GO
 
-
-
-
 -- Text Execution Plans
 SET STATISTICS PROFILE ON
 GO
@@ -18,12 +17,6 @@ FROM WideWorldImporters.Sales.Invoices
 GO
 SET STATISTICS PROFILE OFF
 GO
-
-
-
-
-
-
 
 -- XML Execution Plans
 SET STATISTICS XML ON
