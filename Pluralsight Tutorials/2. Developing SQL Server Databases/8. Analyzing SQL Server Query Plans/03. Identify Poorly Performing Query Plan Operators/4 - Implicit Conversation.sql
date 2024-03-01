@@ -11,9 +11,6 @@ INNER JOIN Sales.InvoiceLines il ON i.InvoiceID = il.InvoiceID
 WHERE i.CustomerPurchaseOrderNumber = 17500
 GO
 
-
-
-
 SELECT i.AccountsPersonID, i.CustomerPurchaseOrderNumber, il.LastEditedWhen
 FROM Sales.Invoices i
 INNER JOIN Sales.InvoiceLines il ON i.InvoiceID = il.InvoiceID
