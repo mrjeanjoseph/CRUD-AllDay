@@ -12,6 +12,9 @@
     new { }, FormMethod.Post,
     new { @class = "personClass", data_formType = "person" })) {
 
+    <div class="column"> @Html.EditorForModel() </div>
+    <div class="column"> @Html.EditorFor(m => m.HomeAddress) </div>
+
     @Html.EditorForModel()
     <input type="submit" value="Submit" />
 }

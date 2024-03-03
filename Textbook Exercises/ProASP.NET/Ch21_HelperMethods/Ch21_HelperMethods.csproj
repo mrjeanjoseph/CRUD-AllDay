@@ -102,6 +102,7 @@
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PersonMetaData.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
