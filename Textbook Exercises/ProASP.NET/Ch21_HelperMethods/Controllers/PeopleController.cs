@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace Ch21_HelperMethods.Controllers {
     public class PeopleController : Controller {
 
-        private Person[] personData = {
+        private readonly Person[] personData = {
             new Person {FirstName = "Louna", LastName = "Jean-Joseph", Role = Role.Admin },
             new Person {FirstName = "Raoul H.", LastName = "Jean-Joseph", Role = Role.Admin },
             new Person {FirstName = "Jovenel", LastName = "Moise", Role = Role.User },
