@@ -1,8 +1,6 @@
 ﻿using Ch21_HelperMethods.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Ch21_HelperMethods.Controllers {
@@ -26,10 +24,9 @@ namespace Ch21_HelperMethods.Controllers {
 
         [HttpPost]
         public ActionResult GetPeople(string selectedRole) {
-            if(selectedRole == null || selectedRole == "All") {
+            if (selectedRole == null || selectedRole == "All") {
                 return View(personData);
-            }
-            else {
+            } else {
                 Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
                 return View(personData.Where(p => p.Role == selected));
             }
