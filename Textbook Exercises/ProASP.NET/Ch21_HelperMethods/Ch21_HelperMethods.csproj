@@ -128,8 +128,9 @@
     <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
+    <Content Include="Views\People\GetPeopleData.cshtml" />
     <Content Include="Views\People\GetPeople.cshtml" />
-    <Content Include="Views\People\GetPeople_Old1.cshtml" />
+    <Content Include="Views\People\GetPeople_Old.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

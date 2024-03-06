@@ -1,9 +1,10 @@
 ﻿@using Ch21_HelperMethods.Models
-@model IEnumerable<Person>
+@model string
 
 @{
     ViewBag.Title = "GetPeople";
     Layout = "/Views/Shared/_Layout.cshtml";
+    AjaxOptions ajaxOpts = new AjaxOptions { UpdateTargetId = "tblBody" };
 }
 
 <h2>Get People</h2>
@@ -16,13 +17,13 @@
             <th>Role</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tblBody">
         @Html.Action("GetPeopleData", new {selectedRole = Model})
     </tbody>
 
 </table>
 
-@using(Html.BeginForm()) {
+@using(Ajax.BeginForm("GetPeopleData", ajaxOpts)) {
     <div>
         @Html.DropDownList("selectedRole", new SelectList(
         new[] {"All"}.Concat(Enum.GetNames(typeof(Role)))))
