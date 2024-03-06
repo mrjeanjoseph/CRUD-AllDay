@@ -13,7 +13,7 @@
     };
 }
 
-<h2>Get People Async</h2>
+<h2>Get People ++</h2>
 
 <div id="loading" class="load" style="display:none">
     <p>Loading Data...,</p>
@@ -28,15 +28,71 @@
         </tr>
     </thead>
     <tbody id="tblBody">
-        @Html.Action("GetPeopleData", new {selectedRole = Model})
+        @Html.Action("GetPeopleData", new { selectedRole = Model })
     </tbody>
 
 </table>
 
-@using(Ajax.BeginForm("GetPeopleData", ajaxOpts)) {
+@using (Ajax.BeginForm(ajaxOpts)) {
     <div>
         @Html.DropDownList("selectedRole", new SelectList(
-        new[] {"All"}.Concat(Enum.GetNames(typeof(Role)))))
+        new[] { "All" }.Concat(Enum.GetNames(typeof(Role)))))
         <button type="submit">Submit</button>
     </div>
 }
+
+
+@* Creating Ajax Links *@
+<div>
+    @foreach (string role in Enum.GetNames(typeof(Role))) {
+        <div class="ajaxLink">
+            @Ajax.ActionLink(role, "GetPeople",
+                new { selectedRole = role },
+                new AjaxOptions {
+                    UpdateTargetId = "tblBody",
+                    Url = Url.Action("GetPeopleData",
+                    new { selectedRole = role }),
+                    OnBegin = "OnBegin",
+                    OnFailure = "OnFailure",
+                    OnSuccess = "OnSuccess",
+                    OnComplete = "OnComplete"
+                })
+        </div>
+    }
+</div>
+
+
+
+<script type="text/javascript">
+    alert("Get the fuck out of here!");
+    function OnBegin() {
+        alert("This is the OnBegin Callback");
+    }
+
+    function OnSuccess(data) {
+        alert("This is the OnSuccess Callback: " + data);
+    }
+
+    function OnFailure(request, error) {
+        alert("This is the OnFailure Callback ", error);
+    }
+
+    function OnComplete(request, status) {
+        alert("This is the OnComplete Callback " + status);
+    }
+</script>
+
+
+@* Creating Ajax Links
+    <div>
+        @foreach (string role in Enum.GetNames(typeof(Role))) {
+            <div class="ajaxLink">
+                @Ajax.ActionLink(role, "GetPeopleData",
+                    new {selectedRole = role},
+                    new AjaxOptions { UpdateTargetId = "tblBody"})
+            </div>
+        }
+    </div>
+
+*@
+
