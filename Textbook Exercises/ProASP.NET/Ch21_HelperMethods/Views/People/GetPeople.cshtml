@@ -4,10 +4,20 @@
 @{
     ViewBag.Title = "GetPeople";
     Layout = "/Views/Shared/_Layout.cshtml";
-    AjaxOptions ajaxOpts = new AjaxOptions { UpdateTargetId = "tblBody" };
+    AjaxOptions ajaxOpts = new AjaxOptions {
+        UpdateTargetId = "tblBody",
+        Url = Url.Action("GetPeopleData"),
+        LoadingElementId = "loading",
+        LoadingElementDuration = 1000,
+        Confirm = "Do you wish to request new data"
+    };
 }
 
-<h2>Get People</h2>
+<h2>Get People Async</h2>
+
+<div id="loading" class="load" style="display:none">
+    <p>Loading Data...,</p>
+</div>
 
 <table>
     <thead>
