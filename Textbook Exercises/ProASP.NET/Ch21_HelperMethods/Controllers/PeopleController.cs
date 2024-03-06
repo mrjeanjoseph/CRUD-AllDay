@@ -1,5 +1,6 @@
 ﻿using Ch21_HelperMethods.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -18,18 +19,34 @@ namespace Ch21_HelperMethods.Controllers {
             return View();
         }
 
-        public ActionResult GetPeople() {
-            return View(personData);
+        public PartialViewResult GetPeopleData(string selectedRole = "All") {
+            IEnumerable<Person> data = personData;
+            if(selectedRole != "All") {
+                Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
+                data = personData.Where(p => p.Role == selected);
+            }
+            
+            return PartialView(data);
         }
 
-        [HttpPost]
-        public ActionResult GetPeople(string selectedRole) {
-            if (selectedRole == null || selectedRole == "All") {
-                return View(personData);
-            } else {
-                Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
-                return View(personData.Where(p => p.Role == selected));
-            }
+        public ActionResult GetPeople(string selectedRole = "All") {
+            return View((object)selectedRole);
         }
+
+        /*
+            public ActionResult GetPeople() {
+                return View(personData);
+            }
+
+            [HttpPost]
+            public ActionResult GetPeople(string selectedRole) {
+                if (selectedRole == null || selectedRole == "All") {
+                    return View(personData);
+                } else {
+                    Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
+                    return View(personData.Where(p => p.Role == selected));
+                }
+            }         
+        */
     }
 }

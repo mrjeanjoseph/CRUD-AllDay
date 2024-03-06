@@ -17,7 +17,13 @@
         </tr>
     </thead>
     <tbody>
-        @Html.Action("GetPeopleData", new {selectedRole = Model})
+        @foreach (Person item in Model) {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Role</td>
+            </tr>
+        }
     </tbody>
 
 </table>
