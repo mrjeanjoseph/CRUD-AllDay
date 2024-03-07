@@ -4,16 +4,19 @@
 @{
     ViewBag.Title = "GetPeople";
     Layout = "/Views/Shared/_Layout.cshtml";
+
     AjaxOptions ajaxOpts = new AjaxOptions {
         UpdateTargetId = "tblBody",
         Url = Url.Action("GetPeopleData"),
         LoadingElementId = "loading",
         LoadingElementDuration = 1000,
-        Confirm = "Do you wish to request new data"
+        OnSuccess = "ProcessData",
+        //Confirm = "Do you wish to request new data"
     };
 }
 
-<h2>Get People ++</h2>
+
+<h2>Get People</h2>
 
 <div id="loading" class="load" style="display:none">
     <p>Loading Data...,</p>
@@ -49,22 +52,32 @@
             @Ajax.ActionLink(role, "GetPeople",
                 new { selectedRole = role },
                 new AjaxOptions {
-                    UpdateTargetId = "tblBody",
+                    //UpdateTargetId = "tblBody",
                     Url = Url.Action("GetPeopleData",
                     new { selectedRole = role }),
-                    OnBegin = "OnBegin",
-                    OnFailure = "OnFailure",
-                    OnSuccess = "OnSuccess",
-                    OnComplete = "OnComplete"
+                    //OnBegin = "OnBegin",
+                    //OnFailure = "OnFailure",
+                    OnSuccess = "ProcessData",
+                    //OnComplete = "ProcessData"
                 })
         </div>
     }
 </div>
 
+<script>
 
+    function ProcessData(data) {
 
-<script type="text/javascript">
-    alert("Get the fuck out of here!");
+        var target = $("#tblBody");
+        target.empty();
+        for (var i = 0; i < data.length; i++) {
+            var person = data[i];
+            target.append("<tr><td>" + person.FirstName + "</td><td>"
+                + person.LastName + "</td><td>" + person.Role + "</td></tr>");
+        }
+    }
+
+    /*
     function OnBegin() {
         alert("This is the OnBegin Callback");
     }
@@ -79,7 +92,7 @@
 
     function OnComplete(request, status) {
         alert("This is the OnComplete Callback " + status);
-    }
+    }*/
 </script>
 
 

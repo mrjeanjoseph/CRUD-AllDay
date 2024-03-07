@@ -19,34 +19,86 @@ namespace Ch21_HelperMethods.Controllers {
             return View();
         }
 
-        public PartialViewResult GetPeopleData(string selectedRole = "All") {
+        public IEnumerable<Person> GetData(string selectedRole) {
+            IEnumerable<Person> data = personData;
+            if (selectedRole != "All") {
+                Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
+                data = personData.Where(p => p.Role == selected);
+            }
+            return data;
+        }
+
+        public ActionResult GetPeopleData(string selectedRole = "All") {
+
+            
             IEnumerable<Person> data = personData;
             if(selectedRole != "All") {
                 Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
                 data = personData.Where(p => p.Role == selected);
             }
-            
-            return PartialView(data);
+            if(Request.IsAjaxRequest()) {
+                var formattedData = data.Select(p => new {
+                    FirstName = p.FirstName,
+                    LastName = p.LastName,
+                    Role = Enum.GetName(typeof(Role), p.Role)
+                });
+                return Json(formattedData, JsonRequestBehavior.AllowGet );
+            } else {
+                return PartialView(data);
+            }
+
+        }
+
+        public JsonResult GetPeopleDataJson2(string selectedRole = "All") {
+            //IEnumerable<Person> data = GetData(selectedRole);
+
+            var data = GetData(selectedRole).Select(p => new {
+                FirstName = p.FirstName,
+                LastName = p.LastName,
+                Role = Enum.GetName(typeof(Role), p.Role)
+            });
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        public PartialViewResult GetPeopleData3(string selectedRole = "All") {
+            return PartialView(GetData(selectedRole));
         }
 
         public ActionResult GetPeople(string selectedRole = "All") {
             return View((object)selectedRole);
         }
 
-        /*
-            public ActionResult GetPeople() {
-                return View(personData);
+        #region Old code
+        public ActionResult GetPeople2(string selectedRole = "All") {
+            return View((object)selectedRole);
+        }
+
+        public PartialViewResult GetPeopleData2(string selectedRole = "All") {
+            IEnumerable<Person> data = personData;
+            if (selectedRole != "All") {
+                Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
+                data = personData.Where(p => p.Role == selected);
             }
 
-            [HttpPost]
-            public ActionResult GetPeople(string selectedRole) {
-                if (selectedRole == null || selectedRole == "All") {
-                    return View(personData);
-                } else {
-                    Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
-                    return View(personData.Where(p => p.Role == selected));
-                }
-            }         
-        */
+            return PartialView(data);
+        }
+
+
+        public ActionResult GetPeople2() {
+            return View(personData);
+        }
+
+        [HttpPost]
+        public ActionResult GetPeople3(string selectedRole) {
+            if (selectedRole == null || selectedRole == "All") {
+                return View(personData);
+            } else {
+                Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
+                return View(personData.Where(p => p.Role == selected));
+            }
+        }
+
+
+        #endregion
     }
 }
