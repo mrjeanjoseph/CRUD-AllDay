@@ -22,3 +22,8 @@ SELECT
 	growth,
 	is_percent_growth
 FROM sys.master_files
+
+
+SELECT *
+FROM
+	sys.dm_os_schedulers
