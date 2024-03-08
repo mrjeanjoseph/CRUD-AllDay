@@ -58,3 +58,12 @@ WHERE
 	AND qsr.execution_type = 0 -- 3 = aborted, 4 = exection, 0 = regular (successful)
 	AND qsq.[object_id] = OBJECT_ID(N'WideWorldImporters.Website.SearchForPeople',N'P')
 ORDER BY qsr.avg_duration DESC
+
+
+--
+EXEC sp_server_diagnostics;
+GO
+
+--
+SELECT * FROM sys.dm_os_performance_counters
+WHERE counter_name LIKE N'page life%';
