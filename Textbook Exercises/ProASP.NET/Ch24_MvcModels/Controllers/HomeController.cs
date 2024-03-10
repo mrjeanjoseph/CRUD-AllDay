@@ -30,6 +30,8 @@ namespace Ch24_MvcModels.Controllers {
             return View("Index", personModel);
         }
 
-
+        public ActionResult DisplaySummary(AddressSummary addressSummary) {
+            return View(addressSummary);
+        }
     }
 }
