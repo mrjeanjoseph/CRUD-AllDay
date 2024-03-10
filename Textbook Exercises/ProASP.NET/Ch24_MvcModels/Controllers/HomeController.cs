@@ -6,7 +6,6 @@ using System.Web.Mvc;
 namespace Ch24_MvcModels.Controllers {
     public class HomeController : Controller {
 
-
         private readonly Person[] personData = {
             new Person {PersonId = 1, FirstName = "Louna", LastName = "Jean-Joseph", Role = Role.Admin },
             new Person {PersonId = 2, FirstName = "Raoul H.", LastName = "Jean-Joseph", Role = Role.Admin },
@@ -15,8 +14,6 @@ namespace Ch24_MvcModels.Controllers {
             new Person {PersonId = 5, FirstName = "Denver", LastName = "Mosque", Role = Role.Guest }
         };
 
-
-        // GET: Home
         public ActionResult Index(int? id = 1) {
             Person personItem = personData.Where(p => p.PersonId == id).First();
             return View(personItem);
@@ -44,6 +41,11 @@ namespace Ch24_MvcModels.Controllers {
         public ActionResult NameArray(string[] names) {
             names = names ?? new string[0];
             return View(names);
+        }
+
+        public ActionResult Address(IList<AddressSummary> addresses) {
+            addresses = addresses ?? new List<AddressSummary>();
+            return View(addresses);
         }
     }
 }

@@ -114,6 +114,7 @@
     <Content Include="Views\Home\DisplaySummary.cshtml" />
     <Content Include="Views\Home\NameCollection.cshtml" />
     <Content Include="Views\Home\NameArray.cshtml" />
+    <Content Include="Views\Home\Address.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
