@@ -1,4 +1,5 @@
 ﻿using Ch24_MvcModels.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -31,11 +32,16 @@ namespace Ch24_MvcModels.Controllers {
         }
 
         public ActionResult DisplaySummary(
-            [Bind(Prefix="HomeAddress", Exclude="Country")]AddressSummary addressSummary) {
+            [Bind(Prefix = "HomeAddress", Exclude = "Country")] AddressSummary addressSummary) {
             return View(addressSummary);
         }
 
-        public ActionResult Names(string[] names) {
+        public ActionResult NameCollection(IList<string> names) {
+            names = names ?? new List<string>();
+            return View(names);
+        }
+
+        public ActionResult NameArray(string[] names) {
             names = names ?? new string[0];
             return View(names);
         }

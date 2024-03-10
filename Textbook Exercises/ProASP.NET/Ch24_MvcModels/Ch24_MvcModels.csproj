@@ -112,7 +112,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\CreatePerson.cshtml" />
     <Content Include="Views\Home\DisplaySummary.cshtml" />
-    <Content Include="Views\Home\Names.cshtml" />
+    <Content Include="Views\Home\NameCollection.cshtml" />
+    <Content Include="Views\Home\NameArray.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
