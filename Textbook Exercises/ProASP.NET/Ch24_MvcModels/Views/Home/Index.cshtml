@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Person</h2>
@@ -10,4 +11,6 @@
 <div> <label>First Name: </label>@Html.DisplayFor(m => m.FirstName) </div>
 <div> <label>Last Name: </label>@Html.DisplayFor(m => m.LastName) </div>
 <div> <label>Role: </label>@Html.DisplayFor(m => m.Role) </div>
+<div> <label>Role: </label>@Html.DisplayFor(m => m.HomeAddress.City) </div>
+<div> <label>Role: </label>@Html.DisplayFor(m => m.HomeAddress.Country) </div>
 

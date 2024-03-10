@@ -7,18 +7,29 @@ namespace Ch24_MvcModels.Controllers {
 
 
         private readonly Person[] personData = {
-            new Person {FirstName = "Louna", LastName = "Jean-Joseph", Role = Role.Admin },
-            new Person {FirstName = "Raoul H.", LastName = "Jean-Joseph", Role = Role.Admin },
-            new Person {FirstName = "Jovenel", LastName = "Moise", Role = Role.User },
-            new Person {FirstName = "Eurie", LastName = "Latortue", Role = Role.User },
-            new Person {FirstName = "Denver", LastName = "Mosque", Role = Role.Guest }
+            new Person {PersonId = 1, FirstName = "Louna", LastName = "Jean-Joseph", Role = Role.Admin },
+            new Person {PersonId = 2, FirstName = "Raoul H.", LastName = "Jean-Joseph", Role = Role.Admin },
+            new Person {PersonId = 3, FirstName = "Jovenel", LastName = "Moise", Role = Role.User },
+            new Person {PersonId = 4, FirstName = "Eurie", LastName = "Latortue", Role = Role.User },
+            new Person {PersonId = 5, FirstName = "Denver", LastName = "Mosque", Role = Role.Guest }
         };
 
 
         // GET: Home
-        public ActionResult Index(int id) {
+        public ActionResult Index(int? id = 1) {
             Person personItem = personData.Where(p => p.PersonId == id).First();
             return View(personItem);
         }
+
+        public ActionResult CreatePerson() {
+            return View(new Person());
+        }
+
+        [HttpPost]
+        public ActionResult CreatePerson(Person personModel) {
+            return View("Index", personModel);
+        }
+
+
     }
 }
