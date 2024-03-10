@@ -30,8 +30,14 @@ namespace Ch24_MvcModels.Controllers {
             return View("Index", personModel);
         }
 
-        public ActionResult DisplaySummary(AddressSummary addressSummary) {
+        public ActionResult DisplaySummary(
+            [Bind(Prefix="HomeAddress", Exclude="Country")]AddressSummary addressSummary) {
             return View(addressSummary);
+        }
+
+        public ActionResult Names(string[] names) {
+            names = names ?? new string[0];
+            return View(names);
         }
     }
 }
