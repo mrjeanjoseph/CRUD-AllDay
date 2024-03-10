@@ -1,4 +1,5 @@
 ﻿using Ch24_MvcModels.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -43,8 +44,38 @@ namespace Ch24_MvcModels.Controllers {
             return View(names);
         }
 
-        public ActionResult Address(IList<AddressSummary> addresses) {
+        public ActionResult Address(FormCollection formData) {
+            IList<AddressSummary> addresses = new List<AddressSummary>();
+
+            if (TryUpdateModel(addresses, formData)) {
+                // Complete operation here
+            } else {
+                // Do something else
+            }
+
+            //We can use a try catch ere
+            try {
+                UpdateModel(addresses, formData);
+            } catch (InvalidOperationException) {
+                throw;
+            }
+            return View(addresses);
+        }
+
+        public ActionResult Address_MI(IList<AddressSummary> addresses) {
             addresses = addresses ?? new List<AddressSummary>();
+            return View(addresses);
+        }
+
+        public ActionResult Address_MI1() {
+            IList<AddressSummary> addresses = new List<AddressSummary>();
+            UpdateModel(addresses);
+            return View(addresses);
+        }
+
+        public ActionResult Address_MI2() {
+            IList<AddressSummary> addresses = new List<AddressSummary>();
+            UpdateModel(addresses, new FormValueProvider(ControllerContext));
             return View(addresses);
         }
     }
