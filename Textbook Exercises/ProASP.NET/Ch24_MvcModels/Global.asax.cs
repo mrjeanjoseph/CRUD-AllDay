@@ -8,7 +8,9 @@ namespace Ch24_MvcModels {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            ValueProviderFactories.Factories.Insert(0, new CustomValueProviderFactory());
+            //Both of these throw an error in the controller
+            //ValueProviderFactories.Factories.Insert(0, new CustomValueProviderFactory());
+            //ValueProviderFactories.Factories.Add(new CustomValueProviderFactory());
         }
     }
 }

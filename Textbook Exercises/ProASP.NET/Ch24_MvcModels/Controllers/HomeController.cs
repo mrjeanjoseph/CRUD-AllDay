@@ -44,7 +44,24 @@ namespace Ch24_MvcModels.Controllers {
             return View(names);
         }
 
-        public ActionResult Address(FormCollection formData) {
+        public ActionResult Address() {
+            IList<AddressSummary> addresses = new List<AddressSummary>();
+            UpdateModel(addresses);
+            return View(addresses);
+        }
+
+        public ActionResult Address_MI1(IList<AddressSummary> addresses) {
+            addresses = addresses ?? new List<AddressSummary>();
+            return View(addresses);
+        }
+
+        public ActionResult Address_MI2() {
+            IList<AddressSummary> addresses = new List<AddressSummary>();
+            UpdateModel(addresses, new FormValueProvider(ControllerContext));
+            return View(addresses);
+        }
+
+        public ActionResult Address_MI3(FormCollection formData) {
             IList<AddressSummary> addresses = new List<AddressSummary>();
 
             if (TryUpdateModel(addresses, formData)) {
@@ -59,23 +76,6 @@ namespace Ch24_MvcModels.Controllers {
             } catch (InvalidOperationException) {
                 throw;
             }
-            return View(addresses);
-        }
-
-        public ActionResult Address_MI(IList<AddressSummary> addresses) {
-            addresses = addresses ?? new List<AddressSummary>();
-            return View(addresses);
-        }
-
-        public ActionResult Address_MI1() {
-            IList<AddressSummary> addresses = new List<AddressSummary>();
-            UpdateModel(addresses);
-            return View(addresses);
-        }
-
-        public ActionResult Address_MI2() {
-            IList<AddressSummary> addresses = new List<AddressSummary>();
-            UpdateModel(addresses, new FormValueProvider(ControllerContext));
             return View(addresses);
         }
     }
