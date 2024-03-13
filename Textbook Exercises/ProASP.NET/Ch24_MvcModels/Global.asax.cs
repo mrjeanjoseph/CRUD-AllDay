@@ -1,4 +1,5 @@
 using Ch24_MvcModels.Infrastructure;
+using Ch24_MvcModels.Models;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -11,6 +12,8 @@ namespace Ch24_MvcModels {
             //Both of these throw an error in the controller
             //ValueProviderFactories.Factories.Insert(0, new CustomValueProviderFactory());
             //ValueProviderFactories.Factories.Add(new CustomValueProviderFactory());
+
+            ModelBinders.Binders.Add(typeof(AddressSummary), new AddressSummaryBinder());
         }
     }
 }
