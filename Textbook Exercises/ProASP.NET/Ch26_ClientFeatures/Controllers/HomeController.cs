@@ -13,7 +13,11 @@ namespace Ch26_ClientFeatures.Controllers {
 
         [HttpPost]
         public JsonResult MakeBooking(Appointment appointment) {
-            return Json(appointment, JsonRequestBehavior.AllowGet);
+
+            // statements to store new appointment in a
+            // repository would go here in a real project
+            return Json(appointment, 
+                JsonRequestBehavior.AllowGet);
         }
     }
 }
