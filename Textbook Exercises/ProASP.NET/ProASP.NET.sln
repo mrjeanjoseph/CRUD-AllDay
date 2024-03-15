@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch21_HelperMethods", "Ch21_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch24_MvcModels", "Ch24_MvcModels\Ch24_MvcModels.csproj", "{D4DC4A2F-2F30-4704-A85D-BDE2DE9C8D34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch25_ModelValidation", "Ch25_ModelValidation\Ch25_ModelValidation.csproj", "{8ACF2D49-BDBC-4872-80E0-FA49155697CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,16 @@ Global
 		{D4DC4A2F-2F30-4704-A85D-BDE2DE9C8D34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D4DC4A2F-2F30-4704-A85D-BDE2DE9C8D34}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{D4DC4A2F-2F30-4704-A85D-BDE2DE9C8D34}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Prod|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Prod|Any CPU.Build.0 = Debug|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ACF2D49-BDBC-4872-80E0-FA49155697CF}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
