@@ -6,7 +6,7 @@ namespace Ch25_ModelValidation.Models {
         public string ClientName { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
 
         public bool TermsAccepted { get; set; }
     }
