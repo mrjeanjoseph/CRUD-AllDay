@@ -94,7 +94,6 @@
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -110,6 +109,7 @@
     <Compile Include="Infrastructure\FilterOutPublicServant.cs" />
     <Compile Include="Infrastructure\FutureDateAttribute.cs" />
     <Compile Include="Infrastructure\MustBeTrueAttribute.cs" />
+    <Compile Include="Models\Appointment_old1.cs" />
     <Compile Include="Models\Appointment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -121,8 +121,6 @@
     <Content Include="Views\Home\MakeBooking.cshtml" />
     <Content Include="Views\Home\Completed.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
-    <Content Include="Scripts\jquery-3.7.1.min.map" />
-    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
