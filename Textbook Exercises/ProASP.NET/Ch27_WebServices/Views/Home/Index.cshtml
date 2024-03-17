@@ -7,13 +7,14 @@
 }
 
 @section Body {
+    <div id="editor" class="section card text-bg-primary mb-4 w-50 p-3">
+        @Html.Partial("_Editor", new Reservation())
+    </div>
+
     <div id="summary" class="section card text-bg-primary">
         @Html.Partial("_Summary", Model)
     </div>
 
-    <div id="editor" class="section card text-bg-primary">
-        @Html.Partial("_Editor", new Reservation())
-    </div>
 }
 
 @section Scripts{ }

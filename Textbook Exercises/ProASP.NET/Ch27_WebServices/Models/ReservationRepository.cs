@@ -30,14 +30,14 @@ namespace Ch27_WebServices.Models {
 
         public void RemoveReservation(int id) {
             Reservation reservation = GetReservationById(id);
-            if(reservation != null) {
+            if (reservation != null) {
                 _reservationData.Remove(reservation);
             }
         }
 
         public bool UpdateReservation(Reservation reservation) {
             Reservation storedReservation = GetReservationById(reservation.ReservationId);
-            if(storedReservation != null) {
+            if (storedReservation != null) {
                 storedReservation.ClientName = reservation.ClientName;
                 storedReservation.ReservedLocation = reservation.ReservedLocation;
                 return true;
