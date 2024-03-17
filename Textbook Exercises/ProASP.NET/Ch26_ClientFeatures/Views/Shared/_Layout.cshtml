@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @*<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
 </head>
 <body>
 
@@ -13,11 +14,13 @@
         @RenderSection("Body")
     </div>
 
-    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    @Scripts.Render("~/bundles/cfscripts")
+    @RenderSection("Scripts", false)
+
+    @*<script src="~/Scripts/jquery-3.7.1.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    @RenderSection("Scripts", false)
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
 </body>
 </html>
