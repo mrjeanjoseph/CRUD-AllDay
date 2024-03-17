@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch25_ModelValidation", "Ch2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch26_ClientFeatures", "Ch26_ClientFeatures\Ch26_ClientFeatures.csproj", "{200FFBDE-E094-4566-B1D7-2859F02833ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch27_WebServices", "Ch27_WebServices\Ch27_WebServices.csproj", "{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,16 @@ Global
 		{200FFBDE-E094-4566-B1D7-2859F02833ED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{200FFBDE-E094-4566-B1D7-2859F02833ED}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{200FFBDE-E094-4566-B1D7-2859F02833ED}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Dev|Any CPU.Build.0 = Debug|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Prod|Any CPU.ActiveCfg = Debug|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Prod|Any CPU.Build.0 = Debug|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{68437618-B8DB-4FD0-B3C0-A1ACB4A0913A}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
