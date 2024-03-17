@@ -16,7 +16,7 @@ namespace Ch27_WebServices.Models {
             new Reservation { ReservationId = 5, ClientName = "Rene Garcia Preval", ReservedLocation = "Port-au-Prince" },
         };
 
-        IEnumerable<Reservation> GetAllReservation() { return _reservationData; }
+        public IEnumerable<Reservation> GetAllReservation() { return _reservationData; }
 
         public Reservation GetReservationById(int id) {
             return _reservationData.Where(r => r.ReservationId == id).FirstOrDefault();
