@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Ch27_WebServices.Models.Reservation>
+
+<div class="card-header">Reservation Summary</div>
+<div class="card-body">
+    <table class="table table-striped sm">
+        <thead class="table-dark"> 
+            <tr>
+                <th>Reservation Id</th>
+                <th>Client Name</th>
+                <th>Location</th>
+                <th>Update/Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservation in Model) {
+                <tr>
+                    <td>@reservation.ReservationId</td>
+                    <td>@reservation.ClientName</td>
+                    <td>@reservation.ReservedLocation</td>
+                    <td>
+                        @Html.ActionLink("Remove", "DeleteReservation",
+                                new {id = reservation.ReservationId},
+                                new {@class = "btn btn-sm btn-primary"} )
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
