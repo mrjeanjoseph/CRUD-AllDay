@@ -14,11 +14,13 @@ namespace Ch27_WebServices.Controllers {
             return reservationRepo.GetReservationById(id);
         }
 
-        public Reservation PostReservation(Reservation reservation) {
+        [HttpPost]
+        public Reservation CreateReservation(Reservation reservation) {
             return reservationRepo.AddNewReservation(reservation);
         }
 
-        public bool PutReservation(Reservation reservation) {
+        [HttpPut]
+        public bool UpdateReservation(Reservation reservation) {
             return reservationRepo.UpdateReservation(reservation);
         }
 
