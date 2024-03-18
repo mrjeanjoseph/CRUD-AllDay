@@ -7,11 +7,8 @@
 
 @section Body {
 
-    <div id="editor" class="section card text-bg-primary mb-4 w-50 p-3">
-        @Html.Partial("_Editor", new Reservation())
-    </div>
-
-    <div id="summary" class="section card text-bg-primary">
+    <div id="summary" class="section card text-bg-primary"
+         data-bind="if: model.displaySummary">
         <div class="card-header">Reservation Summary</div>
         <div class="card-body">
             <table class="table table-striped sm">
@@ -30,11 +27,32 @@
                         <td data-bind="text: ReservedLocation"></td>
                         <td>
                             <button class="btn btn-sm btn-primary"
-                                    data-bind="click: RemoveItem">Remove</button>
+                                    data-bind="click: RemoveItem">
+                                Remove
+                            </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <button class="btn btn-primary" data-bind="click: HandleCreateClick">Create</button>
+        </div>
+    </div>
+
+    <div id="editor" class="section card text-bg-primary mb-4 w-50 p-3"
+         data-bind="ifnot: model.displaySummary">
+        @*@Html.Partial("_Editor", new Reservation())*@
+
+        <div class="card-header">Create Reservation</div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label>Client Name</label>
+                <input class="form-control" data-bind="value: model.editor.name" />
+            </div>
+            <div class="mb-3">
+                <label>Location</label>
+                <input class="form-control" data-bind="value: model.editor.location" />
+            </div>
+            <button class="btn btn-primary" data-bind="click: HandleEditorClick">Save</button>
         </div>
     </div>
 
@@ -43,12 +61,36 @@
 
 @section Scripts{
     <script>
-        var model = { reservations: ko.observableArray() };
+        var model = {
+            reservations: ko.observableArray(),
+            editor: {
+                name: ko.observable(""),
+                location: ko.observable("")
+            },
+            displaySummary: ko.observable(true)
+        };
 
-        function SendAjaxRequest(httpMethod, callback, url) {
+        function SendAjaxRequest(httpMethod, callback, url, reqData) {
             $.ajax("/api/customweb" + (url ? "/" + url : ""), {
-                type: httpMethod, success: callback
+                type: httpMethod,
+                success: callback,
+                data: reqData
             });
+        }
+
+        function HandleEditorClick() {
+            SendAjaxRequest("POST", function (newItem) {
+                model.reservations.push(newItem);
+                model.displaySummary(true);
+            }, null, {
+                ClientName: model.editor.name,
+                ReservedLocation: model.editor.location
+            });
+            GetAllItems();
+        }
+
+        function HandleCreateClick() {
+            model.displaySummary(false);
         }
 
         function GetAllItems() {
@@ -63,13 +105,13 @@
 
         function RemoveItem(item) {
             SendAjaxRequest("DELETE", function () {
-                for (var i = 0; i < model.reservations().length; i++) {
-                    if (model.reservations()[i].ReservationId == item.ReservationId) {
-                        model.reservations.remove(model.reserations()[i]);
+                for (var i = 0; i < model.reservations.length; i++) {
+                    if (model.reservations[i].ReservationId == item.ReservationId) {
+                        model.reservations.remove(model.reserations[i]);
                         break;
                     }
                 }
-                // GetAllItems();
+                GetAllItems();
             }, item.ReservationId)
         }
 
