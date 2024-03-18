@@ -41,9 +41,8 @@ namespace Ch27_WebServices.Models {
                 storedReservation.ClientName = reservation.ClientName;
                 storedReservation.ReservedLocation = reservation.ReservedLocation;
                 return true;
-            } else {
-                return false;
-            }
+            } else
+                return false;            
         }
     }
 }

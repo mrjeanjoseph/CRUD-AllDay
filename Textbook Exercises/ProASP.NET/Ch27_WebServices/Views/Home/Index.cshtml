@@ -1,5 +1,4 @@
 ﻿@using Ch27_WebServices.Models
-@model IEnumerable<Reservation>
 
 @{
     ViewBag.Title = "Reservations";
@@ -7,46 +6,76 @@
 }
 
 @section Body {
+
     <div id="editor" class="section card text-bg-primary mb-4 w-50 p-3">
         @Html.Partial("_Editor", new Reservation())
     </div>
 
     <div id="summary" class="section card text-bg-primary">
-        @Html.Partial("_Summary", Model)
+        <div class="card-header">Reservation Summary</div>
+        <div class="card-body">
+            <table class="table table-striped sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Reservation Id</th>
+                        <th>Client Name</th>
+                        <th>Location</th>
+                        <th>Update/Delete</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: model.reservations">
+                    <tr>
+                        <td data-bind="text: ReservationId"></td>
+                        <td data-bind="text: ClientName"></td>
+                        <td data-bind="text: ReservedLocation"></td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"
+                                    data-bind="click: RemoveItem">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 }
 
+
 @section Scripts{
     <script>
-        var model = {
-            reservations: ko.observableArray()
-        };
+        var model = { reservations: ko.observableArray() };
 
-        function sendAjaxRequest(httpMethod, callback, url) {
-            $.ajax("/api/web" + (url ? "/" + url : ""), {
+        function SendAjaxRequest(httpMethod, callback, url) {
+            $.ajax("/api/customweb" + (url ? "/" + url : ""), {
                 type: httpMethod, success: callback
             });
-
-            function getAllItems() {
-                sendAjaxRequest("GET", function (data) {
-                    model.reservations.removeAll();
-                    for (var i = 0; i < data.length; i++) {
-                        model.reservations.push(data[i]);
-                    }
-                })
-            }
-
-            function removeItem(item) {
-                sendAjaxRequest("DELETE", function () {
-                    getAllItems();
-                }, item.reservationId);
-            }
-
-            $(document).ready(function () {
-                getAllItems();
-                ko.applyBindings(model);
-            })
         }
+
+        function GetAllItems() {
+            //return;
+            SendAjaxRequest("GET", function (data) {
+                model.reservations.removeAll();
+                for (var i = 0; i < data.length; i++) {
+                    model.reservations.push(data[i]);
+                }
+            });
+        }
+
+        function RemoveItem(item) {
+            SendAjaxRequest("DELETE", function () {
+                for (var i = 0; i < model.reservations().length; i++) {
+                    if (model.reservations()[i].ReservationId == item.ReservationId) {
+                        model.reservations.remove(model.reserations()[i]);
+                        break;
+                    }
+                }
+                // GetAllItems();
+            }, item.ReservationId)
+        }
+
+        $(document).ready(function () {
+            GetAllItems();
+            ko.applyBindings(model);
+        });
     </script>
 }

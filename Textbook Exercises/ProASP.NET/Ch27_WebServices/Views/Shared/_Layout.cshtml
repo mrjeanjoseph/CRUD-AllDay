@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
 </head>
 <body>
@@ -14,8 +13,8 @@
         @RenderSection("Body")
     </div>
 
-    @RenderSection("Scripts")
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
     <script src="~/Scripts/knockout-3.5.1.js"></script>
-
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
