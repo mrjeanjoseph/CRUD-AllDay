@@ -119,8 +119,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap-reboot.rtl.css" />
     <Content Include="Content\bootstrap-reboot.rtl.min.css" />
     <Content Include="Content\bootstrap-utilities.css" />
@@ -168,8 +166,6 @@
     <Content Include="Content\bootstrap-utilities.css.map" />
     <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
     <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
