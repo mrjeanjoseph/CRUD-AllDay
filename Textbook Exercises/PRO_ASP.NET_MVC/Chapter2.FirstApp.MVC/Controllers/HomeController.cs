@@ -15,8 +15,18 @@ namespace Chapter2.Controllers {
             return View();
         }
 
+        [HttpGet]
         public ActionResult RSVPForm() {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult RSVPForm(GuestResponse guestresponse) {
+            if (ModelState.IsValid)
+                return View("Confirmation", guestresponse);
+            else
+                return View();
+
         }
     }
 }

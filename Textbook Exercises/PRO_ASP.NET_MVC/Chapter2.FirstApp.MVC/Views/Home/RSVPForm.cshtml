@@ -9,11 +9,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>RSVPForm</title>
+    <title>RSVP Form</title>
 </head>
 <body>
+    <h2>Please make a reservation</h2>
+
     @using(Html.BeginForm()) {
-        <p>Your Name: @Html.TextBoxFor(n => n.Name)</p>
+
+        @Html.ValidationSummary()
+
+        <p>Your Name: @Html.TextBoxFor(n => n.FullName)</p>
         <p>Your Email: @Html.TextBoxFor(e => e.EmailAddress)</p>
         <p>Your Phone: @Html.TextBoxFor(p => p.PhoneNumber)</p>
         <p>Will you attend? @Html.DropDownListFor(c => c.WillAttend, new[] {
@@ -27,6 +32,7 @@
                 }
             }, "Please make a selection")
         </p>
+        <input type="submit" value="Submit RSVP" />
      }
 </body>
 </html>

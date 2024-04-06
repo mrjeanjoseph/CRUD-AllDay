@@ -104,6 +104,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\RSVPForm.cshtml" />
+    <Content Include="Views\Home\Confirmation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
