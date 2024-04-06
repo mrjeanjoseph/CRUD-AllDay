@@ -26,7 +26,12 @@ namespace Chapter2.Controllers {
                 return View("Confirmation", guestresponse);
             else
                 return View();
+        }
 
+        [HttpPost]
+        public void SendEmailMessage (string message) {
+            // Use this method to send email message
+            // when the form is submitted successfully.
         }
     }
 }

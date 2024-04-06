@@ -10,13 +10,25 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Confirmation</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
-    <h1>Thank you, @Model.FullName</h1>
-    @if(Model.WillAttend == true) {
-        @:It's great that you're coming. The drinks are already in the fridge!
-    } else {
-        @:Sorry to hear that you can't make it, but thanks for letting me us know.
-    }
+    <div class="text-center mt-5">
+        <div class="lead">
+            @if (Model.WillAttend == true) {
+                <h1>Alright, @Model.FullName!</h1>
+                @:The drinks are in the fridge. Let's get this party started.
+            } else {
+                @:Sorry to hear that you can't make it @Model.FullName. Thanks for letting me us know.
+                <br /> @:By the way, you suck!
+            }
+        </div>
+        @Html.ActionLink("Go Back", "Index", null, new { @class = "btn btn-secondary small" })
+    </div>
 </body>
 </html>

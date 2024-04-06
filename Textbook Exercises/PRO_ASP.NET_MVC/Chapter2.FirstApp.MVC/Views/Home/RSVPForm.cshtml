@@ -10,30 +10,53 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>RSVP Form</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/site.css" rel="stylesheet" />
 </head>
 <body>
-    <h2>Please make a reservation</h2>
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="card text-bg-light w-50">
+            <div class="card-header text-center"><h4>Please, make a Reservation</h4></div>
+            <div class="card-body">
+                @using (Html.BeginForm()) {
 
-    @using(Html.BeginForm()) {
-
-        @Html.ValidationSummary()
-
-        <p>Your Name: @Html.TextBoxFor(n => n.FullName)</p>
-        <p>Your Email: @Html.TextBoxFor(e => e.EmailAddress)</p>
-        <p>Your Phone: @Html.TextBoxFor(p => p.PhoneNumber)</p>
-        <p>Will you attend? @Html.DropDownListFor(c => c.WillAttend, new[] {
-                new SelectListItem() {
-                    Text = "Yes, I'll be there",
-                    Value = bool.TrueString
-                },
-                new SelectListItem() {
-                    Text = "No way - Jose!",
-                    Value = bool.FalseString
+                    @Html.ValidationSummary()
+                    <div class="mb-3">
+                        <label>Your Name</label>
+                        @Html.TextBoxFor(n => n.FullName, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label>Your Email</label>
+                        @Html.TextBoxFor(e => e.EmailAddress, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label>Your Phone</label>
+                        @Html.TextBoxFor(p => p.PhoneNumber, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label>Will you attend?</label>
+                        @Html.DropDownListFor(c => c.WillAttend, new[] {
+                            new SelectListItem() {
+                                Text = "Yes, I'll be there",
+                                Value = bool.TrueString
+                            },
+                            new SelectListItem() {
+                                Text = "No way - Jose!",
+                                Value = bool.FalseString
+                            },
+                            new SelectListItem() {
+                                Text = "Not sure Yet! - Will notify later",
+                                Value = null
+                            }
+                        }, "Please make a selection", new { @class = "form-control" })
+                    </div>
+                    <div class="text-center">
+                        <input class="btn btn-primary small" type="submit" value="Submit RSVP" />
+                        @Html.ActionLink("Go Back", "Index", null, new { @class = "btn btn-secondary small" })
+                    </div>
                 }
-            }, "Please make a selection")
-        </p>
-        <input type="submit" value="Submit RSVP" />
-     }
+            </div>
+        </div>
+    </div>
 </body>
 </html>
