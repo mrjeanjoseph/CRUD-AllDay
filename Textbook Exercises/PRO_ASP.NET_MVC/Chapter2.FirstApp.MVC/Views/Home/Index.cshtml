@@ -9,15 +9,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        @ViewBag.Greeting ASP.NET from the view file
+    <div class="text-center">
+        <h2>@ViewBag.Message</h2>
+        
         <br /><br />
-        @ViewBag.Message
-        <br /><br />
-        @Html.ActionLink("RSVP Now", "RSVPForm")
-
+        @Html.ActionLink("RSVP Now", "RSVPForm", null, new { @class = "btn btn-success" })
     </div>
 </body>
 </html>
