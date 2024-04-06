@@ -5,7 +5,7 @@ namespace Chapter1.Introduction.Controllers {
         // GET: Home
         public string Index() {
 
-            return "Hello Chapter 2 ASP.NET MVC 5!!";
+            return "<h1>Hello ASP.NET MVC 5</h1> - \nThis is Chapter 1";
 
         }
     }
