@@ -2,38 +2,79 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CRUD ALLDAY!</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <nav class="navbar bg-dark navbar-expand-lg border-bottom border-bottom-dark bg-body-tertiary" data-bs-theme="dark">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            @Html.ActionLink("CRUD ALLDAY", null, null, null, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "nav-link" })</li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-center">
+                            <li class="nav-item disabled text-center"><h4>All Services</h4></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>@Html.ActionLink("Employee Management", "Index", "Home", new { area = "HumanResources" }, new { @class = "nav-link dropdown-item" })</li>
+                            <li>@Html.ActionLink("Vendor Record", "Index", "VendorRecord", new { area = "OperatingManagement" }, new { @class = "nav-link dropdown-item" })</li>
+                            <li>@Html.ActionLink("Car Rental System", "Index", "Car", new { area = "CarRentalSystem" }, new { @class = "nav-link dropdown-item" })</li>
+                            <li>@Html.ActionLink("Information System Resources", "Index", "Car", new { area = "InfoSysResources" }, new { @class = "nav-link dropdown-item disabled" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("SportStore", "ListProducts", "Product", new { area = "SportsStore" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About", "UnderConstruction", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Contact", "UnderConstruction", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success me-3" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        @Html.ActionLink("Pricings", "UnderConstruction", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item"><a class="nav-link disabled"><i class="bi bi-person-lock ytp-bigger"></i></a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+
+    @{ string myInfo = "Jean Built this!";}
+    <nav class="navbar fixed-bottom bg-body-tertiary">
+        <div class="container-fluid">
+            <p>&copy; @DateTime.Now.Year - @myInfo</p>
+        </div>
+    </nav>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/DataTables")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryUI")
+    @Scripts.Render("~/bundles/globalscripts")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
