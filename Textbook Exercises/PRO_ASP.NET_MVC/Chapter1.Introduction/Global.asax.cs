@@ -1,8 +1,7 @@
-﻿using Chapter2.Introduction;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Chapter1.Introduction {
+namespace IntroductionToMVC {
     public class MvcApplication : System.Web.HttpApplication {
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();

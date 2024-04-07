@@ -3,3 +3,5 @@ Console.WriteLine("Hello, World!");
 
 
 string debugOne = "Debugging the app";
+
+Console.WriteLine(debugOne);
