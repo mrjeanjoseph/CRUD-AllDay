@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace PartyInvites.Controllers {
+namespace Chapter2.PartyInvites.Controllers {
     public class HomeController : Controller {
         // GET: Home
         public ViewResult Index() {

@@ -112,9 +112,9 @@
     <Content Include="Areas\Chapter1\Views\web.config" />
     <Content Include="Areas\Chapter2\Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Areas\Chapter2\Views\Index.cshtml" />
-    <Content Include="Areas\Chapter2\Views\RSVPForm.cshtml" />
-    <Content Include="Areas\Chapter2\Views\Confirmation.cshtml" />
+    <Content Include="Areas\Chapter2\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter2\Views\Home\RSVPForm.cshtml" />
+    <Content Include="Areas\Chapter2\Views\Home\Confirmation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
