@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Chapter2.FirstApp.MVC.Areas.Chapter1 {
+namespace Introduction.FirstApp.MVC.Areas.Chapter1 {
     public class Chapter1AreaRegistration : AreaRegistration {
         public override string AreaName {
             get {

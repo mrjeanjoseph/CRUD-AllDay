@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Chapter2.FirstApp.MVC.Areas.Chapter1.Controllers {
+namespace Introduction.FirstApp.MVC.Areas.Chapter1.Controllers {
     public class HomeController : Controller {
         // GET: Chapter1/Home
         public string Index() {

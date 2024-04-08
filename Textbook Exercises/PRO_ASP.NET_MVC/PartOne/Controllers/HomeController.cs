@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace Chapter2.Controllers {
+namespace Introduction.Controllers {
     public class HomeController : Controller {
         // GET: Home
         public ViewResult Index() {

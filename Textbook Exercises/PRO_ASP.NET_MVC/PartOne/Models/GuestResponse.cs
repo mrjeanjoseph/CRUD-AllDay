@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Chapter2 {
+namespace Introduction {
     public class GuestResponse {
         public int Id { get; set; }
 
