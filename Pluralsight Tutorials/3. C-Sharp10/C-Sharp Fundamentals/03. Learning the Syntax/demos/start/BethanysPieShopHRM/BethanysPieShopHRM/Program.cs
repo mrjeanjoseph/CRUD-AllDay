@@ -1,5 +1,24 @@
 ﻿Console.WriteLine("Welcome to BossBae's Cuisine");
 
+var valueone = 1.GetType();
+
+var valuetwo = "string".GetType();
+
+var newhiredate = new DateTime(2024, 11, 07);
+ 
+Console.ReadLine();
+
+
+DateTime TodaysDate = DateTime.Now;
+
+DateTime HireDate3 = new DateTime(2025, 12, 12);
+
+string newVal = "This is due";
+
+bool iswhitespace = string.IsNullOrWhiteSpace(newVal);
+Console.WriteLine(iswhitespace);
+
+
 //Understand implicit conversion
 var newMonthlyWage = 1234;
 var newHireDAte = new DateTime(2020, 12, 12);
@@ -8,7 +27,6 @@ Console.WriteLine(newHireDAte.GetType().Name);
 
 
 
-Console.ReadLine();
 //Understanding Dates
 DateTime employeeStart = new DateTime(2024, 04, 07);
 Console.WriteLine(employeeStart);
@@ -57,11 +75,6 @@ hoursWorked = 248;
 
 //Understanding const
 const double interestRate = 0.07;
-
-
-
-
-
 
 
 Console.WriteLine("Welcome to BossBae's Cuisine");
