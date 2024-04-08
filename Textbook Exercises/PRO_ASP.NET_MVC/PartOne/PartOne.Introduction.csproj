@@ -98,20 +98,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Chapter1\Chapter1AreaRegistration.cs" />
     <Compile Include="Areas\Chapter1\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter2\Chapter2AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter2\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\GuestResponse.cs" />
+    <Compile Include="Areas\Chapter2\Models\GuestResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="Areas\Chapter1\Views\web.config" />
+    <Content Include="Areas\Chapter2\Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\RSVPForm.cshtml" />
-    <Content Include="Views\Home\Confirmation.cshtml" />
+    <Content Include="Areas\Chapter2\Views\Index.cshtml" />
+    <Content Include="Areas\Chapter2\Views\RSVPForm.cshtml" />
+    <Content Include="Areas\Chapter2\Views\Confirmation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -124,6 +127,9 @@
     <Folder Include="Areas\Chapter1\Data\" />
     <Folder Include="Areas\Chapter1\Views\Home\" />
     <Folder Include="Areas\Chapter1\Views\Shared\" />
+    <Folder Include="Areas\Chapter2\Views\Shared\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

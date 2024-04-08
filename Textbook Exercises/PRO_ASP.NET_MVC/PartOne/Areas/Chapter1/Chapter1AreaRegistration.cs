@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Introduction.FirstApp.MVC.Areas.Chapter1 {
+namespace Chapter1.Introduction {
     public class Chapter1AreaRegistration : AreaRegistration {
         public override string AreaName {
             get {
@@ -10,9 +10,9 @@ namespace Introduction.FirstApp.MVC.Areas.Chapter1 {
 
         public override void RegisterArea(AreaRegistrationContext context) {
             context.MapRoute(
-                "Chapter1",
-                "Chapter1/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "Introduction",
+                "Introduction/{controller}/{action}/{id}",
+                new {Controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

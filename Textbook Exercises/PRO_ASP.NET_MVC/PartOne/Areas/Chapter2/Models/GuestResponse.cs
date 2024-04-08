@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Introduction {
+namespace PartyInvites {
     public class GuestResponse {
         public int Id { get; set; }
 
