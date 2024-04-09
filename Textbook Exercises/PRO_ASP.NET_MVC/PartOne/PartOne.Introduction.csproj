@@ -46,6 +46,7 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -104,6 +105,9 @@
     <Compile Include="Areas\Chapter3\Controllers\AdminController.cs" />
     <Compile Include="Areas\Chapter3\Models\IUserRepository.cs" />
     <Compile Include="Areas\Chapter3\Models\User.cs" />
+    <Compile Include="Areas\Chapter4\Chapter4AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter4\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter4\Models\Product.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -116,6 +120,8 @@
     <Content Include="Areas\Chapter1\Views\web.config" />
     <Content Include="Areas\Chapter2\Views\web.config" />
     <Content Include="Areas\Chapter3\Views\web.config" />
+    <Content Include="Areas\Chapter4\Views\web.config" />
+    <Content Include="Areas\Chapter4\Views\Home\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Areas\Chapter2\Views\Home\Index.cshtml" />
     <Content Include="Areas\Chapter2\Views\Home\RSVPForm.cshtml" />
@@ -135,6 +141,7 @@
     <Folder Include="Areas\Chapter2\Views\Shared\" />
     <Folder Include="Areas\Chapter3\Views\Home\" />
     <Folder Include="Areas\Chapter3\Views\Shared\" />
+    <Folder Include="Areas\Chapter4\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
