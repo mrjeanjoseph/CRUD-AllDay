@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EssentialFeatures.Models {
+﻿namespace EssentialFeatures.Models {
 
     public class Product {
         public int ProductID { get; set; }
@@ -8,20 +6,6 @@ namespace EssentialFeatures.Models {
         public string Description { get; set; }
         public decimal ProductPrice { get; set; }
         public string Category { get; set; }
-    }
-
-    public static class MyEntensionMethods {
-        public static decimal TotalPrices(this ShoppingCart cartParam) {
-            decimal total = 0;
-            foreach (Product prod in cartParam.Products) {
-                total += prod.ProductPrice;
-            }
-            return total;
-        }
-    }
-
-    public class ShoppingCart {
-        public List<Product> Products { get; set; }
     }
 
     public class RegularlyDefiningProperty {
@@ -71,8 +55,7 @@ namespace EssentialFeatures.Models {
             get { return _category; }
             set { _category = value; }
         }
-    }
-    
+    }    
     
     public class DefiningProperty_OldWays {
         private string name;

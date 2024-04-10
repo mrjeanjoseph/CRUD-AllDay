@@ -107,7 +107,10 @@
     <Compile Include="Areas\Chapter3\Models\User.cs" />
     <Compile Include="Areas\Chapter4\Chapter4AreaRegistration.cs" />
     <Compile Include="Areas\Chapter4\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter4\Models\MyAsyncMethods.cs" />
+    <Compile Include="Areas\Chapter4\Models\MyEntensionMethods.cs" />
     <Compile Include="Areas\Chapter4\Models\Product.cs" />
+    <Compile Include="Areas\Chapter4\Models\ShoppingCart.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -1,6 +1,8 @@
 ﻿using EssentialFeatures.Models;
 using System;
+using System.Linq;
 using System.Collections.Generic;
+using System.Text;
 using System.Web.Mvc;
 
 namespace EssentialFeatures.Controllers {
@@ -13,7 +15,224 @@ namespace EssentialFeatures.Controllers {
             return $"<h2>{HomePageHeader}</h2>\n{indexpageresult}";
         }
 
+        #region Other ViewResult
 
+        public ViewResult SumAllProducts() {
+            Product[] productArray = {
+                new Product { ProductName = "Mayi Moulen", Category = "Jadin", ProductPrice = 250 },
+                new Product { ProductName = "Kess Malta", Category = "Boutik", ProductPrice = 115 },
+                new Product { ProductName = "Diri Blanc", Category = "Jadin", ProductPrice = 175 },
+                new Product { ProductName = "Fey Lalo", Category = "Jadin", ProductPrice = 350 },
+                new Product { ProductName = "Vyann Zandwi", Category = "Vann Manje", ProductPrice = 75 }
+            };
+
+            var result = productArray.Sum(p => p.ProductPrice);
+
+            //Notice the total will be deferred
+            productArray[2] = new Product { ProductName = "Pye Palmis", ProductPrice = 9000 };
+
+            return View("Index", (object)result.ToString());
+        }        
+
+        public ViewResult FindProductsWithDotNotation() {
+            Product[] productArray = {
+                new Product { ProductName = "Mayi Moulen", Category = "Jadin", ProductPrice = 250 },
+                new Product { ProductName = "Kess Malta", Category = "Boutik", ProductPrice = 115 },
+                new Product { ProductName = "Diri Blanc", Category = "Jadin", ProductPrice = 175 },
+                new Product { ProductName = "Fey Lalo", Category = "Jadin", ProductPrice = 350 },
+                new Product { ProductName = "Vyann Zandwi", Category = "Vann Manje", ProductPrice = 75 }
+            };
+
+            //DOT Notation is another option
+            var foundProducts = productArray
+                .OrderByDescending(e => e.ProductPrice)
+                .Take(3).Select(p => new { p.ProductName, p.ProductPrice });
+
+            //Here we can use Deferred LINQ Queries
+            productArray[2] = new Product { ProductName = "Pye Palmis", ProductPrice = 9000 };
+
+            //Create the result
+            StringBuilder result = new StringBuilder();
+            foreach (var product in foundProducts) {
+                result.AppendFormat("Price: {0}, ", product.ProductPrice);
+            }
+
+            return View("Index", (object)result.ToString());
+        }
+
+        public ViewResult FindProductsWithLINQ() {
+            Product[] productArray = {
+                new Product { ProductName = "Mayi Moulen", Category = "Jadin", ProductPrice = 250 },
+                new Product { ProductName = "Kess Malta", Category = "Boutik", ProductPrice = 115 },
+                new Product { ProductName = "Diri Blanc", Category = "Jadin", ProductPrice = 175 },
+                new Product { ProductName = "Fey Lalo", Category = "Jadin", ProductPrice = 350 },
+                new Product { ProductName = "Vyann Zandwi", Category = "Vann Manje", ProductPrice = 75 }
+            };
+
+            //LINQ's SQL-like query
+            var foundProducts = from match in productArray
+                                orderby match.ProductPrice descending
+                                select new {match.ProductName, match.ProductPrice};
+
+            //Create the result
+            int count = 0;
+            StringBuilder result = new StringBuilder();
+            foreach (var product in foundProducts) {
+                result.AppendFormat("Price: {0}\n ", product.ProductPrice);
+                if (++count == 3) break;                
+            }
+
+            return View("Index", (object)result.ToString());
+        }
+
+        public ViewResult FindProducts() {
+            Product[] productArray = {
+                new Product { ProductName = "Mayi Moulen", Category = "Jadin", ProductPrice = 250 },
+                new Product { ProductName = "Kess Malta", Category = "Boutik", ProductPrice = 115 },
+                new Product { ProductName = "Diri Blanc", Category = "Jadin", ProductPrice = 175 },
+                new Product { ProductName = "Fey Lalo", Category = "Jadin", ProductPrice = 350 },
+                new Product { ProductName = "Vyann Zandwi", Category = "Vann Manje", ProductPrice = 75 }
+            };
+
+            //define the array to hold the results
+            Product[] foundProducts = new Product[3];
+
+            //sort the content of the array
+            Array.Sort(productArray, (a, b) => {
+                return Comparer<decimal>.Default.Compare(a.ProductPrice, b.ProductPrice);
+            });
+
+            //get the first three items in the array as the results
+            Array.Copy(productArray, foundProducts, 3);
+
+            //Create the result
+            StringBuilder result = new StringBuilder();
+            foreach (Product product in foundProducts) {
+                result.AppendFormat("Price: {0}\n ", product.ProductPrice);
+            }
+
+            return View("Index", (object)result.ToString());
+        }
+
+        public ViewResult CreateAnonymousArray() {
+            var oddsAndEnds = new[] {
+                new {Name = "Zoranj Si", Category = "Fwi"},
+                new {Name = "Tomat dous", Category = "Vegetab"},
+                new {Name = "Zaboka", Category = "Vegetab"},
+                new {Name = "Mango Fransik", Category = "Fwi"},
+                new {Name = "Patat Si", Category = "Vegetab"}
+            };
+
+            StringBuilder result = new StringBuilder();
+            foreach (var item in oddsAndEnds) {
+                result.Append(item.Name).Append(", ");
+            }
+
+            return View("Index", (object)result.ToString());
+        }
+
+        public JsonResult AnonymousType() {
+            var AnonymousUser = new {
+                FirstName = "Louque",
+                LastName = "Jean-Jacques",
+                //DateOfBirth = new DateTime(7, 15, 1981).ToShortDateString(),
+                PhysicalAddress = new {
+                    StreetNumber = 2552,
+                    StreeName = "Money Tree Lan",
+                    City = "Raleigh-Durham",
+                    State = "North Carolina",
+                    ZipCode = "27610-6615"
+                },
+                PhoneNumber = "9195009900"
+            };
+
+            return Json(AnonymousUser, JsonRequestBehavior.AllowGet);
+        }
+
+        public ViewResult UseFilterOverAll() {
+            //Create and Population an list of product object
+            IEnumerable<Product> productEnum = new ShoppingCart {
+                Products = new List<Product> {
+                    new Product { ProductName = "Mayi Moulen", Category = "Jadin", ProductPrice = 250 },
+                    new Product { ProductName = "Kess Malta", Category = "Boutik", ProductPrice = 115 },
+                    new Product { ProductName = "Diri Blanc", Category = "Jadin", ProductPrice = 175 },
+                    new Product { ProductName = "Fey Lalo", Category = "Jadin", ProductPrice = 350 },
+                    new Product { ProductName = "Vyann Zandwi", Category = "Vann Manje", ProductPrice = 75 },
+                }
+            };
+
+            Func<Product, bool> categoryFilter = delegate (Product prod) {
+                return prod.Category == "Boutik";
+            };
+
+            //We can also use a one liner
+            Func<Product, bool> categoryFilterOneLiner = prod => prod.Category == "Vann Manje";
+
+            decimal total = 0;
+            foreach (Product product in productEnum.FilterOverAll(categoryFilterOneLiner)) {
+                total += product.ProductPrice;
+            }
+            decimal total2 = 0;
+            foreach (Product product in productEnum.FilterOverAll(prod => prod.Category == "Boutik")) {
+                total2 += product.ProductPrice;
+            }
+            decimal total3 = 0;
+            foreach (Product product in productEnum.FilterOverAll(
+                prod => prod.Category == "Boutik" || prod.ProductPrice > 100)) {
+                total3 += product.ProductPrice;
+            }
+
+            return View("Index", (object)String.Format("Total: {0:c}", total3));
+        }
+
+        public ViewResult UseFilterExtentionMethod(string category) {
+            //Create and Population an list of product object
+            IEnumerable<Product> productEnum = new ShoppingCart {
+                Products = new List<Product> {
+                    new Product { ProductName = "Mayi Moulen", Category = "Jadin", ProductPrice = 250 },
+                    new Product { ProductName = "Kess Malta", Category = "Boutik", ProductPrice = 115 },
+                    new Product { ProductName = "Diri Blanc", Category = "Jadin", ProductPrice = 175 },
+                    new Product { ProductName = "Fey Lalo", Category = "Jadin", ProductPrice = 350 },
+                    new Product { ProductName = "Vyann Zandwi", Category = "Vann Manje", ProductPrice = 75 },
+                }
+            };
+
+            category = "Jadin";
+
+            decimal total = 0;
+            foreach (Product product in productEnum.FilterByCategory(category)) {
+                total += product.ProductPrice;
+            }
+
+            return View("Index", (object)String.Format("Total {0}: {1:c}", category, total));
+        }
+
+        public ViewResult UseExtentionEnumerable() {
+            //Create and Population an list of product object
+            IEnumerable<Product> productEnum = new ShoppingCart {
+                Products = new List<Product> {
+                    new Product { ProductName = "Mayi Moulen", ProductPrice = 250 },
+                    new Product { ProductName = "Kess Malta", ProductPrice = 115 },
+                    new Product { ProductName = "Diri Blanc", ProductPrice = 175 },
+                    new Product { ProductName = "Fey Lalo", ProductPrice = 350 },
+                    new Product { ProductName = "Vyann Zandwi", ProductPrice = 75 },
+                }
+            };
+
+            //Create and populate an array of Product objects
+            Product[] productArray = {
+                new Product { ProductName = "Mayi Moulen", ProductPrice = 250 },
+                new Product { ProductName = "Kess Malta", ProductPrice = 115 },
+                new Product { ProductName = "Diri Blanc", ProductPrice = 175 },
+                new Product { ProductName = "Fey Lalo", ProductPrice = 350 },
+                new Product { ProductName = "Vyann Zandwi", ProductPrice = 75 },
+            };
+
+            //get the total value of the products in the cart
+            decimal listTotal = productEnum.TotalPrices();
+            decimal arrayTotal = productArray.TotalPrices();
+            return View("Index", (object)String.Format("List Total: {0:c}, Array Total:{0:c}", listTotal, arrayTotal));
+        }
 
         public ViewResult UseExtention() {
             //Create and Population ShoppingCart
@@ -90,5 +309,7 @@ namespace EssentialFeatures.Controllers {
             //Generate the view
             return View("Index", (object)String.Format("Product Name: {0}", productName));
         }
+
+        #endregion
     }
 }
