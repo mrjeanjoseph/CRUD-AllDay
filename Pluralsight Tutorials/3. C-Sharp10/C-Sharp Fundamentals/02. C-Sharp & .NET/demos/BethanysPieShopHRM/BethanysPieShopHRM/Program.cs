@@ -1,9 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-string name = "Gill";
-string lastName = "Cleeren";
+string firstname = "Frednel";
+string lastName = "Jean-Joseph";
 
-Console.WriteLine("Hello " + name + " " + lastName);
+Console.WriteLine("Hello " + firstname + " " + lastName);
 
 
 
