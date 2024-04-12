@@ -16,5 +16,18 @@ namespace WorkingWithRazor.Controllers {
         public ActionResult Index() {
             return View(createProduct);
         }
+
+        public ActionResult NameAndPrice() {
+            return View(createProduct);
+        }
+
+        public ActionResult DemoExpression() {
+            ViewBag.ProductCount = 1;
+            ViewBag.ExpressShip = true;
+            ViewBag.ApplyDiscount = false;
+            ViewBag.Supplier = null;
+
+            return View(createProduct);
+        }
     }
 }

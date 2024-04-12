@@ -1,0 +1,11 @@
+﻿@model WorkingWithRazor.Models.Product
+
+@{
+    ViewBag.Title = "NameAndPrice";
+}
+
+<h2>Name And Price</h2>
+<em>The product name is @Model.Name, and the cost is @string.Format("{0:c}", Model.Price)</em>
+<br />
+<em>@string.Format("The product name is {0}, and the cost is {1:c}", @Model.Name, Model.Price)</em>
+
