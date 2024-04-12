@@ -11,7 +11,15 @@ namespace WorkingWithRazor.Controllers {
             Price = 5725M,
             IsAvailable = true
         };
-        
+
+        readonly Product[] productArray = {
+            new Product {Name = "Kamyon Dlo", Price = 97M},
+            new Product {Name = "Ven Sak Sik", Price = 58M},
+            new Product {Name = "Senkant Kes Kola", Price = 101M},
+            new Product {Name = "Twa San Sak Mayi", Price = 179M},
+            new Product {Name = "24 Rejim Bannann", Price = 85M}
+        };
+
         // GET: Chapter5/Home
         public ActionResult Index() {
             return View(createProduct);
@@ -28,6 +36,11 @@ namespace WorkingWithRazor.Controllers {
             ViewBag.Supplier = null;
 
             return View(createProduct);
+        }
+
+        public ActionResult DemoArray() {
+            ViewBag.Message = "No Product data.";
+            return View(productArray);
         }
     }
 }

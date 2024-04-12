@@ -134,6 +134,7 @@
     <Content Include="Areas\Chapter5\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Chapter5\Views\Home\NameAndPrice.cshtml" />
     <Content Include="Areas\Chapter5\Views\Home\DemoExpression.cshtml" />
+    <Content Include="Areas\Chapter5\Views\Home\DemoArray.cshtml" />
     <None Include="packages.config" />
     <Content Include="Areas\Chapter2\Views\Home\Index.cshtml" />
     <Content Include="Areas\Chapter2\Views\Home\RSVPForm.cshtml" />
