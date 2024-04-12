@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Chapter2.FirstApp.MVC</RootNamespace>
-    <AssemblyName>Chapter2.FirstApp.MVC</AssemblyName>
+    <RootNamespace>PartOne</RootNamespace>
+    <AssemblyName>PartOne</AssemblyName>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -111,6 +111,9 @@
     <Compile Include="Areas\Chapter4\Models\MyEntensionMethods.cs" />
     <Compile Include="Areas\Chapter4\Models\Product.cs" />
     <Compile Include="Areas\Chapter4\Models\ShoppingCart.cs" />
+    <Compile Include="Areas\Chapter5\Chapter5AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter5\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter5\Models\Product.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -125,6 +128,9 @@
     <Content Include="Areas\Chapter3\Views\web.config" />
     <Content Include="Areas\Chapter4\Views\web.config" />
     <Content Include="Areas\Chapter4\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter5\Views\web.config" />
+    <Content Include="Areas\Chapter5\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter5\Views\Shared\_BasicLayout.cshtml" />
     <None Include="packages.config" />
     <Content Include="Areas\Chapter2\Views\Home\Index.cshtml" />
     <Content Include="Areas\Chapter2\Views\Home\RSVPForm.cshtml" />
