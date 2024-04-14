@@ -116,9 +116,10 @@
     <Compile Include="Areas\Chapter5\Models\Product.cs" />
     <Compile Include="Areas\Chapter6\Chapter6AreaRegistration.cs" />
     <Compile Include="Areas\Chapter6\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter6\Models\IValueCalculator.cs" />
     <Compile Include="Areas\Chapter6\Models\Merchandise.cs" />
     <Compile Include="Areas\Chapter6\Models\ShoppingCart.cs" />
-    <Compile Include="Areas\Chapter6\Models\TotalValueCalculator.cs" />
+    <Compile Include="Areas\Chapter6\Models\LinqValueCalculator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

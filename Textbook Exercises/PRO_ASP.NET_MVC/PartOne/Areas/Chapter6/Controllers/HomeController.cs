@@ -13,7 +13,10 @@ namespace EssentialTools.Controllers {
         };
 
         public ActionResult Index() {
-            TotalValueCalculator calc = new TotalValueCalculator();
+            IValueCalculator calc = new LinqValueCalculator();
+
+            //Archived
+            LinqValueCalculator calc_old = new LinqValueCalculator();
 
             ShoppingCart cart = new ShoppingCart(calc) { merchandises =  merchandises };
 
