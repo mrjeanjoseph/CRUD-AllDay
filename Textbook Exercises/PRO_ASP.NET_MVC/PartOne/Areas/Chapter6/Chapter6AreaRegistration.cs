@@ -15,9 +15,9 @@ namespace EssentialTools
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Chapter6_default",
-                "Chapter6/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "EssentialTools",
+                "EssentialTools/{controller}/{action}/{id}",
+                new {controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Runtime.Remoting.Messaging;
-using System.Web;
-
-namespace EssentialTools.Models {
+﻿namespace EssentialTools.Models {
     public class Merchandise {
         public int MerchandiseId { get; set; }
         public string Name { get; set; }

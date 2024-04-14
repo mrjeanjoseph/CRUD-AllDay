@@ -1,0 +1,20 @@
+﻿@model  decimal
+
+@{
+    Layout = null;
+    decimal resultAmt = Model != 0 ? Model : 0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Value</title>
+</head>
+<body>
+    <div>
+        @string.Format("Total Value is: {0:c}", resultAmt)
+    </div>
+</body>
+</html>
