@@ -1,6 +1,6 @@
 ﻿using EssentialTools.Models;
-using Ninject;
 using System.Web.Mvc;
+using Ninject;
 
 namespace EssentialTools.Controllers {
     public class HomeController : Controller {
@@ -14,7 +14,7 @@ namespace EssentialTools.Controllers {
             new Merchandise {Name = "Sevis Transpo", Category = "Biznis Nasyonal", Price = 250},
         };
 
-        public HomeController(IValueCalculator calcParam) {
+        public HomeController(IValueCalculator calcParam, IValueCalculator calcParam2) {
             _calc = calcParam;
         }
 

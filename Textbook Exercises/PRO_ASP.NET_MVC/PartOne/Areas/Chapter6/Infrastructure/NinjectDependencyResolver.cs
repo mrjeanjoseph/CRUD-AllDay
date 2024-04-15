@@ -1,5 +1,6 @@
 ﻿using EssentialTools.Models;
 using Ninject;
+using Ninject.Web.Common;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -21,7 +22,12 @@ namespace EssentialTools.Infrastructure {
         }
 
         private void AddBinding() {
-            _kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+            _kernel.Bind<IValueCalculator>()
+                .To<LinqValueCalculator>()
+                .InRequestScope();
+
+            _kernel.Bind<IValueCalculator>()
+                .To<LinqValueCalculator>();
 
             //_kernel.Bind<IDiscountCalculator>().To<DiscountValueCalculator>();
 
