@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module2", "Module2\Module2.csproj", "{DDBF9994-7AD2-4226-BDF9-526003E42D0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module2", "Module2\Module2.csproj", "{DDBF9994-7AD2-4226-BDF9-526003E42D0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module5", "Module5\Module5.csproj", "{C8DFC154-87AD-43A8-995A-BD5223D227AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module5", "Module5\Module5.csproj", "{C8DFC154-87AD-43A8-995A-BD5223D227AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module4", "Module4\Module4.csproj", "{382CA8B0-9768-4BDD-A0F8-3D7AA50B47BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module4", "Module4\Module4.csproj", "{382CA8B0-9768-4BDD-A0F8-3D7AA50B47BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module3", "Module3\Module3.csproj", "{11DC48EC-FD22-4B2C-8498-B366DAA5B8F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module3", "Module3\Module3.csproj", "{11DC48EC-FD22-4B2C-8498-B366DAA5B8F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module6", "Module6\Module6.csproj", "{8E37A538-F33F-451E-9186-59742A2F7021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{11DC48EC-FD22-4B2C-8498-B366DAA5B8F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11DC48EC-FD22-4B2C-8498-B366DAA5B8F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11DC48EC-FD22-4B2C-8498-B366DAA5B8F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E37A538-F33F-451E-9186-59742A2F7021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E37A538-F33F-451E-9186-59742A2F7021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E37A538-F33F-451E-9186-59742A2F7021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E37A538-F33F-451E-9186-59742A2F7021}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
