@@ -10,11 +10,11 @@ namespace WorkingWithString {
 
             //UsingNamedArguments();
 
-            //ManipulatingStrings();
+            ManipulatingStrings();
 
             //UsingEscapeCharacters();
 
-            UsingStringEquality();
+            //UsingStringEquality();
 
             //ParsingStrings();
 
