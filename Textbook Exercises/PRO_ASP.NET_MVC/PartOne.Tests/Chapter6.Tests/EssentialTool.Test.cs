@@ -35,9 +35,9 @@ namespace PartOne.Tests {
             var FiftyDollarDiscount = target.ApplyDiscount(total[2]);
 
             //assert
-            Assert.AreEqual(5 * TenDollarDiscount, "$10 discount is wrong");
-            Assert.AreEqual(95 * OneHundDollarDiscount, "$100 discount is wrong");
-            Assert.AreEqual(45 * FiftyDollarDiscount, "$50 discount is wrong");
+            Assert.AreEqual(5, TenDollarDiscount, "$10 discount is wrong");
+            Assert.AreEqual(95, OneHundDollarDiscount, "$100 discount is wrong");
+            Assert.AreEqual(45, FiftyDollarDiscount, "$50 discount is wrong");
         }
 
         [TestMethod]
@@ -47,13 +47,13 @@ namespace PartOne.Tests {
             decimal[] total = { 9, 5, 0 };
 
             //act
-            var NineDiscount = target.ApplyDiscount(total[0]);
-            var OneDiscount = target.ApplyDiscount(total[1]);
-            var ZeroDiscount = target.ApplyDiscount(total[2]);
+            decimal NineDiscount = target.ApplyDiscount(total[0]);
+            decimal OneDiscount = target.ApplyDiscount(total[1]);
+            decimal ZeroDiscount = target.ApplyDiscount(total[2]);
 
             //assert
-            Assert.AreEqual(5, NineDiscount);
-            Assert.AreEqual(0, OneDiscount);
+            Assert.AreEqual(9, NineDiscount);
+            Assert.AreEqual(5, OneDiscount);
             Assert.AreEqual(0, ZeroDiscount);
         }
 
