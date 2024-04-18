@@ -138,6 +138,7 @@
     <Compile Include="Areas\Chapter6\Models\IDiscountCalculator.cs" />
     <Compile Include="Areas\Chapter6\Models\IValueCalculator.cs" />
     <Compile Include="Areas\Chapter6\Models\Merchandise.cs" />
+    <Compile Include="Areas\Chapter6\Models\MinimumDiscountHelper.cs" />
     <Compile Include="Areas\Chapter6\Models\ShoppingCart.cs" />
     <Compile Include="Areas\Chapter6\Models\LinqValueCalculator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
