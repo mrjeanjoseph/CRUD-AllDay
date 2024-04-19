@@ -59,8 +59,7 @@ namespace ClassesAndObjects {
             Console.WriteLine($"{firstName} {lastName} has recieved a wage of {standardWage} for {numberOfHoursWorked} hours worked.");
 
             if (resetHours)
-                numberOfHoursWorked = 0;
-            
+                numberOfHoursWorked = 0;            
 
             return standardWage;
         }
