@@ -8,11 +8,10 @@ namespace EssentialTools.Models {
         public ShoppingCart(IValueCalculator calcParam) {
             _calculate = calcParam;
         }
-
-        public IEnumerable<Merchandise> merchandises { get; set; }
+        public IEnumerable<Merchandise> merch { get; set; }
 
         public decimal CalculateMerchandiseTotal() {
-            return _calculate.MerchandiseValue(merchandises);
+            return _calculate.MerchandiseValue(merch);
         }
     }
 

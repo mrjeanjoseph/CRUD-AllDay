@@ -30,7 +30,7 @@ namespace EssentialTools.Controllers {
             //LinqValueCalculator calc_old1 = new LinqValueCalculator();
             #endregion
 
-            ShoppingCart cart = new ShoppingCart(_calc) { merchandises =  merchandises };
+            ShoppingCart cart = new ShoppingCart(_calc) { merch =  merchandises };
             decimal totalValue = cart.CalculateMerchandiseTotal();
             return View(totalValue);
         }

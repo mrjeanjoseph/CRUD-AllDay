@@ -12,7 +12,6 @@ namespace EssentialTools.Models {
                 return totalParam - 5;
             else
                 return totalParam;
-
         }
     }
 }
