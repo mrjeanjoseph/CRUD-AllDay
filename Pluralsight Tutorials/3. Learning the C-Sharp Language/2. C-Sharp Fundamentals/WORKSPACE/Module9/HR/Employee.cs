@@ -1,4 +1,6 @@
-﻿namespace ClassesAndCustomTypes {
+﻿using BethanysPieShopHRM.Logic;
+
+namespace ClassesAndCustomTypes.HR {
     internal class Employee {
 
         public string fullName;
@@ -15,16 +17,16 @@
 
         public static double taxRate = 0.15; //We did static already sir
 
-        public Employee(string fullName, string em, DateTime bd, double? rate, EmployeeType empType) {
-            fullName = fullName;
+        public Employee(string fn, string em, DateTime bd, double? rate, EmployeeType empType) {
+            fullName = fn;
             email = em;
             birthDay = bd;
             hourlyRate = rate ?? 10;
             employeeType = empType;
         }
 
-        public Employee(string full, string em, DateTime bd) : this(full, em, bd, 0, EmployeeType.StoreManager) {
-        }
+        public Employee(string fn, string em, DateTime bd) 
+            : this(fn, em, bd, 0, EmployeeType.StoreManager) { }
 
         public void PerformWork() {
             PerformWork(minimalHoursWorkedUnit);
@@ -59,12 +61,18 @@
             return bonus;
         }
 
+        public double CalculateWage() {
+            WageCalculations wagecalc = new WageCalculations();
+            double calcValue = wagecalc.ComplexWageCalculation(wage, taxRate, 3, 42);
+            return calcValue;
+        }
+
 
         public double ReceiveWage(bool resetHours = true) {
-            double wageBeforeTax = 0.0;
+            double wageBeforeTax;
 
             if (employeeType == EmployeeType.Manager) {
-                Console.WriteLine($"An extra was added to the wage since {fullName} is a manager!");
+                Console.WriteLine($"An extra ${hourlyRate * 1.25 } was added to the wage since {fullName} is a manager!");
                 wageBeforeTax = numberOfHoursWorked * hourlyRate.Value * 1.25;
             } else {
                 wageBeforeTax = numberOfHoursWorked * hourlyRate.Value;
@@ -74,12 +82,18 @@
 
             wage = wageBeforeTax - taxAmount;
 
-            Console.WriteLine($"{fullName}  has received a wage of {wage} for {numberOfHoursWorked} hour(s) of work.");
+            Console.WriteLine($"{fullName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) of work.");
 
             if (resetHours)
                 numberOfHoursWorked = 0;
 
             return wage;
+        }
+
+        public void DisplayEmployeeDetails() {
+            string firstName = fullName.Split(' ')[0];
+            string lastName = fullName.Split(' ')[1];
+            Console.WriteLine($"\nFirst Name: \t{firstName}\nLast Name: \t{lastName}\nEmail: \t\t{email}\nBirthday: \t{birthDay.ToShortDateString()}\nTax rate: \t{taxRate}");
         }
     }
 }

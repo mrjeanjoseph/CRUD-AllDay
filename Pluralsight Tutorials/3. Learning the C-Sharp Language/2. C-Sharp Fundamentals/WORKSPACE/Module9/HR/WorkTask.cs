@@ -1,4 +1,4 @@
-﻿namespace ClassesAndCustomTypes {
+﻿namespace ClassesAndCustomTypes.HR {
     struct WorkTask {
         public string description;
         public int hours;

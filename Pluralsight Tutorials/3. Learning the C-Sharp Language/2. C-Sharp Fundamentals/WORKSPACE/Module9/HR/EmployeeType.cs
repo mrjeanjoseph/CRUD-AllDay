@@ -1,4 +1,4 @@
-﻿namespace ClassesAndCustomTypes {
+﻿namespace ClassesAndCustomTypes.HR {
     enum EmployeeType {
         Sales,
         Manager,
