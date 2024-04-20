@@ -13,17 +13,17 @@ namespace SportStore.Infrastructure {
             AddBindings();
         }
 
-        private void AddBindings() {
-            // put bindings here
-            throw new NotImplementedException();
-        }
-
         public object GetService(Type serviceType) {
             return _kernel.TryGet(serviceType);
         }
 
         public IEnumerable<object> GetServices(Type serviceType) {
             return _kernel.GetAll(serviceType);
+        }
+
+        private void AddBindings() {
+            // put bindings here
+            throw new NotImplementedException();
         }
     }
 }
