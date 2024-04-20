@@ -1,13 +1,12 @@
-﻿namespace SportStore.Domain
-{
-    internal class Commodities
-    {
+﻿namespace SportStore.Domain {
+    public class Commodity {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
         public string Category { get; set; }
-        public bool isAvailable { get; set; }
+        public bool IsAvailable { get; set; }
     }
-
 }
+
+

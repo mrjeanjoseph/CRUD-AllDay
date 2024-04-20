@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace SportStore.App_Start {
+namespace SportStore {
     public class RouteConfig {
 
         public static void RegisterRoutes(RouteCollection routes) {

@@ -1,4 +1,7 @@
-﻿using Ninject;
+﻿using Moq;
+using Ninject;
+using SportStore.Domain;
+using SportStore.Domain.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -22,8 +25,17 @@ namespace SportStore.Infrastructure {
         }
 
         private void AddBindings() {
-            // put bindings here
-            throw new NotImplementedException();
+            Mock<ICommodityRepository> mock = new Mock<ICommodityRepository>();
+
+            mock.Setup(m => m.Commodities).Returns(new List<Commodity> {
+                new Commodity { Name = "iPad Pro 12.9", Price = 1550M},
+                new Commodity { Name = "HP Envy 3VX", Price = 1170M},
+                new Commodity { Name = "Boze Speaker - Athem", Price = 510M},
+                new Commodity { Name = "Air Pods Pro", Price = 269M},
+                new Commodity { Name = "Dell XPS Platnum", Price = 2550M},
+            });
+
+            _kernel.Bind<ICommodityRepository>().ToConstant(mock.Object);            
         }
     }
 }
