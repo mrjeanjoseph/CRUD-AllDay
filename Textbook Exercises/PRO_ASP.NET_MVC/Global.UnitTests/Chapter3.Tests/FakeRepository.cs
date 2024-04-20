@@ -3,7 +3,7 @@ using Chapter2.TheMVCPattern.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PartOne.Tests {
+namespace Global.UnitTests {
     public partial class AdminControllerTests {
         class FakeRepository : IUserRepository {
             public List<User> Users = new List<User>();

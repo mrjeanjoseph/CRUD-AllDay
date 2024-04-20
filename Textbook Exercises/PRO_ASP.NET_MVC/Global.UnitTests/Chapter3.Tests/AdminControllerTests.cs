@@ -2,7 +2,7 @@
 using Chapter2.TheMVCPattern.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace PartOne.Tests {
+namespace Global.UnitTests {
     [TestClass]
     public partial class AdminControllerTests {
         [TestMethod]
