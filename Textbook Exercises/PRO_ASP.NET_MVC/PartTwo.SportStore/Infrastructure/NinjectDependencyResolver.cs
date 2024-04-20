@@ -1,7 +1,6 @@
 ﻿using Moq;
 using Ninject;
 using SportStore.Domain;
-using SportStore.Domain.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;

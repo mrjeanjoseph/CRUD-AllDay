@@ -1,0 +1,17 @@
+﻿@using SportStore.Domain
+@model IEnumerable<Commodity>
+
+
+@{
+    ViewBag.Title = "Commodities";
+}
+
+<h2>Commodity List</h2>
+
+@foreach (var comm in Model) {
+    <div>
+        <h3>@comm.Name</h3>
+        @comm.Description
+        <h4>@comm.Price.ToString("c")</h4>
+    </div>
+}

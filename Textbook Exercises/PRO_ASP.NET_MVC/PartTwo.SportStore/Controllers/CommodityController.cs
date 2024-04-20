@@ -1,4 +1,4 @@
-﻿using SportStore.Domain.Abstract;
+﻿using SportStore.Domain;
 using System.Web.Mvc;
 
 namespace SportStore.Controllers {
@@ -9,7 +9,7 @@ namespace SportStore.Controllers {
             _repository = repository;
         }
 
-        public ActionResult CommodityList() {
+        public ActionResult List() {
             return View(_repository.Commodities);
         }
     }
