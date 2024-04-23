@@ -15,16 +15,20 @@ namespace SportsStore.Web.Infrastructure {
         }
 
         private void AddBindings() {
-            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
-            mock.Setup(m => m.Merchandises).Returns(new List<Merchandise> {
-                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
-                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
-                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
-                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
-                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M}
-            });
 
-            _kernel.Bind<IMerchRepo>().ToConstant(mock.Object);
+            //Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            //mock.Setup(m => m.Merch).Returns(new List<Merchandise> {
+            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
+            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
+            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
+            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
+            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M}
+            //});
+
+            //We will now grab data from the database
+            //_kernel.Bind<IMerchRepo>().ToConstant(mock.Object);
+
+            _kernel.Bind<IMerchRepo>().To<EFMerchRepository>();
         }
 
         public object GetService(Type serviceType) {

@@ -73,12 +73,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IMerchRepo.cs" />
+    <Compile Include="Concrete\EFMerchRepository.cs" />
+    <Compile Include="Entities\EFDbContext.cs" />
     <Compile Include="Entities\Merchandise.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DBQueries\InititalTableCreation.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

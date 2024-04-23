@@ -10,7 +10,7 @@ namespace SportsStore.Web.Controllers {
         }
 
         public ActionResult List() {
-            return View(_repository.Merchandises);
+            return View(_repository.Merch);
         }
     }
 }

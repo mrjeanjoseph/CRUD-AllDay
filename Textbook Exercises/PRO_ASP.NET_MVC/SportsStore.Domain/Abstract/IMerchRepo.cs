@@ -2,6 +2,6 @@
 
 namespace SportsStore.Domain {
     public interface IMerchRepo {
-        IEnumerable<Merchandise> Merchandises { get; }
+        IEnumerable<Merchandise> Merch { get; }
     }
 }
