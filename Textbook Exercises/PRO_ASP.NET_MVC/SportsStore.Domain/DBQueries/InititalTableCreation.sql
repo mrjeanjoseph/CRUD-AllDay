@@ -25,3 +25,17 @@ DROP COLUMN [IsValid]
 
 ALTER TABLE [SportsStore].[dbo].[Merchandise]
 ADD [IsValid] [bit] NOT NULL DEFAULT 1
+
+
+
+--Readd the same data a few time
+BEGIN
+
+	INSERT INTO SportsStore.dbo.Merchandise ([Name], [Description], [Category], [Price])
+	SELECT [Name], [Description], [Category], [Price]
+	FROM SportsStore.dbo.Merchandise
+
+
+END	
+GO 3
+RETURN;

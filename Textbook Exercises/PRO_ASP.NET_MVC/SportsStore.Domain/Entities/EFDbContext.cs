@@ -4,7 +4,7 @@ namespace SportsStore.Domain
 {
     public class EFDbContext : DbContext
     {
-        public DbSet<Merchandise> Merchandises { get; set; }
+        public DbSet<Merchandise> Merchandise_One { get; set; }
     }
 }
-//No really
+//No really_

@@ -7,7 +7,7 @@ namespace SportsStore.Domain
         private readonly EFDbContext context = new EFDbContext();
         public IEnumerable<Merchandise> Merch
         {
-            get { return context.Merchandises; }
+            get { return context.Merchandise_One; }
         }
     }
 }
