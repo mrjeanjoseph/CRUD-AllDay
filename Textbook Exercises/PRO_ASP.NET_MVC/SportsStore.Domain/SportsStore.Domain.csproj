@@ -73,9 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IMerchRepo.cs" />
+    <Compile Include="Abstract\IProductVendorRepo.cs" />
     <Compile Include="Concrete\EFMerchRepository.cs" />
-    <Compile Include="Entities\EFDbContext.cs" />
+    <Compile Include="Concrete\ProductVendorRepository.cs" />
+    <Compile Include="Entities\EFDbAccess.cs" />
     <Compile Include="Entities\Merchandise.cs" />
+    <Compile Include="Entities\ProductVendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
