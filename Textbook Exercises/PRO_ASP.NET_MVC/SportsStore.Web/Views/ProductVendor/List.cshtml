@@ -1,0 +1,17 @@
+﻿
+@model SportsStore.Web.Models.ProductVendorListViewModel
+
+
+@{
+    ViewBag.Title = "Product Vendor";
+}
+
+
+@foreach (var pv in Model.ProductVendors)
+{
+    @Html.Partial("_ProductVendor", pv)
+}
+
+<div class="btn btn-group float-end">
+    @Html.PageLinks(Model.PagingInfo, p => Url.Action("List", new { page = p }))
+</div>

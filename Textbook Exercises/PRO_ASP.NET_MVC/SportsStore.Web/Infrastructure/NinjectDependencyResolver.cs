@@ -29,6 +29,7 @@ namespace SportsStore.Web.Infrastructure {
             //_kernel.Bind<IMerchRepo>().ToConstant(mock.Object);
 
             _kernel.Bind<IMerchRepo>().To<EFMerchRepository>();
+            _kernel.Bind<IProductVendorRepo>().To<ProductVendorRepository>();
         }
 
         public object GetService(Type serviceType) {

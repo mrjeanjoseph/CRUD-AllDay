@@ -8,4 +8,9 @@ namespace SportsStore.Web.Models
         public IEnumerable<Merchandise> Merchandises { get; set; }
         public PagingInfo PagingInfo { get; set; }
     }
+    public class ProductVendorListViewModel
+    {
+        public IEnumerable<ProductVendor> ProductVendors { get; set; }
+        public PagingInfo PagingInfo { get; set; }
+    }
 }

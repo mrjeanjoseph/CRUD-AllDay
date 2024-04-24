@@ -129,12 +129,13 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\MerchController.cs" />
+    <Compile Include="Controllers\ProductVendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
-    <Compile Include="Models\MerchListViewModel.cs" />
+    <Compile Include="Models\ListViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,6 +147,8 @@
     <Content Include="Views\Merch\List.cshtml" />
     <Content Include="Views\Shared\_NavHeader.cshtml" />
     <Content Include="Views\Shared\_MerchSummary.cshtml" />
+    <Content Include="Views\ProductVendor\List.cshtml" />
+    <Content Include="Views\Shared\_ProductVendor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
