@@ -150,6 +150,7 @@
     <Content Include="Views\Shared\_MerchSummary.cshtml" />
     <Content Include="Views\ProductVendor\List.cshtml" />
     <Content Include="Views\Shared\_ProductVendor.cshtml" />
+    <Content Include="Views\Nav\Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,7 +160,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Nav\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SportsStore.Domain\SportsStore.Domain.csproj">

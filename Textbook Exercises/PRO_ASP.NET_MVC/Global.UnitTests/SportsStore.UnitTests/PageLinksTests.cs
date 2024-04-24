@@ -5,6 +5,7 @@ using SportsStore.Web.Controllers;
 using SportsStore.Web.HtmlHelpers;
 using SportsStore.Web.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -125,6 +126,33 @@ namespace SportsStore.UnitTests
             Assert.AreEqual(result.Length, 2);
             Assert.IsTrue(result[0].Name == "Showy Evening Primrose" && result[0].Category == "Temp Fencing, Decorative Fencing and Gates");
             Assert.IsTrue(result[1].Name == "Mississippi River Wakerobin" && result[0].Category == "Asphalt Paving");
+        }
+
+        [TestMethod]
+        public void CanCreateCategories()
+        {
+            // Arrange //Create the mock repo
+            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            mock.Setup(m => m.Merch).Returns(new Merchandise[]
+            {
+                new Merchandise {Id = 5, Name = "Showy Evening Primrose", Category = "Interior"},
+                new Merchandise {Id = 10, Name = "Mississippi River Wakerobin", Category = "Exterior"},
+                new Merchandise {Id = 15, Name = "Plectocarpon Lichen", Category = "Interior"},
+                new Merchandise {Id = 20, Name = "Flaxleaf Pimpernel", Category = "Franchise"},
+                new Merchandise {Id = 25, Name = "Torrey's Penstemon", Category = "Exterior"},
+            });
+
+            //Arrange
+            NavController target = new NavController(mock.Object);
+
+            //Act = get the set of categories
+            string[] results = ((IEnumerable<string>)target.Menu().Model).ToArray();
+
+            //Assert
+            Assert.AreEqual(results.Length, 3);
+            Assert.AreEqual(results[0], "Interior");
+            Assert.AreEqual(results[1], "Exterior");
+            Assert.AreEqual(results[2], "Franchise");
         }
     }
 }

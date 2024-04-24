@@ -39,3 +39,24 @@ BEGIN
 END	
 GO 3
 RETURN;
+
+
+
+
+BEGIN
+	--Mass creating Categories
+	UPDATE merch
+	SET merch.Category = 
+	CASE WHEN RandomNumber = 5 THEN 'Structural'
+		WHEN RandomNumber = 0 THEN 'Masonry'
+		WHEN RandomNumber = 3 THEN 'HVAC'
+		WHEN RandomNumber = 4 THEN 'Asphalt Paving'
+		WHEN RandomNumber = 1 THEN 'Casework'
+		WHEN RandomNumber = 2 OR RandomNumber = 6 THEN 'Maintenance'
+	END
+	FROM (SELECT *, ROW_NUMBER() OVER (ORDER BY RAND()) % 6 [RandomNumber] 
+	FROM SportsStore.dbo.Merchandises merch) AS merch
+
+	SELECT * FROM SportsStore.dbo.Merchandises
+
+END
