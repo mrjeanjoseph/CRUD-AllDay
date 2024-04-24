@@ -13,5 +13,5 @@
 }
 
 <div class="btn btn-group float-end">
-    @Html.PageLinks(Model.PagingInfo, p => Url.Action("List", new { page = p }))
+    @Html.PageLinks(Model.PagingInfo, p => Url.Action("List", new { page = p, category = Model.CurrentCategory }))
 </div>

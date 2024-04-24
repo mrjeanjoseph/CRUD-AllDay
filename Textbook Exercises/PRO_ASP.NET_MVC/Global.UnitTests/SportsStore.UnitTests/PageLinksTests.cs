@@ -32,7 +32,7 @@ namespace SportsStore.UnitTests
 
             // Act
             //IEnumerable<Merchandise> result = (IEnumerable<Merchandise>)controller.List(2).Model;
-            MerchListViewModel result = (MerchListViewModel)controller.List(2).Model;
+            MerchListViewModel result = (MerchListViewModel)controller.List(null, 2).Model;
 
             // Assert
             //Merchandise[] prodArray = result.ToArray();
@@ -88,7 +88,7 @@ namespace SportsStore.UnitTests
             controller.PageSize = 3;
 
             //Act
-            MerchListViewModel result = (MerchListViewModel)controller.List(2).Model;
+            MerchListViewModel result = (MerchListViewModel)controller.List(null, 2).Model;
 
             //Assert
             PagingInfo pageInfo = result.PagingInfo;
@@ -96,6 +96,35 @@ namespace SportsStore.UnitTests
             Assert.AreEqual(pageInfo.ItemsPerPage, 3);
             Assert.AreEqual(pageInfo.TotalItems, 5);
             Assert.AreEqual(pageInfo.TotalItems, 2);
+        }
+
+        [TestMethod]
+        public void CanFilterProducts()
+        {
+            // Arrange //Create the mock repo
+            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            mock.Setup(m => m.Merch).Returns(new Merchandise[]
+            {
+                new Merchandise {Id = 5, Name = "Showy Evening Primrose"},
+                new Merchandise {Id = 10, Name = "Mississippi River Wakerobin"},
+                new Merchandise {Id = 15, Name = "Plectocarpon Lichen"},
+                new Merchandise {Id = 20, Name = "Flaxleaf Pimpernel"},
+                new Merchandise {Id = 25, Name = "Torrey's Penstemon"},
+            });
+
+            //Arrange
+            MerchController controller = new MerchController(mock.Object);
+            controller.PageSize = 3;
+
+            //Act
+            Merchandise[] result = ((MerchListViewModel)controller
+                .List("HVAC", 1).Model).Merchandises
+                .ToArray();
+
+            //Assert
+            Assert.AreEqual(result.Length, 2);
+            Assert.IsTrue(result[0].Name == "Showy Evening Primrose" && result[0].Category == "Temp Fencing, Decorative Fencing and Gates");
+            Assert.IsTrue(result[1].Name == "Mississippi River Wakerobin" && result[0].Category == "Asphalt Paving");
         }
     }
 }

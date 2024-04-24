@@ -7,6 +7,7 @@ namespace SportsStore.Web.Models
     {
         public IEnumerable<Merchandise> Merchandises { get; set; }
         public PagingInfo PagingInfo { get; set; }
+        public string CurrentCategory { get; set; }
     }
     public class ProductVendorListViewModel
     {

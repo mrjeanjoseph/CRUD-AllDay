@@ -27,9 +27,14 @@ namespace SportsStore.Web.Infrastructure {
 
             //We will now grab data from the database
             //_kernel.Bind<IMerchRepo>().ToConstant(mock.Object);
-
             _kernel.Bind<IMerchRepo>().To<EFMerchRepository>();
-            _kernel.Bind<IProductVendorRepo>().To<ProductVendorRepository>();
+
+            Mock<IProductVendorRepo> mock = new Mock<IProductVendorRepo>();
+            mock.Setup(m => m.ProductVendor).Returns(new List<ProductVendor> {
+                new ProductVendor{ ProductID = 5, StandardPrice = 5233, LastReceiptDate = DateTime.Now}
+            });
+            _kernel.Bind<IProductVendorRepo>().ToConstant(mock.Object);
+            //_kernel.Bind<IProductVendorRepo>().To<ProductVendorRepository>();
         }
 
         public object GetService(Type serviceType) {
