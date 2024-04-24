@@ -1,5 +1,5 @@
-﻿@using SportsStore.Domain
-@model IEnumerable<Merchandise>
+﻿
+@model SportsStore.Web.Models.MerchListViewModel
 
 
 @{
@@ -8,10 +8,15 @@
 
 <h2>Merchandise2</h2>
 
-@foreach (var m in Model) {
+@foreach (var m in Model.Merchandises)
+{
     <div>
         <h3>@m.Name</h3>
         @m.Description
         <h4>@m.Price.ToString("c")</h4>
     </div>
 }
+
+<div>
+    @Html.PageLinks(Model.PagingInfo, p => Url.Action("List", new { page = p }))
+</div>
