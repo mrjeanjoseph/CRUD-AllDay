@@ -6,17 +6,12 @@
     ViewBag.Title = "Merchandise";
 }
 
-<h2>Merchandise2</h2>
 
 @foreach (var m in Model.Merchandises)
 {
-    <div>
-        <h3>@m.Name</h3>
-        @m.Description
-        <h4>@m.Price.ToString("c")</h4>
-    </div>
+    @Html.Partial("_MerchSummary", m)
 }
 
-<div>
+<div class="btn btn-group float-end">
     @Html.PageLinks(Model.PagingInfo, p => Url.Action("List", new { page = p }))
 </div>

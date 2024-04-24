@@ -3,13 +3,36 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @{ string applicationName = "Sports Store";}
+    <title>@ViewBag.Title - @applicationName.Replace(" ", "")</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
+    @Html.Partial("_NavHeader", applicationName)
 
-    <div>
-        @RenderBody()
+    <div class="card">
+        <h3 class="card-header">Merchandise</h3>
+        <div class="card-body">
+            <div class="row">
+                <div id="categories" class="col-sm-3">
+                    Put Something useful here later
+                </div>
+                <div class="col-sm-8">
+                    @RenderBody()
+                </div>
+            </div>
+
+
+        </div>
     </div>
 
+
+    @{ string myInfo = "Jean Built this!";}
+    @*<nav class="navbar fixed-bottom bg-body-tertiary">
+        <div class="container-fluid">
+            <p>&copy; @DateTime.Now.Year - @myInfo</p>
+        </div>
+    </nav>*@
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>

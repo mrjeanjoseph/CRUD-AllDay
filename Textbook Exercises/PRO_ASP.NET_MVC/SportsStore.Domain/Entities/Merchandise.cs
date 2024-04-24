@@ -1,6 +1,5 @@
 ﻿namespace SportsStore.Domain
 {
-
     public class Merchandise
     {
         public int Id { get; set; }

@@ -1,0 +1,48 @@
+﻿@model string
+<nav class="navbar bg-dark navbar-expand-lg border-bottom border-bottom-dark bg-body-tertiary" data-bs-theme="dark">
+    <div class="container">
+        @Html.ActionLink(Model.ToUpper(), null, null, null, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Services
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-center">
+                        <li class="nav-item disabled text-center"><h4>All Services</h4></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>@Html.ActionLink("Link 1", "UnderConstruction", "InProgress", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
+                        <li>@Html.ActionLink("Link 1", "UnderConstruction", "InProgress", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
+                        <li>@Html.ActionLink("Link 1", "UnderConstruction", "InProgress", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
+                        <li>@Html.ActionLink("Link 1", "UnderConstruction", "InProgress", new { area = "" }, new { @class = "nav-link dropdown-item disabled" })</li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("SportStore", "List", "Merch", new { area = "" }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("About", "UnderConstruction", "Home", new { area = "" }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Contact", "UnderConstruction", "Home", new { area = "" }, new { @class = "nav-link" })
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success me-3" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    @Html.ActionLink("Pricings", "UnderConstruction", "InProgress", new { area = "" }, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item"><a class="nav-link disabled"><i class="bi bi-person-lock ytp-bigger"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
