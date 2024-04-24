@@ -14,7 +14,7 @@ namespace SportsStore.Web.Controllers
             _repository = merchRepo;
         }
 
-        public ActionResult List()
+        public ActionResult List_old()
         {
             return View(_repository.Merch);
         }
