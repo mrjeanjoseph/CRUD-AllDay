@@ -6,6 +6,7 @@
     @{ string applicationName = "Sports Store";}
     <title>@ViewBag.Title - @applicationName.Replace(" ", "")</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
 </head>
 <body>
     @Html.Partial("_NavHeader", applicationName)
@@ -14,10 +15,10 @@
         <h3 class="card-header">Merchandise</h3>
         <div class="card-body">
             <div class="row">
-                <div id="categories" class="col-sm-3 mt-3">
+                <div id="categories" class="col-sm-2 mt-3">
                     @Html.Action("Menu", "Nav")
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-10">
                     @RenderBody()
                 </div>
             </div>
@@ -28,11 +29,11 @@
 
 
     @{ string myInfo = "Jean Built this!";}
-    @*<nav class="navbar fixed-bottom bg-body-tertiary">
+    <nav class="navbar fixed-bottom bg-body-tertiary">
         <div class="container-fluid">
             <p>&copy; @DateTime.Now.Year - @myInfo</p>
         </div>
-    </nav>*@
+    </nav>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>

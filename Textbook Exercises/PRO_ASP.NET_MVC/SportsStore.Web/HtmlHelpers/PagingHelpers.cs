@@ -21,9 +21,11 @@ namespace SportsStore.Web.HtmlHelpers
                 if (i == pagingInfo.CurrentPage)
                 {
                     tag.AddCssClass("selected");
-                    tag.AddCssClass("btn-primary");
+                    tag.AddCssClass("btn btn-primary btn-lg");
                 }
-                tag.AddCssClass("btn btn-secondary");
+                else 
+                    tag.AddCssClass("btn btn-outline-primary btn-lg");
+
                 result.Append(tag.ToString());
             }
 

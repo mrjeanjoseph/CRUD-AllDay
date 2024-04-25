@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using SportsStore.Domain;
 using SportsStore.Web.Controllers;
 using SportsStore.Web.HtmlHelpers;
-using SportsStore.Web.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using SportsStore.Web.Models;
+using SportsStore.Domain;
 using System.Web.Mvc;
+using System.Linq;
+using System;
+using Moq;
 
 namespace SportsStore.UnitTests
 {
@@ -153,6 +153,30 @@ namespace SportsStore.UnitTests
             Assert.AreEqual(results[0], "Interior");
             Assert.AreEqual(results[1], "Exterior");
             Assert.AreEqual(results[2], "Franchise");
+        }
+
+        [TestMethod]
+        public void IndicateSelectedCategory()
+        {
+            //Arrage - create the mock repository
+            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            mock.Setup(m => m.Merch).Returns(new Merchandise[]
+            {
+                new Merchandise {Id = 1, Name = "P1", Category = "Apples"},
+                new Merchandise {Id = 4, Name = "P2", Category = "Oranges"},
+            });
+
+            //Arrage - Create the controller
+            NavController target = new NavController(mock.Object);
+
+            //Arrage - define the category to selected
+            string categoryToSelect = "Apples";
+
+            //Action
+            string result = target.Menu(categoryToSelect).ViewBag.SelectedCategory;
+
+            //Assert
+            Assert.AreEqual(categoryToSelect, result);
         }
     }
 }

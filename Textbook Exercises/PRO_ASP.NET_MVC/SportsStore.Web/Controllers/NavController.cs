@@ -14,8 +14,10 @@ namespace SportsStore.Web.Controllers
             _repository = repository;
         }
 
-        public PartialViewResult Menu()
+        public PartialViewResult Menu(string category = null)
         {
+            ViewBag.SelectedCategory = category;
+
             IEnumerable<string> categories = _repository.Merch
                 .Select(c => c.Category)
                 .Distinct()

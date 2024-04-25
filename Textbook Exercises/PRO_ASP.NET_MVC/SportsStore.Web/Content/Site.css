@@ -16,3 +16,8 @@ textarea {
     max-width: 280px;
 }
 
+
+
+.w-25 {
+    width: 12% !important;
+}
