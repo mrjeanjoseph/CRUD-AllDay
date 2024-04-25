@@ -4,14 +4,16 @@
 
 <div class="card mb-3">
     <div class="p-3 m-2">
-        <button class="float-end btn btn-secondary btn-lg w-25">@Model.Price.ToString("c")</button>
+        @*<div class="float-end btn btn-secondary btn-lg">@Model.Price.ToString("c") ++</div>*@
+
         @using (Html.BeginForm("AddToCart", "Cart")) {
-            <div class="float-end">
+            <div class="btn-group float-end w-25" role="group" aria-label="Basic example">
                 @Html.HiddenFor(x => x.Id)
                 @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                <input type="submit" class="btn btn-success btn-lg" value="Add to cart"/>
+                <input type="button" class="btn btn-secondary btn-lg" value="@Model.Price.ToString("c")" disabled />
+                <input type="submit" class="btn btn-outline-secondary btn-lg" value="Add To Cart" />
             </div>
-         }
+        }
         <h2>@Model.Name</h2>
         <span class="pt-3 ">@Model.Description</span>
     </div>

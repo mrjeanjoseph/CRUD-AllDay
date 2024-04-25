@@ -14,4 +14,10 @@ namespace SportsStore.Web.Models
         public IEnumerable<ProductVendor> ProductVendors { get; set; }
         public PagingInfo PagingInfo { get; set; }
     }
+
+    public class CartIndexViewModel
+    {
+        public Cart Cart { get; set; }
+        public string ReturnUrl { get; set; }
+    }
 }
