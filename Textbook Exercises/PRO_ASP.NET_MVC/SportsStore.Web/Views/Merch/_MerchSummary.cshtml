@@ -1,0 +1,18 @@
+﻿
+@model SportsStore.Domain.Merchandise
+
+
+<div class="card mb-3">
+    <div class="p-3 m-2">
+        <button class="float-end btn btn-secondary btn-lg w-25">@Model.Price.ToString("c")</button>
+        @using (Html.BeginForm("AddToCart", "Cart")) {
+            <div class="float-end">
+                @Html.HiddenFor(x => x.Id)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-success btn-lg" value="Add to cart"/>
+            </div>
+         }
+        <h2>@Model.Name</h2>
+        <span class="pt-3 ">@Model.Description</span>
+    </div>
+</div>

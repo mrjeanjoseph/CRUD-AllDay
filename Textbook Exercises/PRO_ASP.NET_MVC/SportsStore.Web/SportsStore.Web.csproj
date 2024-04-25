@@ -147,9 +147,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Merch\List.cshtml" />
     <Content Include="Views\Shared\_NavHeader.cshtml" />
-    <Content Include="Views\Shared\_MerchSummary.cshtml" />
+    <Content Include="Views\Merch\_MerchSummary.cshtml" />
     <Content Include="Views\ProductVendor\List.cshtml" />
-    <Content Include="Views\Shared\_ProductVendor.cshtml" />
+    <Content Include="Views\ProductVendor\_ProductVendor.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
