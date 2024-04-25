@@ -76,6 +76,7 @@
     <Compile Include="Abstract\IProductVendorRepo.cs" />
     <Compile Include="Concrete\EFMerchRepository.cs" />
     <Compile Include="Concrete\ProductVendorRepository.cs" />
+    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\EFDbAccess.cs" />
     <Compile Include="Entities\Merchandise.cs" />
     <Compile Include="Entities\ProductVendor.cs" />
