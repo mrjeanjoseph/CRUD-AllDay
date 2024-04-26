@@ -5,7 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace SportsStore.Web.Infrastructure {
+namespace SportsStore.Web.Infrastructure
+{
     public class NinjectDependencyResolver : IDependencyResolver {
         private readonly IKernel _kernel;
 
