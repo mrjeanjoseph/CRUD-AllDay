@@ -19,7 +19,7 @@ namespace SportsStore.UnitTests
         {
             // Arrange
             Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
-            mock.Setup(m => m.Merch).Returns(new Merchandise[]
+            mock.Setup(m => m.Merchandises).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 5, Name = "Showy Evening Primrose"},
                 new Merchandise {Id = 10, Name = "Mississippi River Wakerobin"},
@@ -75,7 +75,7 @@ namespace SportsStore.UnitTests
         {
             // Arrange
             Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
-            mock.Setup(m => m.Merch).Returns(new Merchandise[]
+            mock.Setup(m => m.Merchandises).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 5, Name = "Showy Evening Primrose"},
                 new Merchandise {Id = 10, Name = "Mississippi River Wakerobin"},
@@ -104,7 +104,7 @@ namespace SportsStore.UnitTests
         {
             // Arrange //Create the mock repo
             Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
-            mock.Setup(m => m.Merch).Returns(new Merchandise[]
+            mock.Setup(m => m.Merchandises).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 5, Name = "Showy Evening Primrose"},
                 new Merchandise {Id = 10, Name = "Mississippi River Wakerobin"},
@@ -133,7 +133,7 @@ namespace SportsStore.UnitTests
         {
             // Arrange //Create the mock repo
             Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
-            mock.Setup(m => m.Merch).Returns(new Merchandise[]
+            mock.Setup(m => m.Merchandises).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 5, Name = "Showy Evening Primrose", Category = "Interior"},
                 new Merchandise {Id = 10, Name = "Mississippi River Wakerobin", Category = "Exterior"},
@@ -160,7 +160,7 @@ namespace SportsStore.UnitTests
         {
             //Arrage - create the mock repository
             Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
-            mock.Setup(m => m.Merch).Returns(new Merchandise[]
+            mock.Setup(m => m.Merchandises).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 1, Name = "P1", Category = "Apples"},
                 new Merchandise {Id = 4, Name = "P2", Category = "Oranges"},
@@ -184,7 +184,7 @@ namespace SportsStore.UnitTests
         {
             //Arrage - create the mock repository
             Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
-            mock.Setup(m => m.Merch).Returns(new Merchandise[]
+            mock.Setup(m => m.Merchandises).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 1, Name = "P1", Category = "Cat1"},
                 new Merchandise {Id = 2, Name = "P2", Category = "Cat2"},

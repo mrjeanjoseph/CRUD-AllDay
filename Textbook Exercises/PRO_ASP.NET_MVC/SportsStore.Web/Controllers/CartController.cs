@@ -7,45 +7,43 @@ namespace SportsStore.Web.Controllers
 {
     public class CartController : Controller
     {
-        private readonly IMerchandiseRepository _merchRepository;
+        private readonly IMerchandiseRepository _merchRepo;
 
         public CartController(IMerchandiseRepository merchRepo)
         {
-            _merchRepository = merchRepo;
+            _merchRepo = merchRepo;
         }
 
-        public ViewResult Index(string returnUrl)
+        public ViewResult Index(Cart cart, string returnUrl)
         {
-            return View(new CartIndexViewModel { Cart = GetCart(), ReturnUrl = returnUrl });
+            return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl });
         }
 
-        public RedirectToRouteResult AddToCart(int merchId, string returnUrl)
-        {
-            Merchandise merch = _merchRepository.Merchandises.FirstOrDefault(m => m.Id == merchId);
+        public RedirectToRouteResult AddToCart(Cart cart, string returnUrl, int? merchId)
+        { //adding the ? temporarily b/c the id is somehow not being passed in.
+            Merchandise merch = _merchRepo.Merchandises.FirstOrDefault(m => m.Id == merchId);
 
-            if (merch != null) GetCart().AddItem(merch, 1);
+            if (merch != null) cart.AddItem(merch, 1);
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemoveFromCart(int merchId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart( Cart cart, int merchId, string returnUrl)
         {
-            Merchandise merch = _merchRepository.Merchandises.FirstOrDefault(m => m.Id == merchId);
+            Merchandise merch = _merchRepo.Merchandises.FirstOrDefault(m => m.Id == merchId);
 
-            if (merch != null) GetCart().RemoveLine(merch);
+            if (merch != null) cart.RemoveLine(merch);
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        private Cart GetCart() {
-
-            Cart cart = (Cart)Session["Cart"];
-            if (cart == null) {
-
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
-        }
+        //private Cart GetCart() {
+        //    Cart cart = (Cart)Session["Cart"];
+        //    if (cart == null) {
+        //        cart = new Cart();
+        //        Session["Cart"] = cart;
+        //    }
+        //    return cart;
+        //}
     }
 }

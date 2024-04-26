@@ -7,24 +7,24 @@ namespace SportsStore.Web.Controllers
 {
     public class MerchController : Controller
     {
-        private readonly IMerchandiseRepository _repository;
+        private readonly IMerchandiseRepository _merchRepo;
         public int PageSize = 5;
 
         public MerchController(IMerchandiseRepository merchRepo)
         {
-            _repository = merchRepo;
+            _merchRepo = merchRepo;
         }
 
         public ActionResult List_old()
         {
-            return View(_repository.Merchandises);
+            return View(_merchRepo.Merchandises);
         }
 
         public ViewResult List(string category, int page = 1)
         {
             MerchListViewModel viewModel = new MerchListViewModel
             {
-                Merchandises = _repository.Merchandises
+                Merchandises = _merchRepo.Merchandises
                 .Where(m => category == null || m.Category == category)
                 .OrderBy(m => m.Id)
                 .Skip((page - 1) * PageSize)
@@ -34,8 +34,8 @@ namespace SportsStore.Web.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = category == null ?
-                    _repository.Merchandises.Count() :
-                    _repository.Merchandises.Where(m => m.Category == category).Count()
+                    _merchRepo.Merchandises.Count() :
+                    _merchRepo.Merchandises.Where(m => m.Category == category).Count()
                 },
                 CurrentCategory = category
             };
