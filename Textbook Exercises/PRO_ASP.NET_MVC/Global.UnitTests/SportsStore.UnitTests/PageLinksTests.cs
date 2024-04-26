@@ -18,7 +18,7 @@ namespace SportsStore.UnitTests
         public void CanPaginate()
         {
             // Arrange
-            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
             mock.Setup(m => m.Merch).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 5, Name = "Showy Evening Primrose"},
@@ -74,7 +74,7 @@ namespace SportsStore.UnitTests
         public void CanSendPaginationViewModel()
         {
             // Arrange
-            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
             mock.Setup(m => m.Merch).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 5, Name = "Showy Evening Primrose"},
@@ -103,7 +103,7 @@ namespace SportsStore.UnitTests
         public void CanFilterProducts()
         {
             // Arrange //Create the mock repo
-            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
             mock.Setup(m => m.Merch).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 5, Name = "Showy Evening Primrose"},
@@ -132,7 +132,7 @@ namespace SportsStore.UnitTests
         public void CanCreateCategories()
         {
             // Arrange //Create the mock repo
-            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
             mock.Setup(m => m.Merch).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 5, Name = "Showy Evening Primrose", Category = "Interior"},
@@ -159,7 +159,7 @@ namespace SportsStore.UnitTests
         public void IndicateSelectedCategory()
         {
             //Arrage - create the mock repository
-            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
             mock.Setup(m => m.Merch).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 1, Name = "P1", Category = "Apples"},
@@ -183,7 +183,7 @@ namespace SportsStore.UnitTests
         public void GenerateCategorySpecificCount()
         {
             //Arrage - create the mock repository
-            Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
+            Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
             mock.Setup(m => m.Merch).Returns(new Merchandise[]
             {
                 new Merchandise {Id = 1, Name = "P1", Category = "Cat1"},

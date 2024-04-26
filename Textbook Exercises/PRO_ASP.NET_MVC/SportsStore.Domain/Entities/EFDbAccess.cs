@@ -5,7 +5,7 @@ namespace SportsStore.Domain
 {
     public class SportsStoreDbContext : DbContext
     {
-        public DbSet<Merchandise> Merchandise_One { get; set; }
+        public DbSet<Merchandise> Merchandise { get; set; }
     }
 
     [Table("ProductVendor", Schema = "Purchasing")]

@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using SportsStore.Domain;
+using SportsStore.Web.Infrastructure;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -13,6 +11,7 @@ namespace SportsStore.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
 }

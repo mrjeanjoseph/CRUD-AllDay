@@ -7,9 +7,9 @@ namespace SportsStore.Web.Controllers
 {
     public class NavController : Controller
     {
-        private readonly IMerchRepo _repository;
+        private readonly IMerchandiseRepository _repository;
 
-        public NavController(IMerchRepo repository)
+        public NavController(IMerchandiseRepository repository)
         {
             _repository = repository;
         }
@@ -18,7 +18,7 @@ namespace SportsStore.Web.Controllers
         {
             ViewBag.SelectedCategory = category;
 
-            IEnumerable<string> categories = _repository.Merch
+            IEnumerable<string> categories = _repository.Merchandises
                 .Select(c => c.Category)
                 .Distinct()
                 .OrderBy(c => c);

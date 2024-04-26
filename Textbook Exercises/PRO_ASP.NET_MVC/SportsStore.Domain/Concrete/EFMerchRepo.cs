@@ -2,12 +2,12 @@
 
 namespace SportsStore.Domain
 {
-    public class EFMerchRepository : IMerchRepo
+    public class EFMerchRepo : IMerchandiseRepository
     {
         private readonly SportsStoreDbContext context = new SportsStoreDbContext();
-        public IEnumerable<Merchandise> Merch
+        public IEnumerable<Merchandise> Merchandises
         {
-            get { return context.Merchandise_One; }
+            get { return context.Merchandise; }
         }
     }
 }

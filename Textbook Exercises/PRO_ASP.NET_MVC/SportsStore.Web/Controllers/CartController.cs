@@ -7,9 +7,9 @@ namespace SportsStore.Web.Controllers
 {
     public class CartController : Controller
     {
-        private readonly IMerchRepo _merchRepository;
+        private readonly IMerchandiseRepository _merchRepository;
 
-        public CartController(IMerchRepo merchRepo)
+        public CartController(IMerchandiseRepository merchRepo)
         {
             _merchRepository = merchRepo;
         }
@@ -21,7 +21,7 @@ namespace SportsStore.Web.Controllers
 
         public RedirectToRouteResult AddToCart(int merchId, string returnUrl)
         {
-            Merchandise merch = _merchRepository.Merch.FirstOrDefault(m => m.Id == merchId);
+            Merchandise merch = _merchRepository.Merchandises.FirstOrDefault(m => m.Id == merchId);
 
             if (merch != null) GetCart().AddItem(merch, 1);
 
@@ -30,18 +30,18 @@ namespace SportsStore.Web.Controllers
 
         public RedirectToRouteResult RemoveFromCart(int merchId, string returnUrl)
         {
-            Merchandise merch = _merchRepository.Merch.FirstOrDefault(m => m.Id == merchId);
+            Merchandise merch = _merchRepository.Merchandises.FirstOrDefault(m => m.Id == merchId);
 
             if (merch != null) GetCart().RemoveLine(merch);
 
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        private Cart GetCart()
-        {
+        private Cart GetCart() {
+
             Cart cart = (Cart)Session["Cart"];
-            if (cart == null)
-            {
+            if (cart == null) {
+
                 cart = new Cart();
                 Session["Cart"] = cart;
             }
