@@ -19,7 +19,7 @@ namespace SportsStore.Web.Controllers
             return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl });
         }
 
-        public RedirectToRouteResult AddToCart(Cart cart, string returnUrl, int? merchId)
+        public RedirectToRouteResult AddToCart(Cart cart, int merchId, string returnUrl)
         { //adding the ? temporarily b/c the id is somehow not being passed in.
             Merchandise merch = _merchRepo.Merchandises.FirstOrDefault(m => m.Id == merchId);
 
