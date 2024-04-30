@@ -31,7 +31,6 @@ namespace ClassesAndCustomTypes {
             #endregion
 
             employeeTwo.CalculateWage();
-
             Console.ReadLine();
         }
 
