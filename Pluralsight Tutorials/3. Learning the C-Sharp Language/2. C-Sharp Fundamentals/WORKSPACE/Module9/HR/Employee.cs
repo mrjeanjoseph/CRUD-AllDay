@@ -1,4 +1,4 @@
-﻿using BethanysPieShopHRM.Logic;
+﻿using UnderstandingOO.Logic;
 
 namespace ClassesAndCustomTypes.HR {
     internal class Employee {

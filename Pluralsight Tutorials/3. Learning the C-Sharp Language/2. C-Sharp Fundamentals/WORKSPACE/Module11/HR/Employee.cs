@@ -1,7 +1,7 @@
-﻿using BethanysPieShopHRM.Logic;
+﻿using UnderstandingOO.Logic;
 using Newtonsoft.Json;
 
-namespace BethanysPieShopHRM.HR
+namespace UnderstandingOO.HR
 {
     public class Employee: IEmployee
     {
