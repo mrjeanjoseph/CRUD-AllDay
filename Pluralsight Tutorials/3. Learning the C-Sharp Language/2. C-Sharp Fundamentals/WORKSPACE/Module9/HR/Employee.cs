@@ -1,7 +1,9 @@
-﻿using UnderstandingOO.Logic;
+﻿using BethanysPieShopHRM.Logic;
 
-namespace ClassesAndCustomTypes.HR {
-    internal class Employee {
+namespace ClassesAndCustomTypes.HR
+{
+    internal class Employee
+    {
 
         public string fullName;
         public string email;
@@ -17,7 +19,8 @@ namespace ClassesAndCustomTypes.HR {
 
         public static double taxRate = 0.15; //We did static already sir
 
-        public Employee(string fn, string em, DateTime bd, double? rate, EmployeeType empType) {
+        public Employee(string fn, string em, DateTime bd, double? rate, EmployeeType empType)
+        {
             fullName = fn;
             email = em;
             birthDay = bd;
@@ -25,20 +28,23 @@ namespace ClassesAndCustomTypes.HR {
             employeeType = empType;
         }
 
-        public Employee(string fn, string em, DateTime bd) 
+        public Employee(string fn, string em, DateTime bd)
             : this(fn, em, bd, 0, EmployeeType.StoreManager) { }
 
-        public void PerformWork() {
+        public void PerformWork()
+        {
             PerformWork(minimalHoursWorkedUnit);
         }
 
-        public void PerformWork(int numberOfHours) {
+        public void PerformWork(int numberOfHours)
+        {
             numberOfHoursWorked += numberOfHours;
 
             Console.WriteLine($"{fullName} has worked for {numberOfHours} hour(s)!");
         }
 
-        public int CalculateBonus(int bonus) {
+        public int CalculateBonus(int bonus)
+        {
 
             if (numberOfHoursWorked > 10)
                 bonus *= 2;
@@ -47,12 +53,14 @@ namespace ClassesAndCustomTypes.HR {
             return bonus;
         }
 
-        public int CalculateBonusAndBonusTax(int bonus, out int bonusTax) {
+        public int CalculateBonusAndBonusTax(int bonus, out int bonusTax)
+        {
             bonusTax = 0;
             if (numberOfHoursWorked > 10)
                 bonus *= 2;
 
-            if (bonus >= 200) {
+            if (bonus >= 200)
+            {
                 bonusTax = bonus / 10;
                 bonus -= bonusTax;
             }
@@ -61,20 +69,25 @@ namespace ClassesAndCustomTypes.HR {
             return bonus;
         }
 
-        public double CalculateWage() {
+        public double CalculateWage()
+        {
             WageCalculations wagecalc = new WageCalculations();
             double calcValue = wagecalc.ComplexWageCalculation(wage, taxRate, 3, 42);
             return calcValue;
         }
 
 
-        public double ReceiveWage(bool resetHours = true) {
+        public double ReceiveWage(bool resetHours = true)
+        {
             double wageBeforeTax;
 
-            if (employeeType == EmployeeType.Manager) {
-                Console.WriteLine($"An extra ${hourlyRate * 1.25 } was added to the wage since {fullName} is a manager!");
+            if (employeeType == EmployeeType.Manager)
+            {
+                Console.WriteLine($"An extra ${hourlyRate * 1.25} was added to the wage since {fullName} is a manager!");
                 wageBeforeTax = numberOfHoursWorked * hourlyRate.Value * 1.25;
-            } else {
+            }
+            else
+            {
                 wageBeforeTax = numberOfHoursWorked * hourlyRate.Value;
             }
 
@@ -90,7 +103,8 @@ namespace ClassesAndCustomTypes.HR {
             return wage;
         }
 
-        public void DisplayEmployeeDetails() {
+        public void DisplayEmployeeDetails()
+        {
             string firstName = fullName.Split(' ')[0];
             string lastName = fullName.Split(' ')[1];
             Console.WriteLine($"\nFirst Name: \t{firstName}\nLast Name: \t{lastName}\nEmail: \t\t{email}\nBirthday: \t{birthDay.ToShortDateString()}\nTax rate: \t{taxRate}");

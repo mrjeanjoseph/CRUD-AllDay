@@ -1,9 +1,9 @@
-﻿using UnderstandingOO.Logic;
+﻿using BethanysPieShopHRM.Logic;
 using Newtonsoft.Json;
 
 namespace UnderstandingOO.HR
 {
-    public class Employee: IEmployee
+    public class Employee : IEmployee
     {
         private string firstName;
         private string lastName;
@@ -113,7 +113,7 @@ namespace UnderstandingOO.HR
             Email = email;
             BirthDay = birthDay;
             HourlyRate = hourlyRate ?? 10;
-            
+
         }
 
         public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate, string street, string houseNumber, string zip, string city)
@@ -124,7 +124,7 @@ namespace UnderstandingOO.HR
             BirthDay = birthDay;
             HourlyRate = hourlyRate ?? 10;
 
-            Address = new Address(street, houseNumber, zip, city);  
+            Address = new Address(street, houseNumber, zip, city);
         }
 
         public void PerformWork()
