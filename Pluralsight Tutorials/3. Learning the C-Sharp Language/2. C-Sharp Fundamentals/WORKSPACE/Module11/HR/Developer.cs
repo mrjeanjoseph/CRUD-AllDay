@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnderstandingOO.HR
+﻿namespace UnderstandingOO.HR
 {
-    internal class Developer: Employee
+    internal class Developer : Employee
     {
         private string currentProject;
 

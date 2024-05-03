@@ -1,4 +1,5 @@
-﻿using BethanysPieShopHRM.Logic;
+﻿
+using BethanysPieShopHRM.Logic;
 
 namespace ClassesAndCustomTypes.HR
 {

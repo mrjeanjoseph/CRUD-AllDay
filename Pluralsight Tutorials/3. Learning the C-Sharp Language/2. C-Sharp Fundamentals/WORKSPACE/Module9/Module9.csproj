@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="BethanysPieShopHRM.Logic">
+    <Reference Include="RHJ_Services.Logic">
       <HintPath>..\..\Assets\LocalCustomLogic.dll</HintPath>
     </Reference>
   </ItemGroup>

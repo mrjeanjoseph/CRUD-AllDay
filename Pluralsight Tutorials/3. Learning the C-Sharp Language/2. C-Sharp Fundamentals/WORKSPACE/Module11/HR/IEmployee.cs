@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UnderstandingOO.HR
+﻿namespace UnderstandingOO.HR
 {
     internal interface IEmployee
     {
@@ -13,7 +7,6 @@ namespace UnderstandingOO.HR
         void PerformWork();
         void PerformWork(int numberOfHours);
         void DisplayEmployeeDetails();
-
         void GiveCompliment();
     }
 }
