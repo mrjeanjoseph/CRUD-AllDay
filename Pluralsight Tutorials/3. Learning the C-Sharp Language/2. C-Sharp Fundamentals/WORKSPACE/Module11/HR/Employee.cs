@@ -215,7 +215,7 @@ namespace UnderstandingOO.HR
 
         public void GiveCompliment()
         {
-            Console.WriteLine($"You've done a great job, {FirstName}");
+            Console.WriteLine($"You've done a super awesome job, {FirstName}");
         }
     }
 }
