@@ -1,7 +1,7 @@
 ﻿using BethanysPieShopHRM.Logic;
 using Newtonsoft.Json;
 
-namespace WorkingWithFiles
+namespace HandlingExceptions
 {
     public class Employee : IEmployee
     {

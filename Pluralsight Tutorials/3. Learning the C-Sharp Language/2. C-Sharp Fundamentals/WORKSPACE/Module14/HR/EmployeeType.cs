@@ -1,4 +1,4 @@
-﻿namespace WorkingWithFiles
+﻿namespace HandlingExceptions
 {
     enum EmployeeType
     {

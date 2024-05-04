@@ -1,7 +1,7 @@
-﻿using BethanysPieShopHRM.HR;
+﻿using HandlingExceptions;
 using System.Text;
 
-namespace BethanysPieShopHRM
+namespace HandlingExceptions
 {
     internal class Utilities
     {

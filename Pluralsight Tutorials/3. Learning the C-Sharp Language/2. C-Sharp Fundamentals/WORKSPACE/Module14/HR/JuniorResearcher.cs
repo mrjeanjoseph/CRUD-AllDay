@@ -1,4 +1,4 @@
-﻿namespace WorkingWithFiles
+﻿namespace HandlingExceptions
 {
     internal class JuniorResearcher : Researcher
     {
