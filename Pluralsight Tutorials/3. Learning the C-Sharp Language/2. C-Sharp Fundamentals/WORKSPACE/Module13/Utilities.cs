@@ -89,10 +89,9 @@ namespace WorkingWithFiles
 
         internal static void ViewAllEmployees(List<Employee> employees)
         {
-            for (int i = 0; i < employees.Count; i++)
-            {
+            for (int i = 0; i < employees.Count; i++)            
                 employees[i].DisplayEmployeeDetails();
-            }
+            
         }
 
         internal static void LoadEmployees(List<Employee> employees)
@@ -158,12 +157,13 @@ namespace WorkingWithFiles
             {
                 string type = GetEmployeeType(employee);
 
-                sb.Append($"firstName:{employee.FirstName};");
-                sb.Append($"lastName:{employee.LastName};");
-                sb.Append($"email:{employee.Email};");
-                sb.Append($"birthDay:{employee.BirthDay.ToShortDateString()};");
-                sb.Append($"hourlyRate:{employee.HourlyRate};");
-                sb.Append($"type:{type};");
+                sb.Append($"FirstName:{employee.FirstName};");
+                sb.Append($"LastName:{employee.LastName};");
+                sb.Append($"Email:{employee.Email};");
+                sb.Append($"BirthDay:{employee.BirthDay.ToShortDateString()};");
+                sb.Append($"Hourly Rate:{employee.HourlyRate};");
+                sb.Append($"Type:{type};");
+
                 sb.Append(Environment.NewLine);
             }
 
