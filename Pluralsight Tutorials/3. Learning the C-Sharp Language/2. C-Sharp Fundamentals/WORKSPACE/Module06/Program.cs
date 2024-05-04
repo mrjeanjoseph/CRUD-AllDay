@@ -6,19 +6,18 @@ namespace WorkingWithString {
         static void Main(string[] args) {
             Console.WriteLine("Hello to those who can C-Sharp!");
 
-            //UsingOptionalParameters();
-
-            //UsingNamedArguments();
-
-            ManipulatingStrings();
-
-            //UsingEscapeCharacters();
-
-            //UsingStringEquality();
-
-            //ParsingStrings();
+            ParsingStrings();
 
             Console.ReadLine();
+            ManipulatingStrings();
+
+            UsingEscapeCharacters();
+
+            UsingStringEquality();
+
+
+            //UsingOptionalParameters();
+            //UsingNamedArguments();
         }
     }
 }
