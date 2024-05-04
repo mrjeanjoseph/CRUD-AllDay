@@ -1,3 +1,5 @@
+using UnderstandingOO.HR;
+
 namespace Module12.Tests
 {
     public class EmployeeTests
