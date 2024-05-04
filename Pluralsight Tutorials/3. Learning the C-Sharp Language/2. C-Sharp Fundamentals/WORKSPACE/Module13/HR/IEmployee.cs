@@ -1,4 +1,4 @@
-﻿namespace BethanysPieShopHRM.HR
+﻿namespace WorkingWithFiles
 {
     internal interface IEmployee
     {

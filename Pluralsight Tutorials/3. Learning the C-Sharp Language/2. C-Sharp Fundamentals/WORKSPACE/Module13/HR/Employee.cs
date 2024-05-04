@@ -1,4 +1,4 @@
-﻿namespace BethanysPieShopHRM.HR
+﻿namespace WorkingWithFiles
 {
     public class Employee : IEmployee
     {

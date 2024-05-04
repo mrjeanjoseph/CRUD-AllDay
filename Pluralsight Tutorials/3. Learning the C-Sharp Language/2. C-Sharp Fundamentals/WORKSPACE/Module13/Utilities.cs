@@ -1,7 +1,7 @@
 ﻿using BethanysPieShopHRM.HR;
 using System.Text;
 
-namespace BethanysPieShopHRM
+namespace WorkingWithFiles
 {
     internal class Utilities
     {

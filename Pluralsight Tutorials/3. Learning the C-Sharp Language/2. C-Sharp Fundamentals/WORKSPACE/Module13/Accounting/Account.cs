@@ -1,4 +1,4 @@
-﻿namespace BethanysPieShopHRM.Accounting
+﻿namespace WorkingWithFiles
 {
     internal class Account
     {
