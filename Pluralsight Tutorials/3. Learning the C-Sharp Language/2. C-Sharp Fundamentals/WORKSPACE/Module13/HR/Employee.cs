@@ -1,4 +1,7 @@
-﻿namespace WorkingWithFiles
+﻿using BethanysPieShopHRM.Logic;
+using Newtonsoft.Json;
+
+namespace WorkingWithFiles
 {
     public class Employee : IEmployee
     {

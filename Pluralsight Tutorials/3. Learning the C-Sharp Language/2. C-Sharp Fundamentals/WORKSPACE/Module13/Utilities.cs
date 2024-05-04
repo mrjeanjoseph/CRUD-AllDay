@@ -1,12 +1,11 @@
-﻿using BethanysPieShopHRM.HR;
-using System.Text;
+﻿using System.Text;
 
 namespace WorkingWithFiles
 {
     internal class Utilities
     {
-        private static string directory = @"D:\data\BethanysPieShopHRM\";
-        private static string fileName = "employees.txt";
+        private static readonly string directory = @"C:\devtrunk\";
+        private static readonly string fileName = "employees.txt";
 
         internal static void RegisterEmployee(List<Employee> employees)
         {
