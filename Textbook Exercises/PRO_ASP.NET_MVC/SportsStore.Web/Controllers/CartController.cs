@@ -7,7 +7,7 @@ namespace SportsStore.Web.Controllers
 {
     public class CartController : Controller
     {
-        private readonly IMerchandiseRepository _merchRepo;
+        private IMerchandiseRepository _merchRepo;
 
         public CartController(IMerchandiseRepository merchRepo)
         {

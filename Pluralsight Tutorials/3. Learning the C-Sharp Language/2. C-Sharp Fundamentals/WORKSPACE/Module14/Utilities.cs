@@ -1,12 +1,11 @@
-﻿using HandlingExceptions;
-using System.Text;
+﻿using System.Text;
 
 namespace HandlingExceptions
 {
     internal class Utilities
     {
-        private static string directory = @"D:\data\BethanysPieShopHRM\";
-        private static string fileName = "employees.txt";
+        private static readonly string directory = @"C:\devtrunk\";
+        private static readonly string fileName = "employees.txt";
 
         internal static void RegisterEmployee(List<Employee> employees)
         {
@@ -108,7 +107,7 @@ namespace HandlingExceptions
                 selectedEmployee.DisplayEmployeeDetails();
 
             }
-            catch (FormatException fex)
+            catch (FormatException)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("That's not the correct format to enter an ID!\n\n");
@@ -165,16 +164,13 @@ namespace HandlingExceptions
                     }
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Loaded {employees.Count} employees!\n\n");
-                    //Console.ResetColor();
                 }
-            }
-           
+            }           
             catch (IndexOutOfRangeException iex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Something went wrong parsing the file, please check the data!");
                 Console.WriteLine(iex.Message);
-                //Console.ResetColor();
             }
             catch (FileNotFoundException fnfex)
             {
@@ -182,14 +178,12 @@ namespace HandlingExceptions
                 Console.WriteLine("The file couldn't be found!");
                 Console.WriteLine(fnfex.Message);
                 Console.WriteLine(fnfex.StackTrace);
-                //Console.ResetColor();
             }
             catch (Exception ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Something went wrong while loading the file!");
                 Console.WriteLine(ex.Message);
-                //Console.ResetColor();
             }
             finally
             {

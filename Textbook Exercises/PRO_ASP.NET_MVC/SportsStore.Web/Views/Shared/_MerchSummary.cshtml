@@ -13,7 +13,7 @@
             <div class="float-end">
                 @Html.HiddenFor(x => x.Id)
                 @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                <input type="submit" class="btn btn-outline-secondary btn-lg" value="Add To Cart - @Model.Id" />
+                <input type="submit" class="btn btn-outline-secondary btn-lg" value="Add To Cart" />
             </div>
         }
         <span class="pt-3 ">@Model.Description</span>
