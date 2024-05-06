@@ -1,4 +1,5 @@
 ﻿using SportsStore.Domain;
+using System.Data.Entity;
 using System.Web.Mvc;
 
 namespace SportsStore.Web.Controllers

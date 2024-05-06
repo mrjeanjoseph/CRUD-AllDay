@@ -32,14 +32,16 @@ namespace SportsStore.Web.Infrastructure
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new List<Product>
             {
-                new Product { ProductName = "Football", Price = 25 },
-                new Product { ProductName = "Football", Price = 25 },
-                new Product { ProductName = "Football", Price = 25 },
-                new Product { ProductName = "Football", Price = 25 },
-                new Product { ProductName = "Football", Price = 25 },
+                new Product { Name = "Football", Price = 25 },
+                new Product { Name = "Football", Price = 25 },
+                new Product { Name = "Football", Price = 25 },
+                new Product { Name = "Football", Price = 25 },
+                new Product { Name = "Football", Price = 25 },
             });
 
-            _kernel.Bind<IProductRepository>().ToConstant(mock.Object);
+            //_kernel.Bind<IProductRepository>().ToConstant(mock.Object);
+
+            _kernel.Bind<IProductRepository>().To<SSProductRepository>();
         }
 
     }
