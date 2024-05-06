@@ -43,6 +43,5 @@ namespace SportsStore.Web.Infrastructure
 
             _kernel.Bind<IProductRepository>().To<SSProductRepository>();
         }
-
     }
 }
