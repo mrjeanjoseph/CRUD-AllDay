@@ -3,9 +3,9 @@
 
 namespace SportsStore.Web.App_Start
 {
+    using System.Web.Mvc;
     using System;
     using System.Web;
-    using System.Web.Mvc;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 

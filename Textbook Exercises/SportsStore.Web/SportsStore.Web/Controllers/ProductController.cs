@@ -1,13 +1,20 @@
-﻿using System.Web.Mvc;
+﻿using SportsStore.Domain;
+using System.Web.Mvc;
 
 namespace SportsStore.Web.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
-        public ActionResult Index()
+        private readonly IProductRepository _repository;
+
+        public ProductController(IProductRepository productRepo)
         {
-            return View();
+            _repository = productRepo;
+        }
+        // GET: Product
+        public ViewResult ProductListing()
+        {
+            return View(_repository.Products);
         }
     }
 }
