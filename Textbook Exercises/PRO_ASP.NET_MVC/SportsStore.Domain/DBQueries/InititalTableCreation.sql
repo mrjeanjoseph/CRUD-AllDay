@@ -3,12 +3,12 @@
 DROP TABLE IF EXISTS [SportsStore].[dbo].[Merchandise]
 
 CREATE TABLE [dbo].[Merchandise](
-	[Id] [int] IDENTITY(5,5) NOT NULL,
-	[Name] [nvarchar](128) NOT NULL,
-	[Description] [nvarchar](512) NOT NULL,
-	[Category] [nvarchar](64) NOT NULL,
-	[Price] [decimal](16, 2) NOT NULL,
-	[IsValid] [bit] NOT NULL,
+	[Id] [INT] IDENTITY(5,5) NOT NULL,
+	[Name] [NVARCHAR](128) NOT NULL,
+	[Description] [NVARCHAR](512) NOT NULL,
+	[Category] [NVARCHAR](64) NOT NULL,
+	[Price] [DECIMAL](16, 2) NOT NULL,
+	[IsValid] [BIT] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
