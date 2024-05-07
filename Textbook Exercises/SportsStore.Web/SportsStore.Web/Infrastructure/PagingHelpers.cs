@@ -3,7 +3,7 @@ using System;
 using System.Text;
 using System.Web.Mvc;
 
-namespace SportsStore.Web.HhmlHelpers
+namespace SportsStore.Web.HtmlHelpers
 {
     public static class PagingHelpers
     {

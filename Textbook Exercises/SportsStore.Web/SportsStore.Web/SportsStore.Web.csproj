@@ -154,6 +154,7 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\PagingHelpers.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
