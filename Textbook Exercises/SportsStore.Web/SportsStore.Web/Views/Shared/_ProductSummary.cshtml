@@ -1,0 +1,9 @@
+﻿@model SportsStore.Domain.Product
+
+<div class="card text-bg-light mb-3">
+    <h3 class="m-3">
+        @Model.Name
+        <span class="float-end text-secondary">@Model.Price.ToString("c")</span>
+    </h3>
+    <span class="lead m-3">@Model.Description</span>
+</div>

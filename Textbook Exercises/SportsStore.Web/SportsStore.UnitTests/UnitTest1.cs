@@ -32,11 +32,17 @@ namespace SportsStore.UnitTests
             controller.PageSize = 3;
 
             //Act
-            IEnumerable<Product> result =
+            IEnumerable<Product> resultOld =
                 (IEnumerable<Product>)controller.ProductListing(2).Model;
+            // New Code
+            ProductsListViewModel result = (ProductsListViewModel)controller.ProductListing(2).Model;
 
             //Assert
-            Product[] productArray = result.ToArray();
+            Product[] productArrayOld = resultOld.ToArray();
+
+            // New Code
+            Product[] productArray = result.Products.ToArray();
+
             Assert.IsTrue(productArray.Length == 2);
             Assert.AreEqual(productArray[0].Name, "Product 4");
             Assert.AreEqual(productArray[1].Name, "Product 5");
