@@ -2,8 +2,12 @@
 using Moq;
 using SportsStore.Domain;
 using SportsStore.Web.Controllers;
+using SportsStore.Web.HhmlHelpers;
+using SportsStore.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace SportsStore.UnitTests
 {
@@ -36,6 +40,32 @@ namespace SportsStore.UnitTests
             Assert.IsTrue(productArray.Length == 2);
             Assert.AreEqual(productArray[0].Name, "Product 4");
             Assert.AreEqual(productArray[1].Name, "Product 5");
+        }
+
+        [TestMethod]
+        public void CanGeneratePageLinks()
+        {
+            //Arrange - define an HTML helper - we need to do this
+            // in order to apply the extension method
+            HtmlHelper strHelper = null;
+
+            //Arrange - create PagingInfo data
+            PagingInfo pagingInfo = new PagingInfo
+            {
+                CurrentPage = 2,
+                TotalItems = 28,
+                ItemsPerPage = 10
+            };
+
+            //Arrange - set up the delegate using a lambda express
+            Func<int, string> pageUrlDelegate = i => "Page" + i;
+
+            //Act
+            MvcHtmlString result = strHelper.PageLinks(pagingInfo, pageUrlDelegate);
+
+            //
+            Assert.AreEqual(@"<a class=""btn btn-secondary"" href=""Page1"">1</a> <a class=""btn btn-secondary btn-primary selected"" href=""Page2"">2</a> <a class=""btn btn-secondary"" href=""Page3"">3</a>", 
+                result.ToString());
         }
     }
 }
