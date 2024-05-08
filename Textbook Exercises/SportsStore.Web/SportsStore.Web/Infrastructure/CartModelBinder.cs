@@ -1,13 +1,12 @@
 ﻿using SportsStore.Domain;
-using System;
 using System.Web.Mvc;
 
-namespace SportsStore.Web.HtmlHelpers
+namespace SportsStore.Web.Infrastructure
 {
     public class CartModelBinder : IModelBinder
     {
         private const string sessionKey = "Cart";
-        public object BindModel(ControllerContext controllerContext, 
+        public object BindModel(ControllerContext controllerContext,
             ModelBindingContext bindingContext)
         {
             //Get the Cart from the session

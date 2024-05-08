@@ -1,5 +1,5 @@
 ﻿using SportsStore.Domain;
-using SportsStore.Web.HtmlHelpers;
+using SportsStore.Web.Infrastructure;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;

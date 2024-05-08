@@ -13,36 +13,21 @@ namespace SportsStore.Domain
                 .Where(l => l.Product.ProductId == product.ProductId)
                 .FirstOrDefault();
 
-            if (line == null)
-            {
-                lineCollection.Add(new CartLine { Product = product, Quantity = quanity });
-            }
-            else
-            {
-                line.Quantity += quanity;
-            }
+            if (line == null) lineCollection.Add(new CartLine { Product = product, Quantity = quanity });
+            else line.Quantity += quanity;            
 
         }
 
-        public void RemoveItem(Product product)
-        {
-            lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);
-        }
+        public void RemoveItem(Product product) => lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);        
 
         public decimal ComputeTotalValue()
         {
             return lineCollection.Sum(e => e.Product.Price * e.Quantity);
         }
 
-        public void Clear()
-        {
-            lineCollection.Clear();
-        }
+        public void Clear() => lineCollection.Clear();
 
-        public IEnumerable<CartLine> Lines
-        {
-            get { return lineCollection; }
-        }
+        public IEnumerable<CartLine> Lines { get { return lineCollection; } }
     }
 
     public class CartLine

@@ -16,21 +16,15 @@ namespace SportsStore.Web.Controllers
 
         public ViewResult Index(Cart cart, string returnUrl)
         {
-            return View(new CartIndexViewModel
-            {
-                Cart = cart,
-                ReturnUrl = returnUrl
-            });
+            return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl });
         }
 
         public RedirectToRouteResult AddToCart(Cart cart, int productId, string returnUrl)
         {
             Product product = _productRepo.Products.FirstOrDefault(p => p.ProductId == productId);
 
-            if (product != null)
-            {
-                cart.AddItem(product, 1);
-            }
+            if (product != null) cart.AddItem(product, 1);
+            
             return RedirectToAction("Index", new { returnUrl });
         }
 
@@ -38,10 +32,9 @@ namespace SportsStore.Web.Controllers
         {
             Product product = _productRepo.Products.FirstOrDefault(p => p.ProductId == productId);
 
-            if (product != null)
-            {
+            if (product != null)            
                 cart.RemoveItem(product);
-            }
+            
             return RedirectToAction("Index", new { returnUrl });
         }
 
