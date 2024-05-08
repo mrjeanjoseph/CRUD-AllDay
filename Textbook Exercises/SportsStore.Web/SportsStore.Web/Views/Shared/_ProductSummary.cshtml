@@ -5,5 +5,13 @@
         @Model.Name
         <span class="float-end text-secondary">@Model.Price.ToString("c")</span>
     </h3>
+    @using(Html.BeginForm("AddToCart", "Cart"))
+    {
+        <div class="float-end">
+            @Html.HiddenFor(x => x.ProductId)
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Add To Cart" />
+        </div>
+    }
     <span class="lead m-3">@Model.Description</span>
 </div>

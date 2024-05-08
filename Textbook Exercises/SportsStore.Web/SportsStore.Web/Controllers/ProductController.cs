@@ -9,7 +9,7 @@ namespace SportsStore.Web.Controllers
     public class ProductController : Controller
     {
         private readonly IProductRepository _repository;
-        public int PageSize = 4;
+        public int PageSize = 5;
         public ProductController(IProductRepository productRepo)
         {
             _repository = productRepo;
@@ -21,15 +21,18 @@ namespace SportsStore.Web.Controllers
             ProductsListViewModel viewModel = new ProductsListViewModel
             {
                 Products = _repository.Products
-                .Where(p => category == null || p.Category == category)
-                .OrderBy(p => p.ProductId)
-                .Skip((page - 1) * PageSize)
-                .Take(PageSize),
+                    .Where(p => category == null || p.Category == category)
+                    .OrderBy(p => p.ProductId)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = _repository.Products.Count()
+                    TotalItems = category == null ?
+                    _repository.Products.Count() : 
+                    _repository.Products.Where(e => e.Category == category)
+                    .Count()
                 },
                 CurrentCategory = category
             };

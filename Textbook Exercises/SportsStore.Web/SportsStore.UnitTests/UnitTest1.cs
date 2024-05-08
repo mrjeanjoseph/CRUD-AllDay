@@ -184,6 +184,38 @@ namespace SportsStore.UnitTests
             Assert.AreEqual(categoryToSelect, result);
         }
 
+        [TestMethod]
+        public void GenerateCategorySpecificCount()
+        {
+            // Arrange, create the mock repository
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product { ProductId =  5, Name  = "Product 1", Category = "IPhone"},
+                new Product { ProductId =  10, Name  = "Product 2", Category = "IPad"},
+                new Product { ProductId =  15, Name  = "Product 3", Category = "IPhone"},
+                new Product { ProductId =  20, Name  = "Product 4", Category = "IPad"},
+                new Product { ProductId =  25, Name  = "Product 5", Category = "IWear"},
+            });
+
+            //Arrage - Create the controller and make the page size 3 times
+            ProductController target = new ProductController(mock.Object);
+            target.PageSize = 3;
+
+            //Action - test the product counts for different categories
+            int resultOne = ((ProductsListViewModel)target.ProductListing("IPhone").Model).PagingInfo.TotalItems;
+            int resultTwo = ((ProductsListViewModel)target.ProductListing("IPad").Model).PagingInfo.TotalItems;
+            int resultThree = ((ProductsListViewModel)target.ProductListing("IWear").Model).PagingInfo.TotalItems;
+            int resultAll = ((ProductsListViewModel)target.ProductListing(null).Model).PagingInfo.TotalItems;
+
+            //Assert
+            Assert.AreEqual(resultOne, 2);
+            Assert.AreEqual(resultTwo, 2);
+            Assert.AreEqual(resultThree, 1);
+            Assert.AreEqual(resultAll, 5);
+
+        }
+
 
     }
 }
