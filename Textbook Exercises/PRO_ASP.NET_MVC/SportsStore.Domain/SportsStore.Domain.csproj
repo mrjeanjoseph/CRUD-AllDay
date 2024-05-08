@@ -73,8 +73,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IMerchandiseRepository.cs" />
+    <Compile Include="Abstract\IOrderProceessor.cs" />
     <Compile Include="Abstract\IProductVendorRepo.cs" />
     <Compile Include="Concrete\EFMerchRepo.cs" />
+    <Compile Include="Concrete\EmailSettings.cs" />
     <Compile Include="Concrete\ProductVendorRepository.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\EFDbAccess.cs" />

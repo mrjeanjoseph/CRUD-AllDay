@@ -7,12 +7,14 @@ namespace SportsStore.Domain
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter a name")]
+        [Display(Name = "Full Legal Name")]
+
         public string FullLegalName { get; set; }
 
         [Required(ErrorMessage = "Please enter name and street address")]
-        public string Line1 { get; set; }
-        public string Line2 { get; set; }
-        public string Line3 { get; set; }
+        [Display(Name = "Line 1")] public string Line1 { get; set; }
+        [Display(Name = "Line 2")] public string Line2 { get; set; }
+        [Display(Name = "Line 3")] public string Line3 { get; set; }
 
         [Required(ErrorMessage = "Please enter city")]
         public string City { get; set; }
