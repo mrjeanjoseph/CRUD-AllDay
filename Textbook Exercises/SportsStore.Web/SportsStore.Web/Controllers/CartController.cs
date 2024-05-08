@@ -1,8 +1,6 @@
 ﻿using SportsStore.Domain;
-using System;
-using System.Collections.Generic;
+using SportsStore.Web.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SportsStore.Web.Controllers
@@ -16,16 +14,20 @@ namespace SportsStore.Web.Controllers
             _productRepo = productParam;
         }
 
-        public ActionResult Index()
+        public ViewResult Index(string returnUrl)
         {
-            return View();
+            return View(new CartIndexViewModel
+            {
+                Cart = GetCart(),
+                ReturnUrl = returnUrl
+            });
         }
 
         public RedirectToRouteResult AddToCart(int productId, string returnUrl)
         {
             Product product = _productRepo.Products.FirstOrDefault(p => p.ProductId == productId);
 
-            if(product != null)
+            if (product != null)
             {
                 GetCart().AddItem(product, 1);
             }
@@ -36,7 +38,7 @@ namespace SportsStore.Web.Controllers
         {
             Product product = _productRepo.Products.FirstOrDefault(p => p.ProductId == productId);
 
-            if(product != null)
+            if (product != null)
             {
                 GetCart().RemoveItem(product);
             }
@@ -46,7 +48,7 @@ namespace SportsStore.Web.Controllers
         private Cart GetCart()
         {
             Cart cart = (Cart)Session["Cart"];
-            if(cart == null )
+            if (cart == null)
             {
                 cart = new Cart();
                 Session["Cart"] = cart;
