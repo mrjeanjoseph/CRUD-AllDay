@@ -1,0 +1,56 @@
+﻿@model SportsStore.Domain.ShippingDetails
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+
+<p>Please enter your shipping details, and we'll ship your merchs rigth away!</p>
+
+@using (Html.BeginForm())
+{
+    <h4>Ship To: </h4>
+    <div class="row g-3 mb-3">
+        <div class="col-sm-6">
+            @Html.TextBoxFor(x => x.FullLegalName, new { @class = "form-control", @placeholder = "Enter your Full Name" })
+        </div>
+    </div>
+
+    <h4>Address Information: </h4>
+    <div class="row g-3 mb-3">
+        <div class="col-sm-4">
+            @Html.TextBoxFor(x => x.Line1, new { @class = "form-control", @placeholder = "Enter your address" })
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(x => x.Line1, new { @class = "form-control" })
+        </div>
+        <div class="col-sm-4">
+            @Html.TextBoxFor(x => x.Line1, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-sm-7">
+            @Html.TextBoxFor(x => x.City, new { @class = "form-control", @placeholder = "City" })
+        </div>
+        <div class="col-sm">
+            @Html.TextBoxFor(x => x.State, new { @class = "form-control", @placeholder = "State" })
+        </div>
+        <div class="col-sm">
+            @Html.TextBoxFor(x => x.ZipCode, new { @class = "form-control", @placeholder = "Zip Code" })
+        </div>
+    </div>
+    <div class="row g-3 mb-4">
+        <div class="col-sm-4">
+            <div class="form-check">
+                @Html.EditorFor(x => x.GiftWrap, new { @class = "form-check-input", @id = "gridCheck" })
+                <label class="form-check-label" for="gridCheck">
+                    Giftwrap these items
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <input type="submit" class="btn btn-primary" value="Complete Order" />
+        </div>
+    </div>
+}

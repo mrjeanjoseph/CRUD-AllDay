@@ -41,5 +41,10 @@ namespace SportsStore.Web.Controllers
 
             return RedirectToAction("Index", new { returnUrl });
         }
+
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
     }
 }

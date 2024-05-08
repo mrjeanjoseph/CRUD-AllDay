@@ -80,6 +80,7 @@
     <Compile Include="Entities\EFDbAccess.cs" />
     <Compile Include="Entities\Merchandise.cs" />
     <Compile Include="Entities\ProductVendor.cs" />
+    <Compile Include="Entities\ShippingDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
