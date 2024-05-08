@@ -3,6 +3,7 @@ using Ninject;
 using SportsStore.Domain;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Web.Mvc;
 
 namespace SportsStore.Web.Infrastructure
@@ -17,19 +18,27 @@ namespace SportsStore.Web.Infrastructure
 
         private void AddBindings() {
 
-            //Mock<IMerchRepo> mock = new Mock<IMerchRepo>();
-            //mock.Setup(m => m.Merch).Returns(new List<Merchandise> {
-            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
-            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
-            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
-            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
-            //    new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M}
-            //});
+            //All Merch Items go thru here
+            Mock<IMerchandiseRepository> mockOld = new Mock<IMerchandiseRepository>();
+            mockOld.Setup(m => m.Merchandises).Returns(new List<Merchandise> {
+                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
+                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
+                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
+                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M},
+                new Merchandise{ Name = "Ipad Pro 12.9", Price = 1560M}
+            }); //We're not using this one
 
-            //We will now grab data from the database
             //_kernel.Bind<IMerchRepo>().ToConstant(mock.Object);
             _kernel.Bind<IMerchandiseRepository>().To<EFMerchRepo>();
+            EmailSettings emailsettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
+            };
 
+            _kernel.Bind<IOrderProceessor>().To<EmailOrderProcessor>()
+                .WithConstructorArgument("settings", emailsettings);
+
+            // Attempting another object here
             Mock<IProductVendorRepo> mock = new Mock<IProductVendorRepo>();
             mock.Setup(m => m.ProductVendor).Returns(new List<ProductVendor> {
                 new ProductVendor{ ProductID = 5, StandardPrice = 5233, LastReceiptDate = DateTime.Now}
@@ -37,6 +46,7 @@ namespace SportsStore.Web.Infrastructure
             _kernel.Bind<IProductVendorRepo>().ToConstant(mock.Object);
 
             //_kernel.Bind<IProductVendorRepo>().To<ProductVendorRepository>();
+
         }
 
         public object GetService(Type serviceType) {

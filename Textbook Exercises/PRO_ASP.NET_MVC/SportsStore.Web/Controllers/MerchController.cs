@@ -40,10 +40,6 @@ namespace SportsStore.Web.Controllers
                 CurrentCategory = category
             };
             return View(viewModel);
-            //return View(_repository.Merch
-            //    .OrderBy(m => m.Id)
-            //    .Skip((page - 1) * PageSize)
-            //    .Take(PageSize));
         }
     }
 }
