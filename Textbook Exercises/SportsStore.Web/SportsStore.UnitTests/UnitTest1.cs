@@ -131,5 +131,59 @@ namespace SportsStore.UnitTests
             Assert.IsTrue(result[1].Name == "Product 4" && result[1].Category == "Cat2");
         }
 
+        [TestMethod]
+        public void CanCreateCategories()
+        {
+            // Arrange, create the mock repository
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product { ProductId =  5, Name  = "Product 1", Category = "IPhone"},
+                new Product { ProductId =  10, Name  = "Product 2", Category = "IPhone"},
+                new Product { ProductId =  15, Name  = "Product 3", Category = "Laptop"},
+                new Product { ProductId =  20, Name  = "Product 4", Category = "IPad"},
+                new Product { ProductId =  25, Name  = "Product 5", Category = "SmartWatches"},
+            });
+
+            // Arrange - create a controller
+            NavController target = new NavController(mock.Object);
+
+            //Act - get the set of categories
+            string[] results = ((IEnumerable<string>)target.Menu().Model).ToArray();
+
+            //Assert
+            Assert.AreEqual(results.Length, 4);
+            Assert.AreEqual(results[0], "IPad");
+            Assert.AreEqual(results[1], "IPhone");
+            Assert.AreEqual(results[2], "Laptop");
+            Assert.AreEqual(results[3], "SmartWatches");
+        }
+
+        [TestMethod]
+        public void IndicateSelectedCategory()
+        {
+            // Arrange, create the mock repository
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product { ProductId =  5, Name  = "Product 1", Category = "IPhone"},
+                new Product { ProductId =  10, Name  = "Product 2", Category = "Laptop"},
+            });
+
+
+            //Arrage - Create the controller
+            NavController target = new NavController(mock.Object);
+
+            //Arrage - define the category to selected
+            string categoryToSelect = "IPhone";
+
+            //Action
+            string result = target.Menu(categoryToSelect).ViewBag.SelectedCategory;
+
+            //Assert
+            Assert.AreEqual(categoryToSelect, result);
+        }
+
+
     }
 }
