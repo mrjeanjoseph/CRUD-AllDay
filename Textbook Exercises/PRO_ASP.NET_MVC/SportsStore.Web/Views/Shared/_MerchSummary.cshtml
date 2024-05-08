@@ -8,7 +8,7 @@
             <h2>@Model.Name</h2>
             <span class="pt-3 ">@Model.Description</span>
         </div>
-        <div class="col-sm-4 p-3" style="position:relative">
+        <div class="col-sm-4 p-3">
             <input type="button" class="btn btn-secondary float-end mx-2" value="@Model.Price.ToString("c")" disabled />
 
             @using (Html.BeginForm("AddToCart", "Cart"))

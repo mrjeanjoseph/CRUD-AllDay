@@ -10,18 +10,26 @@
         <tr>
             <th>Quantity</th>
             <th>Item</th>
-            <th class="float-end">Price</th>
-            <th class="float-end">Subtotal</th>
+            <th>Price</th>
+            <th>Subtotal</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var line in Model.Cart.Lines) {
             <tr>
-                <td class="text-center">@line.Quantity</td>
-                <td class="text-center">@line.Merchandise.Name</td>
-                <td class="text-center">@line.Merchandise.Price.ToString("c")</td>
-                <td class="text-center">
+                <td>@line.Quantity</td>
+                <td>@line.Merchandise.Name</td>
+                <td>@line.Merchandise.Price.ToString("c")</td>
+                <td>
                     @((line.Quantity * line.Merchandise.Price).ToString("c"))
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("Id", line.Merchandise.Id)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input type="submit" class="btn btn-danger btn-sm" value="Remove" />
+                    }
                 </td>
             </tr>
         }

@@ -28,7 +28,7 @@ namespace SportsStore.Web.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemoreFromCart(Cart cart, int productId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string returnUrl)
         {
             Product product = _productRepo.Products.FirstOrDefault(p => p.ProductId == productId);
 
