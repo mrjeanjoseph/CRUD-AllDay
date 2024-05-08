@@ -14,6 +14,11 @@ namespace SportsStore.Web.Controllers
             _merchRepo = merchRepo;
         }
 
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
+        }
+
         public ViewResult Index(Cart cart, string returnUrl)
         {
             return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl });
@@ -36,14 +41,5 @@ namespace SportsStore.Web.Controllers
 
             return RedirectToAction("Index", new { returnUrl });
         }
-
-        //private Cart GetCart() {
-        //    Cart cart = (Cart)Session["Cart"];
-        //    if (cart == null) {
-        //        cart = new Cart();
-        //        Session["Cart"] = cart;
-        //    }
-        //    return cart;
-        //}
     }
 }
