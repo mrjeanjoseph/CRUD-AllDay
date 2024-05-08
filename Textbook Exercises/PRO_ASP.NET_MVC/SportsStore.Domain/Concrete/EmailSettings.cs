@@ -14,7 +14,7 @@ namespace SportsStore.Domain
         public string ServerName = "smtp.dvc-server.com";
         public int ServerPort = 587;
         public bool WriteAsFile = false;
-        public string FileLocation = @"c:\dvcdirols";
+        public string FileLocation = @"W:\devtrunk";
     }
 
     public class EmailOrderProcessor : IOrderProceessor
@@ -53,10 +53,13 @@ namespace SportsStore.Domain
                 foreach (var line in cart.Lines)
                 {
                     var subtotal = line.Merchandise.Price * line.Quantity;
-                    body.AppendFormat("{0} * {1} (subtotal: {2:c})", line.Quantity,subtotal);
+                    body.AppendFormat("{0} x {1} (subtotal: {2:c})", 
+                        line.Quantity, line.Merchandise.Name, subtotal);
                 }
 
-                body.AppendFormat("Total order value: {o:c}", cart.ComputeTotalValue()).AppendLine("------------------------------")
+                body.AppendFormat("Total order value: {0:c}", cart
+                    .ComputeTotalValue())
+                    .AppendLine("------------------------------")
                     .AppendLine("Ship To: ")
                     .AppendLine(shippingInfo.FullLegalName)
                     .AppendLine(shippingInfo.Line1)
@@ -65,6 +68,7 @@ namespace SportsStore.Domain
                     .AppendLine(shippingInfo.City)
                     .AppendLine(shippingInfo.State)
                     .AppendLine(shippingInfo.ZipCode ?? "")
+                    .AppendLine(shippingInfo.Country)
                     .AppendLine("------------------------------")
                     .AppendFormat("Gift Wrap: {0}", shippingInfo.GiftWrap ? "Yes" : "No");
 

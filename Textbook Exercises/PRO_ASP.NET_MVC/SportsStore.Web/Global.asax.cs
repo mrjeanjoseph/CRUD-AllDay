@@ -1,6 +1,7 @@
 using SportsStore.Domain;
 using SportsStore.Web.Infrastructure;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 
 namespace SportsStore.Web
@@ -11,6 +12,7 @@ namespace SportsStore.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
