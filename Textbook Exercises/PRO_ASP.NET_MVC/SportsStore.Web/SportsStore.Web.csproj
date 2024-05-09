@@ -180,6 +180,8 @@
     <Content Include="Views\Cart\Checkout_old.cshtml" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
     <Content Include="Views\Cart\Completed.cshtml" />
+    <Content Include="Views\Nav\MenuHorizontal.cshtml" />
+    <Content Include="Views\Nav\MenuFlex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

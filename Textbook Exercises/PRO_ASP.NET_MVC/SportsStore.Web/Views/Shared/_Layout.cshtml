@@ -14,6 +14,9 @@
 
     <div class="card container mt-2">
         @Html.Action("Summary", "Cart")
+        <div class="d-block d-md-none">
+            @Html.Action("Menu", "Nav", new { horizontalLayout = true})
+        </div>
         <div class="card-body">
             <div class="row">
                 <div id="categories" class="col-md-3 d-none d-md-block">

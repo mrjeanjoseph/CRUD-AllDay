@@ -23,7 +23,19 @@ namespace SportsStore.Web.Controllers
                 .Distinct()
                 .OrderBy(c => c);
 
-            return PartialView(categories);
+            return PartialView("MenuFlex", categories);
+        }
+        public PartialViewResult Menu_Old(string category = null, bool horizontalLayout = false)
+        {
+            ViewBag.SelectedCategory = category;
+
+            IEnumerable<string> categories = _repository.Merchandises
+                .Select(c => c.Category)
+                .Distinct()
+                .OrderBy(c => c);
+            string viewName = horizontalLayout ? "MenuHorizontal" : "Menu";
+
+            return PartialView(viewName, categories);
         }
     }
 }
