@@ -8,7 +8,6 @@ namespace SportsStore.Domain
 
         [Required(ErrorMessage = "Please enter a name")]
         [Display(Name = "Full Legal Name")]
-
         public string FullLegalName { get; set; }
 
         [Required(ErrorMessage = "Please enter name and street address")]
