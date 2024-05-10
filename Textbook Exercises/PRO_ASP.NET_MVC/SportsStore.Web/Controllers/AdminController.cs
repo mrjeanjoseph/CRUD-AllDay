@@ -18,6 +18,11 @@ namespace SportsStore.Web.Controllers
             return View(_repository.Merchandises);
         }
 
+        public ViewResult Create()
+        {
+            return View("Edit", new Merchandise());
+        }
+
         public ViewResult Edit(int id)
         {
             Merchandise merchandise = _repository.Merchandises
@@ -37,6 +42,15 @@ namespace SportsStore.Web.Controllers
             {
                 return View(merch);
             }
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            Merchandise deleteMerch = _repository.DeleteMerchandise(id);
+            if(deleteMerch != null)
+                TempData["message"] = string.Format("{0} is removed from the list of Merchandise", deleteMerch.Name);
+            return RedirectToAction("Index");
         }
     }
 }

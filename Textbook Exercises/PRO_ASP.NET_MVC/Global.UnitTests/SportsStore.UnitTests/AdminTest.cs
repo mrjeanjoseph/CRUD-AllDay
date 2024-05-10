@@ -130,5 +130,31 @@ namespace PartOne.Tests.SportsStore.UnitTests
             // Assert - check the method result type
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
+
+        [TestMethod]
+        public void CanDeleteValidMerchs()
+        {
+            // Arrange - create a Merchandise
+            Merchandise merch = new Merchandise { Id = 4, Name = "Pye Kachiman" };
+
+            // Arrange - create the mock repository
+            Mock<IMerchandiseRepository> mock = new Mock<IMerchandiseRepository>();
+            mock.Setup(m => m.Merchandises).Returns(new Merchandise[]
+            {
+                new Merchandise {Id = 5, Name = "Showy Evening Primrose"},
+                new Merchandise {Id = 10, Name = "Mississippi River Wakerobin"},
+                new Merchandise {Id = 15, Name = "Plectocarpon Lichen"},
+            });
+
+            // Arrange - create the controller
+            AdminController target = new AdminController(mock.Object);
+
+            // Act - delete the product
+            target.Delete(merch.Id);
+
+            // Assert - ensure that the repository delete method was
+            // called with the correct Product
+            mock.Verify(m => m.DeleteMerchandise(merch.Id));
+        }
     }
 }
