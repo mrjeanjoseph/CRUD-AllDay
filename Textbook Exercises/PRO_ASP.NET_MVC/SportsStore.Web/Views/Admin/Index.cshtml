@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SportsStore.Domain.Merchandise>
+
+@{
+    ViewBag.Title = "Admin: Merchandise";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="card container">
+    <div class="card-header">
+        <h2 class="text-center">All Merchandise</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-group-divider">
+            <thead class="">
+                <tr>
+                    <th class="text-start">Id</th>
+                    <th>Item Name</th>
+                    <th class="text-start">Price</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model) {
+                <tbody>
+                    <tr>
+                        <th class="text-right">@item.Id</th>
+                        <td>@Html.ActionLink(item.Name, "Edit", new {item.Id})</td>
+                        <td class="text-right">@item.Price.ToString("c")</td>
+                        <td class="text-center">
+                            @using (Html.BeginForm("Delete", "Admin")) {
+                                @Html.Hidden("Id", item.Id)
+                                <input type="submit" class="btn btn-outline-danger" value="Delete" />
+                             }
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+    <div class="card-footer text-center">
+        @Html.ActionLink("Add New Item", "Create", null, new { @class = "btn btn-primary btn-lg m-3"})
+    </div>
+</div>

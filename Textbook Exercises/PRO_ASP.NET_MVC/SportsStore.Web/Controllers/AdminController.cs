@@ -12,7 +12,7 @@ namespace SportsStore.Web.Controllers
             _repository = repoParam;
         }
         // GET: Admin
-        public ActionResult Index()
+        public ViewResult Index()
         {
             return View(_repository.Merchandises);
         }
