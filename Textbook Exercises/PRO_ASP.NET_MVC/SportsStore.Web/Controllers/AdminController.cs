@@ -24,5 +24,19 @@ namespace SportsStore.Web.Controllers
                 .FirstOrDefault(m => m.Id == id);
             return View(merchandise);
         }
+
+        [HttpPost]
+        public ActionResult Edit(Merchandise merch)
+        {
+            if(ModelState.IsValid)
+            {
+                _repository.SaveMerchandise(merch);
+                TempData["message"] = string.Format("{0} has been saved", merch.Id);
+                return RedirectToAction("Index");
+            } else  // There is something wrong with the data values
+            {
+                return View(merch);
+            }
+        }
     }
 }
