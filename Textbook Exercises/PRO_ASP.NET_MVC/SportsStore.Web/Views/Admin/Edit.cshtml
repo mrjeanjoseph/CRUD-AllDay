@@ -17,14 +17,16 @@
                     <div class="row g-3 my-3">
                         <div class="col-sm-3">@(property.DisplayName ?? property.PropertyName)</div>
                         @if(property.PropertyName == "Description") {
-                            <div class="col-sm-9 c-border">@Html.TextArea(property.PropertyName, null,
+                            <div class="col-sm-9">@Html.TextArea(property.PropertyName, null,
                             new { @class = "form-control", rows = 6})
                             </div> 
                         } else {
-                            <div class="col-sm-9 c-border">@Html.TextBox(property.PropertyName, null,
+                            <div class="col-sm-9">@Html.TextBox(property.PropertyName, null,
                             new { @class = "form-control"})
                             </div> 
                         }
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9"> @Html.ValidationMessage(property.PropertyName)</div>
                     </div>
                 }
             }

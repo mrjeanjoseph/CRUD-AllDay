@@ -31,7 +31,7 @@ namespace SportsStore.Web.Controllers
             if(ModelState.IsValid)
             {
                 _repository.SaveMerchandise(merch);
-                TempData["message"] = string.Format("{0} has been saved", merch.Id);
+                TempData["message"] = string.Format("Changes to {0} details has been saved", merch.Name);
                 return RedirectToAction("Index");
             } else  // There is something wrong with the data values
             {

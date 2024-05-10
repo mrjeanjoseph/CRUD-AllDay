@@ -8,13 +8,19 @@ namespace SportsStore.Domain
         [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Please enter a product name")]
         public string Name { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Please enter a description")]
         public string Description { get; set; }
-        
+
+        [Required(ErrorMessage = "Please enter a category")]
         public string Category {  get; set; }
+
+        [Required, Range(0.01, double.MaxValue, ErrorMessage = "Please enter a positive value")]
         public decimal Price { get; set; }
+
         public bool IsValid { get; set; }
     }
 }
