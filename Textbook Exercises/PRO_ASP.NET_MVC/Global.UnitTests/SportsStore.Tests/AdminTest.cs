@@ -2,12 +2,14 @@
 using Moq;
 using SportsStore.Domain;
 using SportsStore.Web.Controllers;
+using SportsStore.Web.Infrastructure;
+using SportsStore.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
 //All passed
-namespace PartOne.Tests.SportsStore.UnitTests
+namespace SportsStore.UnitTests
 {
     [TestClass]
     public class AdminTest
@@ -155,6 +157,56 @@ namespace PartOne.Tests.SportsStore.UnitTests
             // Assert - ensure that the repository delete method was
             // called with the correct Product
             mock.Verify(m => m.DeleteMerchandise(merch.Id));
+        }
+
+        [TestMethod]
+        public void CanLoginWithValidCreds()
+        {
+            // Arrange - create a mock authentication provider
+            Mock<IAuthProvider> mock = new Mock<IAuthProvider>();
+            mock.Setup(m => m.Authenticate("admin", "secret")).Returns(true);
+
+            // Arrange - create the view model
+            LoginViewModel model = new LoginViewModel
+            {
+                UserName = "admin",
+                Password = "secret",
+            };
+
+            // Arrange - create the controller
+            AccountController target = new AccountController(mock.Object);
+
+            // Act - authenticate using valid credentials
+            ActionResult result = target.Login(model, "/MyUrl");
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(RedirectResult));
+            Assert.AreEqual("/MyUrl", ((RedirectResult)result).Url);
+        }
+
+        [TestMethod]
+        public void CannotLoginWithInvalidCreds()
+        {
+            // Arrange - create a mock authentication provider
+            Mock<IAuthProvider> mock = new Mock<IAuthProvider>();
+            mock.Setup(m => m.Authenticate("invaliduser", "invalidpass")).Returns(true);
+
+            // Arrange - create the view model
+            LoginViewModel model = new LoginViewModel
+            {
+                UserName = "invaliduser",
+                Password = "invalidpass",
+            };
+
+            // Arrange - create the controller
+            AccountController target = new AccountController(mock.Object);
+
+            // Act - authenticate using valid credentials
+            ActionResult result = target.Login(model, "/MyUrl");
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(ActionResult));
+            Assert.IsFalse(((ViewResult)result).ViewData.ModelState.IsValid); // Action or View Result??
         }
     }
 }

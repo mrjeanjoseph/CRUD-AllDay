@@ -146,9 +146,9 @@
     <Compile Include="Chapter6.Tests\EssentialTool.Test.cs" />
     <Compile Include="Chapter6.Tests\LinqValueCalc.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SportsStore.UnitTests\AdminTest.cs" />
-    <Compile Include="SportsStore.UnitTests\PageLinksTests.cs" />
-    <Compile Include="SportsStore.UnitTests\CartTests.cs" />
+    <Compile Include="SportsStore.Tests\AdminTest.cs" />
+    <Compile Include="SportsStore.Tests\PageLinksTests.cs" />
+    <Compile Include="SportsStore.Tests\CartTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

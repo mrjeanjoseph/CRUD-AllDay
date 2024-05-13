@@ -7,7 +7,7 @@ using System.Linq;
 using System.Web.Mvc;
 
 //All passed
-namespace PartOne.Tests.SportsStore.UnitTests
+namespace SportsStore.UnitTests
 {
     [TestClass]
     public class CartTests
