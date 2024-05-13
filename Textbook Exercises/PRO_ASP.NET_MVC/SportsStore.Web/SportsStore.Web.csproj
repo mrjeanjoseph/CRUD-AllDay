@@ -138,6 +138,7 @@
     <Content Include="ReadMe.txt" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\homesite.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

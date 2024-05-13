@@ -15,7 +15,7 @@
     <div class="card container mt-2">
         @Html.Action("Summary", "Cart")
         <div class="d-block d-md-none">
-            @Html.Action("Menu", "Nav", new { horizontalLayout = true})
+            @Html.Action("Menu", "Nav", new { horizontalLayout = true })
         </div>
         <div class="card-body">
             <div class="row">
@@ -38,6 +38,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/global")
     @RenderSection("scripts", required: false)
 </body>
 

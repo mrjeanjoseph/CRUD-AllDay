@@ -22,5 +22,8 @@ namespace SportsStore.Domain
         public decimal Price { get; set; }
 
         public bool IsValid { get; set; }
+
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
     }
 }

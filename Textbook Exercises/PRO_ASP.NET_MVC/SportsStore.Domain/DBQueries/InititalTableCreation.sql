@@ -37,7 +37,7 @@ BEGIN
 
 
 END	
-GO 3
+GO 
 RETURN;
 
 
@@ -60,3 +60,14 @@ BEGIN
 	SELECT * FROM SportsStore.dbo.Merchandises
 
 END
+
+
+
+
+
+
+SELECT * FROM SportsStore.dbo.[Merchandises]
+
+ALTER TABLE SportsStore.dbo.[Merchandises]
+	ADD [ImageData]		VARBINARY(MAX) NULL,
+		[ImageMimeType] VARCHAR(50);
