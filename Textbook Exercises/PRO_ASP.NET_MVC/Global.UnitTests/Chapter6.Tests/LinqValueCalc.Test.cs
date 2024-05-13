@@ -4,7 +4,7 @@ using Moq;
 using System;
 using System.Linq;
 
-namespace Global.UnitTests {
+namespace ChapterSix.UnitTests {
 
     [TestClass]
     public class LinqValueCalc {

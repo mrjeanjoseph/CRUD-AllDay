@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Global.UnitTests {
+namespace ChapterSix.UnitTests {
     [TestClass]
     public class EssentialTools {
 
