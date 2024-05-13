@@ -1,5 +1,6 @@
 ﻿using SportsStore.Domain;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SportsStore.Web.Models
 {
@@ -20,5 +21,11 @@ namespace SportsStore.Web.Models
     {
         public Cart Cart { get; set; }
         public string ReturnUrl { get; set; }
+    }
+
+    public class LoginViewModel
+    {
+        [Required] public string UserName { get; set; }
+        [Required] public string Password { get; set; }
     }
 }

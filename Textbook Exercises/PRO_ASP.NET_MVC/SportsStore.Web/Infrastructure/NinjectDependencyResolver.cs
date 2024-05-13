@@ -38,6 +38,8 @@ namespace SportsStore.Web.Infrastructure
             _kernel.Bind<IOrderProceessor>().To<EmailOrderProcessor>()
                 .WithConstructorArgument("settings", emailsettings);
 
+            _kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
+
             // Attempting another object here
             Mock<IProductVendorRepo> mock = new Mock<IProductVendorRepo>();
             mock.Setup(m => m.ProductVendor).Returns(new List<ProductVendor> {
