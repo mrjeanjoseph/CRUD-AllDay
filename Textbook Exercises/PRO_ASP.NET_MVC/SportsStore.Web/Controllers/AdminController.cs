@@ -1,5 +1,6 @@
 ﻿using SportsStore.Domain;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace SportsStore.Web.Controllers
@@ -32,10 +33,16 @@ namespace SportsStore.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Merchandise merch)
+        public ActionResult Edit(Merchandise merch, HttpPostedFileBase image = null)
         {
             if(ModelState.IsValid)
             {
+                if(image != null)
+                {
+                    merch.ImageMimeType = image.ContentType;
+                    merch.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(merch.ImageData, 0, image.ContentLength);
+                }
                 _repository.SaveMerchandise(merch);
                 TempData["message"] = string.Format("Changes to {0} details has been saved", merch.Name);
                 return RedirectToAction("Index");

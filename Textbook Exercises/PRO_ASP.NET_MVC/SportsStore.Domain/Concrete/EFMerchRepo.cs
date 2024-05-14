@@ -10,19 +10,21 @@ namespace SportsStore.Domain
             get { return context.Merchandise; }
         }
 
-        public void SaveMerchandise(Merchandise merchandise)
+        public void SaveMerchandise(Merchandise merch)
         {
-            if (merchandise.Id == 0)
-                context.Merchandise.Add(merchandise);
+            if (merch.Id == 0)
+                context.Merchandise.Add(merch);
             else { 
-                Merchandise dbEntry = context.Merchandise.Find(merchandise.Id);
+                Merchandise dbEntry = context.Merchandise.Find(merch.Id);
                 if(dbEntry != null )
                 {
-                    dbEntry.Name = merchandise.Name;
-                    dbEntry.Description = merchandise.Description;
-                    dbEntry.Price = merchandise.Price;
-                    dbEntry.Category = merchandise.Category;
-                    dbEntry.IsValid = merchandise.IsValid;
+                    dbEntry.Name = merch.Name;
+                    dbEntry.Description = merch.Description;
+                    dbEntry.Price = merch.Price;
+                    dbEntry.Category = merch.Category;
+                    dbEntry.IsValid = merch.IsValid;
+                    dbEntry.ImageData = merch.ImageData;
+                    dbEntry.ImageMimeType = merch.ImageMimeType;
                 }
             }
             context.SaveChanges();
