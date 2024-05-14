@@ -1,5 +1,6 @@
 ﻿using SportsStore.Domain;
 using SportsStore.Web.Models;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -40,6 +41,16 @@ namespace SportsStore.Web.Controllers
                 CurrentCategory = category
             };
             return View(viewModel);
+        }
+
+        public FileContentResult GetImage(int id)
+        {
+            Merchandise merch = _merchRepo.Merchandises
+                .FirstOrDefault(m => m.Id == id);
+            if (merch != null)
+                return File(merch.ImageData, merch.ImageMimeType);
+            else
+                return null;
         }
     }
 }

@@ -11,6 +11,7 @@ using System.Web.Mvc;
 //All passed
 namespace SportsStore.UnitTests
 {
+
     [TestClass]
     public class AdminTest
     {
