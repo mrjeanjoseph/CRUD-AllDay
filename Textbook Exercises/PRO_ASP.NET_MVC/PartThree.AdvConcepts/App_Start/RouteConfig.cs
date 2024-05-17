@@ -10,7 +10,7 @@ namespace AdvConcepts {
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                new string[] { "Introduction.Controllers" }
+                new string[] { "AdvConcepts.Controllers" }
             );
         }
     }

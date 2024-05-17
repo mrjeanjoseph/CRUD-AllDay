@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace PartThree.AdvConcepts.Areas.Chapter14
+namespace Chapter14.AdvConcepts
 {
     public class Chapter14AreaRegistration : AreaRegistration 
     {
@@ -15,9 +15,9 @@ namespace PartThree.AdvConcepts.Areas.Chapter14
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Chapter14_default",
-                "Chapter14/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "AdvConcepts",
+                "AdvConcepts/{controller}/{action}/{id}",
+                new { Controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
