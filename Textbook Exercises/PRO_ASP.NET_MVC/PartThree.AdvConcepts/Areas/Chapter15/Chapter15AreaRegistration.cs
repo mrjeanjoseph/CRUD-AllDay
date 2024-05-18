@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace Chapter14.OverviewOfMVC
+namespace Chapter15.URLsAndRoutes
 {
-    public class Chapter14AreaRegistration : AreaRegistration 
+    public class Chapter15AreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Chapter14";
+                return "Chapter15";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "OverviewOfMVC",
-                "Chapter14/{controller}/{action}/{id}",
+                "URLsAndRoutes",
+                "URLsAndRoutes/{controller}/{action}/{id}",
                 new { Controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

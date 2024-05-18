@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Chapter14.AdvConcepts.Controllers
+namespace Chapter14.OverviewOfMVC.Controllers
 {
     public class HomeController : Controller
     {
