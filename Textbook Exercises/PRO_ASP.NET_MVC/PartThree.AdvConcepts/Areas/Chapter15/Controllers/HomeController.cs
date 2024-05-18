@@ -12,5 +12,23 @@ namespace Chapter15.URLsAndRoutes.Controllers
 
             return View("ActionName");
         }
+
+        public ActionResult CustomVariable(string id = "DefaultId")
+        {
+            ViewBag.Controller = "Home";
+            ViewBag.Action = "CustomVariable";
+            //ViewBag.CustomVariable = id ?? "<No Value Provided>";
+            ViewBag.CustomVariable = id;
+
+            return View();
+        }
+        public ActionResult CustomVariableOld()
+        {
+            ViewBag.Controller = "Home";
+            ViewBag.Action = "CustomVariable";
+            ViewBag.CustomVariable = RouteData.Values["id"];
+
+            return View();
+        }
     }
 }

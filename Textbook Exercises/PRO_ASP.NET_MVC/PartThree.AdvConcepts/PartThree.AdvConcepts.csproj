@@ -94,6 +94,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Chapter14\Chapter14AreaRegistration.cs" />
     <Compile Include="Areas\Chapter14\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter15\AnotherController\HomeController.cs" />
     <Compile Include="Areas\Chapter15\Chapter15AreaRegistration.cs" />
     <Compile Include="Areas\Chapter15\Controllers\AdminController.cs" />
     <Compile Include="Areas\Chapter15\Controllers\CustomerController.cs" />
@@ -109,6 +110,7 @@
     <Content Include="Areas\Chapter14\Views\Home\Index.cshtml" />
     <Content Include="Areas\Chapter15\Views\web.config" />
     <Content Include="Areas\Chapter15\Views\Shared\ActionName.cshtml" />
+    <Content Include="Areas\Chapter15\Views\Home\CustomVariable.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -124,7 +126,6 @@
     <Folder Include="Areas\Chapter15\Data\" />
     <Folder Include="Areas\Chapter15\Views\Admin\" />
     <Folder Include="Areas\Chapter15\Views\Customer\" />
-    <Folder Include="Areas\Chapter15\Views\Home\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
