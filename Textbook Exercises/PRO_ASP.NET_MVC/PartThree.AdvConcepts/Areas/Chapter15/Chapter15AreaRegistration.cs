@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using Chapter15.URLsAndRoutes.Infrastructure;
+using System.Web.Mvc;
+using System.Web.Mvc.Routing.Constraints;
+using System.Web.Routing;
 
 namespace Chapter15.URLsAndRoutes
 {
@@ -15,6 +18,24 @@ namespace Chapter15.URLsAndRoutes
 
         public override void RegisterArea(AreaRegistrationContext routes)
         {
+            routes.MapRoute("ChromeRoute", "{*catchall}",
+                new { Controller = "Home", action = "Index"},
+                new { customConstraint = new UserAgentConstraint("Chrome")},
+                new[] { "Chapter15.URLsAndRoutes.AnotherControllers" });
+
+            routes.MapRoute("MyRoute", "URLsAndRoutes/{controller}/{action}/{id}/{*catchall}",
+                new { Controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new { controller = "^H.*", action = "^Index$|^About$",
+                      httpMethod = new HttpMethodConstraint("GET"),
+                      //id = new RangeRouteConstraint(10, 20) },
+                      id = new CompoundRouteConstraint(
+                          new IRouteConstraint[]
+                          {
+                              new AlphaRouteConstraint(),
+                              new MinLengthRouteConstraint(6)
+                          })},
+                new[] { "Chapter15.URLsAndRoutes.Controllers" });
+
             routes.MapRoute("YetOtherRoute", "URLsAndRoutes/{controller}/{action}/{id}/{*catchall}",
                 new { Controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "Chapter15.URLsAndRoutes.AnotherControllers" })
@@ -24,7 +45,7 @@ namespace Chapter15.URLsAndRoutes
                 new { Controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "Chapter15.URLsAndRoutes.AnotherControllers" });
 
-            routes.MapRoute("MyRoute", "URLsAndRoutes/{controller}/{action}/{id}/{*catchall}",
+            routes.MapRoute("", "URLsAndRoutes/{controller}/{action}/{id}/{*catchall}",
                 new { Controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "Chapter15.URLsAndRoutes.Controllers" });
         }

@@ -99,6 +99,7 @@
     <Compile Include="Areas\Chapter15\Controllers\AdminController.cs" />
     <Compile Include="Areas\Chapter15\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Chapter15\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter15\Infrastructure\UserAgentConstraint.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

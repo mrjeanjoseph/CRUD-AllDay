@@ -92,32 +92,32 @@ namespace ChapterFifteen.Tests
         public void TestIncomingRoutes()
         {
             // check for the url that is hoped for
-            TestRouteMatch("~/Admin/Index", "Admin", "Index");
+            TestRouteMatch("~/URLsAndRoutes/Admin/Index", "Admin", "Index");
 
             // check that the values are being obtained from the segments
             TestRouteMatch("~/One/Two", "One", "Two");
 
             // ensure that too many or too few segments fails to match
-            TestRouteFail("/Admin/Index/Segment");
-            TestRouteFail("/Admin");
+            TestRouteFail("/URLsAndRoutes/Admin/Index/Segment");
+            TestRouteFail("/URLsAndRoutes/Admin");
         }
 
         [TestMethod]
         public void TestingStaticSegments()
         {
 
-            TestRouteMatch("~/", "Home", "Index");
-            TestRouteMatch("~/Customer", "Customer", "Index");
-            TestRouteMatch("~/Customer/List", "Customer", "List");
-            TestRouteFail("~/Customer/List/All");
-            TestRouteMatch("~/Shop/Index", "Home", "Index");
+            TestRouteMatch("~URLsAndRoutes", "Home", "Index");
+            TestRouteMatch("~URLsAndRoutes/Customer", "Customer", "Index");
+            TestRouteMatch("~URLsAndRoutes/Customer/List", "Customer", "List");
+            TestRouteFail("~URLsAndRoutes/Customer/List/All");
+            TestRouteMatch("~URLsAndRoutes/Shop/Index", "Home", "Index");
         }
 
         [TestMethod]
         public void CustomSegmentVariables()
         {
 
-            TestRouteMatch("~/URLsAndRoutes/", "Home", "Index", new {id = "DefaultId"});
+            TestRouteMatch("~/URLsAndRoutes", "Home", "Index", new {id = "DefaultId"});
             TestRouteMatch("~/URLsAndRoutes/Customer", "Customer", "Index", 
                 new { id = "DefaultId" });
             TestRouteMatch("~/URLsAndRoutes/Customer/List", "Customer", "List", 
@@ -130,7 +130,7 @@ namespace ChapterFifteen.Tests
         [TestMethod]
         public void OptionalUrlSegments()
         {
-            TestRouteMatch("~/URLsAndRoutes/", "Home", "Index");
+            TestRouteMatch("~/URLsAndRoutes", "Home", "Index");
             TestRouteMatch("~/URLsAndRoutes/Customer", "Customer", "Index");
             TestRouteMatch("~/URLsAndRoutes/Customer/List", "Customer", "List");
             TestRouteMatch("~/URLsAndRoutes/Customer/List/All", "Customer", "List",
@@ -141,7 +141,7 @@ namespace ChapterFifteen.Tests
         [TestMethod]
         public void CatchallSegmentVariables()
         {
-            TestRouteMatch("~/URLsAndRoutes/", "Home", "Index");
+            TestRouteMatch("~/URLsAndRoutes", "Home", "Index");
             TestRouteMatch("~/URLsAndRoutes/Customer", "Customer", "Index");
             TestRouteMatch("~/URLsAndRoutes/Customer/List", "Customer", "List");
             TestRouteMatch("~/URLsAndRoutes/Customer/List/All", "Customer", "List",
@@ -150,6 +150,25 @@ namespace ChapterFifteen.Tests
                 new { id = "All", catchall = "Delete"});
             TestRouteMatch("~/URLsAndRoutes/Customer/List/All/Delete/Perm", "Customer", "List",
                 new { id = "All", catchall = "Delete/Perm"});
+        }
+
+        [TestMethod]
+        public void TestingRouteConstraints()
+        {
+            TestRouteMatch("~/URLsAndRoutes", "Home", "Index");
+            TestRouteMatch("~/URLsAndRoutes/Home", "Home", "Index");
+            TestRouteMatch("~/URLsAndRoutes/Home/Index", "Home", "Index");
+
+            TestRouteMatch("~/URLsAndRoutes/About", "Home", "About");
+            TestRouteMatch("~/URLsAndRoutes/About/MyId", "Home", "About", 
+                new {id = "MyId"});
+            TestRouteMatch("~/URLsAndRoutes/About/MyId/More/Segments", "Home", "About", 
+                new {id = "MyId", catchall = "More/Segments" });
+
+            TestRouteFail("~/Home/OtherAction");
+            TestRouteFail("~/Account/Index");
+            TestRouteFail("~/Account/About");
+
         }
     }
 }

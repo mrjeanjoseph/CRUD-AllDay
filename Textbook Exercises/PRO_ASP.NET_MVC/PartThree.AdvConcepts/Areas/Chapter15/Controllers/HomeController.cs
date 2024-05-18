@@ -22,10 +22,10 @@ namespace Chapter15.URLsAndRoutes.Controllers
 
             return View();
         }
-        public ActionResult CustomVariableOld()
+        public ActionResult About()
         {
             ViewBag.Controller = "Home";
-            ViewBag.Action = "CustomVariable";
+            ViewBag.Action = "About";
             ViewBag.CustomVariable = RouteData.Values["id"];
 
             return View();
