@@ -100,6 +100,7 @@
     <Compile Include="Areas\Chapter15\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Chapter15\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter15\Infrastructure\UserAgentConstraint.cs" />
+    <Compile Include="Areas\Chapter16\Chapter16AreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -113,6 +114,7 @@
     <Content Include="Areas\Chapter15\Views\Shared\ActionName.cshtml" />
     <Content Include="Areas\Chapter15\Views\Home\CustomVariable.cshtml" />
     <Content Include="Areas\Chapter15\Views\Customer\index.cshtml" />
+    <Content Include="Areas\Chapter16\Views\web.config" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -127,6 +129,9 @@
     <Folder Include="Areas\Chapter14\Views\Shared\" />
     <Folder Include="Areas\Chapter15\Data\" />
     <Folder Include="Areas\Chapter15\Views\Admin\" />
+    <Folder Include="Areas\Chapter16\Controllers\" />
+    <Folder Include="Areas\Chapter16\Data\" />
+    <Folder Include="Areas\Chapter16\Views\Shared\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
