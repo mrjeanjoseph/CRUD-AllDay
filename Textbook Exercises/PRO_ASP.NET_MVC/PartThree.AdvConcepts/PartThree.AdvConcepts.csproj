@@ -97,6 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Chapter16\StaticContent.html" />
     <Content Include="Content\site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\site.js" />
@@ -116,6 +117,7 @@
     <Compile Include="Areas\Chapter16\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Chapter16\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter16\Controllers\LegacyController.cs" />
+    <Compile Include="Areas\Chapter16\Infrastructure\CustomRouteHandler.cs" />
     <Compile Include="Areas\Chapter16\Infrastructure\LegacyRoute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

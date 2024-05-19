@@ -1,5 +1,4 @@
-﻿using Microsoft.Ajax.Utilities;
-using System;
+﻿using System;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,7 +20,7 @@ namespace Chapter16.URLsAndRoutes
             RouteData result = null;
 
             string requestedUrl = httpContext.Request.AppRelativeCurrentExecutionFilePath;
-            if(_urls.Contains(requestedUrl, StringComparer.OrdinalIgnoreCase))
+            if (_urls.Contains(requestedUrl, StringComparer.OrdinalIgnoreCase))
             {
                 result = new RouteData(this, new MvcRouteHandler());
                 result.Values.Add("controller", "Legacy");
@@ -32,12 +31,12 @@ namespace Chapter16.URLsAndRoutes
         }
 
         public override VirtualPathData GetVirtualPath(
-            RequestContext requestContext, 
+            RequestContext requestContext,
             RouteValueDictionary values)
         {
             VirtualPathData result = null;
 
-            if(values.ContainsKey("legacyURL") &&
+            if (values.ContainsKey("legacyURL") &&
                 _urls.Contains((string)values["legacyUrl"], StringComparer.OrdinalIgnoreCase))
             {
                 result = new VirtualPathData(this, new UrlHelper(requestContext).
