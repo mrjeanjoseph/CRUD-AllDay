@@ -2,11 +2,11 @@
 
 namespace Chapter15.URLsAndRoutes.Controllers
 {
-    //[RouteArea("TempController")]
+    [RouteArea("URLsAndRoutes2")]
     [RoutePrefix("Users")]
     public class CustomerController : Controller
     {
-        [Route("TempActionResult")] // Can't seem to get this one to work.
+        [Route("~/TempActionResult")] // Can't seem to get this one to work.
         public ActionResult Index()
         {
             ViewBag.Controller = this.ControllerContext.RouteData.Values["controller"].ToString();

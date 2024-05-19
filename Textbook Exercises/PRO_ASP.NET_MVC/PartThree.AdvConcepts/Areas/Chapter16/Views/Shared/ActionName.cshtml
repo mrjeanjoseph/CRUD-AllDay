@@ -7,13 +7,28 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>Chapter 16 - URLsAndRoutes</title>
 </head>
 <body>
-    <h1>Chapter 16</h1>
+    <h1>Chapter 16 - URLsAndRoutes</h1>
     <div>The Area Name is: @ViewBag.AreaName</div>
-    <div>The controller is: @ViewBag.ControllerName</div>
-    <div>The action is: @ViewBag.ActionName</div>
-    <div>@Html.ActionLink("This is an outgoing URL", "CustomVariable", new { area = "Ch16URLsAndRoutes" } )</div>
+    <div>The Controller is: @ViewBag.ControllerName</div>
+    <div>The Action is: @ViewBag.ActionName</div>
+    <div>
+        @Html.ActionLink("Go to Custom Variables", "CustomVariable", "Home",
+            null)
+    </div>
+    <div>
+        @Html.ActionLink("Go to Index Page", "Index", "Customer",
+            null)
+    </div>
+    <div>
+        @Html.ActionLink("Pass an Id Parameter", "CustomVariable", "Home",
+            null, new {id = "Hello"})
+    </div>
+    <div>
+        @Html.ActionLink("HTML Attributes", "CustomVariable", "Home",
+            null, new {id = "MyAnchorID", @class="MyCssClass"})
+    </div>
 </body>
 </html>
