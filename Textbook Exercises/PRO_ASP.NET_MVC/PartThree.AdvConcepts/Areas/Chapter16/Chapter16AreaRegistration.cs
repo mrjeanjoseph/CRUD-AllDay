@@ -9,9 +9,12 @@ namespace Chapter16.URLsAndRoutes
             get { return "Chapter16"; }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext routes)
         {
-            context.MapRoute("Default_Route", "Ch16URLsAndRoutes/{controller}/{action}/{id}",
+            routes.MapRoute("MyRoute", "{controller}/{action}");
+            routes.MapRoute("MyOtherRoute", "App/{action}", new { controller = "Customer" });
+
+            routes.MapRoute("Default_Route", "Ch16URLsAndRoutes/{controller}/{action}/{id}",
                 new {controller ="Home", action="Index", id=UrlParameter.Optional },
                 new[] { "Chapter16.URLsAndRoutes.Controllers" });
         }

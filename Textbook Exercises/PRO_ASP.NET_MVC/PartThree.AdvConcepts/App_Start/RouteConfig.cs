@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Chapter16.URLsAndRoutes;
+using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace AdvConcepts {
@@ -8,7 +9,9 @@ namespace AdvConcepts {
 
             routes.MapMvcAttributeRoutes();
 
-            //AreaRegistration.RegisterAllAreas();
+            routes.Add(new LegacyRoute(
+                "~/NewController/NewFinalLink",
+                "~/OldController/OldFinalLink"));
 
             routes.MapRoute(
                 name: "Default",

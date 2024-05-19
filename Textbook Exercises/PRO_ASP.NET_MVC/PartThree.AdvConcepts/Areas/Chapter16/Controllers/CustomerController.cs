@@ -24,6 +24,12 @@ namespace Chapter16.URLsAndRoutes.Controllers
             return View("ActionName");
         }
 
+        [Route("Add/{user}/{password:alpha:length(6)}", Name = "CreateRoute")]
+        public string ChangePass(string user, string password)
+        {
+            return string.Format("Change Pass Method - User: {0}, Pass: {1}", user, password);
+        }
+
         public ActionResult CustomVariable(string customerId = "DefaultId")
         {
             ViewBag.AreaName = "URLs and Routes";

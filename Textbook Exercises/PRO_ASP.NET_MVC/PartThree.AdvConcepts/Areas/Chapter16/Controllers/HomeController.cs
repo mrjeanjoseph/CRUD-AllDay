@@ -33,5 +33,13 @@ namespace Chapter16.URLsAndRoutes.Controllers
 
             return View();
         }
+
+        public ActionResult MyActionMethod()
+        {
+            string myActionUrl = Url.Action("Index", new { id = "MyId" });
+            string myRouteRul = Url.RouteUrl(new { controller = "Home", action = "Index" });
+            //... Do something cool with the urls
+            return View();
+        }
     }
 }

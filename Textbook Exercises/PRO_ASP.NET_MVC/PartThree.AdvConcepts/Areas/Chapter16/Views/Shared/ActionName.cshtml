@@ -15,6 +15,22 @@
     <div>The Controller is: @ViewBag.ControllerName</div>
     <div>The Action is: @ViewBag.ActionName</div>
     <div>
+        This is a URL: @Html.ActionLink("Click me", "GetLegacyURL",
+                      new { legacyURL = "~/articles/about_legacy_urls.com"})
+    </div>
+    <div>
+        @Html.RouteLink("Specific Route Link", "MyOtherRoute", "Index", "TestPage") 
+    </div>
+    <div>
+        This is a URL: @Url.Action("CustomVariable", "Home", new {id = "MyId"})
+        <br/>This is a URL: @Url.Action("TestMethod", "Customer", new {id = "MyId"})
+    </div>
+    <div>
+        @Html.ActionLink("FullQualifiedURLs - Do not Use", "CustomVariable", "Home", 
+            "https", "mrjeanjoseph.github.io", "myFragmentName",
+            new {id = "MyId"}, new { id = "MyAnchorID", @class = "MyCssClass" })
+    </div>
+    <div>
         @Html.ActionLink("Go to Custom Variables", "CustomVariable", "Home",
             null)
     </div>
@@ -24,11 +40,11 @@
     </div>
     <div>
         @Html.ActionLink("Pass an Id Parameter", "CustomVariable", "Home",
-            null, new {id = "Hello"})
+            null, new { id = "Hello" })
     </div>
     <div>
         @Html.ActionLink("HTML Attributes", "CustomVariable", "Home",
-            null, new {id = "MyAnchorID", @class="MyCssClass"})
+            null, new { id = "MyAnchorID", @class = "MyCssClass" })
     </div>
 </body>
 </html>
