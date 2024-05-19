@@ -17,6 +17,17 @@ namespace Chapter15.URLsAndRoutes
         }
 
         public override void RegisterArea(AreaRegistrationContext routes)
+        { // For Attribute routing
+
+            routes.MapRoute("", "URLsAndRoutes/{controller}/{action}/{id}",
+                new { Controller = "Home", action = "Index", 
+                    id = UrlParameter.Optional },
+                new[] { "Chapter15.URLsAndRoutes.Controllers" });
+
+        }
+        
+
+        public void RegisterAreaOldOne(AreaRegistrationContext routes)
         {
             routes.MapRoute("ChromeRoute", "{*catchall}",
                 new { Controller = "Home", action = "Index"},
@@ -50,7 +61,7 @@ namespace Chapter15.URLsAndRoutes
                 new[] { "Chapter15.URLsAndRoutes.Controllers" });
         }
 
-        public void RegisterAreaOld(AreaRegistrationContext routes)
+        public void RegisterAreaOldTwo(AreaRegistrationContext routes)
         { // This is old code - We're not using this anywhere --
 
             routes.MapRoute("ShopSchema2", "Shop/OldAction",

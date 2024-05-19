@@ -15,7 +15,7 @@ namespace Chapter14.OverviewOfMVC
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "OverviewOfMVC",
+                "",
                 "Chapter14/{controller}/{action}/{id}",
                 new { Controller = "Home", action = "Index", id = UrlParameter.Optional }
             );

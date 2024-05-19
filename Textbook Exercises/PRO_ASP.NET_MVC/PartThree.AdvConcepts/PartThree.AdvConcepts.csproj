@@ -112,6 +112,7 @@
     <Content Include="Areas\Chapter15\Views\web.config" />
     <Content Include="Areas\Chapter15\Views\Shared\ActionName.cshtml" />
     <Content Include="Areas\Chapter15\Views\Home\CustomVariable.cshtml" />
+    <Content Include="Areas\Chapter15\Views\Customer\index.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -126,7 +127,6 @@
     <Folder Include="Areas\Chapter14\Views\Shared\" />
     <Folder Include="Areas\Chapter15\Data\" />
     <Folder Include="Areas\Chapter15\Views\Admin\" />
-    <Folder Include="Areas\Chapter15\Views\Customer\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
