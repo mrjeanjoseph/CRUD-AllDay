@@ -14,11 +14,13 @@ namespace Chapter16.URLsAndRoutes
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
-            context.MapRoute(
-                "",
-                "URLsAndRoutes/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
+            context.MapRoute("NewRoute", "App/Do{action}",
+                new { area = "URLsAndRoutes", controller = "Home" });
+
+            context.MapRoute("Default_Route", "Ch16URLsAndRoutes/{controller}/{action}/{id}",
+                new { area = "URLsAndRoutes", controller ="Home", action="Index", id=UrlParameter.Optional });
         }
+
+        //There is an optimization package that needs to be downloaded.
     }
 }

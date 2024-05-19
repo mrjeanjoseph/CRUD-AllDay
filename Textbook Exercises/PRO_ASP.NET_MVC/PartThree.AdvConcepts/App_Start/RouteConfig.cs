@@ -8,7 +8,7 @@ namespace AdvConcepts {
 
             routes.MapMvcAttributeRoutes();
 
-            AreaRegistration.RegisterAllAreas();
+            //AreaRegistration.RegisterAllAreas();
 
             routes.MapRoute(
                 name: "Default",
