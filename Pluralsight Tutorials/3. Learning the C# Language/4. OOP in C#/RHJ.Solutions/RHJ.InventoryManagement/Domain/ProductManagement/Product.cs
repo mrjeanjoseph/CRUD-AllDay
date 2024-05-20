@@ -3,7 +3,7 @@ using System.Text;
 
 namespace RHJ.InventoryManagement.Domain
 {
-    public class Product
+    public partial class Product
     {
         private int id;
         private string name = string.Empty;
@@ -75,10 +75,8 @@ namespace RHJ.InventoryManagement.Domain
 
         }
 
-        public void IncreaseStock()
-        {
-            AmountInStock++;
-        }
+        public void IncreaseStock() => AmountInStock++;
+        
 
         public void IncreaseStock(int amount)
         {
@@ -92,10 +90,8 @@ namespace RHJ.InventoryManagement.Domain
                 Log($"{CreateSimpleProductRepresentation} stock overflow. " +
                     $"{newStock - AmountInStock} item(s) ordered that could not be stored");
             }
-            if (AmountInStock > 10)
-            {
-                IsBelowStockThreshold = false;
-            }
+            if (AmountInStock > 10)            
+                IsBelowStockThreshold = false;            
         }
 
         public void DecreaseStock(int items, string reason)
@@ -141,26 +137,6 @@ namespace RHJ.InventoryManagement.Domain
             }
             return stringBuilder.ToString();
             //return DisplayDetailsFull("");
-        }
-
-
-        private string CreateSimpleProductRepresentation()
-        {
-            // This could be written to a file
-            return $"Product {Id} ( {Name} )";
-        }
-
-        private void Log(string message)
-        {
-            Console.WriteLine(message);
-        }
-
-        private void UpdateLowStock()
-        {
-            if (AmountInStock < 10) // For now a fixed value
-            {
-                IsBelowStockThreshold = true;
-            }
         }
     }
 }
