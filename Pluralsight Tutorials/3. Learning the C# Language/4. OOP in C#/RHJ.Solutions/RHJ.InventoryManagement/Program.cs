@@ -1,4 +1,5 @@
-﻿using RHJ.InventoryManagement.Domain;
+﻿
+using RHJ.InventoryManagement.Domain;
 
 namespace RHJ.InventoryManagement
 {
@@ -16,6 +17,8 @@ namespace RHJ.InventoryManagement
             Console.WriteLine("Application shutting down...");
 
             Console.ReadLine();
+
+            Product.StockTreshold = 500;
 
         }
 

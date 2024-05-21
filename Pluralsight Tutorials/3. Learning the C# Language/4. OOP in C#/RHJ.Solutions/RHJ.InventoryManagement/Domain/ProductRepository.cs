@@ -2,7 +2,7 @@
 {
     internal class ProductRepository
     {
-        private string directory = @"C:\devtrunk\data\BethanysPieShop\";
+        private string directory = @"C:\devtrunk\data\rhjsolutions\";
         private string productsFileName = "products.txt";
 
         private void CheckForExistingProductFile()

@@ -10,15 +10,16 @@ namespace RHJ.InventoryManagement
 
         internal static void InitializeStock()//Mock implementation
         {
-            Product productOne = new Product(1, "Sugar", "Lorem ipsum", new Price(10,Currency.Euro), UnitType.PerKilo, 100) ;
-            Product productTwo = new Product(2, "Cake decorations", "Lorem ipsum", new Price(8, Currency.Euro), UnitType.PerItem, 20);
-            Product productThree = new Product(3, "Strawberry", "Lorem ipsum", new Price(3, Currency.Euro), UnitType.PerBox, 10);
-            Product productFour = new Product(4, "Flour", "Lorem Flour Ipsum", new Price(12, Currency.Euro), UnitType.PerBox, 95);
+            ProductRepository productRepository = new();
+            inventory = productRepository.LoadProductsFromFile();
 
-            inventory.Add(productOne);
-            inventory.Add(productTwo);
-            inventory.Add(productThree);
-            inventory.Add(productFour);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Loaded {inventory.Count} products!");
+
+            Console.WriteLine("Press enter to continue!");
+            Console.ResetColor();
+
+            Console.ReadLine();
         }
 
         internal static void ShowMainMenu()
@@ -134,7 +135,10 @@ namespace RHJ.InventoryManagement
 
             if (selectedProductId != null)
             {
-                Product? selectedProduct = inventory.Where(p => p.Id == int.Parse(selectedProductId)).FirstOrDefault();
+                Product? selectedProduct = inventory
+                    .Where(p => p.Id == int
+                    .Parse(selectedProductId))
+                    .FirstOrDefault();
 
                 if (selectedProduct != null)
                 {
