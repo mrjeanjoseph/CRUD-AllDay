@@ -10,6 +10,12 @@ namespace RHJ.InventoryManagement
 
         internal static void InitializeStock()//Mock implementation
         {
+            BoxedProduct boxedProd = new BoxedProduct(6, "Eggs", "Lorem Ipsu",
+                new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100, 11);
+
+            boxedProd.IncreaseStock(100);
+            boxedProd.UseProduct(10);
+
             ProductRepository productRepository = new();
             inventory = productRepository.LoadProductsFromFile();
 

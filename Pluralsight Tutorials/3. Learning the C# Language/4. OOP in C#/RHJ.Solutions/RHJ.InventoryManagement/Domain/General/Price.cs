@@ -6,10 +6,10 @@
         public Currency Currency { get; set; }
         public override string ToString() => $"{ItemPrice} {Currency}";
         
-        public Price(double price, Currency currency)
-        {
-            ItemPrice = price ;
-            Currency = currency;
-        }
+        //public Price(double price, Currency currency)
+        //{
+        //    ItemPrice = price ;
+        //    Currency = currency;
+        //}
     }
 }

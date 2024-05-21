@@ -69,11 +69,12 @@
                         unitType = UnitType.PerItem;//default value
                     }
 
-                    Product product = new Product(productId, name, description, new Price(itemPrice, currency), unitType, maxItemsInStock);
-
+                    Product product = new Product(
+                        productId, name, description,
+                        new Price() {ItemPrice = 10, Currency = Currency.Euro},
+                        unitType, maxItemsInStock);
 
                     products.Add(product);
-
                 }
             }
 
