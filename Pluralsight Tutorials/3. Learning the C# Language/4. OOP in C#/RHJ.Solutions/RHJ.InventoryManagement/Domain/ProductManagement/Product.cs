@@ -35,7 +35,7 @@ namespace RHJ.InventoryManagement.Domain
 
         public UnitType UnitType { get; set; }
         public int AmountInStock { get; private set; }
-        public bool IsBelowStockThreshold { get; private set; }
+        public bool IsBelowStockTreshold { get; private set; }
         public Price Price { get; set; }
 
         public Product(int id) : this(id, string.Empty) { }
@@ -90,8 +90,8 @@ namespace RHJ.InventoryManagement.Domain
                 Log($"{CreateSimpleProductRepresentation} stock overflow. " +
                     $"{newStock - AmountInStock} item(s) ordered that could not be stored");
             }
-            if (AmountInStock > 10)            
-                IsBelowStockThreshold = false;            
+            if (AmountInStock > StockTreshold)            
+                IsBelowStockTreshold = false;            
         }
 
         public void DecreaseStock(int items, string reason)
@@ -117,7 +117,7 @@ namespace RHJ.InventoryManagement.Domain
             // ToDo: Add price here too
             stringBuilder.Append($"{Id}: {Name}\n{Description}\n{Price}\n{AmountInStock} items in stock");
             stringBuilder.Append(extraDetails);
-            if (IsBelowStockThreshold)
+            if (IsBelowStockTreshold)
             {
                 stringBuilder.Append("\n!!Stock Low!!");
             }
@@ -130,7 +130,7 @@ namespace RHJ.InventoryManagement.Domain
             // ToDo: Add price here too
             stringBuilder.Append($"{Id}: {Name}\n{Description}\n{Price}\n{AmountInStock} items in stock");
             
-            if (IsBelowStockThreshold)
+            if (IsBelowStockTreshold)
             {
                 stringBuilder.Append("\n!!Stock Low!!");
                 

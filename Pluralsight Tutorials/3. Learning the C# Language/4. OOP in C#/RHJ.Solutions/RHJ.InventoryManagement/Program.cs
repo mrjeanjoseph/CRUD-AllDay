@@ -1,18 +1,40 @@
-﻿namespace RHJ.InventoryManagement
+﻿using RHJ.InventoryManagement.Domain;
+
+namespace RHJ.InventoryManagement
 {
     public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine(PersonalCouter(6));
+
+            PrintingWelcome();
+
+            Utilities.InitializeStock();
+
+            Utilities.ShowMainMenu();
+
+            Console.WriteLine("Application shutting down...");
+
             Console.ReadLine();
+
         }
 
-        static int PersonalCouter(int num)
+        #region -Layout
+        static void PrintingWelcome()
         {
-            Console.WriteLine(num);
-            return num == 10 ? num : PersonalCouter(num + 1);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(@"Welcome to RHJ Solutions");
+            Console.ResetColor();
+
+            Console.WriteLine("Press Enter key to start logging in!");
+
+            //accepting enter here
+            Console.ReadLine();
+
+            Console.Clear();
+
         }
+
+        #endregion
     }
 }
