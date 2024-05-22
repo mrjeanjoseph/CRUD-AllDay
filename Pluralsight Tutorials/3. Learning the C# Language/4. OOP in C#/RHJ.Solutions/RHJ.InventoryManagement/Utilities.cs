@@ -2,7 +2,6 @@
 
 namespace RHJ.InventoryManagement
 {
-
     internal class Utilities
     {
         private static List<Product> inventory = new();
@@ -10,11 +9,9 @@ namespace RHJ.InventoryManagement
 
         internal static void InitializeStock()//Mock implementation
         {
-            BoxedProduct boxedProd = new BoxedProduct(6, "Eggs", "Lorem Ipsu",
-                new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100, 11);
-
-            boxedProd.IncreaseStock(100);
-            boxedProd.UseProduct(10);
+            //inventory.Add(new Product(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKg, 100));
+            //inventory.Add(new Product(2, "Cake decorations", "Lorem ipsum", new Price() { ItemPrice = 8, Currency = Currency.Euro }, UnitType.PerItem, 20));
+            //inventory.Add(new Product(3, "Strawberry", "Lorem ipsum", new Price() { ItemPrice = 3, Currency = Currency.Euro }, UnitType.PerBox, 10));
 
             ProductRepository productRepository = new();
             inventory = productRepository.LoadProductsFromFile();
@@ -57,7 +54,7 @@ namespace RHJ.InventoryManagement
                     ShowSettingsMenu();
                     break;
                 case "4":
-                    //SaveAllData();
+                    SaveAllData();
                     break;
                 case "0":
                     break;
@@ -65,6 +62,23 @@ namespace RHJ.InventoryManagement
                     Console.WriteLine("Invalid selection. Please try again.");
                     break;
             }
+        }
+
+        private static void SaveAllData()
+        {
+            ProductRepository productRepository = new();
+
+            List<ISaveable> saveables = new List<ISaveable>();
+
+            foreach (var item in inventory)//now a list of Products
+            {
+                saveables.Add(item as ISaveable);
+            }
+
+            productRepository.SaveToFile(saveables);
+
+            Console.ReadLine();
+            ShowMainMenu();
         }
 
         private static void ShowInventoryManagementMenu()
@@ -106,7 +120,7 @@ namespace RHJ.InventoryManagement
                         break;
 
                     case "3":
-                        //ShowCloneExistingProduct();
+                        ShowCloneExistingProduct();
                         break;
 
                     case "4":
@@ -122,22 +136,88 @@ namespace RHJ.InventoryManagement
             ShowMainMenu();
         }
 
-        private static void ShowAllUnitTypes()
+        private static void ShowCloneExistingProduct()
         {
-            int i = 1;
-            foreach (string name in Enum.GetNames(typeof(UnitType)))
+            string? userSelection = string.Empty;
+            string? newId = string.Empty;
+
+            Console.Write("Enter the ID of product to clone: ");
+            string? selectedProductId = Console.ReadLine();
+
+            if (selectedProductId != null)
             {
-                Console.WriteLine($"{i}. {name}");
+                Product? selectedProduct = inventory.Where(p => p.Id == int.Parse(selectedProductId)).FirstOrDefault();
+
+                if (selectedProduct != null)
+                {
+                    Console.Write("Enter the new ID of the cloned product: ");
+
+                    newId = Console.ReadLine();
+
+                    Product? p = selectedProduct.Clone() as Product;
+
+                    if (p != null)
+                    {
+                        p.Id = int.Parse(newId);
+                        inventory.Add(p);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Non-existing product selected. Please try again.");
             }
         }
-        private static void ShowAllCurrencies()
+
+        private static void ShowAllProductsOverview()
         {
-            int i = 1;
-            foreach (string name in Enum.GetNames(typeof(Currency)))
+            foreach (var product in inventory)
             {
-                Console.WriteLine($"{i}. {name}");
+                Console.WriteLine(product.DisplayDetailsShort());
+                Console.WriteLine();
             }
         }
+
+        private static void ShowDetailsAndUseProduct()
+        {
+            string? userSelection = string.Empty;
+
+            Console.Write("Enter the ID of product: ");
+            string? selectedProductId = Console.ReadLine();
+
+            if (selectedProductId != null)
+            {
+                Product? selectedProduct = inventory.Where(p => p.Id == int.Parse(selectedProductId)).FirstOrDefault();
+
+                if (selectedProduct != null)
+                {
+
+                    Console.WriteLine(selectedProduct.DisplayDetailsFull());
+
+                    Console.WriteLine("\nWhat do you want to do?");
+                    Console.WriteLine("1: Use product");
+                    Console.WriteLine("0: Back to inventory overview");
+
+                    Console.Write("Your selection: ");
+                    userSelection = Console.ReadLine();
+
+                    if (userSelection == "1")
+                    {
+                        Console.WriteLine("How many products do you want to use?");
+                        int amount = int.Parse(Console.ReadLine() ?? "0");
+
+                        selectedProduct.UseProduct(amount);
+
+                        Console.ReadLine();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Non-existing product selected. Please try again.");
+            }
+        }
+
         private static void ShowCreateNewProduct()
         {
             UnitType unitType = UnitType.PerItem;//default
@@ -225,55 +305,23 @@ namespace RHJ.InventoryManagement
                 inventory.Add(newProduct);
         }
 
-        private static void ShowAllProductsOverview()
+        private static void ShowAllUnitTypes()
         {
-            foreach (var product in inventory)
+            int i = 1;
+            foreach (string name in Enum.GetNames(typeof(UnitType)))
             {
-                Console.WriteLine(product.DisplayDetailsShort());
-                Console.WriteLine();
+                Console.WriteLine($"{i}. {name}");
+                i++;
             }
         }
 
-        private static void ShowDetailsAndUseProduct()
+        private static void ShowAllCurrencies()
         {
-            string? userSelection = string.Empty;
-
-            Console.Write("Enter the ID of product: ");
-            string? selectedProductId = Console.ReadLine();
-
-            if (selectedProductId != null)
+            int i = 1;
+            foreach (string name in Enum.GetNames(typeof(Currency)))
             {
-                Product? selectedProduct = inventory
-                    .Where(p => p.Id == int
-                    .Parse(selectedProductId))
-                    .FirstOrDefault();
-
-                if (selectedProduct != null)
-                {
-
-                    Console.WriteLine(selectedProduct.DisplayDetailsFull());
-
-                    Console.WriteLine("\nWhat do you want to do?");
-                    Console.WriteLine("1: Use product");
-                    Console.WriteLine("0: Back to inventory overview");
-
-                    Console.Write("Your selection: ");
-                    userSelection = Console.ReadLine();
-
-                    if (userSelection == "1")
-                    {
-                        Console.WriteLine("How many products do you want to use?");
-                        int amount = int.Parse(Console.ReadLine() ?? "0");
-
-                        selectedProduct.UseProduct(amount);
-
-                        Console.ReadLine();
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("Non-existing product selected. Please try again.");
+                Console.WriteLine($"{i}. {name}");
+                i++;
             }
         }
 
@@ -487,5 +535,6 @@ namespace RHJ.InventoryManagement
 
             Console.ReadLine();
         }
+
     }
 }

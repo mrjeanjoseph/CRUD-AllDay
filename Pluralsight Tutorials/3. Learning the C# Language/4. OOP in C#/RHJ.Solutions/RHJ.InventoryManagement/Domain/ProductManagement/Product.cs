@@ -3,24 +3,32 @@ using System.Text;
 
 namespace RHJ.InventoryManagement.Domain
 {
-    public abstract partial class Product
+    public abstract partial class Product : ICloneable
     {
+
         private int id;
         private string name = string.Empty;
         private string? description;
 
-        protected int MaxItemsInStock = 0;
+        protected int maxItemsInStock = 0;
+
 
         public int Id
         {
             get { return id; }
-            set { id = value; }
+            set
+            {
+                id = value;
+            }
         }
 
         public string Name
         {
             get { return name; }
-            set { name = value.Length > 50 ? value[..50] : value; }
+            set
+            {
+                name = value.Length > 50 ? value[..50] : value;
+            }
         }
 
         public string? Description
@@ -28,23 +36,37 @@ namespace RHJ.InventoryManagement.Domain
             get { return description; }
             set
             {
-                description = value == null ? description = string.Empty
-                    : description = value.Length > 250 ? value[..250] : value;
+                if (value == null)
+                {
+                    description = string.Empty;
+                }
+                else
+                {
+                    description = value.Length > 250 ? value[..250] : value;
+
+                }
             }
         }
 
+        public Price Price { get; set; }
+
         public UnitType UnitType { get; set; }
+
         public int AmountInStock { get; protected set; }
         public bool IsBelowStockTreshold { get; protected set; }
-        public Price Price { get; set; }
+
+
+        public Product(int id) : this(id, string.Empty)
+        {
+        }
 
         public Product(int id, string name)
         {
-            Id = id; Name = name;
+            Id = id;
+            Name = name;
         }
-        public Product(int id) : this(id, string.Empty) { }
 
-        public Product(int id, string name, string? description, Price price, UnitType unitType, int maxAmtInStock)
+        public Product(int id, string name, string? description, Price price, UnitType unitType, int maxAmountInStock)
         {
             Id = id;
             Name = name;
@@ -52,91 +74,124 @@ namespace RHJ.InventoryManagement.Domain
             Price = price;
             UnitType = unitType;
 
-            MaxItemsInStock = maxAmtInStock;
+            maxItemsInStock = maxAmountInStock;
 
-            UpdateLowStock();
+            if (AmountInStock < StockTreshold)
+            {
+                IsBelowStockTreshold = true;
+            }
         }
 
         public virtual void UseProduct(int items)
         {
             if (items <= AmountInStock)
             {
-                //use the item
+                //use the items
                 AmountInStock -= items;
 
                 UpdateLowStock();
+
                 Log($"Amount in stock updated. Now {AmountInStock} items in stock.");
             }
             else
             {
-                Log($"Not enough items on stock for {CreateSimpleProductRepresentation()}." +
-                    $" {AmountInStock} available but {items} requested");
+                Log($"Not enough items on stock for {CreateSimpleProductRepresentation()}. {AmountInStock} available but {items} requested.");
             }
-
         }
 
-        public virtual void IncreaseStock() => AmountInStock++;
+        //public virtual void IncreaseStock()
+        //{
+        //    AmountInStock++;
+        //}
 
+        public abstract void IncreaseStock();
 
         public virtual void IncreaseStock(int amount)
         {
             int newStock = AmountInStock + amount;
-            if (newStock <= AmountInStock)
+
+            if (newStock <= maxItemsInStock)
+            {
                 AmountInStock += amount;
+            }
             else
             {
-                AmountInStock = MaxItemsInStock; // We only store the possible items,
-                //overstock is not stored.
-                Log($"{CreateSimpleProductRepresentation} stock overflow. " +
-                    $"{newStock - AmountInStock} item(s) ordered that could not be stored");
+                AmountInStock = maxItemsInStock;//we only store the possible items, overstock isn't stored
+                Log($"{CreateSimpleProductRepresentation} stock overflow. {newStock - AmountInStock} item(s) ordere that couldn't be stored.");
             }
-            if (AmountInStock > StockTreshold)            
-                IsBelowStockTreshold = false;            
+
+            if (AmountInStock > StockTreshold)
+            {
+                IsBelowStockTreshold = false;
+            }
         }
 
-        public virtual void DecreaseStock(int items, string reason)
+        protected virtual void DecreaseStock(int items, string reason)
         {
             if (items <= AmountInStock)
             {
+                //decrease the stock with the specified number items
                 AmountInStock -= items;
-
             }
             else
             {
                 AmountInStock = 0;
             }
-            UpdateLowStock();
+
             Log(reason);
         }
 
-        public virtual string DisplayDetailsShort() => $"{Id}: {Name}\n{AmountInStock} items in stock";
-
-        public virtual string DisplayDetailsFull(string extraDetails)
+        //part of public interface
+        public void UpdateLowStock()
         {
-            StringBuilder stringBuilder = new();
-            // ToDo: Add price here too
-            stringBuilder.Append($"{Id}: {Name}\n{Description}\n{Price}\n{AmountInStock} items in stock");
-            stringBuilder.Append(extraDetails);
-            if (IsBelowStockTreshold)
+            if (AmountInStock < StockTreshold)
             {
-                stringBuilder.Append("\n!!Stock Low!!");
+                IsBelowStockTreshold = true;
             }
-            return stringBuilder.ToString();
+        }
+
+        public virtual string DisplayDetailsShort()
+        {
+            return $"{Id}. {Name} \n{AmountInStock} items in stock";
         }
 
         public virtual string DisplayDetailsFull()
         {
-            StringBuilder stringBuilder = new();
-            // ToDo: Add price here too
-            stringBuilder.Append($"{Id}: {Name}\n{Description}\n{Price}\n{AmountInStock} items in stock");
-            
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"{Id} {Name} \n{Description}\n{Price}\n{AmountInStock} item(s) in stock");
+
             if (IsBelowStockTreshold)
             {
-                stringBuilder.Append("\n!!Stock Low!!");
-                
+                sb.Append("\n!!STOCK LOW!!");
             }
-            return stringBuilder.ToString();
+
+            return sb.ToString();
+
             //return DisplayDetailsFull("");
         }
+
+        public virtual string DisplayDetailsFull(string extraDetails)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"{Id} {Name} \n{Description}\n{AmountInStock} item(s) in stock");
+
+            sb.Append(extraDetails);
+
+            if (IsBelowStockTreshold)
+            {
+                sb.Append("\n!!STOCK LOW!!");
+            }
+
+            return sb.ToString();
+        }
+
+        protected virtual double GetProductStockValue()
+        {
+            return Price.ItemPrice * AmountInStock;
+        }
+
+        public abstract object Clone();
     }
 }

@@ -2,20 +2,25 @@
 {
     public partial class Product
     {
+
         public static int StockTreshold = 5;
-        protected void Log(string message) => Console.WriteLine(message);
 
-        protected static void ChangeStockThreshold(int newStockThreshold) => 
-            StockTreshold = newStockThreshold > 0 ? newStockThreshold : StockTreshold;
-        protected string CreateSimpleProductRepresentation()  => $"Product {Id} ({Name})";        
-        // This could be written to a file
-           
-        
+        public static void ChangeStockTreshold(int newStockTreshhold)
+        {
+            //we will only allow this to go through if the value is > 0
+            if (newStockTreshhold > 0)
+                StockTreshold = newStockTreshhold;
+        }
 
-        public void UpdateLowStock()
-        {// For now a fixed value  
-            if (AmountInStock < StockTreshold)            
-                IsBelowStockTreshold = true;
+        protected void Log(string message)
+        {
+            //this could be written to a file
+            Console.WriteLine(message);
+        }
+
+        protected string CreateSimpleProductRepresentation()
+        {
+            return $"Product {Id} ({Name})";
         }
     }
 }

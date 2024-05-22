@@ -18,8 +18,6 @@ namespace RHJ.InventoryManagement
 
             Console.ReadLine();
 
-            Product.StockTreshold = 500;
-
         }
 
         #region -Layout

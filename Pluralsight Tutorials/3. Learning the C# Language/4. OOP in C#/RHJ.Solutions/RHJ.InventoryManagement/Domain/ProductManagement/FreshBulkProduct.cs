@@ -2,13 +2,12 @@
 {
     public class FreshBulkProduct : BoxedProduct
     {
-        public FreshBulkProduct(int id, string name, string? description, 
-            Price price, UnitType unitType, int maxAmtInStock, int amountPerBox) 
-            : base(id, name, description, price, maxAmtInStock, amountPerBox) { }
-
-        //public void UseFreshBoxedProduct(int item)
+        //public class FreshBoxedProduct : BoxedProduct
         //{
-        //    UseBoxedProduct(3);
+        //    public FreshBoxedProduct(int id, string name, string? description, Price price, UnitType unitType, int maxAmountInStock, int amountPerBox) : base(id, name, description, price, maxAmountInStock, amountPerBox)
+        //    {
+        //    }
+
         //}
     }
 }

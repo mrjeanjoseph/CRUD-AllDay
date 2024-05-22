@@ -1,9 +1,8 @@
-﻿
-namespace RHJ.InventoryManagement.Domain
+﻿namespace RHJ.InventoryManagement.Domain
 {
     internal class ProductRepository
     {
-        private string directory = @"D:\data\BethanysPieShop\";
+        private string directory = @"D:\devtrunk\data\rhjsolutions\";
         private string productsFileName = "products.txt";
         private string productsSaveFileName = "products2.txt";
 
@@ -90,11 +89,9 @@ namespace RHJ.InventoryManagement.Domain
                         case "2":
                             product = new FreshProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
                             break;
-
                         case "3":
                             product = new BulkProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, maxItemsInStock);
                             break;
-
                         case "4":
                             product = new RegularProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
                             break;
