@@ -2,7 +2,7 @@
 
 namespace RHJ.InventoryManagement.Domain
 {
-    internal class BoxedProduct : Product
+    public class BoxedProduct : Product
     {
         private int amountPerBox;
 
@@ -18,7 +18,7 @@ namespace RHJ.InventoryManagement.Domain
             AmountPerBox = amountPerBox;
         }
 
-        public string DisplayBoxedProductDetails()
+        public override string DisplayDetailsFull()
         {
             StringBuilder stringBuilder = new StringBuilder();
 
@@ -32,7 +32,44 @@ namespace RHJ.InventoryManagement.Domain
             return stringBuilder.ToString();
         }
 
-        public void UseBoxedProduct(int items)
+        public override void UseProduct(int items)
+        {
+            int smallestMultiple = 0;
+            int batchSize;
+
+            while (true)
+            {
+                smallestMultiple++;
+                if (smallestMultiple * amountPerBox > items)
+                {
+                    batchSize = smallestMultiple * amountPerBox;
+                    break;
+                }
+            }
+            base.UseProduct(batchSize);
+        }
+
+        public override void IncreaseStock() => AmountInStock += AmountPerBox;
+
+
+        public override void IncreaseStock(int amount)
+        {
+            int newStock = AmountInStock + amount * amountPerBox;
+            if (newStock <= MaxItemsInStock)
+                AmountInStock += amount * amountPerBox;
+            else
+            {
+                AmountInStock = MaxItemsInStock; // We only store the possible items,
+                //overstock is not stored.
+                Log($"{CreateSimpleProductRepresentation} stock overflow. " +
+                    $"{newStock - AmountInStock} item(s) ordered that could not be stored");
+            }
+            if (AmountInStock > StockTreshold)
+                IsBelowStockTreshold = false;
+        }
+
+        //Will no longer us
+        public void UseBoxedProduct_old(int items)
         {
             int smallestMultiple = 0;
             int batchSize;

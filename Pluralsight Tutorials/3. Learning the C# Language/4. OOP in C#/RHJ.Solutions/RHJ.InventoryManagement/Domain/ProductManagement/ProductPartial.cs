@@ -3,11 +3,11 @@
     public partial class Product
     {
         public static int StockTreshold = 5;
-        private void Log(string message) => Console.WriteLine(message);
-        
-        public static void ChangeStockThreshold(int newStockThreshold) => 
+        protected void Log(string message) => Console.WriteLine(message);
+
+        protected static void ChangeStockThreshold(int newStockThreshold) => 
             StockTreshold = newStockThreshold > 0 ? newStockThreshold : StockTreshold;
-        private string CreateSimpleProductRepresentation()  => $"Product {Id} ({Name})";        
+        protected string CreateSimpleProductRepresentation()  => $"Product {Id} ({Name})";        
         // This could be written to a file
            
         

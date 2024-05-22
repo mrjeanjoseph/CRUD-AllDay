@@ -3,13 +3,13 @@ using System.Text;
 
 namespace RHJ.InventoryManagement.Domain
 {
-    public partial class Product
+    public abstract partial class Product
     {
         private int id;
         private string name = string.Empty;
         private string? description;
 
-        private int MaxItemsInStock = 0;
+        protected int MaxItemsInStock = 0;
 
         public int Id
         {
@@ -34,16 +34,16 @@ namespace RHJ.InventoryManagement.Domain
         }
 
         public UnitType UnitType { get; set; }
-        public int AmountInStock { get; private set; }
-        public bool IsBelowStockTreshold { get; private set; }
+        public int AmountInStock { get; protected set; }
+        public bool IsBelowStockTreshold { get; protected set; }
         public Price Price { get; set; }
-
-        public Product(int id) : this(id, string.Empty) { }
 
         public Product(int id, string name)
         {
             Id = id; Name = name;
         }
+        public Product(int id) : this(id, string.Empty) { }
+
         public Product(int id, string name, string? description, Price price, UnitType unitType, int maxAmtInStock)
         {
             Id = id;
@@ -57,7 +57,7 @@ namespace RHJ.InventoryManagement.Domain
             UpdateLowStock();
         }
 
-        public void UseProduct(int items)
+        public virtual void UseProduct(int items)
         {
             if (items <= AmountInStock)
             {
@@ -75,10 +75,10 @@ namespace RHJ.InventoryManagement.Domain
 
         }
 
-        public void IncreaseStock() => AmountInStock++;
-        
+        public virtual void IncreaseStock() => AmountInStock++;
 
-        public void IncreaseStock(int amount)
+
+        public virtual void IncreaseStock(int amount)
         {
             int newStock = AmountInStock + amount;
             if (newStock <= AmountInStock)
@@ -94,7 +94,7 @@ namespace RHJ.InventoryManagement.Domain
                 IsBelowStockTreshold = false;            
         }
 
-        public void DecreaseStock(int items, string reason)
+        public virtual void DecreaseStock(int items, string reason)
         {
             if (items <= AmountInStock)
             {
@@ -109,9 +109,9 @@ namespace RHJ.InventoryManagement.Domain
             Log(reason);
         }
 
-        public string DisplayDetailsShort() => $"{Id}: {Name}\n{AmountInStock} items in stock";
+        public virtual string DisplayDetailsShort() => $"{Id}: {Name}\n{AmountInStock} items in stock";
 
-        public string DisplayDetailsFull(string extraDetails)
+        public virtual string DisplayDetailsFull(string extraDetails)
         {
             StringBuilder stringBuilder = new();
             // ToDo: Add price here too
@@ -124,7 +124,7 @@ namespace RHJ.InventoryManagement.Domain
             return stringBuilder.ToString();
         }
 
-        public string DisplayDetailsFull()
+        public virtual string DisplayDetailsFull()
         {
             StringBuilder stringBuilder = new();
             // ToDo: Add price here too

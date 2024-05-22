@@ -1,9 +1,11 @@
-﻿namespace RHJ.InventoryManagement.Domain
+﻿
+namespace RHJ.InventoryManagement.Domain
 {
     internal class ProductRepository
     {
-        private string directory = @"C:\devtrunk\data\rhjsolutions\";
+        private string directory = @"D:\data\BethanysPieShop\";
         private string productsFileName = "products.txt";
+        private string productsSaveFileName = "products2.txt";
 
         private void CheckForExistingProductFile()
         {
@@ -69,12 +71,40 @@
                         unitType = UnitType.PerItem;//default value
                     }
 
-                    Product product = new Product(
-                        productId, name, description,
-                        new Price() {ItemPrice = 10, Currency = Currency.Euro},
-                        unitType, maxItemsInStock);
+                    string productType = productSplits[7];
+
+                    Product product = null;
+
+                    switch (productType)
+                    {
+                        case "1":
+                            success = int.TryParse(productSplits[8], out int amountPerBox);
+                            if (!success)
+                            {
+                                amountPerBox = 1;//default value
+                            }
+
+                            product = new BoxedProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, maxItemsInStock, amountPerBox);
+                            break;
+
+                        case "2":
+                            product = new FreshProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
+                            break;
+
+                        case "3":
+                            product = new BulkProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, maxItemsInStock);
+                            break;
+
+                        case "4":
+                            product = new RegularProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
+                            break;
+                    }
+
+                    //Product product = new Product(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
+
 
                     products.Add(product);
+
                 }
             }
 
@@ -104,6 +134,23 @@
 
             return products;
         }
-    }
 
+        //public void SaveToFile(List<ISaveable> saveables)
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    string path = $"{directory}{productsSaveFileName}";
+
+        //    foreach (var item in saveables)
+        //    {
+        //        sb.Append(item.ConvertToStringForSaving());
+        //        sb.Append(Environment.NewLine);
+        //    }
+
+        //    File.WriteAllText(path, sb.ToString());
+
+        //    Console.ForegroundColor = ConsoleColor.Green;
+        //    Console.WriteLine("Saved items successfully");
+        //    Console.ResetColor();
+        //}
+    }
 }
