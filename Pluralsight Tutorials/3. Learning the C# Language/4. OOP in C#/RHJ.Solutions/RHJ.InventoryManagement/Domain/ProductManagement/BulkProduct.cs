@@ -2,7 +2,7 @@
 {
     public class BulkProduct : Product, ISaveable
     {
-        public BulkProduct(int id, string name, string? description, Price price, int maxAmountInStock) : base(id, name, description, price, UnitType.PerKg, maxAmountInStock)
+        public BulkProduct(int id, string name, string? description, Price price, int maxAmountInStock) : base(id, name, description, price, UnitType.PerKilo, maxAmountInStock)
         {
         }
 

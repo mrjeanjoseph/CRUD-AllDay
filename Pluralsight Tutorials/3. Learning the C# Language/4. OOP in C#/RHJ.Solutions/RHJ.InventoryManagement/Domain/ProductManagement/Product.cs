@@ -1,5 +1,4 @@
-﻿
-using System.Text;
+﻿using System.Text;
 
 namespace RHJ.InventoryManagement.Domain
 {
@@ -12,23 +11,16 @@ namespace RHJ.InventoryManagement.Domain
 
         protected int maxItemsInStock = 0;
 
-
         public int Id
         {
             get { return id; }
-            set
-            {
-                id = value;
-            }
+            set { id = value; }
         }
 
         public string Name
         {
             get { return name; }
-            set
-            {
-                name = value.Length > 50 ? value[..50] : value;
-            }
+            set { name = value.Length > 50 ? value[..50] : value; }
         }
 
         public string? Description
@@ -37,14 +29,9 @@ namespace RHJ.InventoryManagement.Domain
             set
             {
                 if (value == null)
-                {
                     description = string.Empty;
-                }
                 else
-                {
-                    description = value.Length > 250 ? value[..250] : value;
-
-                }
+                    description = value.Length > 250 ? value[..250] : value;                
             }
         }
 
@@ -56,9 +43,7 @@ namespace RHJ.InventoryManagement.Domain
         public bool IsBelowStockTreshold { get; protected set; }
 
 
-        public Product(int id) : this(id, string.Empty)
-        {
-        }
+        public Product(int id) : this(id, string.Empty) { }
 
         public Product(int id, string name)
         {
@@ -66,7 +51,8 @@ namespace RHJ.InventoryManagement.Domain
             Name = name;
         }
 
-        public Product(int id, string name, string? description, Price price, UnitType unitType, int maxAmountInStock)
+        public Product(int id, string name, string? description, 
+            Price price, UnitType unitType, int maxAmountInStock)
         {
             Id = id;
             Name = name;
@@ -76,10 +62,8 @@ namespace RHJ.InventoryManagement.Domain
 
             maxItemsInStock = maxAmountInStock;
 
-            if (AmountInStock < StockTreshold)
-            {
-                IsBelowStockTreshold = true;
-            }
+            if (AmountInStock < StockTreshold)            
+                IsBelowStockTreshold = true;            
         }
 
         public virtual void UseProduct(int items)
@@ -110,50 +94,36 @@ namespace RHJ.InventoryManagement.Domain
         {
             int newStock = AmountInStock + amount;
 
-            if (newStock <= maxItemsInStock)
-            {
-                AmountInStock += amount;
-            }
+            if (newStock <= maxItemsInStock)            
+                AmountInStock += amount;            
             else
             {
                 AmountInStock = maxItemsInStock;//we only store the possible items, overstock isn't stored
                 Log($"{CreateSimpleProductRepresentation} stock overflow. {newStock - AmountInStock} item(s) ordere that couldn't be stored.");
             }
 
-            if (AmountInStock > StockTreshold)
-            {
-                IsBelowStockTreshold = false;
-            }
+            if (AmountInStock > StockTreshold)            
+                IsBelowStockTreshold = false;            
         }
 
         protected virtual void DecreaseStock(int items, string reason)
-        {
-            if (items <= AmountInStock)
-            {
-                //decrease the stock with the specified number items
+        {                     
+            if (items <= AmountInStock)//decrease the stock with the specified number items
                 AmountInStock -= items;
-            }
-            else
-            {
+            else            
                 AmountInStock = 0;
-            }
-
+            
             Log(reason);
         }
 
         //part of public interface
         public void UpdateLowStock()
         {
-            if (AmountInStock < StockTreshold)
-            {
-                IsBelowStockTreshold = true;
-            }
+            if (AmountInStock < StockTreshold) 
+                IsBelowStockTreshold = true;            
         }
 
-        public virtual string DisplayDetailsShort()
-        {
-            return $"{Id}. {Name} \n{AmountInStock} items in stock";
-        }
+        public virtual string DisplayDetailsShort() => $"{Id}. {Name} \n{AmountInStock} items in stock";        
 
         public virtual string DisplayDetailsFull()
         {
@@ -161,13 +131,10 @@ namespace RHJ.InventoryManagement.Domain
 
             sb.Append($"{Id} {Name} \n{Description}\n{Price}\n{AmountInStock} item(s) in stock");
 
-            if (IsBelowStockTreshold)
-            {
-                sb.Append("\n!!STOCK LOW!!");
-            }
+            if (IsBelowStockTreshold)            
+                sb.Append("\n!!STOCK LOW!!");            
 
             return sb.ToString();
-
             //return DisplayDetailsFull("");
         }
 
@@ -179,18 +146,13 @@ namespace RHJ.InventoryManagement.Domain
 
             sb.Append(extraDetails);
 
-            if (IsBelowStockTreshold)
-            {
-                sb.Append("\n!!STOCK LOW!!");
-            }
+            if (IsBelowStockTreshold)            
+                sb.Append("\n!!STOCK LOW!!");            
 
             return sb.ToString();
         }
 
-        protected virtual double GetProductStockValue()
-        {
-            return Price.ItemPrice * AmountInStock;
-        }
+        protected virtual double GetProductStockValue() => Price.ItemPrice * AmountInStock;        
 
         public abstract object Clone();
     }

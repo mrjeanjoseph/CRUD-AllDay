@@ -1,4 +1,6 @@
-﻿namespace RHJ.InventoryManagement.Domain
+﻿using System.Text;
+
+namespace RHJ.InventoryManagement.Domain
 {
     internal class ProductRepository
     {
@@ -132,22 +134,22 @@
             return products;
         }
 
-        //public void SaveToFile(List<ISaveable> saveables)
-        //{
-        //    StringBuilder sb = new StringBuilder();
-        //    string path = $"{directory}{productsSaveFileName}";
+        public void SaveToFile(List<ISaveable> saveables)
+        {
+            StringBuilder sb = new StringBuilder();
+            string path = $"{directory}{productsSaveFileName}";
 
-        //    foreach (var item in saveables)
-        //    {
-        //        sb.Append(item.ConvertToStringForSaving());
-        //        sb.Append(Environment.NewLine);
-        //    }
+            foreach (var item in saveables)
+            {
+                sb.Append(item.ConvertToStringForSaving());
+                sb.Append(Environment.NewLine);
+            }
 
-        //    File.WriteAllText(path, sb.ToString());
+            File.WriteAllText(path, sb.ToString());
 
-        //    Console.ForegroundColor = ConsoleColor.Green;
-        //    Console.WriteLine("Saved items successfully");
-        //    Console.ResetColor();
-        //}
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Saved items successfully");
+            Console.ResetColor();
+        }
     }
 }

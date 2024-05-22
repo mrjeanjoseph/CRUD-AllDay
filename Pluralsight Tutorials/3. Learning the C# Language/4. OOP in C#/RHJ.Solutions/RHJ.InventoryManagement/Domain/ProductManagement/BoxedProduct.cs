@@ -1,6 +1,6 @@
 ﻿namespace RHJ.InventoryManagement.Domain
 {
-    public sealed class BoxedProduct : Product, ISaveable
+    public sealed class BoxedProduct : Product, ISaveable, ILoggable
     {
         private int amountPerBox;
 
@@ -74,6 +74,11 @@
         public override object Clone()
         {
             return new BoxedProduct(0, this.Name, this.Description, new Price() { ItemPrice = this.Price.ItemPrice, Currency = this.Price.Currency }, this.maxItemsInStock, this.AmountPerBox);
+        }
+
+        public void log(string message)
+        {
+            throw new NotImplementedException();
         }
 
 

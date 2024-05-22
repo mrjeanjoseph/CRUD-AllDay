@@ -2,7 +2,6 @@
 {
     public partial class Product
     {
-
         public static int StockTreshold = 5;
 
         public static void ChangeStockTreshold(int newStockTreshhold)
@@ -12,15 +11,9 @@
                 StockTreshold = newStockTreshhold;
         }
 
-        protected void Log(string message)
-        {
-            //this could be written to a file
-            Console.WriteLine(message);
-        }
+        //this could be written to a file
+        protected void Log(string message) => Console.WriteLine(message);
 
-        protected string CreateSimpleProductRepresentation()
-        {
-            return $"Product {Id} ({Name})";
-        }
+        protected string CreateSimpleProductRepresentation() => $"Product {Id} ({Name})";        
     }
 }
