@@ -11,10 +11,7 @@
             return $"{Id};{Name};{Description};{maxItemsInStock};{Price.ItemPrice};{(int)Price.Currency};{(int)UnitType};{3};";
         }
 
-        public override void IncreaseStock()
-        {
-            AmountInStock++;
-        }
+        public override void IncreaseStock() => AmountInStock++;
 
         public override object Clone()
         {

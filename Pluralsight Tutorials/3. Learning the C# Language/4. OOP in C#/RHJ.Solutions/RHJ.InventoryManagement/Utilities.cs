@@ -9,10 +9,6 @@ namespace RHJ.InventoryManagement
 
         internal static void InitializeStock()//Mock implementation
         {
-            //inventory.Add(new Product(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKg, 100));
-            //inventory.Add(new Product(2, "Cake decorations", "Lorem ipsum", new Price() { ItemPrice = 8, Currency = Currency.Euro }, UnitType.PerItem, 20));
-            //inventory.Add(new Product(3, "Strawberry", "Lorem ipsum", new Price() { ItemPrice = 3, Currency = Currency.Euro }, UnitType.PerBox, 10));
-
             ProductRepository productRepository = new();
             inventory = productRepository.LoadProductsFromFile();
 
@@ -72,8 +68,10 @@ namespace RHJ.InventoryManagement
 
             foreach (var item in inventory)//now a list of Products
             {
-                saveables.Add(item as ISaveable);
+                if(item is ISaveable)
+                    saveables.Add(item as ISaveable);
             }
+            
 
             productRepository.SaveToFile(saveables);
 
@@ -131,8 +129,8 @@ namespace RHJ.InventoryManagement
                         Console.WriteLine("Invalid selection. Please try again.");
                         break;
                 }
-            }
-            while (userSelection != "0");
+            } while (userSelection != "0");
+
             ShowMainMenu();
         }
 
@@ -163,10 +161,9 @@ namespace RHJ.InventoryManagement
                     }
                 }
             }
-            else
-            {
+            else            
                 Console.WriteLine("Non-existing product selected. Please try again.");
-            }
+            
         }
 
         private static void ShowAllProductsOverview()
@@ -187,7 +184,8 @@ namespace RHJ.InventoryManagement
 
             if (selectedProductId != null)
             {
-                Product? selectedProduct = inventory.Where(p => p.Id == int.Parse(selectedProductId)).FirstOrDefault();
+                Product? selectedProduct = inventory
+                    .Where(p => p.Id == int.Parse(selectedProductId)).FirstOrDefault();
 
                 if (selectedProduct != null)
                 {
@@ -212,10 +210,8 @@ namespace RHJ.InventoryManagement
                     }
                 }
             }
-            else
-            {
-                Console.WriteLine("Non-existing product selected. Please try again.");
-            }
+            else            
+                Console.WriteLine("Non-existing product selected. Please try again.");            
         }
 
         private static void ShowCreateNewProduct()
@@ -227,8 +223,8 @@ namespace RHJ.InventoryManagement
             Console.Write("Your selection: ");
 
             var productType = Console.ReadLine();
-            if (productType != "1" && productType != "2" && productType != "3"
-                && productType != "4")
+            if (productType != "1" && productType != "2" 
+                && productType != "3" && productType != "4")
             {
                 Console.WriteLine("Invalid selection!");
                 return;
@@ -339,10 +335,8 @@ namespace RHJ.InventoryManagement
                     Console.WriteLine();
                 }
             }
-            else
-            {
-                Console.WriteLine("No items are currently low on stock!");
-            }
+            else            
+                Console.WriteLine("No items are currently low on stock!");            
 
             Console.ReadLine();
         }
@@ -379,8 +373,8 @@ namespace RHJ.InventoryManagement
                         Console.WriteLine("Invalid selection. Please try again.");
                         break;
                 }
-            }
-            while (userSelection != "0");
+            } while (userSelection != "0");
+
             ShowMainMenu();
         }
 
@@ -399,10 +393,8 @@ namespace RHJ.InventoryManagement
                     Console.WriteLine();
                 }
             }
-            else
-            {
-                Console.WriteLine("There are no open orders");
-            }
+            else            
+                Console.WriteLine("There are no open orders");            
 
             Console.ReadLine();
         }
@@ -516,6 +508,7 @@ namespace RHJ.InventoryManagement
                         break;
                 }
             }
+
             while (userSelection != "0");
             ShowMainMenu();
         }
@@ -528,10 +521,8 @@ namespace RHJ.InventoryManagement
             Product.StockTreshold = newValue;
             Console.WriteLine($"New stock treshold set to {Product.StockTreshold}");
 
-            foreach (var product in inventory)
-            {
-                product.UpdateLowStock();
-            }
+            foreach (var product in inventory)            
+                product.UpdateLowStock();            
 
             Console.ReadLine();
         }

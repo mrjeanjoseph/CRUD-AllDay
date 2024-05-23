@@ -72,15 +72,12 @@ namespace RHJ.InventoryManagement.Domain
             {
                 //use the items
                 AmountInStock -= items;
-
                 UpdateLowStock();
-
                 Log($"Amount in stock updated. Now {AmountInStock} items in stock.");
             }
-            else
-            {
+            else            
                 Log($"Not enough items on stock for {CreateSimpleProductRepresentation()}. {AmountInStock} available but {items} requested.");
-            }
+            
         }
 
         //public virtual void IncreaseStock()

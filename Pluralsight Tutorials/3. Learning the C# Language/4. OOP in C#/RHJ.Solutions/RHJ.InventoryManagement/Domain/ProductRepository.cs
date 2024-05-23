@@ -15,7 +15,6 @@ namespace RHJ.InventoryManagement.Domain
             bool existingFileFound = File.Exists(path);
             if (!existingFileFound)
             {
-                //Create the directory
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(directory);
 
@@ -39,38 +38,31 @@ namespace RHJ.InventoryManagement.Domain
                     string[] productSplits = productsAsString[i].Split(';');
 
                     bool success = int.TryParse(productSplits[0], out int productId);
-                    if (!success)
-                    {
-                        productId = 0;
-                    }
+                    if (!success)                    
+                        productId = 0;                    
 
                     string name = productSplits[1];
                     string description = productSplits[2];
 
                     success = int.TryParse(productSplits[3], out int maxItemsInStock);
-                    if (!success)
-                    {
+                    if (!success)                    
                         maxItemsInStock = 100;//default value
-                    }
+                    
 
                     success = int.TryParse(productSplits[4], out int itemPrice);
-                    if (!success)
-                    {
+                    if (!success)                    
                         itemPrice = 0;//default value
-                    }
+                    
 
                     success = Enum.TryParse(productSplits[5], out Currency currency);
-                    if (!success)
-                    {
+                    if (!success)                    
                         currency = Currency.Dollar;//default value
-                    }
-
+                    
 
                     success = Enum.TryParse(productSplits[6], out UnitType unitType);
-                    if (!success)
-                    {
+                    if (!success)                    
                         unitType = UnitType.PerItem;//default value
-                    }
+                    
 
                     string productType = productSplits[7];
 
@@ -80,10 +72,8 @@ namespace RHJ.InventoryManagement.Domain
                     {
                         case "1":
                             success = int.TryParse(productSplits[8], out int amountPerBox);
-                            if (!success)
-                            {
-                                amountPerBox = 1;//default value
-                            }
+                            if (!success)                            
+                                amountPerBox = 1;//default value                            
 
                             product = new BoxedProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, maxItemsInStock, amountPerBox);
                             break;
@@ -98,9 +88,6 @@ namespace RHJ.InventoryManagement.Domain
                             product = new RegularProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
                             break;
                     }
-
-                    //Product product = new Product(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
-
 
                     products.Add(product);
 
