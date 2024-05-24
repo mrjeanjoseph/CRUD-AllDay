@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace PartThree.AdvConcepts.Areas.Chapter18.Controllers
+namespace Chapter18.ApplyingFilters.Controllers
 {
     public class AccountController : Controller
     {
@@ -12,7 +12,7 @@ namespace PartThree.AdvConcepts.Areas.Chapter18.Controllers
             return View();
         }
 
-        [HttpPost, Obsolete]
+        [HttpPost]
         public ActionResult Login(string username, string password, string returnurl)
         {
             bool result = FormsAuthentication.Authenticate(username, password);

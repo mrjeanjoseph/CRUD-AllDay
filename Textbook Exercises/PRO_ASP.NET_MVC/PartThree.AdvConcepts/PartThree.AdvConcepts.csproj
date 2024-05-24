@@ -126,7 +126,9 @@
     <Compile Include="Areas\Chapter17\Infrastructure\CustomRedirectResult.cs" />
     <Compile Include="Areas\Chapter18\Chapter18AreaRegistration.cs" />
     <Compile Include="Areas\Chapter18\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Chapter18\Controllers\AdminController.cs" />
     <Compile Include="Areas\Chapter18\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\CustomAuthAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -154,6 +156,7 @@
     <Content Include="Areas\Chapter18\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Chapter18\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter18\Views\Shared\Login.cshtml" />
+    <Content Include="Areas\Chapter18\Views\Admin\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
