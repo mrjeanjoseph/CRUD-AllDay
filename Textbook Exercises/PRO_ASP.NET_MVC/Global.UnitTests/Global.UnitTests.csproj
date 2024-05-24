@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chapter15.Tests\RoutesAndURLsTests.cs" />
+    <Compile Include="Chapter17.Tests\ActionTests.cs" />
     <Compile Include="Chapter3.Tests\AdminControllerTests.cs" />
     <Compile Include="Chapter3.Tests\FakeRepository.cs" />
     <Compile Include="Chapter6.Tests\EssentialTool.Test.cs" />

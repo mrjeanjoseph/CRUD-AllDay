@@ -119,6 +119,11 @@
     <Compile Include="Areas\Chapter16\Controllers\LegacyController.cs" />
     <Compile Include="Areas\Chapter16\Infrastructure\CustomRouteHandler.cs" />
     <Compile Include="Areas\Chapter16\Infrastructure\LegacyRoute.cs" />
+    <Compile Include="Areas\Chapter17\Chapter17AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter17\Controllers\BasicController.cs" />
+    <Compile Include="Areas\Chapter17\Controllers\DerivedController.cs" />
+    <Compile Include="Areas\Chapter17\Controllers\ExampleController.cs" />
+    <Compile Include="Areas\Chapter17\Infrastructure\CustomRedirectResult.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -135,6 +140,13 @@
     <Content Include="Areas\Chapter16\Views\web.config" />
     <Content Include="Areas\Chapter16\Views\Shared\ActionName.cshtml" />
     <Content Include="Areas\Chapter16\Views\Legacy\GetLegacyURL.cshtml" />
+    <Content Include="Areas\Chapter17\Views\web.config" />
+    <Content Include="Areas\Chapter17\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter17\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter17\Views\Derived\MyView.cshtml" />
+    <Content Include="Areas\Chapter17\Views\Example\Homepage.cshtml" />
+    <Content Include="Areas\Chapter17\Views\Example\IndexViewModelObject.cshtml" />
+    <Content Include="Areas\Chapter17\Views\Example\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -151,6 +163,8 @@
     <Folder Include="Areas\Chapter15\Views\Admin\" />
     <Folder Include="Areas\Chapter16\Data\" />
     <Folder Include="Areas\Chapter16\Views\Home\" />
+    <Folder Include="Areas\Chapter17\Data\" />
+    <Folder Include="Areas\Chapter17\Views\Basic\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>

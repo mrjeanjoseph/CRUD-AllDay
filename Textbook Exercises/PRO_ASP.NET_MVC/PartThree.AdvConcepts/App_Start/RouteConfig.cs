@@ -6,12 +6,12 @@ namespace AdvConcepts {
     public class RouteConfig {
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("Content/{filename}.html");
+            //routes.IgnoreRoute("Content/{filename}.html");
 
-            routes.RouteExistingFiles = true;
-            routes.MapMvcAttributeRoutes();
+            //routes.RouteExistingFiles = true;
+            //routes.MapMvcAttributeRoutes();
 
-            routes.Add(new Route("SayHello", new CustomRouteHandler()));
+            //routes.Add(new Route("SayHello", new CustomRouteHandler()));
 
             routes.Add(new LegacyRoute(
                 "~/NewController/NewFinalLink",
