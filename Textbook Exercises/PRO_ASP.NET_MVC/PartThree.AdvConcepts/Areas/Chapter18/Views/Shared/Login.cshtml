@@ -1,0 +1,13 @@
+﻿
+@{
+    Layout = null;
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <p><label>Username:</label><input name="username" type="text" /></p>
+    <p><label>Password:</label><input name="password" type="password" /></p>
+}
