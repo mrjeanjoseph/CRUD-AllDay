@@ -130,8 +130,11 @@
     <Compile Include="Areas\Chapter18\Controllers\AdminController.cs" />
     <Compile Include="Areas\Chapter18\Controllers\GoogleAccountController.cs" />
     <Compile Include="Areas\Chapter18\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\CustomActionAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\CustomAuthAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\GoogleAuthAttribute.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\ProfileActionAttribute.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\ProfileResultAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\RangeExceptionAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

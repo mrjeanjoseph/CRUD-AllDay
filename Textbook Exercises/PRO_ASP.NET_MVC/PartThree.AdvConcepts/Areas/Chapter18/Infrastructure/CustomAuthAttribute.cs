@@ -9,9 +9,9 @@ namespace Chapter18.ApplyingFilters
 
         public CustomAuthAttribute(bool allowedParam) => _localAllowed = allowedParam;        
 
-        protected override bool AuthorizeCore(HttpContextBase httpContext)
+        protected override bool AuthorizeCore(HttpContextBase contextParam)
         {
-            if (httpContext.Request.IsLocal)
+            if (contextParam.Request.IsLocal)
                 return _localAllowed;
             else
                 return true;

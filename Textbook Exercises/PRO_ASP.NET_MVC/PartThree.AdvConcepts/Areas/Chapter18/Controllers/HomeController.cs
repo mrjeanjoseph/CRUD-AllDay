@@ -40,5 +40,23 @@ namespace Chapter18.ApplyingFilters.Controllers
             else
                 throw new ArgumentOutOfRangeException("id", id, "");
         }
+
+        [CustomAction]
+        public string CustomFilterTest()
+        {
+            return "<h1>This is a Custom Filter Test</h1>";
+        }
+
+        [ProfileAction]
+        public string ProfileActionFilterTest()
+        {
+            return "<h1>This is the Profile Filter Test</h1>";
+        }
+
+        [ProfileAction, ProfileResult]
+        public string ProfileResultFilterTest()
+        {
+            return "<h1>This is the Profile Filter Test</h1>";
+        }
     }
 }
