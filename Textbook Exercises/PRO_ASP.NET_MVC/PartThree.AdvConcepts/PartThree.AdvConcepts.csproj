@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Chapter16\StaticContent.html" />
+    <Content Include="Content\RangeErrorPage.html" />
     <Content Include="Content\site.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\site.js" />
@@ -131,7 +132,7 @@
     <Compile Include="Areas\Chapter18\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\CustomAuthAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\GoogleAuthAttribute.cs" />
-    <Compile Include="Areas\Chapter18\Infrastructure\RangeAuthAttribute.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\RangeExceptionAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -160,6 +161,7 @@
     <Content Include="Areas\Chapter18\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter18\Views\Shared\Login.cshtml" />
     <Content Include="Areas\Chapter18\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Chapter18\Views\Shared\RangeError.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

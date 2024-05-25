@@ -1,0 +1,11 @@
+﻿@model HandleErrorInfo
+@{
+    Layout = null;
+    ViewBag.Title = "Sorry, There was a problem";
+    var errorModel = ((ArgumentOutOfRangeException)Model.Exception).ActualValue
+}
+
+<h2>Please try again</h2>
+
+<span>The value @errorModel was out the expected range</span>
+<div>@Html.ActionLink("Change value and try again", "Index")</div>

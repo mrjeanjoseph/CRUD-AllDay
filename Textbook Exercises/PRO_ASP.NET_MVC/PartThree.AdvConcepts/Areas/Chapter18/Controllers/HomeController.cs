@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace Chapter18.ApplyingFilters.Controllers
 {
@@ -20,6 +21,24 @@ namespace Chapter18.ApplyingFilters.Controllers
         public string IndexNewUser()
         {
             return "<h1>This is the Index New User action method.</h1>";
+        }
+
+        [HandleError(ExceptionType = typeof(ArgumentOutOfRangeException), View = "RangeError")]
+        public string RangeTest(int id)
+        {
+            if (id > 100)
+                return String.Format("The id value is: {0}", id);
+            else
+                throw new ArgumentOutOfRangeException("id", id, "");
+        }
+
+        [RangeException]
+        public string RangeTestOld(int id)
+        {
+            if (id > 100)
+                return String.Format("The id value is: {0}", id);
+            else
+                throw new ArgumentOutOfRangeException("id", id, "");
         }
     }
 }
