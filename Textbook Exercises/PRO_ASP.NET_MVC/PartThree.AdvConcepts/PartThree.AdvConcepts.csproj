@@ -127,8 +127,11 @@
     <Compile Include="Areas\Chapter18\Chapter18AreaRegistration.cs" />
     <Compile Include="Areas\Chapter18\Controllers\AccountController.cs" />
     <Compile Include="Areas\Chapter18\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Chapter18\Controllers\GoogleAccountController.cs" />
     <Compile Include="Areas\Chapter18\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\CustomAuthAttribute.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\GoogleAuthAttribute.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\RangeAuthAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,6 +180,7 @@
     <Folder Include="Areas\Chapter17\Views\Basic\" />
     <Folder Include="Areas\Chapter18\Data\" />
     <Folder Include="Areas\Chapter18\Views\Account\" />
+    <Folder Include="Areas\Chapter18\Views\GoogleAccount\" />
     <Folder Include="Areas\Chapter18\Views\Home\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>

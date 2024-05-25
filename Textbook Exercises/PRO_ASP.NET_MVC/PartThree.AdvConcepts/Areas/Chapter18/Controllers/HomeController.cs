@@ -10,6 +10,12 @@ namespace Chapter18.ApplyingFilters.Controllers
             return "<h1>This is the Index action on the '<em>Applying Filters</em>' Home controller</h1>";
         }
 
+        [GoogleAuth, Authorize(Users = "Bae@google.com")]
+        public string ListFromGoogle()
+        {
+            return "<h1>This is the '<em>List From Google</em>' action Method</h1>";
+        }
+
         [Authorize(Users = "admin")]
         public string IndexNewUser()
         {
