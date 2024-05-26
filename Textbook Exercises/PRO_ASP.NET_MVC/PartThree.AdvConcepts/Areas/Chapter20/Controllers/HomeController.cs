@@ -1,21 +1,13 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace Chapter20.RazorViewEngine
+namespace Chapter20.RazorViewEngine.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Chapter20/Home
         public ActionResult Index()
         {
-            ViewBag.Message = "Hello C#/.NET programmers";
-            ViewBag.CurrentTime = DateTime.Now.ToShortDateString();
-            return View("DebugData");
-        }
-
-        public ActionResult ListAllData()
-        {
-            return View();
+            string[] items = { "Snake Plants", "Banana Plants", "Shovel", "Mulch" };
+            return View(items);
         }
     }
 }

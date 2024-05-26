@@ -15,8 +15,8 @@ namespace Chapter20.RazorViewEngine
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Chapter20_default",
-                "Chapter20/{controller}/{action}/{id}",
+                "",
+                "RazorViewEngine/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

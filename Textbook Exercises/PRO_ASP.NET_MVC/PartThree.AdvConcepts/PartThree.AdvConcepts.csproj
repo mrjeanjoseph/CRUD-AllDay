@@ -158,8 +158,10 @@
     <Compile Include="Areas\Chapter19\Infrastructure\LocalAttribute.cs" />
     <Compile Include="Areas\Chapter19\Models\Result.cs" />
     <Compile Include="Areas\Chapter20\Chapter20AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter20\Controllers\Home_OldController.cs" />
     <Compile Include="Areas\Chapter20\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter20\Infrastructure\DebugDataView.cs" />
+    <Compile Include="Areas\Chapter20\Infrastructure\DebugDataViewEngine.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,6 +197,9 @@
     <Content Include="Areas\Chapter19\Views\Shared\Result.cshtml" />
     <Content Include="Areas\Chapter19\Views\RemoteData\Data.cshtml" />
     <Content Include="Areas\Chapter20\Views\web.config" />
+    <Content Include="Areas\Chapter20\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter20\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter20\Views\Home\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -218,8 +223,6 @@
     <Folder Include="Areas\Chapter18\Views\GoogleAccount\" />
     <Folder Include="Areas\Chapter18\Views\Home\" />
     <Folder Include="Areas\Chapter20\Data\" />
-    <Folder Include="Areas\Chapter20\Views\Home\" />
-    <Folder Include="Areas\Chapter20\Views\Shared\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <PropertyGroup>
