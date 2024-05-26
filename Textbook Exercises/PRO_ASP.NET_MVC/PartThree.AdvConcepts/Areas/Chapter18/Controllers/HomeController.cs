@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Web.Mvc;
 
 namespace Chapter18.ApplyingFilters.Controllers
 {
     public class HomeController : Controller
     {
+        private Stopwatch _timer;
+
         [CustomAuth(false)]
-        public string Index()
-        {
-            return "<h1>This is the Index action on the '<em>Applying Filters</em>' Home controller</h1>";
-        }
+        public string Index() => "<h1>This is the Index action on the '<em>Applying Filters</em>' Home controller</h1>";        
 
         [GoogleAuth, Authorize(Users = "Bae@google.com")]
         public string ListFromGoogle()
@@ -32,31 +32,16 @@ namespace Chapter18.ApplyingFilters.Controllers
                 throw new ArgumentOutOfRangeException("id", id, "");
         }
 
-        [RangeException]
-        public string RangeTestOld(int id)
+        protected override void OnActionExecuting(ActionExecutingContext contextParam)
         {
-            if (id > 100)
-                return String.Format("The id value is: {0}", id);
-            else
-                throw new ArgumentOutOfRangeException("id", id, "");
+            _timer = Stopwatch.StartNew();
         }
-
-        [CustomAction]
-        public string CustomFilterTest()
+        protected override void OnResultExecuted(ResultExecutedContext contextParam)
         {
-            return "<h1>This is a Custom Filter Test</h1>";
-        }
-
-        [ProfileAction]
-        public string ProfileActionFilterTest()
-        {
-            return "<h1>This is the Profile Filter Test</h1>";
-        }
-
-        [ProfileAction, ProfileResult]
-        public string ProfileResultFilterTest()
-        {
-            return "<h1>This is the Profile Filter Test</h1>";
+            _timer.Stop();
+            contextParam.HttpContext.Response.Write(string
+                .Format("<div>Result method elapsed time: {0:F6}</div>",
+                _timer.Elapsed.TotalSeconds));
         }
     }
 }

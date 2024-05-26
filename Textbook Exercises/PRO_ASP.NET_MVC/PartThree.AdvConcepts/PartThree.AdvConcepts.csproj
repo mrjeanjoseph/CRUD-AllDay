@@ -105,6 +105,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Chapter14\Chapter14AreaRegistration.cs" />
     <Compile Include="Areas\Chapter14\Controllers\HomeController.cs" />
@@ -128,14 +129,20 @@
     <Compile Include="Areas\Chapter18\Chapter18AreaRegistration.cs" />
     <Compile Include="Areas\Chapter18\Controllers\AccountController.cs" />
     <Compile Include="Areas\Chapter18\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Chapter18\Controllers\BaseFiltersController.cs" />
+    <Compile Include="Areas\Chapter18\Controllers\CustomerController.cs" />
     <Compile Include="Areas\Chapter18\Controllers\GoogleAccountController.cs" />
     <Compile Include="Areas\Chapter18\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\CustomActionAttribute.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\CustomActionResultFilterAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\CustomAuthAttribute.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\CustomOverrideActionFiltersAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\GoogleAuthAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\ProfileActionAttribute.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\ProfileAllAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\ProfileResultAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\RangeExceptionAttribute.cs" />
+    <Compile Include="Areas\Chapter18\Infrastructure\SimpleMessageAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
