@@ -4,7 +4,6 @@ using System.Web.Mvc;
 
 namespace Chapter19.ControllerExtensibility.Controllers
 {
-
     public class HomeController : Controller
     {
         public ViewResult Index()
