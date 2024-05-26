@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\MvcApplication.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Chapter14\Chapter14AreaRegistration.cs" />
     <Compile Include="Areas\Chapter14\Controllers\HomeController.cs" />
@@ -144,8 +145,15 @@
     <Compile Include="Areas\Chapter18\Infrastructure\RangeExceptionAttribute.cs" />
     <Compile Include="Areas\Chapter18\Infrastructure\SimpleMessageAttribute.cs" />
     <Compile Include="Areas\Chapter19\Chapter19AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter19\Controllers\ActionInvokerController.cs" />
+    <Compile Include="Areas\Chapter19\Controllers\FastController.cs" />
+    <Compile Include="Areas\Chapter19\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter19\Controllers\CommonItemsController.cs" />
     <Compile Include="Areas\Chapter19\Controllers\PremiumItemsController.cs" />
+    <Compile Include="Areas\Chapter19\Infrastructure\CustomActionInvoker.cs" />
+    <Compile Include="Areas\Chapter19\Infrastructure\CustomControllerActivator.cs" />
+    <Compile Include="Areas\Chapter19\Infrastructure\CustomControllerFactory.cs" />
+    <Compile Include="Areas\Chapter19\Infrastructure\LocalAttribute.cs" />
     <Compile Include="Areas\Chapter19\Models\Result.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

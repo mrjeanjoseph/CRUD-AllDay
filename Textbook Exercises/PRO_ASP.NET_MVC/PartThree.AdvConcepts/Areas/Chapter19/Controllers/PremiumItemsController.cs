@@ -14,7 +14,9 @@ namespace Chapter19.ControllerExtensibility.Controllers
                 ActionName = "Index"
             });
         }
-        public ViewResult ListAllItems()
+
+        [ActionName("Enumerate")] //Obviously renaming the action
+        public ViewResult ListAllItems() // Name no longer valid
         {
             return View("Result", new Result
             {
@@ -22,6 +24,13 @@ namespace Chapter19.ControllerExtensibility.Controllers
                 ControllerName = "PremiumItems",
                 ActionName = "ListAllItems"
             });
+        }
+
+        [NonAction]
+        public ViewResult DoNotUseThisActionMethond()
+        {
+            //This will generate a 404 Not Found!
+            return View();
         }
     }
 }
