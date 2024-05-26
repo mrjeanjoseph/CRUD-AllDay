@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace Chapter20.RazorViewEngine.Controllers
+namespace Chapter20.RazorPagesAndViewEngine.Controllers
 {
     public class HomeOldController : Controller
     {

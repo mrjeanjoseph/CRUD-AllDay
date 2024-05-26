@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Web.Mvc;
 
-namespace Chapter20.RazorViewEngine.Infrastructure
+namespace Chapter20.RazorPagesAndViewEngine.Infrastructure
 {
     public class DebugDataView : IView
     {

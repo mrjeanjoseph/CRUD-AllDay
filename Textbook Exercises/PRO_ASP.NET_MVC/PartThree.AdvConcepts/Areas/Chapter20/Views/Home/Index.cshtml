@@ -1,7 +1,12 @@
-﻿
+﻿@model string[]
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+This is a list of fruit names
+@foreach (string items in Model)
+{
+    <span><b>@items</b></span>
+}

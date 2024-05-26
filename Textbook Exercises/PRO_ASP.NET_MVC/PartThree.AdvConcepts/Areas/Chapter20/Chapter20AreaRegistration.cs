@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Chapter20.RazorViewEngine
+namespace Chapter20.RazorPagesAndViewEngine
 {
     public class Chapter20AreaRegistration : AreaRegistration 
     {
