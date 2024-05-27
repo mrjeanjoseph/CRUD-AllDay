@@ -2,7 +2,7 @@
 
 namespace PartFour.AdvConcepts.Controllers
 {
-    public class HomeController : Controller
+    public class MainController : Controller
     {
         // GET: Home
         public string Index()

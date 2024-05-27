@@ -17,7 +17,8 @@ namespace Chapter21.HelperMethods
             context.MapRoute(
                 "",
                 "HelperMethods/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new string[] { "Chapter21.HelperMethods.Controllers" }
             );
         }
     }
