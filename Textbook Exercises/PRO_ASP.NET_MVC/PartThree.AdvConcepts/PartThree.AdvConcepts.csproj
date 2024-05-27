@@ -202,6 +202,9 @@
     <Content Include="Areas\Chapter20\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter20\Views\Home\Index.cshtml" />
     <Content Include="Areas\Chapter20\Views\Common\List.cshtml" />
+    <Content Include="Areas\Chapter20\Views\Shared\PartialViewOne.cshtml" />
+    <Content Include="Areas\Chapter20\Views\Shared\StronglyTypedViewTwo.cshtml" />
+    <Content Include="Areas\Chapter20\Views\Home\Time.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
