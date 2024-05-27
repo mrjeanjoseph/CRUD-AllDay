@@ -16,7 +16,7 @@ namespace Chapter20.RazorPagesAndViewEngine
         {
             context.MapRoute(
                 "",
-                "RazorViewEngine/{controller}/{action}/{id}",
+                "RazorPagesAndViewEngine/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

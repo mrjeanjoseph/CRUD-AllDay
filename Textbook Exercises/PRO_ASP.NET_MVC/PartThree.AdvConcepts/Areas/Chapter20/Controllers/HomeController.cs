@@ -9,5 +9,10 @@ namespace Chapter20.RazorPagesAndViewEngine.Controllers
             string[] items = { "Snake Plants", "Banana Plants", "Shovel", "Mulch" };
             return View(items);
         }
+
+        public ActionResult List()
+        {
+            return View();
+        }
     }
 }
