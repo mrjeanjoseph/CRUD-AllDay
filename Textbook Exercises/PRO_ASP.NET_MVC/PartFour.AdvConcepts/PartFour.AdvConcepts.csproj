@@ -96,6 +96,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Chapter21\Chapter21AreaRegistration.cs" />
     <Compile Include="Areas\Chapter21\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter21\Infrastructure\CustomHelpers.cs" />
+    <Compile Include="Areas\Chapter21\Models\Personnel.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -108,6 +110,7 @@
     <Content Include="Areas\Chapter21\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Chapter21\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter21\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter21\Views\Home\CreatePerson.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -121,7 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Chapter21\Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

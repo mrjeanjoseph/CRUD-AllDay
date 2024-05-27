@@ -12,13 +12,17 @@ namespace Chapter21.HelperMethods
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext routes) 
         {
-            context.MapRoute(
+            routes.MapRoute(
                 "",
                 "HelperMethods/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
-                new string[] { "Chapter21.HelperMethods.Controllers" }
+                new { action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                "FormRoute",
+                "app/forms/{controller}/{action}"
             );
         }
     }
