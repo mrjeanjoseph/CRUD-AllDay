@@ -98,6 +98,8 @@
     <Compile Include="Areas\Chapter21\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter21\Infrastructure\CustomHelpers.cs" />
     <Compile Include="Areas\Chapter21\Models\Personnel.cs" />
+    <Compile Include="Areas\Chapter22\Chapter22AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter22\Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -111,6 +113,10 @@
     <Content Include="Areas\Chapter21\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter21\Views\Home\Index.cshtml" />
     <Content Include="Areas\Chapter21\Views\Home\CreatePerson.cshtml" />
+    <Content Include="Areas\Chapter22\Views\web.config" />
+    <Content Include="Areas\Chapter22\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter22\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter22\Views\Home\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -124,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Chapter22\Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
