@@ -1,0 +1,19 @@
+﻿@model Chapter22.TemplatedHelperMethods.Models.Person
+
+@{
+    ViewBag.Title = "Create Person";
+    Html.EnableClientValidation(false);
+}
+
+<h2>Create Person @Html.LabelForModel()</h2>
+@using (Html.BeginRouteForm("FormRouteTwo", new { }, FormMethod.Post,
+    new { @class = "personClass", data_formType = "person" }))
+{
+    <div class="column">
+        @Html.EditorForModel()
+    </div>
+    <div class="column">
+        @Html.EditorFor(a => a.HomeAddress)
+    </div>
+    <input type="submit" value="Submit" />
+}

@@ -1,0 +1,4 @@
+﻿@model Chapter22.TemplatedHelperMethods.Models.Role
+
+@Html.DropDownListFor(r => r, 
+    new SelectList(Enum.GetNames(Model.GetType()), Model.ToString()))

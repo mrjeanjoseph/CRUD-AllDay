@@ -12,12 +12,17 @@ namespace Chapter22.TemplatedHelperMethods
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext routes) 
         {
-            context.MapRoute(
+            routes.MapRoute(
                 "",
                 "TemplatedHelperMethods/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                "FormRouteTwo",
+                "app/forms/{controller}/{action}"
             );
         }
     }
