@@ -1,0 +1,12 @@
+﻿@using Chapter23.AjaxHelperMethods.Models
+@model IEnumerable<Person>
+
+
+@foreach (Person person in Model) {
+    <tr>
+        <td>@person.FirstName</td>
+        <td>@person.LastName</td>
+        <td>@person.Role</td>
+    </tr>
+}
+

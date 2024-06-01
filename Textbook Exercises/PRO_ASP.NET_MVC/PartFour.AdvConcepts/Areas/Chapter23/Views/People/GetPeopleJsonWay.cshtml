@@ -1,0 +1,87 @@
+﻿@using Chapter23.AjaxHelperMethods.Models
+@model string
+
+@{
+    ViewBag.Title = "Get People";
+    AjaxOptions ajaxOpts = new AjaxOptions
+    {
+        UpdateTargetId = "tablebody",
+        Url = Url.Action("GetPeopleDataJsonWay"),
+        LoadingElementId = "Loading",
+        LoadingElementDuration = 500,
+        //Confirm = "Do you want new data"
+    };
+    //Perfect Example
+}
+
+<h2>Get People Data Json Way</h2>
+<div id="Loading" class="Load" style="display:none;">
+    <p>Loading Data...</p>
+</div>
+
+<table>
+    <thead>
+        <tr><th>First Name</th><th>Last Name</th><th>Role</th></tr>
+    </thead>
+    <tbody id="tablebody2">
+        @Html.Action("GetPeopleDataJson", new { selectedRole = Model })
+    </tbody>
+</table>
+
+<p>Server processing time: @ViewBag.ServerProcessingTime ms</p>
+
+@using (Ajax.BeginForm(ajaxOpts))
+{
+    <div id="people-form">
+        @Html.DropDownList("selectedRole", new SelectList(
+            new[] { "All" }.Concat(Enum.GetNames(typeof(Role)))))
+        <button id="filter-btn" type="submit">Filter</button>
+    </div>
+}
+
+<div></div><div></div>
+<div>
+    @foreach (string role in Enum.GetNames(typeof(Role)))
+    {
+        //Option One
+        <div class="ajaxLink">
+            @Ajax.ActionLink(role, "GetPeopleDataJsonWay",
+            new { selectedRole = role },
+            new AjaxOptions { UpdateTargetId = "tablebody" })
+        </div>
+    }
+</div>
+<div></div><div></div>
+<div>
+    @foreach (string role in Enum.GetNames(typeof(Role)))
+    {
+        //Option Two
+        <div class="ajaxLink">
+            @Ajax.ActionLink(role, "GetPeopleJsonWay",
+            new { selectedRole = role },
+            new AjaxOptions
+                 {
+                Url = Url.Action("GetPeopleDataJsonWay", new { selectedRole = role }),
+                OnSuccess = "ProcessData",
+            })
+        </div>
+    }
+</div>
+<br />
+<hr />
+
+
+<script type="text/javascript">
+
+    //Using Json
+    function ProcessData(data) {
+        var target = $("#tablebody2");
+        target.empty();
+        for (var i = 0; i < data.length; i++) {
+            var person = data[i];
+            target.append("<tr><td>" + person.FirstName + "</td><td>")
+                + person.LastName + "</td><td>" + person.Role + "</td></td>"
+        }
+    }
+
+</script>
