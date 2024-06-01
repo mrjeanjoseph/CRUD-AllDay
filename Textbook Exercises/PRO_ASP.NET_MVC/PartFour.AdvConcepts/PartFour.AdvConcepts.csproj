@@ -102,6 +102,10 @@
     <Compile Include="Areas\Chapter22\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter22\Models\PersonnelMD.cs" />
     <Compile Include="Areas\Chapter22\Models\Personnel.cs" />
+    <Compile Include="Areas\Chapter23\Chapter23AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter23\Controllers\PeopleController.cs" />
+    <Compile Include="Areas\Chapter23\Models\Personnel.cs" />
+    <Compile Include="Areas\Chapter23\Models\PersonnelMD.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -125,6 +129,7 @@
     <Content Include="Areas\Chapter22\Views\Shared\EditorTemplates\Role.cshtml" />
     <Content Include="Areas\Chapter22\Views\Shared\EditorTemplates\Enum.cshtml" />
     <Content Include="Areas\Chapter22\Views\Shared\EditorTemplates\Boolean.cshtml" />
+    <Content Include="Areas\Chapter23\Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -138,6 +143,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Chapter23\Views\People\" />
+    <Folder Include="Areas\Chapter23\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
