@@ -89,7 +89,7 @@
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\Chapter23\Views\People\GetPeopleAjaxWay.cshtml" />
+    <Content Include="Areas\Chapter23\Views\People\GetPeople.cshtml" />
     <Content Include="Areas\Chapter23\Views\People\GetPeopleRegularWay.cshtml" />
     <Content Include="Areas\Chapter23\Views\People\_GetPeopleData.cshtml" />
     <Content Include="Areas\Chapter23\Views\People\GetPeopleJsonWay.cshtml" />

@@ -23,6 +23,33 @@ namespace Chapter23.AjaxHelperMethods.Controllers
             return View();
         }
 
+        public ActionResult GetPeopleData(string selectedRole = "All")
+        {
+            IEnumerable<Person> data = personData;
+
+            if (selectedRole != "All")
+            {
+                Role selected = (Role)Enum.Parse(typeof(Role), selectedRole);
+                data = personData.Where(p => p.Role == selected);
+            }
+            if(Request.IsAjaxRequest())
+            {
+                var formattedData = data.Select(p => new
+                {
+                    p.FirstName,
+                    p.LastName,
+                    Role = Enum.GetName(typeof(Role), p.Role)
+                });
+                return Json(formattedData, JsonRequestBehavior.AllowGet);
+            } else
+                return PartialView("_GetPeopleData", data);
+        }
+
+        public ActionResult GetPeople(string selectedRole = "All")
+        {
+            return View((object)selectedRole);
+        }
+
         #region Using the Json Way
         private IEnumerable<Person> GetData(string selectedRole)
         {
@@ -74,7 +101,7 @@ namespace Chapter23.AjaxHelperMethods.Controllers
             return PartialView("_GetPeopleData", data);
         }
 
-        public ActionResult GetPeople(string selectedRole = "All")
+        public ActionResult GetPeopleAjaxWay(string selectedRole = "All")
         {
             return View((object)selectedRole);
         }
