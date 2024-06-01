@@ -18,7 +18,7 @@ namespace Chapter23.AjaxHelperMethods.Models
 
     }
 
-    public enum Role { Admin, User, Guest }
+    public enum Role { Admin, User, Contractor, Guest }
 
     public class Address
     {

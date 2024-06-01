@@ -19,6 +19,11 @@ namespace Chapter23.AjaxHelperMethods
                 "AjaxHelperMethods/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
+            context.MapRoute(
+                "FormRoute",
+                "AjaxHelperMethods/{controller}/{action}/{id}",
+                new { action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

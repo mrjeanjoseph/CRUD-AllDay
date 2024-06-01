@@ -10,20 +10,30 @@
             width: 100px;
         }
 
-        div.dataElem { margin: 5px; }
+        div.dataElem {
+            margin: 5px;
+        }
 
-        h2 > label { width: inherit; }
+        h2 > label {
+            width: inherit;
+        }
 
         .editor-label, .editor-field {
             float: left;
             margin-top: 10px;
         }
 
-        .editor-field input { height: 20px; }
+            .editor-field input {
+                height: 20px;
+            }
 
-        .editor-label { clear: left; }
+        .editor-label {
+            clear: left;
+        }
 
-        .editor-field { margin-left: 10px; }
+        .editor-field {
+            margin-left: 10px;
+        }
 
         input[type=submit] {
             float: left;
@@ -63,6 +73,13 @@
 
 
     @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
 
+    <script src="~/Scripts/jquery-3.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

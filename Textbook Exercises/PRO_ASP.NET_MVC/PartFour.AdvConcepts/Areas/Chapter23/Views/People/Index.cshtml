@@ -3,5 +3,43 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+<h2>Basic Links and URLs</h2>
+
+<table>
+    <thead>
+        <tr><th>??</th><th>Helper</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td>Url.Content("~/Content/Site.css")</td>
+            <td>@Url.Content("~/Content/Site.css")</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Html.ActionLink("Action Link Example", "Index", "Home")</td>
+            <td>@Html.ActionLink("Action Link Example", "Index", "Home")</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Url.Action("GetPeople", "People")</td>
+            <td>@Url.Action("GetPeople", "People")</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Url.RouteUrl(new {controller = "People", action="GetPeople"})</td>
+            <td>@Url.RouteUrl(new { controller = "People", action = "GetPeople" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Html.RouteLink("Route Link Example", new {controller = "People", action="GetPeople"})</td>
+            <td>@Html.RouteLink("Route Link Example", new { controller = "People", action = "GetPeople" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Html.RouteLink("Form Route Link Example", "FormRoute", new {controller = "People", action="GetPeople"})</td>
+            <td>@Html.RouteLink("Form Route Link Example", "FormRoute", new { controller = "People", action = "GetPeople" })</td>
+        </tr>
+    </tbody>
+</table>

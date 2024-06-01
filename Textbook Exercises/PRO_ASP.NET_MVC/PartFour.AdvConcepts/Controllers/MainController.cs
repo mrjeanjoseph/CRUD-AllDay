@@ -7,7 +7,7 @@ namespace PartFour.AdvConcepts.Controllers
         // GET: Home
         public string Index()
         {
-            return "<h1>The main project have not been configured yet</h1>";
+            return "<h1>This is the homepage for Chapter 23 - Ajax Helper Methods.</h1>";
         }
     }
 }

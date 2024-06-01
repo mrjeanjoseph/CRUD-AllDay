@@ -7,7 +7,7 @@ namespace Chapter23.AjaxHelperMethods.Controllers
 {
     public class PeopleController : Controller
     {
-        private Person[] personData =
+        private readonly Person[] personData =
         {
             new Person { FirstName = "Kervens", LastName = "Jean-Joseph", Role = Role.Admin },
             new Person { FirstName = "Chistine", LastName = "Fleurant", Role = Role.User },
