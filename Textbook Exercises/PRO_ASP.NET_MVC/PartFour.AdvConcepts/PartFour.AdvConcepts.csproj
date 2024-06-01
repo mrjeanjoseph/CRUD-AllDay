@@ -130,6 +130,9 @@
     <Content Include="Areas\Chapter22\Views\Shared\EditorTemplates\Enum.cshtml" />
     <Content Include="Areas\Chapter22\Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Areas\Chapter23\Views\web.config" />
+    <Content Include="Areas\Chapter23\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter23\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter23\Views\People\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -143,8 +146,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Chapter23\Views\People\" />
-    <Folder Include="Areas\Chapter23\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
