@@ -27,11 +27,18 @@ namespace Chapter24.ModelBinding.Controllers
         public ActionResult Address()
         {
             IList<AddressSummary> addresses = new List<AddressSummary>();
+            UpdateModel(addresses);
+            return View(addresses);
+        }
+
+        public ActionResult AddressOldThree()
+        {
+            IList<AddressSummary> addresses = new List<AddressSummary>();
             UpdateModel(addresses, new FormValueProvider(ControllerContext));
             return View(addresses);
         }
 
-        public ActionResult Address(FormCollection formData)
+        public ActionResult AddressOldThree(FormCollection formData)
         {
             IList<AddressSummary> addresses = new List<AddressSummary>();
             if (TryUpdateModel(addresses, formData))

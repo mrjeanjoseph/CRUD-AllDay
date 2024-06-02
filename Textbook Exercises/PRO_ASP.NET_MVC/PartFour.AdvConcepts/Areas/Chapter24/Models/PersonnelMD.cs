@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chapter24.ModelBinding.Infrastructure;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.Xml.Serialization;
@@ -33,6 +34,7 @@ namespace Chapter24.ModelBinding.Models
     }
 
     //[Bind(Include ="City")]
+    [ModelBinder(typeof(AddressSummaryBinder))] // Either here or in Global.asax
     public class AddressSummary
     {
         public string City { get; set; }

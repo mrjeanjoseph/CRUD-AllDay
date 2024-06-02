@@ -2,11 +2,11 @@
 
 namespace Chapter24.ModelBinding.Infrastructure
 {
-    public class CustomValueProviderFactor : ValueProviderFactory
+    public class CustomValueProviderFactory : ValueProviderFactory
     {
         public override IValueProvider GetValueProvider(ControllerContext controllerContext)
         {
-            throw new System.NotImplementedException();
+            return new CountryValueProvider();
         }
     }
 }

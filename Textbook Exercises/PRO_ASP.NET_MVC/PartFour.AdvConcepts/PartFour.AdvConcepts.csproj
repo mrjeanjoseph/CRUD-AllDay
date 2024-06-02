@@ -123,8 +123,9 @@
     <Compile Include="Areas\Chapter24\Chapter24AreaRegistration.cs" />
     <Compile Include="Areas\Chapter24\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter24\Controllers\PersonController.cs" />
+    <Compile Include="Areas\Chapter24\Infrastructure\AddressSummaryBinder.cs" />
     <Compile Include="Areas\Chapter24\Infrastructure\CountryValueProvider.cs" />
-    <Compile Include="Areas\Chapter24\Infrastructure\CustomValueProviderFactor.cs" />
+    <Compile Include="Areas\Chapter24\Infrastructure\CustomValueProviderFactory.cs" />
     <Compile Include="Areas\Chapter24\Models\Personnel.cs" />
     <Compile Include="Areas\Chapter24\Models\PersonnelMD.cs" />
     <Compile Include="Controllers\MainController.cs" />
