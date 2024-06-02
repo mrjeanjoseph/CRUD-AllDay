@@ -93,6 +93,10 @@
     <Content Include="Areas\Chapter23\Views\People\GetPeopleRegularWay.cshtml" />
     <Content Include="Areas\Chapter23\Views\People\_GetPeopleData.cshtml" />
     <Content Include="Areas\Chapter23\Views\People\GetPeopleJsonWay.cshtml" />
+    <Content Include="Areas\Chapter24\Views\web.config" />
+    <Content Include="Areas\Chapter24\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter24\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter24\Views\Person\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -112,6 +116,10 @@
     <Compile Include="Areas\Chapter23\Controllers\PeopleController.cs" />
     <Compile Include="Areas\Chapter23\Models\Personnel.cs" />
     <Compile Include="Areas\Chapter23\Models\PersonnelMD.cs" />
+    <Compile Include="Areas\Chapter24\Chapter24AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter24\Controllers\PersonController.cs" />
+    <Compile Include="Areas\Chapter24\Models\Personnel.cs" />
+    <Compile Include="Areas\Chapter24\Models\PersonnelMD.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
