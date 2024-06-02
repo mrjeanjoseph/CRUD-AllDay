@@ -101,6 +101,13 @@
     <Content Include="Areas\Chapter24\Views\Person\DisplaySummary.cshtml" />
     <Content Include="Areas\Chapter24\Views\Home\Names.cshtml" />
     <Content Include="Areas\Chapter24\Views\Person\Address.cshtml" />
+    <Content Include="Areas\Chapter25\Views\web.config" />
+    <Content Include="Areas\Chapter25\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter25\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter25\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter25\Views\Home\MakeBooking.cshtml" />
+    <Content Include="Areas\Chapter25\Views\Home\BookingCompleted.cshtml" />
+    <Content Include="Areas\Chapter25\Views\Shared\EditorTemplates\Boolean.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -128,6 +135,9 @@
     <Compile Include="Areas\Chapter24\Infrastructure\CustomValueProviderFactory.cs" />
     <Compile Include="Areas\Chapter24\Models\Personnel.cs" />
     <Compile Include="Areas\Chapter24\Models\PersonnelMD.cs" />
+    <Compile Include="Areas\Chapter25\Chapter25AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter25\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter25\Models\Appointment.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
