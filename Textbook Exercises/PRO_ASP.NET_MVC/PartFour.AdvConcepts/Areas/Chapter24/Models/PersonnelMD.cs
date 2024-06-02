@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using System.Xml.Serialization;
 
 namespace Chapter24.ModelBinding.Models
 {
@@ -28,5 +30,12 @@ namespace Chapter24.ModelBinding.Models
         public string State { get; set; }
         public string Country { get; set; }
         public string ZipCode { get; set; }
+    }
+
+    //[Bind(Include ="City")]
+    public class AddressSummary
+    {
+        public string City { get; set; }
+        public string Country { get; set; }
     }
 }

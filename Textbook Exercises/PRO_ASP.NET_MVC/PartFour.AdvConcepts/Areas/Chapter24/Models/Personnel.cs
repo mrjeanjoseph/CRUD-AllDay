@@ -10,7 +10,7 @@ namespace Chapter24.ModelBinding.Models
     {
         //[HiddenInput]
         //[ScaffoldColumn(false)]
-        [HiddenInput(DisplayValue = false)]
+        //[HiddenInput(DisplayValue = false)]
         public int PersonId { get; set; }
 
         public string Title { get; set; }
