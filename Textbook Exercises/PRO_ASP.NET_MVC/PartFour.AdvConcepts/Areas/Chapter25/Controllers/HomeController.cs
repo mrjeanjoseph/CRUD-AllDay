@@ -25,6 +25,16 @@ namespace Chapter25.ModelValidation.Controllers
             else return View();
         }
 
+        public JsonResult ValidateDate(string Date)
+        {
+            DateTime parseDate;
+            if (!DateTime.TryParse(Date, out parseDate))
+                return Json("Please enter a valid date (mm/dd/yyyy)", JsonRequestBehavior.AllowGet);
+            else if (DateTime.Now > parseDate)
+                return Json("Please enter a date in the future.", JsonRequestBehavior.AllowGet);
+            else return Json(true, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public ViewResult MakeBookingTwo(Appointment appointment)
         {

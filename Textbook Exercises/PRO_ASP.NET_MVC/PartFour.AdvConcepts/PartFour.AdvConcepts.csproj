@@ -143,6 +143,7 @@
     <Compile Include="Areas\Chapter25\Infrastructure\FutureDateAttribute.cs" />
     <Compile Include="Areas\Chapter25\Infrastructure\MustBeTrueAttribute.cs" />
     <Compile Include="Areas\Chapter25\Infrastructure\NoJeanOnMondaysAttribute.cs" />
+    <Compile Include="Areas\Chapter25\Models\Appointment_Old.cs" />
     <Compile Include="Areas\Chapter25\Models\Appointment.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
