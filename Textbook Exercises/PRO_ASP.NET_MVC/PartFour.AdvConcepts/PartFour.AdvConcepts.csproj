@@ -137,6 +137,9 @@
     <Compile Include="Areas\Chapter24\Models\PersonnelMD.cs" />
     <Compile Include="Areas\Chapter25\Chapter25AreaRegistration.cs" />
     <Compile Include="Areas\Chapter25\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter25\Infrastructure\FutureDateAttribute.cs" />
+    <Compile Include="Areas\Chapter25\Infrastructure\MustBeTrueAttribute.cs" />
+    <Compile Include="Areas\Chapter25\Infrastructure\NoJeanOnMondaysAttribute.cs" />
     <Compile Include="Areas\Chapter25\Models\Appointment.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">

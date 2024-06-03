@@ -20,6 +20,14 @@ namespace Chapter25.ModelValidation.Controllers
         [HttpPost]
         public ViewResult MakeBooking(Appointment appointment)
         {
+            if (ModelState.IsValid)
+                return View("BookingCompleted", appointment);
+            else return View();
+        }
+
+        [HttpPost]
+        public ViewResult MakeBookingTwo(Appointment appointment)
+        {
             if (string.IsNullOrEmpty(appointment.ClientName))
                 ModelState.AddModelError("ClientName", "Please Enter your name");
 
@@ -33,9 +41,9 @@ namespace Chapter25.ModelValidation.Controllers
                 && appointment.ClientName == "Jean" && appointment.AppointmentDate.DayOfWeek == DayOfWeek.Monday)
                 ModelState.AddModelError("", "Jean cannot book appointments on Mondays");
 
-                if (ModelState.IsValid)
-                    return View("BookingCompleted", appointment);
-                else return View();
+            if (ModelState.IsValid)
+                return View("BookingCompleted", appointment);
+            else return View();
 
         }
     }
