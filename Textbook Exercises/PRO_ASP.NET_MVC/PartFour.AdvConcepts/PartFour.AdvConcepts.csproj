@@ -111,6 +111,10 @@
     <Content Include="Areas\Chapter25\Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Areas\Chapter26\Views\web.config" />
+    <Content Include="Areas\Chapter26\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter26\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter26\Views\Home\MakeBooking.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -148,6 +152,9 @@
     <Compile Include="Areas\Chapter25\Infrastructure\NoJeanOnMondaysAttribute.cs" />
     <Compile Include="Areas\Chapter25\Models\Appointment_Old.cs" />
     <Compile Include="Areas\Chapter25\Models\Appointment.cs" />
+    <Compile Include="Areas\Chapter26\Chapter26AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter26\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter26\Models\Appointment.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
