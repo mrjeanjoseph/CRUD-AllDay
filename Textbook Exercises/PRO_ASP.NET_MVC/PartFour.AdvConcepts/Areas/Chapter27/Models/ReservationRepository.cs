@@ -12,13 +12,37 @@ namespace Chapter27.WebServices.Models
             get { return repository; }
         }
 
-        private List<Reservation> data = new List<Reservation>
-        {
-            new Reservation { ReservationId = 5, ClientName = "Kervens Jean-Joseph", Location = "St. Pete"},
-            new Reservation { ReservationId = 10, ClientName = "Denzel Jean-Joseph", Location = "Lakeland"},
-            new Reservation { ReservationId = 15, ClientName = "Elanie Jean-Joseph", Location = "SixHubs, Tx"},
-            new Reservation { ReservationId = 20, ClientName = "Denzel Paniague", Location = "Santo Domingo"},
-            new Reservation { ReservationId = 25, ClientName = "Ethan Jean-Joseph", Location = "Venice"},
+        private List<Reservation> data = new List<Reservation> {
+            new Reservation { 
+                ReservationId = 5, 
+                ClientName = "Kervens Jean-Joseph", 
+                ReservationName = "This is the reservation details description",
+                Location = "St. Pete"
+            },
+            new Reservation { 
+                ReservationId = 10, 
+                ClientName = "Denzel Jean-Joseph", 
+                ReservationName = "This is the reservation details description", 
+                Location = "Lakeland"
+            },
+            new Reservation { 
+                ReservationId = 15, 
+                ClientName = "Elanie Jean-Joseph", 
+                ReservationName = "This is the reservation details description", 
+                Location = "SixHubs, Tx"
+            },
+            new Reservation { 
+                ReservationId = 20,
+                ClientName = "Denzel Paniague",
+                ReservationName = "This is the reservation details description",
+                Location = "Santo Domingo"
+            },
+            new Reservation { 
+                ReservationId = 25, 
+                ClientName = "Ethan Jean-Joseph", 
+                ReservationName = "This is the reservation details description", 
+                Location = "Venice"
+            },
         };
 
         public IEnumerable<Reservation> GetAll() => data;

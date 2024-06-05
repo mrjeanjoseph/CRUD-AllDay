@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Chapter27.WebServices
 {
@@ -18,6 +19,17 @@ namespace Chapter27.WebServices
                 "",
                 "WebServices/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
+            );
+        }
+
+        public static void RegisterArea(HttpConfiguration config)
+        {
+            config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "WebServices/api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
             );
         }
     }

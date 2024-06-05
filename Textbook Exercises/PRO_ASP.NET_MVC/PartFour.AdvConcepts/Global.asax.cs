@@ -2,8 +2,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Chapter24.ModelBinding.Infrastructure;
-using Chapter24.ModelBinding.Models;
+using System.Web.Http;
 
 namespace PartFour.AdvConcepts
 {
@@ -11,7 +10,9 @@ namespace PartFour.AdvConcepts
     {
         protected void Application_Start()
         {
+            // Register Web API configuration
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
