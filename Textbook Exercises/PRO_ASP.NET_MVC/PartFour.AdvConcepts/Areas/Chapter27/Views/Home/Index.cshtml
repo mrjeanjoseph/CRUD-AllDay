@@ -1,8 +1,20 @@
-﻿@model Chapter27.WebServices.Models.Reservation
+﻿@using Chapter27.WebServices.Models
+@model IEnumerable<Reservation>
+
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+<div id="summary" class="section card text-bg-light mb-3 w-50">
+    @Html.Partial("_Summary", Model)
+</div>
+<div id="editor" class="section card text-bg-light mb-3 w-50">
+    @Html.Partial("_Editor", new Reservation())
+</div>
+
+
+@section Scripts{
+
+}

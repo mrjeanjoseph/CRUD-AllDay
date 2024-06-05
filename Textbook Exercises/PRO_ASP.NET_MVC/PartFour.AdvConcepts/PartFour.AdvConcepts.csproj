@@ -132,6 +132,8 @@
     <Content Include="Areas\Chapter27\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Chapter27\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter27\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter27\Views\Home\_Summary.cshtml" />
+    <Content Include="Areas\Chapter27\Views\Home\_Editor.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -140,6 +142,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.5.1.debug.js" />
     <Content Include="Scripts\knockout-3.5.1.js" />
+    <Content Include="Scripts\Chapter27\webservice.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
