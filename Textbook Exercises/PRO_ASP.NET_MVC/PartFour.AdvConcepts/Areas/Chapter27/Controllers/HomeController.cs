@@ -1,13 +1,35 @@
-﻿using System.Web.Mvc;
+﻿using Chapter27.WebServices.Models;
+using System.Web.Mvc;
 
 namespace Chapter27.WebServices.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Chapter27/Home
-        public ActionResult Index()
+        private ReservationRepository repository = ReservationRepository.Current;
+        public ActionResult Index() => View(repository.GetAll());
+
+        public ActionResult Add(Reservation reservation)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                repository.Add(reservation);
+                return RedirectToAction("Index");
+            }
+            else return View(reservation);
+        }
+
+        public ActionResult Remove(int reservationId)
+        {
+            repository.Remove(reservationId);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Update(Reservation reservation)
+        {
+            if (ModelState.IsValid && repository.Update(reservation))
+                return RedirectToAction("Index");
+            else
+                return View("Index");
         }
     }
 }

@@ -129,6 +129,9 @@
     <Content Include="Areas\Chapter26\Views\Home\MakeBooking.cshtml" />
     <Content Include="Areas\Chapter26\Views\Shared\_Layout_Old.cshtml" />
     <Content Include="Areas\Chapter27\Views\web.config" />
+    <Content Include="Areas\Chapter27\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Chapter27\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Chapter27\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -216,8 +219,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Chapter27\Views\Home\" />
-    <Folder Include="Areas\Chapter27\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

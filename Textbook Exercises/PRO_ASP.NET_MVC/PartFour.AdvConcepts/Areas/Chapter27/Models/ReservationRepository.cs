@@ -21,6 +21,8 @@ namespace Chapter27.WebServices.Models
             new Reservation { ReservationId = 25, ClientName = "Ethan Jean-Joseph", Location = "Venice"},
         };
 
+        public IEnumerable<Reservation> GetAll() => data;
+
         public Reservation Get(int reservationId) =>
             data.Where(r => r.ReservationId == reservationId).FirstOrDefault();
 
