@@ -129,6 +129,7 @@
     <Content Include="Areas\Chapter26\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Chapter26\Views\Home\MakeBooking.cshtml" />
     <Content Include="Areas\Chapter26\Views\Shared\_Layout_Old.cshtml" />
+    <Content Include="Areas\Chapter27\Views\web.config" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -170,6 +171,10 @@
     <Compile Include="Areas\Chapter26\Chapter26AreaRegistration.cs" />
     <Compile Include="Areas\Chapter26\Controllers\HomeController.cs" />
     <Compile Include="Areas\Chapter26\Models\Appointment.cs" />
+    <Compile Include="Areas\Chapter27\Chapter27AreaRegistration.cs" />
+    <Compile Include="Areas\Chapter27\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Chapter27\Models\Reservation.cs" />
+    <Compile Include="Areas\Chapter27\Models\ReservationRepository.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,6 +215,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Chapter27\Views\Home\" />
+    <Folder Include="Areas\Chapter27\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
