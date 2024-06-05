@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 
 namespace Chapter27.WebServices.Models
 {
@@ -46,7 +45,8 @@ namespace Chapter27.WebServices.Models
                 storedReservation.ClientName = reservation.ClientName;
                 storedReservation.Location = reservation.Location;
                 return true;
-            } else 
+            }
+            else
                 return false;
         }
     }
