@@ -7,13 +7,14 @@ namespace Chapter27.WebServices.Controllers
     {
         private ReservationRepository repository = ReservationRepository.Current;
         public ActionResult Index() => View(repository.GetAll());
+        public ActionResult IndexKO() => View();
 
         public ActionResult Add(Reservation reservation)
         {
             if (ModelState.IsValid)
             {
                 repository.Add(reservation);
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexKO");
             }
             else return View(reservation);
         }

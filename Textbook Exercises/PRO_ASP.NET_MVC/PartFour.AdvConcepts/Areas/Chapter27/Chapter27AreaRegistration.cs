@@ -21,16 +21,5 @@ namespace Chapter27.WebServices
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
-
-        public static void RegisterArea(HttpConfiguration config)
-        {
-            config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "WebServices/api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-        }
     }
 }

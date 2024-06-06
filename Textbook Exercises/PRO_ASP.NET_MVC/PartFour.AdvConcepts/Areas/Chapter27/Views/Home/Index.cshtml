@@ -6,12 +6,18 @@
     ViewBag.Title = "Index";
 }
 
+<div class="row">
 
-<div id="summary" class="section card text-bg-light mb-3 w-50">
-    @Html.Partial("_Summary", Model)
-</div>
-<div id="editor" class="section card text-bg-light mb-3 w-50">
-    @Html.Partial("_Editor", new Reservation())
+    <div class="col-3">
+        <div id="editor" class="section card text-bg-light mb-3">
+            @Html.Partial("_Editor", new Reservation())
+        </div>
+    </div>
+    <div class="col-8">
+        <div id="summary" class="section card text-bg-light mb-3">
+            @Html.Partial("_Summary", Model)
+        </div>
+    </div>
 </div>
 
 

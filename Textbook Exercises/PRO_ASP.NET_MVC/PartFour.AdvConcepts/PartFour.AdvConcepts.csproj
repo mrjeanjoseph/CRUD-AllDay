@@ -160,9 +160,10 @@
     <Content Include="Areas\Chapter27\Views\web.config" />
     <Content Include="Areas\Chapter27\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Chapter27\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Chapter27\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Chapter27\Views\Home\IndexKO.cshtml" />
     <Content Include="Areas\Chapter27\Views\Home\_Summary.cshtml" />
     <Content Include="Areas\Chapter27\Views\Home\_Editor.cshtml" />
+    <Content Include="Areas\Chapter27\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />

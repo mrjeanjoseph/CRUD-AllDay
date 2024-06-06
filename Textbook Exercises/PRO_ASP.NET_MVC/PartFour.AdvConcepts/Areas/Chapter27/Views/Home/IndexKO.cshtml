@@ -1,0 +1,120 @@
+﻿@using Chapter27.WebServices.Models
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div id="editor" class="section card text-bg-light mb-3 w-25" data-bind="ifnot: model.displaySummary">
+    <div class="card-header">Create Reservation</div>
+    <div class="card-body">
+        <div class="mb-3">
+            <label>Client Name</label>
+            <input class="form-control" data-bind="value: model.editor.name" />
+        </div>
+        <div class="mb-3">
+            <label>Reservation Name</label>
+            <input class="form-control" data-bind="value: model.editor.reservation" />
+        </div>
+        <div class="mb-3">
+            <label>Location Name</label>
+            <input class="form-control" data-bind="value: model.editor.location" />
+        </div>
+        <input type="submit" class="form-control btn btn-outline-primary w-50" data-bind="click: handleEditorClick" />
+    </div>
+</div>gggggggg
+
+<div id="summary" class="section card text-bg-light mb-3" data-bind="if: model.displaySummary">
+    <div class="card-header">Reservation Summary</div>
+    <table class="table table-striped small">
+        <thead>
+            <tr><th>Reservation Id</th><th>Client Name</th><th>Reservation Name</th><th>Location</th></tr>
+        </thead>
+        <tbody data-bind="foreach: model.reservations">
+            <tr>
+                <td data-bind="text: ReservationId"></td>
+                <td data-bind="text: ClientName"></td>
+                <td data-bind="text: ReservationName"></td>
+                <td data-bind="text: Location"></td>
+                <td>
+                    <button class="btn btn-sm btn-danger" data-bind="click: removeItem">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input class="btn btn-outline-primary w-25" data-bind="click: handleCreateClick" type="submit" value="Create" />
+</div>
+
+
+
+@section Scripts{
+    <script>
+
+        var model = {
+            reservations: ko.observableArray(),
+            editor: {
+                name: ko.observable(""),
+                reservation: ko.observable(""),
+                location: ko.observable("")
+            },
+            displaySummary: ko.observable(true)
+        };
+
+        function sendAjaxRequest(httpMethod, callback, url, reqData) {
+            $.ajax("/api/web" + (url ? "/" + url : ""), {
+                type: httpMethod,
+                success: callback,
+                data: reqData
+            });
+        }
+
+        function getAllItems() {
+            //return;
+            sendAjaxRequest("GET", function (data) {
+                model.reservations.removeAll();
+                for (var i = 0; i < data.length; i++) {
+                    model.reservations.push(data[i]);
+                }
+            });
+        }
+
+        function removeItem(item) {
+            sendAjaxRequest("DELETE", function () {
+                for (var i = 0; i < model.reservations().length; i++) {
+                    if (model.reservations()[i].ReservationId == item.ReservationId) {
+                        model.reservations.remove(model.reservation()[i]);
+                        break;
+                    }
+                }
+            }, item.ReservationId);
+        }
+
+        function removeItemOld(item) { // not working, tried diff implementation
+            sendAjaxRequest("DELETE", function () {
+                getAllItems();
+            }, item.ReservationId);
+        }
+
+        function handleCreateClick() {
+            model.displaySummary(false);
+        }
+
+        function handleEditorClick() {
+            sendAjaxRequest("POST", function (newAppointment) {
+                model.reservations.push(newAppointment);
+                model.displaySummary(true);
+            }, null, {
+                ClientName: model.editor.name,
+                ReservationName: model.editor.reservation,
+                Location: model.editor.location
+            })
+        }
+
+        $(document).ready(function () {
+            getAllItems();
+            ko.applyBindings(model);
+        });
+    </script>
+}

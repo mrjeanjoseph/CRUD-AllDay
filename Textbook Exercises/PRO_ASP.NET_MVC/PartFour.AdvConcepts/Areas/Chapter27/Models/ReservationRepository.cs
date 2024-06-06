@@ -16,31 +16,31 @@ namespace Chapter27.WebServices.Models
             new Reservation { 
                 ReservationId = 5, 
                 ClientName = "Kervens Jean-Joseph", 
-                ReservationName = "This is the reservation details description",
+                ReservationName = "Dinner reservation for 12 under John Wick",
                 Location = "St. Pete"
             },
             new Reservation { 
                 ReservationId = 10, 
                 ClientName = "Denzel Jean-Joseph", 
-                ReservationName = "This is the reservation details description", 
+                ReservationName = "Dinner reservation for 12 under John Wick", 
                 Location = "Lakeland"
             },
             new Reservation { 
                 ReservationId = 15, 
                 ClientName = "Elanie Jean-Joseph", 
-                ReservationName = "This is the reservation details description", 
+                ReservationName = "Dinner reservation for 12 under John Wick", 
                 Location = "SixHubs, Tx"
             },
             new Reservation { 
                 ReservationId = 20,
                 ClientName = "Denzel Paniague",
-                ReservationName = "This is the reservation details description",
+                ReservationName = "Dinner reservation for 12 under John Wick",
                 Location = "Santo Domingo"
             },
             new Reservation { 
                 ReservationId = 25, 
                 ClientName = "Ethan Jean-Joseph", 
-                ReservationName = "This is the reservation details description", 
+                ReservationName = "Dinner reservation for 12 under John Wick", 
                 Location = "Venice"
             },
         };

@@ -18,6 +18,7 @@ namespace Chapter27.WebServices.Controllers
         [HttpPut]
         public bool UpdateReservation(Reservation reservation) => repository.Update(reservation);
 
+        [HttpDelete] 
         public void DeleteReservation(int reservationId) => repository.Remove(reservationId);
         
     }
