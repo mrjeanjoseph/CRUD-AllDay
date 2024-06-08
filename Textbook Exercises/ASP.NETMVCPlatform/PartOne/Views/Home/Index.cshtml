@@ -1,0 +1,47 @@
+﻿@using PartOne.SimpleApp.Models
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Vote</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container w-25">
+        <div class="card bg-primary-subtle my-3">
+            @if (ViewBag.SelectedColor == null) {
+                <h4 class="card-header">Vote for your favorite color:</h4>
+            } else {
+                <h4 class="card-header">Change your vote from @ViewBag.SelectedColor</h4>
+            }
+            <div class="card-body">
+                @using (Html.BeginForm()) {
+                    @Html.DropDownList("color",
+                        new SelectList(Enum.GetValues(typeof(Color))), "Choose a Color",
+                        new {@class= "form-control mb-3 w-50" })
+                    <div>
+                        <input class="btn btn-outline-primary w-25" type="submit" value="Vote" />
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="card bg-success-subtle">
+            <h5 class="card-header">Results:</h5>
+            <table class="table small table-striped">
+                <tr><th>Color </th><th>Vote </th></tr>
+                @foreach (Color c in Enum.GetValues(typeof(Color))) {
+                    <tr><td>@c</td><td>@Votes.GetVotes(c)</td></tr>
+                }
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
