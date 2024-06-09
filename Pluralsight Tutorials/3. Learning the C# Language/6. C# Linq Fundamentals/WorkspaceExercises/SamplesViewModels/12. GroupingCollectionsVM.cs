@@ -1,6 +1,6 @@
 ﻿namespace LINQSamples
 {
-  public class SamplesViewModel : ViewModelBase
+  public class GroupByVM : ViewModelBase
   {
     #region GroupByQuery
     /// <summary>
