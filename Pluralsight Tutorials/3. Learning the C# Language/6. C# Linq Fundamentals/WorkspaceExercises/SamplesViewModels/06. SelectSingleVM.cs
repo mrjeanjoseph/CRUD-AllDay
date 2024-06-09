@@ -1,6 +1,6 @@
 ﻿namespace LINQSamples
 {
-  public class SelectSingleDataVM : ViewModelBase
+  public class SelectSingleDataAndCollectionsVM : ViewModelBase
   {
     #region FirstQuery
     /// <summary>

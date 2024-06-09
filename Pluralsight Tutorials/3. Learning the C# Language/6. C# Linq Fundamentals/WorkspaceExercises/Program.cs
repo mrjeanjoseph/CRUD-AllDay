@@ -1,7 +1,7 @@
 ﻿using LINQSamples;
 
 // Create instance of view model
-JoinCollectionsVM vm = new();
+UsingTheJoinClauseVM vm = new();
 
 // Call Sample Method
 var result = vm.InnerJoinQuery();

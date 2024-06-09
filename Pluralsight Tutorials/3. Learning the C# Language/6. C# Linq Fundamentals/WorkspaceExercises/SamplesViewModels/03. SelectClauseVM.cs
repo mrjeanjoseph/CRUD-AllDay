@@ -2,7 +2,7 @@
 
 namespace LINQSamples
 {
-  public class SamplesViewModel : ViewModelBase
+  public class UsingTheSelectClauseVM : ViewModelBase
   {
     #region GetAllQuery
     /// <summary>

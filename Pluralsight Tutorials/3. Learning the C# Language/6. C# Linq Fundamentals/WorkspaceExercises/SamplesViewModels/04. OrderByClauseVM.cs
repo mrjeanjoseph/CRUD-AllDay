@@ -1,6 +1,6 @@
 ﻿namespace LINQSamples
 {
-  public class SelectByClauseVM : ViewModelBase
+  public class UsingTheOrderByClauseVM : ViewModelBase
   {
     #region OrderByQuery
     /// <summary>

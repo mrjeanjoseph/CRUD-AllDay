@@ -1,6 +1,6 @@
 ﻿namespace LINQSamples
 {
-  public class JoinCollectionsVM : ViewModelBase
+  public class UsingTheJoinClauseVM : ViewModelBase
   {
     #region InnerJoinQuery
     /// <summary>
