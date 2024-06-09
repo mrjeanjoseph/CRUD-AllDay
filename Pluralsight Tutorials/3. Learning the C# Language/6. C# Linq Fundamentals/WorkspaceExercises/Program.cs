@@ -1,10 +1,10 @@
 ﻿using LINQSamples;
 
 // Create instance of view model
-UsingTheJoinClauseVM vm = new();
+GroupDataAndCollectionsVM vm = new();
 
 // Call Sample Method
-var result = vm.InnerJoinQuery();
+var result = vm.GroupByDistinctMethod();
 
 // Display Results
 vm.Display(result);
