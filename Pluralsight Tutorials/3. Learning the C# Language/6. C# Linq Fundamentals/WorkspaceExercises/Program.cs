@@ -1,10 +1,10 @@
 ﻿using LINQSamples;
 
 // Create instance of view model
-GroupDataAndCollectionsVM vm = new();
+DeferredExecutionMV vm = new();
 
 // Call Sample Method
-var result = vm.GroupByDistinctMethod();
+var result = vm.UsingYieldAndTake();
 
 // Display Results
 vm.Display(result);

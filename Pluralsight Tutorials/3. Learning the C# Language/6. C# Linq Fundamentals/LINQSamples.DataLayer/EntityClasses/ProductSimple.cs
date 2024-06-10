@@ -2,34 +2,34 @@
 
 namespace LINQSamples
 {
-  public class ProductSimple
-  {
-    private string _Name;
-    private string _Color;
-
-    public string Name
+    public class ProductSimple
     {
-      get
-      {
-        Console.WriteLine($"** Product: {_Name} **");
-        return _Name;
-      }
-      set { _Name = value; }
-    }
+        private string _Name;
+        private string _Color;
 
-    public string Color
-    {
-      get
-      {
-        Console.WriteLine($"** Color is {_Color} for {_Name} **");
-        return _Color;
-      }
-      set { _Color = value; }
-    }
+        public string Name
+        {
+            get
+            {
+                Console.WriteLine($"** Product: {_Name} **");
+                return _Name;
+            }
+            set { _Name = value; }
+        }
 
-    public override string ToString()
-    {
-      return $"From Query: {_Name}";
+        public string Color
+        {
+            get
+            {
+                Console.WriteLine($"** Color is {_Color} for {_Name} **");
+                return _Color;
+            }
+            set { _Color = value; }
+        }
+
+        public override string ToString()
+        {
+            return $"From Query: {_Name}";
+        }
     }
-  }
 }
