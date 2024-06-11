@@ -4,10 +4,10 @@ using System.Web.Mvc;
 
 namespace PartOne.SimpleApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeOldController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult IndexOld()
         {
             //return View(HttpContext.Application["events"]);
             return View(GetTimeStamps());
@@ -22,7 +22,7 @@ namespace PartOne.SimpleApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Color color)
+        public ActionResult IndexOld(Color color)
         {
             Color? oldColor = Session["color"] as Color?;
             if (oldColor != null)
