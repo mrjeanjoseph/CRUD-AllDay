@@ -100,6 +100,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\TimerModule.cs" />
+    <Compile Include="Infrastructure\TotalTimeModule.cs" />
     <Compile Include="Models\Votes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +111,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Views\Home\Index_Old.cshtml" />
+    <Content Include="Views\Home\Modules.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -119,6 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonModules\CommonModules.csproj">
+      <Project>{c1ce6748-6973-48a5-bbfd-45d209073e3f}</Project>
+      <Name>CommonModules</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

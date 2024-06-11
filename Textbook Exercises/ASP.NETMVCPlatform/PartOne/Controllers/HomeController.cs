@@ -1,5 +1,7 @@
 ﻿using PartOne.SimpleApp.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace PartOne.SimpleApp.Controllers
@@ -19,6 +21,17 @@ namespace PartOne.SimpleApp.Controllers
                 string.Format("Application timestamp: {0}", HttpContext.Application["app_timestamp"]),
                 string.Format("Request timestamp: {0}", Session["request_timestamp"]),
             };
+        }
+
+        public ActionResult Modules()
+        {
+            var modules = HttpContext.ApplicationInstance.Modules;
+            Tuple<string, string>[] data = modules.AllKeys
+                    .Select(x => new Tuple<string, string>(
+                        x.StartsWith("__Dynamic") ? x.Split('_', ',')[3] : x,
+                        modules[x].GetType().Name)).OrderBy(x => x.Item1).ToArray();
+
+            return View(data);
         }
 
         [HttpPost]
