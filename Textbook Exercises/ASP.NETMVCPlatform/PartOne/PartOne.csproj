@@ -100,8 +100,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CounterHandler.cs" />
+    <Compile Include="Infrastructure\CounterHandlerFactory.cs" />
     <Compile Include="Infrastructure\DayModule.cs" />
     <Compile Include="Infrastructure\DayOfWeekHandler.cs" />
+    <Compile Include="Infrastructure\IRequiresDate.cs" />
     <Compile Include="Infrastructure\SiteLengthHandler.cs" />
     <Compile Include="Infrastructure\TimerModule.cs" />
     <Compile Include="Infrastructure\TotalTimeModule.cs" />

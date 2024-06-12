@@ -7,9 +7,9 @@ namespace PartOne.Infrastructure
     {
         public void Init(HttpApplication app)
         {
-            app.BeginRequest += (src, args) =>
-            {
-                app.Context.Items["DayModule_Time"] = DateTime.Now;
+            app.BeginRequest += (src, args) => {
+                if (app.Context.Handler is IRequiresDate)
+                    app.Context.Items["DayModule_Time"] = DateTime.Now;
             };
         }
         public void Dispose()
