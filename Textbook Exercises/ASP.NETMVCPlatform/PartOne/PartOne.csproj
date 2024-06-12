@@ -46,6 +46,7 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -99,6 +100,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\DayModule.cs" />
+    <Compile Include="Infrastructure\DayOfWeekHandler.cs" />
+    <Compile Include="Infrastructure\SiteLengthHandler.cs" />
     <Compile Include="Infrastructure\TimerModule.cs" />
     <Compile Include="Infrastructure\TotalTimeModule.cs" />
     <Compile Include="Models\Votes.cs" />

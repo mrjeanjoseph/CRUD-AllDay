@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using PartOne.Infrastructure;
+using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -13,11 +12,21 @@ namespace PartOne
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+            //routes.Add(new Route("handler/{*path}",
+                //new CustomRouteHandler { HandlerType = typeof(DayOfWeekHandler) }));
+
+            routes.IgnoreRoute("handler/{*pathInfo}");
+
+            routes.MapRoute(name: "Default", url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional } );
         }
+    }
+
+    internal class CustomRouteHandler : IRouteHandler
+    {
+        public Type HandlerType { get; set; }
+
+        public IHttpHandler GetHttpHandler(RequestContext requestContext) =>
+            (IHttpHandler)Activator.CreateInstance(HandlerType);
     }
 }
