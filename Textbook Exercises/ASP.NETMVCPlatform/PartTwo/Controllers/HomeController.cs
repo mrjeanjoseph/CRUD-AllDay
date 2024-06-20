@@ -14,5 +14,11 @@ namespace PartTwo.Workflow.Controllers
         {
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Calc(int val = 0)
+        {
+            int result = 100 / val;
+            return View("Index");
+        }
     }
 }
