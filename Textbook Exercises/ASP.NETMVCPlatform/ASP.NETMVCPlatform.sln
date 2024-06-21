@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonModules", "CommonModu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartTwo", "PartTwo\PartTwo.csproj", "{1CE204CC-EDCE-4408-BB43-2F9BD39A8653}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartTwo.DetectingDeviceCapabilities", "PartTwo.DetectingDeviceCapabilities\PartTwo.DetectingDeviceCapabilities.csproj", "{D4DEF1DD-ED0D-4AE9-BAA4-8C7B1571E07B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1CE204CC-EDCE-4408-BB43-2F9BD39A8653}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CE204CC-EDCE-4408-BB43-2F9BD39A8653}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CE204CC-EDCE-4408-BB43-2F9BD39A8653}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4DEF1DD-ED0D-4AE9-BAA4-8C7B1571E07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4DEF1DD-ED0D-4AE9-BAA4-8C7B1571E07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4DEF1DD-ED0D-4AE9-BAA4-8C7B1571E07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4DEF1DD-ED0D-4AE9-BAA4-8C7B1571E07B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
