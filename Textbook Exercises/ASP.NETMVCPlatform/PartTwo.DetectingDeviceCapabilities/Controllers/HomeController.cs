@@ -1,13 +1,22 @@
-﻿using System.Web.Mvc;
+﻿using DetectingDeviceCapabilities.Models;
+using System.Web.Mvc;
 
-namespace PartTwo.DetectingDeviceCapabilities.Controllers
+namespace DetectingDeviceCapabilities.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        private readonly Programmer[] programmers =
+        {
+            new Programmer("Kervens", "Jean-Joseph", "Chief Operating Officer", "Saint Pete", "Florida", "Fullstack"),
+            new Programmer("Denzel", "Paniague", "Software Manager", "Lakeland", "Florida", "C Plus Plus"),
+            new Programmer("Nitaud", "Sage Paniague", "Engineer Director", "Roie Sex", "Haiti", "TSQL"),
+            new Programmer("Elijah", "JeanJoseph", "Liason Officer", "Lamaine", "Texas", "Java"),
+            new Programmer("Kalven", "Jouthe", "Contractor", "Broxton", "MA", "Frontend SE"),
+        };
+
         public ActionResult Index()
         {
-            return View();
+            return View(programmers);
         }
     }
 }

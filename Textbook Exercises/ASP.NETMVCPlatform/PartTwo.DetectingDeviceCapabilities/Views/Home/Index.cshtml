@@ -1,0 +1,53 @@
+﻿@using DetectingDeviceCapabilities.Models
+@model Programmer[]
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body{padding-top:10px;}
+    </style>
+</head>
+<body>
+    <div class="">
+        <div class="alert alert-success">
+            This is the /Views/Home/Index.cshtml view
+        </div>
+        <div class="card text-secondary">
+            <div class="card-title text-center">Programmer Info</div>
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <td>FirstName</td>
+                        <td>LastName</td>
+                        <td>Title</td>
+                        <td>City</td>
+                        <td>Country</td>
+                        <td>Language</td>
+                    </tr>  
+                </thead>
+                @foreach (Programmer programmer in Model) {
+                    <tbody>
+                        <tr>
+                            <td>@programmer.FirstName</td>
+                            <td>@programmer.LastName</td>
+                            <td>@programmer.Title</td>
+                            <td>@programmer.City</td>
+                            <td>@programmer.Country</td>
+                            <td>@programmer.Language</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</body>
+</html>

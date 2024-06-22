@@ -1,4 +1,4 @@
-﻿namespace PartTwo.DetectingDeviceCapabilities.Models
+﻿namespace DetectingDeviceCapabilities.Models
 {
     public class Programmer
     {
