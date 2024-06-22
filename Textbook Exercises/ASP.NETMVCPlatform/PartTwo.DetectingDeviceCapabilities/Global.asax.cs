@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.WebPages;
 
 namespace DetectingDeviceCapabilities
 {
@@ -13,6 +14,13 @@ namespace DetectingDeviceCapabilities
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //HttpCapabilitiesBase.BrowserCapabilitiesProvider = new KindleCapabilities();
+
+            DisplayModeProvider.Instance.Modes.Insert(0,
+                new DefaultDisplayMode("Safari")
+                {
+                    //ContextCondition = ctx => ctx.Request.Browser.IsBrowser("Safari"),
+                    ContextCondition = ctx => ctx.Request.Browser.IsMobileDevice
+                });
         }
     }
 }

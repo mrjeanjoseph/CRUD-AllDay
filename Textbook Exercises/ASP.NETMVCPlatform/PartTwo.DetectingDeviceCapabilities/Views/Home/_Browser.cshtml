@@ -1,0 +1,27 @@
+﻿@using DetectingDeviceCapabilities.Models
+@model Programmer[]
+
+<table class="table table-striped">
+    <thead class="">
+        <tr>
+            <th>FirstName</th>
+            <th class="d-none d-sm-block">LastName</th>
+            <th>Title</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Language</th>
+        </tr>
+    </thead>
+    @foreach (Programmer programmer in Model) {
+        <tbody>
+            <tr>
+                <td>@programmer.FirstName</td>
+                <td class="d-none d-sm-block">@programmer.LastName</td>
+                <td>@programmer.Title</td>
+                <td>@programmer.City</td>
+                <td>@programmer.Country</td>
+                <td>@programmer.Language</td>
+            </tr>
+        </tbody>
+    }
+</table>

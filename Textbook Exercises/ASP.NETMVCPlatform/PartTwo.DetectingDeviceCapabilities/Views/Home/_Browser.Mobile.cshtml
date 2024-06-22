@@ -1,0 +1,12 @@
+﻿@using DetectingDeviceCapabilities.Models
+@model Programmer[]
+
+
+<div class="card-body">
+    <ul>
+        @foreach (Programmer prog in Model)
+        {
+            <li>@prog.LastName, @prog.FirstName, @prog.Language</li>
+        }
+    </ul>
+</div>

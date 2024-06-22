@@ -2,7 +2,7 @@
 using System.Web.Routing;
 
 namespace DetectingDeviceCapabilities
-{
+{    
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)

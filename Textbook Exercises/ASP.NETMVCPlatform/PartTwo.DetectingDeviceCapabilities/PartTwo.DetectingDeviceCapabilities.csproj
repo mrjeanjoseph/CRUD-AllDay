@@ -158,9 +158,12 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="App_Browsers\Nexus.browser" />
     <Content Include="Configuration\Validation\pipelineOptionsSchema.json" />
+    <Content Include="51degrees.mobi.config" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\BroswerDetail.cshtml" />
+    <Content Include="Views\Home\BrowserDetail.cshtml" />
+    <Content Include="Views\Home\_Browser.cshtml" />
+    <Content Include="Views\Home\_Browser.Mobile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

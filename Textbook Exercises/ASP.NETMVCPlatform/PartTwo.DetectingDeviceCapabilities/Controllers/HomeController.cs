@@ -19,7 +19,7 @@ namespace DetectingDeviceCapabilities.Controllers
             return View(programmers);
         }
 
-        public ActionResult BroswerDetail()
+        public ActionResult BrowserDetail()
         {
             return View();
         }
