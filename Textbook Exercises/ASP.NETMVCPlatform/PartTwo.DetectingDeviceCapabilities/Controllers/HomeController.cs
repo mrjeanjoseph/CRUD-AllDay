@@ -18,5 +18,10 @@ namespace DetectingDeviceCapabilities.Controllers
         {
             return View(programmers);
         }
+
+        public ActionResult BroswerDetail()
+        {
+            return View();
+        }
     }
 }
