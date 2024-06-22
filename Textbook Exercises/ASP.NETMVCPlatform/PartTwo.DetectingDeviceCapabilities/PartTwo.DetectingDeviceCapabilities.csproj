@@ -150,6 +150,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\KindleCapabilities.cs" />
+    <Compile Include="Infrastructure\LogModule.cs" />
+    <Compile Include="Infrastructure\LogModule_OldOne.cs" />
     <Compile Include="Models\Programmer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -164,6 +166,7 @@
     <Content Include="Views\Home\BrowserDetail.cshtml" />
     <Content Include="Views\Home\_Browser.cshtml" />
     <Content Include="Views\Home\_Browser.Mobile.cshtml" />
+    <Content Include="Views\Home\IndexTrace.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

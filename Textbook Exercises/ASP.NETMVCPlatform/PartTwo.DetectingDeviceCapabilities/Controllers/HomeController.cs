@@ -23,5 +23,15 @@ namespace DetectingDeviceCapabilities.Controllers
         {
             return View();
         }
+
+        public ActionResult IndexTrace()
+        {
+            HttpContext.Trace.Write("HomeController", "IndexTrace Method Started");
+            HttpContext.Trace.Write("HomeController", 
+                string.Format("There are {0} programmers", programmers.Length));
+            ActionResult result = View(programmers);
+            HttpContext.Trace.Write("HomeController", "IndexTrace Method Completed");
+            return result;
+        }
     }
 }
