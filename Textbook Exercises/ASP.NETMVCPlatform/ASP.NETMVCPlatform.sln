@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartTwo.DetectingDeviceCapa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartThree.Chapter9", "PartThree.Chapter9\PartThree.Chapter9.csproj", "{B65A821F-320F-40C5-9D01-518586EAADE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter9.CreatingStatefulData", "Chapter9.CreatingStatefulData\Chapter9.CreatingStatefulData.csproj", "{5D7E6D9E-0615-401E-9913-0E062D1508B6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{B65A821F-320F-40C5-9D01-518586EAADE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B65A821F-320F-40C5-9D01-518586EAADE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B65A821F-320F-40C5-9D01-518586EAADE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D7E6D9E-0615-401E-9913-0E062D1508B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D7E6D9E-0615-401E-9913-0E062D1508B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D7E6D9E-0615-401E-9913-0E062D1508B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D7E6D9E-0615-401E-9913-0E062D1508B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
