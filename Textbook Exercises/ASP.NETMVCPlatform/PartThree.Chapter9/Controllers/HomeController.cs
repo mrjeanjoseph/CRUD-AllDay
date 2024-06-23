@@ -12,6 +12,49 @@ namespace PlatformServices.Configuration.Controllers
         {
             Dictionary<string, string> configData = new Dictionary<string, string>();
 
+            SystemWebSectionGroup sysWeb = (SystemWebSectionGroup)WebConfigurationManager
+                .OpenWebConfiguration("/").GetSectionGroup("system.web");
+
+            configData.Add("debug", sysWeb.Compilation.Debug.ToString());
+            configData.Add("targetFramework", sysWeb.Compilation.TargetFramework);
+
+            return View(configData);
+        }
+        public ActionResult FormerIndexActionSix()
+        {
+            Dictionary<string, string> configData = new Dictionary<string, string>();
+
+            foreach (string key in WebConfigurationManager.AppSettings.AllKeys)
+                configData.Add(key, WebConfigurationManager.AppSettings[key]);
+
+            return View(configData);
+        }
+
+        public ActionResult FolderLevelConfig()
+        {
+            Dictionary<string, string> configData = new Dictionary<string, string>();
+
+            AppSettingsSection appSettings = WebConfigurationManager
+                .OpenWebConfiguration("~/Views/Home").AppSettings;
+            int counter = 1;
+            foreach (string key in appSettings.Settings.AllKeys)
+                configData.Add($"{counter++}-{key}", appSettings.Settings[key].Value);
+
+            return View("Index",configData);
+        }
+        public ActionResult OtherAction()
+        {
+            Dictionary<string, string> configData = new Dictionary<string, string>();
+
+            foreach (string key in WebConfigurationManager.AppSettings.AllKeys)
+                configData.Add(key, WebConfigurationManager.AppSettings[key]);
+
+            return View("Index",configData);
+        }
+        public ActionResult FormerIndexActionFive()
+        {
+            Dictionary<string, string> configData = new Dictionary<string, string>();
+
             CustomDefaults cdefaults = (CustomDefaults)WebConfigurationManager
                 .OpenWebConfiguration("/").GetSectionGroup("customDefaults");
 
@@ -29,6 +72,7 @@ namespace PlatformServices.Configuration.Controllers
 
             return View((object)string.Format("The default place is: {0}", defaultPlace.City));
         }
+
         public ActionResult FormerIndexActionFour()
         {
             Dictionary<string, string> configData = new Dictionary<string, string>();
