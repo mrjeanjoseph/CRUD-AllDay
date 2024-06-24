@@ -19,6 +19,11 @@
                 <tr><th>Session ID</th><td>@Session.SessionID</td></tr>
                 <tr><th>Is New?</th><td>@Session.IsNewSession</td></tr>
                 <tr><th>State Data Count</th><td>@Session.Count</td></tr>
+
+                <tr><th>Mode</th><td>@Session.CookieMode</td></tr>
+                <tr><th>Cookieless</th><td>@Session.IsCookieless</td></tr>
+                <tr><th>URL</th><td>@Url.Action("Index")</td></tr>
+                <tr><th>Link</th><td>@Html.ActionLink("Click Me", "Index")</td></tr>
             </table>
         </div>
 
