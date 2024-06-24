@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Web;
 
@@ -16,9 +15,9 @@ namespace CreatingStatefulData.Infrastructure
         public static object Get(AppStateKeys key, object defaultValue = null)
         {
             string keyString = Enum.GetName(typeof(AppStateKeys), key);
-            if (HttpContext.Current.Application[keyString] == null && defaultValue != null)            
+            if (HttpContext.Current.Application[keyString] == null && defaultValue != null)
                 HttpContext.Current.Application[keyString] = defaultValue;
-            
+
             return HttpContext.Current.Application[keyString];
         }
 
@@ -28,7 +27,7 @@ namespace CreatingStatefulData.Infrastructure
         //
         public static IDictionary<AppStateKeys, object> GetMulitple(params AppStateKeys[] keys)
         {
-            Dictionary<AppStateKeys, object> results = new Dictionary<AppStateKeys, object> ();
+            Dictionary<AppStateKeys, object> results = new Dictionary<AppStateKeys, object>();
             HttpApplicationState appState = HttpContext.Current.Application;
             appState.Lock();
             foreach (AppStateKeys key in keys)
