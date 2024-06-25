@@ -1,0 +1,23 @@
+﻿@model int
+@{
+    Layout = null;
+    var result = Model;
+    bool someResult = result % 2 == 0 ? true : false;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Output Caching</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container w-75 my-3">
+        <div class="alert alert-info">
+            The counter value: @someResult
+        </div>
+        @Html.ActionLink("Update", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</body>
+</html>
