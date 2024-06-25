@@ -11,5 +11,12 @@ namespace CachingContent
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        public override string GetVaryByCustomString(HttpContext context, string custom)
+        {
+            if (custom == "mobile")
+                return Request.Browser.IsMobileDevice.ToString();
+            else return base.GetVaryByCustomString(context, custom);
+        }
     }
 }

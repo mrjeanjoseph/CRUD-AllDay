@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web;
-using System.Web.Mvc;
 
 namespace CachingContent.Infrastructure
 {
@@ -15,7 +14,7 @@ namespace CachingContent.Infrastructure
         {
             string keystring = Enum.GetName(typeof(AppStateKeys), keys);
             HttpApplicationState state = HttpContext.Current.Application;
-            var result = (int)(state[keystring] = (int)(state[keystring] ?? 0) + 1);            
+            var result = (int)(state[keystring] = (int)(state[keystring] ?? 0) + 1);
             return result;
         }
     }
