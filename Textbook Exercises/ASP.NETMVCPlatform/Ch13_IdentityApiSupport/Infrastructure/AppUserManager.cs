@@ -17,6 +17,21 @@ namespace IdentityApiSupport.Infrastructure
             AppIdentityDBContext dBContext = context.Get<AppIdentityDBContext>();
             AppUserManager userManager = new AppUserManager(new UserStore<AppUser>(dBContext));
 
+            userManager.PasswordValidator = new CustomPasswordValidator
+            {
+                RequiredLength = 6,
+                RequireDigit = false,
+                RequireLowercase = true,
+                RequireUppercase = true,
+                RequireNonLetterOrDigit = false,
+            };
+
+            userManager.UserValidator = new CustomUserValidator(userManager)
+            {
+                AllowOnlyAlphanumericUserNames = true,
+                RequireUniqueEmail = true,
+            };
+
             return userManager;
         }
     }

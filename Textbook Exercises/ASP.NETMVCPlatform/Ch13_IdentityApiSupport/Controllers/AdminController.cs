@@ -2,7 +2,6 @@
 using IdentityApiSupport.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using System;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -33,7 +32,7 @@ namespace IdentityApiSupport.Controllers
             {
                 AppUser user = new AppUser { UserName = model.FullName, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
-                if(result.Succeeded) return RedirectToAction("Index", "Admin");
+                if (result.Succeeded) return RedirectToAction("Index", "Admin");
                 else AddErrorsFromResult(result);
             }
             return View(model);
@@ -43,7 +42,7 @@ namespace IdentityApiSupport.Controllers
         {
             foreach (string error in result.Errors)
                 ModelState.AddModelError("", error);
-            
+
         }
     }
 }

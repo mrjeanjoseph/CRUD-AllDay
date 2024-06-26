@@ -140,6 +140,8 @@
     </Compile>
     <Compile Include="Infrastructure\AppIdentityDBContext.cs" />
     <Compile Include="Infrastructure\AppUserManager.cs" />
+    <Compile Include="Infrastructure\CustomPasswordValidator.cs" />
+    <Compile Include="Infrastructure\CustomUserValidator.cs" />
     <Compile Include="Models\AppUserModel.cs" />
     <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
