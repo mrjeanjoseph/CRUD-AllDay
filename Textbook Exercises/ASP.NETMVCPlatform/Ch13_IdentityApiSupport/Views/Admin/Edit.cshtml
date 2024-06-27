@@ -1,0 +1,31 @@
+﻿@model IdentityApiSupport.Models.AppUser
+@{ ViewBag.Title = "Edit"; }
+
+@Html.ValidationSummary(false)
+
+<h2>Currently editing @Model.UserName</h2>
+
+<div class="mb-3">
+    <label>Name</label>
+    <p class="mb-3 modal-static">@Model.</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="mb-3">
+        <label>Name:</label>
+        @Html.TextBoxFor(n => n.UserName, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label>Email:</label>
+        @Html.TextBoxFor(n => n.Email, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label>Password:</label>
+        <input type="password" name="password" class="form-control" />
+    </div>
+
+    <input type="submit" value="Update Record" class="btn btn-outline-secondary" />
+    @Html.ActionLink("Go Back", "Index", "Admin", null, new { @class = "btn btn-outline-danger" })
+}

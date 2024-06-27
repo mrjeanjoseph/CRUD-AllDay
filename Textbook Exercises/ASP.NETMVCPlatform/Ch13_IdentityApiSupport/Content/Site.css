@@ -18,3 +18,8 @@ textarea {
 }
 
 .validation-summary-errors {color: #f00;}
+
+
+.btn{
+    min-width : 7rem;
+}

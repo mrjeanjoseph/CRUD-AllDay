@@ -14,10 +14,12 @@ namespace IdentityApiSupport.Infrastructure
         {
             IdentityResult result = await base.ValidateAsync(userdetail);
 
-            if (!userdetail.Email.ToLower().EndsWith("@dvc.com"))
+            string devemails = userdetail.Email.ToLower();
+            bool dvcdomains = devemails.EndsWith("@dvc.ht") || devemails.EndsWith("@dvc.westindes");
+            if (!dvcdomains)
             {
                 var errors = result.Errors.ToList();
-                errors.Add("Only example.com email address are allowed.");
+                errors.Add("Only dvc.ht or dvc.westindes email addresses are allowed.");
                 result = new IdentityResult(errors);
             }
 
