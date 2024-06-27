@@ -22,11 +22,10 @@
                     <td>@user.UserName</td>
                     <td>@user.Email</td>
                     <td>
-                        @using(Html.BeginForm("Delete", "Admin",
-                            new {id = user.Id})) {
+                        @using(Html.BeginForm("Delete", "Admin", new {id = user.Id})) {
                             @Html.ActionLink("Edit", "Edit", new {id = user.Id},
-                            new { @class = "btn btn-outline-danger btn-sm"})
-                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                            new { @class = "btn btn-outline-danger btn-sm", @title="Edit "+@user.UserName+" information"} )
+                            <button id="testing" class="btn btn-danger btn-sm" type="submit" title="Delete @user.UserName">Delete</button>
                         }
                     </td>
                 </tr>
@@ -35,3 +34,12 @@
     </table>
 </div>
     @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-primary" })
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            IndexInit.AdminUser();
+        });
+    </script>
+}
