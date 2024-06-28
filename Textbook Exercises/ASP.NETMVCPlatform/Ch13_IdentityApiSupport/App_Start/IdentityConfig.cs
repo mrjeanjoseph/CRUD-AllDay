@@ -12,6 +12,7 @@ namespace IdentityApiSupport
         {
             appbuiler.CreatePerOwinContext<AppIdentityDBContext>(AppIdentityDBContext.Create);
             appbuiler.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
+            appbuiler.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
 
             appbuiler.UseCookieAuthentication(new CookieAuthenticationOptions
             {
