@@ -44,21 +44,21 @@ namespace IdentityApiSupport.Controllers
             {
                 AppUser user = await UserManager.FindAsync(details.Name, details.Password);
                 if (user == null)
-                {
                     ModelState.AddModelError("", "Invalid name or password");
-                }
                 else
                 {
                     ClaimsIdentity identity = await UserManager.CreateIdentityAsync(user,
                         DefaultAuthenticationTypes.ApplicationCookie);
+
+                    identity.AddClaims(LocationClaimsProvider.GetClaims(identity));
+                    identity.AddClaims(ClaimsRoles.CreateRolesFromClaims(identity));
+
                     AuthManager.SignOut();
-                    AuthManager.SignIn(new AuthenticationProperties
-                    {
-                        IsPersistent = false
-                    }, identity);
+                    AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
                     return Redirect(returnUrl);
                 }
             }
+            ViewBag.returnUrl = returnUrl;
             return View(details);
         }
 

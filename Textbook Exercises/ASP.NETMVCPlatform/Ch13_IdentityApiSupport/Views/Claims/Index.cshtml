@@ -1,0 +1,26 @@
+﻿@using System.Security.Claims
+@using IdentityApiSupport.Infrastructure
+@model IEnumerable<Claim>
+@{ ViewBag.Title = "Index"; }
+
+<div class="card text-primary">
+    <h3 class="card-header text-center">Claims</h3>
+    <table class="table table-striped">
+        <tr>
+            <th>Subject</th>
+            <th>Issuer</th>
+            <th>Type</th>
+            <th>Value</th>
+        </tr>
+        @foreach (Claim claim in Model.OrderBy(x => x.Type))
+        {
+            <tr>
+                <td>@claim.Subject.Name</td>
+                <td>@claim.Issuer</td>
+                <td>@Html.ClaimType(claim.Type)</td>
+                <td>@claim.Value</td>
+            </tr>
+        }
+    </table>
+</div>
+
