@@ -200,6 +200,15 @@
     <Compile Include="Infrastructure\AppUserManager.cs" />
     <Compile Include="Infrastructure\CustomPasswordValidator.cs" />
     <Compile Include="Infrastructure\CustomUserValidator.cs" />
+    <Compile Include="Migrations\202406291537498_CountryProperty.cs" />
+    <Compile Include="Migrations\202406291537498_CountryProperty.Designer.cs">
+      <DependentUpon>202406291537498_CountryProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\_Backup202406291458287_CityProperty.cs" />
+    <Compile Include="Migrations\_Backup202406291458287_CityProperty.Designer.cs">
+      <DependentUpon>_Backup202406291458287_CityProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Infrastructure\AppRoleManager.cs" />
     <Compile Include="Models\AppUserModel.cs" />
@@ -221,6 +230,7 @@
     <Content Include="Views\RoleAdmin\Index.cshtml" />
     <Content Include="Views\RoleAdmin\Create.cshtml" />
     <Content Include="Views\RoleAdmin\Edit.cshtml" />
+    <Content Include="Views\Home\UserProperties.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -230,6 +240,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202406291537498_CountryProperty.resx">
+      <DependentUpon>202406291537498_CountryProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\_Backup202406291458287_CityProperty.resx">
+      <DependentUpon>_Backup202406291458287_CityProperty.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
