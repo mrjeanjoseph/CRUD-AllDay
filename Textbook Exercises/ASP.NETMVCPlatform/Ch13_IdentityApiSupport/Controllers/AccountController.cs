@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace IdentityApiSupport.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         #region Private Actions
@@ -27,6 +28,10 @@ namespace IdentityApiSupport.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return View("Error", new string[] { "Access Denied" });
+            }
             ViewBag.returnUrl = returnUrl;
             return View();
         }
@@ -55,6 +60,13 @@ namespace IdentityApiSupport.Controllers
                 }
             }
             return View(details);
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            AuthManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

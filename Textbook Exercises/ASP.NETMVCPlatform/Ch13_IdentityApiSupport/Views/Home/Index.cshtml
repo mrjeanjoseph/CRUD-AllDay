@@ -4,9 +4,9 @@
 }
 
 
-<div class="card text-center">
-    <div class="card-header">User Details</div>
-    <table>
+<div class="card text-center mb-3">
+    <h3 class="card-header">User Details</h3>
+    <table class="table table-striped table-secondary">
         @foreach (string key in Model.Keys)
         {
             <tr>
@@ -16,3 +16,4 @@
         }
     </table>
 </div>
+@Html.ActionLink("Sign Out", "Logout", "Account", null, new { @class = "btn btn-outline-warning" })

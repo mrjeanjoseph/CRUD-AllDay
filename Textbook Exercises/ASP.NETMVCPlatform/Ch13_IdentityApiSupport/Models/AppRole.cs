@@ -6,7 +6,7 @@ namespace IdentityApiSupport.Models
     {
         public AppRole() : base() { }
 
-        public AppRole(string name) : this() { }
+        public AppRole(string name) : base(name) { }
     }
 
 }

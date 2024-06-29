@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace IdentityApiSupport.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class AdminController : Controller
     {
         private AppUserManager UserManager
