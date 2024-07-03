@@ -19,6 +19,11 @@ namespace IdentityApiSupport
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
             });
+
+            appbuiler.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            appbuiler.UseGoogleAuthentication(); // Nuget Package is outdated and Google maybe using two factor now
+            // This code is not working
+
         }
     }
 }
