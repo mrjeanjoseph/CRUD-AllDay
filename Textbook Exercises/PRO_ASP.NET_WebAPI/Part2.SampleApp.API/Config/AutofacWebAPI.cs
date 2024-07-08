@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
-using System;
 using System.Reflection;
 using System.Web.Http;
 
