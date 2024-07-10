@@ -11,9 +11,12 @@ namespace PingYourPackage.Web
         {
             var config = GlobalConfiguration.Configuration;
 
-            //RouteConfig.RegisterRoutes(config);
-            //WebAPIConfig.Configure(config);
+            // These two are empty to be emplemented
+            RouteConfig.RegisterRoutes(config);
+            WebAPIConfig.Configure(config);
+
             AutofacWebAPI.Initialize(config);
+            EFConfig.Initialize();
         }
     }
 }

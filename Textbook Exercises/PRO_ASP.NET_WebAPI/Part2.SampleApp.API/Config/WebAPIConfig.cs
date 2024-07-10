@@ -1,7 +1,13 @@
-﻿namespace PingYourPackage.WebAPI
+﻿using System;
+using System.Web.Http;
+
+namespace PingYourPackage.WebAPI
 {
     public class WebAPIConfig
-    {
-        // Add implementation here
+    {        
+        public static void Configure(HttpConfiguration config)
+        {
+            // Add implementation here
+        }
     }
 }

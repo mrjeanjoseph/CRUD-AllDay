@@ -130,6 +130,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\EFConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -155,6 +156,10 @@
     <ProjectReference Include="..\Part2.SampleApp.API\Part2.SampleApp.API.csproj">
       <Project>{8A950647-4F8E-443B-A346-FA9FCE50A224}</Project>
       <Name>Part2.SampleApp.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Part2.SampleApp.Domain\Part2.SampleApp.Domain.csproj">
+      <Project>{bdeb5763-72b4-4df9-b00f-07d4ca44aa02}</Project>
+      <Name>Part2.SampleApp.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
