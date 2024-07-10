@@ -54,8 +54,17 @@
     <Compile Include="Entities\Affliliate.cs" />
     <Compile Include="Entities\DBContext\EntitiesContext.cs" />
     <Compile Include="Entities\DBContext\IEntity.cs" />
+    <Compile Include="Entities\Repository\EntityRepository.cs" />
+    <Compile Include="Entities\Service\CryptoService.cs" />
     <Compile Include="Entities\Repository\IEntityRepository.cs" />
+    <Compile Include="Entities\Repository\IQueryableExtensions.cs" />
     <Compile Include="Entities\Repository\PaginatedList.cs" />
+    <Compile Include="Entities\Repository\RepositoryExtensions.cs" />
+    <Compile Include="Entities\Service\MembershipService.cs" />
+    <Compile Include="Entities\Service\ServiceInterface.cs" />
+    <Compile Include="Entities\Service\OperationResult.cs" />
+    <Compile Include="Entities\Service\UserWithRoles.cs" />
+    <Compile Include="Entities\Service\ValidUserContext.cs" />
     <Compile Include="Entities\Shipment.cs" />
     <Compile Include="Entities\ShipmentStatus.cs" />
     <Compile Include="Entities\ShipmentType.cs" />
