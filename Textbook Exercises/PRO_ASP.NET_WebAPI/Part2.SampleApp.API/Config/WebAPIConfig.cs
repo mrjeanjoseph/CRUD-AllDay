@@ -12,6 +12,11 @@ namespace PingYourPackage.WebAPI
     {
         public static void Configure(HttpConfiguration config)
         {
+            //Message Handlers
+            config.MessageHandlers.Add(new RequireHttpsMessageHandler());
+
+            config.MessageHandlers.Add(new PingYourPackageAuthHandler());
+
             //Formatters
             var jqueryFormatter = config.Formatters.FirstOrDefault(
                 x => x.GetType() == typeof(JQueryMvcFormUrlEncodedFormatter));

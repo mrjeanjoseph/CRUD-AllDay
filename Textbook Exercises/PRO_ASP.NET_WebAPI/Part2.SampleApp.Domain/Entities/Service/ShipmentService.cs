@@ -1,6 +1,7 @@
 ﻿namespace PingYourPackage.Domain
 {
-    internal class ShipmentService
+    public class ShipmentService
     {
+        // Some implementation will go here
     }
 }

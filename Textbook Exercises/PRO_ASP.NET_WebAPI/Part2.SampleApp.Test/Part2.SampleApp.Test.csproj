@@ -91,7 +91,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DelegatingHandlerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequireHttpsMessageHandlerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -100,6 +102,12 @@
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.1.15.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
     <Analyzer Include="..\packages\xunit.analyzers.1.15.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Part2.SampleApp.API\Part2.SampleApp.API.csproj">
+      <Project>{8A950647-4F8E-443B-A346-FA9FCE50A224}</Project>
+      <Name>Part2.SampleApp.API</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
