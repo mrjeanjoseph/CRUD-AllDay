@@ -9,8 +9,10 @@ namespace PingYourPackage.Domain
         [Key]
         public Guid Key { get; set; }
 
-        [Required]
+        [Required, StringLength(64)]
         public string FullLegalName { get; set; }
+
+        [Required, StringLength(256)]
         public string EmailAddress { get; set; }
 
         [Required]
@@ -23,10 +25,12 @@ namespace PingYourPackage.Domain
         public DateTime LastUpdatedOn { get; set; }
 
         public virtual ICollection<UserInRole> UserInRoles { get; set; }
+        public virtual Affliliate Affliliate { get; set; }
 
         public User()
         {
             UserInRoles = new HashSet<UserInRole>();
+            Affliliate = new Affliliate();
         }
     }
 }

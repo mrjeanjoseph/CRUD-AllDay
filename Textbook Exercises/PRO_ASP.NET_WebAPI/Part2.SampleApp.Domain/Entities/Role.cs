@@ -8,7 +8,7 @@ namespace PingYourPackage.Domain
     {
         [Key] public Guid Key { get; set; }
 
-        [Required]
+        [Required, StringLength(64)]
         public string Name { get; set; }
 
 

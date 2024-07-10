@@ -20,6 +20,7 @@ namespace PingYourPackage.WebAPI
         private static IContainer RegisterServices(ContainerBuilder containerBuilder)
         {
             containerBuilder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
             //Registration goes here
             return containerBuilder.Build();
         }

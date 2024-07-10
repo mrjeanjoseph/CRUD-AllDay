@@ -51,11 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Affliliate.cs" />
     <Compile Include="Entities\DBContext\EntitiesContext.cs" />
     <Compile Include="Entities\DBContext\IEntity.cs" />
     <Compile Include="Migrations\202407100110323_Init.cs" />
     <Compile Include="Migrations\202407100110323_Init.Designer.cs">
       <DependentUpon>202407100110323_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407100906569_ValAttrChgs.cs" />
+    <Compile Include="Migrations\202407100906569_ValAttrChgs.Designer.cs">
+      <DependentUpon>202407100906569_ValAttrChgs.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202407100110323_Init.resx">
       <DependentUpon>202407100110323_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407100906569_ValAttrChgs.resx">
+      <DependentUpon>202407100906569_ValAttrChgs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
