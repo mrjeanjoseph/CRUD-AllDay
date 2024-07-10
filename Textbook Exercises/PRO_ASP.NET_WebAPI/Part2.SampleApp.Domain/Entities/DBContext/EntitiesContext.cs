@@ -1,13 +1,7 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace PingYourPackage
 {
-    public interface IEntity
-    {
-        Guid Key { get; set; }
-    }
-
     public class EntitiesContext : DbContext
     {
         public EntitiesContext() : base("PingYourPackage") { }
