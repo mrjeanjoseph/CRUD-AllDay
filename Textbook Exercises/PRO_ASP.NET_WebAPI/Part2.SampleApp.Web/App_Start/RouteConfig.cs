@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Part2.SampleApp.Web
+namespace PingYourPackage
 {
     public class RouteConfig
     {
