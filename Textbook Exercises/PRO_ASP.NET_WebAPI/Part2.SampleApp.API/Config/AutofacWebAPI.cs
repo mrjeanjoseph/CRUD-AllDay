@@ -3,7 +3,7 @@ using Autofac.Integration.WebApi;
 using System.Reflection;
 using System.Web.Http;
 
-namespace PingYourPackage
+namespace PingYourPackage.WebAPI
 {
     public class AutofacWebAPI
     {

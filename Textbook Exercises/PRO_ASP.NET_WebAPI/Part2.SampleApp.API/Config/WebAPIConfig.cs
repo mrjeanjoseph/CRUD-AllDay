@@ -1,4 +1,4 @@
-﻿namespace PingYourPackage
+﻿namespace PingYourPackage.WebAPI
 {
     public class WebAPIConfig
     {

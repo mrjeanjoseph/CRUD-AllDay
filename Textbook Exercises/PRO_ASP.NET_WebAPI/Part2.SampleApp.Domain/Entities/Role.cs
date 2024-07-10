@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PingYourPackage
+namespace PingYourPackage.Domain
 {
     public class Role : IEntity
     {

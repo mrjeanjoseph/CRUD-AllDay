@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace PingYourPackage
+namespace PingYourPackage.Domain
 {
     public class EntitiesContext : DbContext
     {

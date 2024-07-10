@@ -1,8 +1,9 @@
+using PingYourPackage.WebAPI;
 using System;
 using System.Web;
 using System.Web.Http;
 
-namespace PingYourPackage
+namespace PingYourPackage.Web
 {
     public class MvcApplication : HttpApplication
     {

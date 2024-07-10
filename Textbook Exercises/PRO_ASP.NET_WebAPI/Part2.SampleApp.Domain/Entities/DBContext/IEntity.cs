@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PingYourPackage
+namespace PingYourPackage.Domain
 {
     public interface IEntity
     {
