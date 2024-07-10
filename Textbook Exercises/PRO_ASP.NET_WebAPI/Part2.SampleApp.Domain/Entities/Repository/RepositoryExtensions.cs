@@ -4,7 +4,7 @@ namespace PingYourPackage.Domain
 {
     public static class UserRepositoryExtensions
     {
-        public static User GetSingleUsername(this IEntityRepository<User> userRepository, string username) =>
+        public static User GetSingleByUsername(this IEntityRepository<User> userRepository, string username) =>
             userRepository.GetAll().FirstOrDefault(x => x.FullLegalName == username);
     }
 

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Security.Principal;
+using System.Runtime.CompilerServices;
 
 namespace PingYourPackage.Domain
 {
@@ -38,19 +39,69 @@ namespace PingYourPackage.Domain
             throw new NotImplementedException();
         }
 
-        public OperationResult<UserWithRoles> CreateUser(string username, string email, string password)
-        {
-            throw new NotImplementedException();
-        }
+        public OperationResult<UserWithRoles> CreateUser(string username, string email, string password) =>
+            CreateUser(username, email, password);
 
-        public OperationResult<UserWithRoles> CreateUser(string username, string email, string password, string role)
-        {
-            throw new NotImplementedException();
-        }
+        public OperationResult<UserWithRoles> CreateUser(string username, string email, string password, string role) => 
+            CreateUser(username, email, password, roles: new[] {role });
 
         public OperationResult<UserWithRoles> CreateUser(string username, string email, string password, string[] roles)
         {
+            var existingUser = _userRepository.GetAll().Any(x => x.FullLegalName == username);
+
+            if(existingUser) return new OperationResult<UserWithRoles>(false);
+
+            var passwordSalted = _cryptoService.GenerateSalt();
+
+            var user = new User()
+            {
+                FullLegalName = username,
+                Salt = passwordSalted,
+                EmailAddress = email,
+                IsLocked = false,
+                HashedPassword = _cryptoService.EncryptPassword(password, passwordSalted),
+                CreatedOn = DateTime.Now
+            };
+
+            _userRepository.Add(user);
+            _userRepository.Save();
+
+            if(roles != null || roles.Length > 0)             
+                foreach (var roleName in roles) AddUserToRole(user, roleName);
+
+            return new OperationResult<UserWithRoles>(true)
+            {
+                Entity = GetUserWithRoles(user),
+            };
+        }
+
+        private UserWithRoles GetUserWithRoles(User user)
+        {
             throw new NotImplementedException();
+        }
+
+        private void AddUserToRole(User user, string roleName)
+        {
+            var role = _roleRepository.GetSingleByRoleName(roleName);
+            if (role == null)
+            {
+                var tempRole = new Role()
+                {
+                    Name = roleName,
+                };
+
+                _roleRepository.Add(tempRole);
+                _roleRepository.Save();
+                role = tempRole;
+            }
+
+            var userInRole = new UserInRole()
+            {
+                RoleKey = role.Key,
+                UserKey = user.Key,
+            };
+            _userinRoleRepo.Add(userInRole);
+            _userinRoleRepo.Save();
         }
 
         public Role GetRole(Guid userkey)
@@ -95,32 +146,45 @@ namespace PingYourPackage.Domain
 
         public ValidUserContext ValidateUser(string username, string password)
         {
-            var userCtx = new ValidUserContext();
-            var user = _userRepository.GetSingleUsername(username);
+            var userCtx = new ValidUserContext(); //This valid user context is missing some components
+            var user = _userRepository.GetSingleByUsername(username);
             if (user != null && IsUserValid(user, password))
             {
                 var userRoles = GetUserRoles(user.Key);
                 userCtx.User = new UserWithRoles()
-                {
+                {                   
                     User = user,
                     Roles = userRoles
                 };
 
                 var identity = new GenericIdentity(user.FullLegalName);
                 userCtx.Principal = new GenericPrincipal(identity, userRoles
-                    .Select(x => x.FullLegalName).ToArray());
+                    .Select(x => x.Name).ToArray());
             }
             return userCtx;
         }
 
-        private object GetUserRoles(Guid key)
+        private IEnumerable<Role> GetUserRoles(Guid userKey)
         {
-            throw new NotImplementedException();
+            var userInRoles = _userinRoleRepo.FindBy(x => x.UserKey == userKey).ToList();
+
+            if(userInRoles != null && userInRoles.Count > 0)
+            {
+                var userRoleKeys = userInRoles.Select(x => x.RoleKey).ToArray();
+                var userRoles = _roleRepository.FindBy(x => userRoleKeys.Contains(x.Key));
+
+                return userRoles;
+            }
+            return Enumerable.Empty<Role>();
         }
 
         private bool IsUserValid(User user, string password)
         {
-            throw new NotImplementedException();
+            if (isPassworldValid(user, password)) return !user.IsLocked;
+            return false;
         }
+
+        private bool isPassworldValid(User user, string password) =>
+            string.Equals(_cryptoService.EncryptPassword(password, user.Salt), user.HashedPassword);
     }
 }
