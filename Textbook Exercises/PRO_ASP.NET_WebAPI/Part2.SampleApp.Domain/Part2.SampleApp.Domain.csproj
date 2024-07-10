@@ -54,6 +54,11 @@
     <Compile Include="Entities\Affliliate.cs" />
     <Compile Include="Entities\DBContext\EntitiesContext.cs" />
     <Compile Include="Entities\DBContext\IEntity.cs" />
+    <Compile Include="Entities\Repository\IEntityRepository.cs" />
+    <Compile Include="Entities\Repository\PaginatedList.cs" />
+    <Compile Include="Entities\Shipment.cs" />
+    <Compile Include="Entities\ShipmentStatus.cs" />
+    <Compile Include="Entities\ShipmentType.cs" />
     <Compile Include="Migrations\202407100110323_Init.cs" />
     <Compile Include="Migrations\202407100110323_Init.Designer.cs">
       <DependentUpon>202407100110323_Init.cs</DependentUpon>
@@ -61,6 +66,10 @@
     <Compile Include="Migrations\202407100906569_ValAttrChgs.cs" />
     <Compile Include="Migrations\202407100906569_ValAttrChgs.Designer.cs">
       <DependentUpon>202407100906569_ValAttrChgs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407100943358_ShipmentObjects.cs" />
+    <Compile Include="Migrations\202407100943358_ShipmentObjects.Designer.cs">
+      <DependentUpon>202407100943358_ShipmentObjects.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202407100906569_ValAttrChgs.resx">
       <DependentUpon>202407100906569_ValAttrChgs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407100943358_ShipmentObjects.resx">
+      <DependentUpon>202407100943358_ShipmentObjects.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

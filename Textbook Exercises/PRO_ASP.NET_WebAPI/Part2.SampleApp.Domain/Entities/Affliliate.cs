@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace PingYourPackage.Domain
@@ -21,5 +23,12 @@ namespace PingYourPackage.Domain
 
         [Required]
         public User User { get; set; }
+
+        public virtual ICollection<Shipment> Shipments { get; set; }
+
+        public Affliliate()
+        {
+            Shipments = new HashSet<Shipment>();
+        }
     }
 }
