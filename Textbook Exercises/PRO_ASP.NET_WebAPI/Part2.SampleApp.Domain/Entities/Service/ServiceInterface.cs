@@ -8,6 +8,7 @@ namespace PingYourPackage.Domain
         string GenerateSalt();
         string EncryptPassword(string password, string salt);
     }
+
     public interface IMembershipService
     {
         ValidUserContext ValidateUser(string username, string password);
@@ -31,5 +32,10 @@ namespace PingYourPackage.Domain
         PaginatedList<UserWithRoles> GetUsers(int pageIndex, int pageSize);
         UserWithRoles GetUser(Guid userKey);
         UserWithRoles GetUser(string username);
+    }
+
+    public interface IShipmentService
+    {
+
     }
 }

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
-using System.Runtime.CompilerServices;
 
 namespace PingYourPackage.Domain
 {
@@ -42,14 +41,14 @@ namespace PingYourPackage.Domain
         public OperationResult<UserWithRoles> CreateUser(string username, string email, string password) =>
             CreateUser(username, email, password);
 
-        public OperationResult<UserWithRoles> CreateUser(string username, string email, string password, string role) => 
-            CreateUser(username, email, password, roles: new[] {role });
+        public OperationResult<UserWithRoles> CreateUser(string username, string email, string password, string role) =>
+            CreateUser(username, email, password, roles: new[] { role });
 
         public OperationResult<UserWithRoles> CreateUser(string username, string email, string password, string[] roles)
         {
             var existingUser = _userRepository.GetAll().Any(x => x.FullLegalName == username);
 
-            if(existingUser) return new OperationResult<UserWithRoles>(false);
+            if (existingUser) return new OperationResult<UserWithRoles>(false);
 
             var passwordSalted = _cryptoService.GenerateSalt();
 
@@ -66,7 +65,7 @@ namespace PingYourPackage.Domain
             _userRepository.Add(user);
             _userRepository.Save();
 
-            if(roles != null || roles.Length > 0)             
+            if (roles != null || roles.Length > 0)
                 foreach (var roleName in roles) AddUserToRole(user, roleName);
 
             return new OperationResult<UserWithRoles>(true)
@@ -152,7 +151,7 @@ namespace PingYourPackage.Domain
             {
                 var userRoles = GetUserRoles(user.Key);
                 userCtx.User = new UserWithRoles()
-                {                   
+                {
                     User = user,
                     Roles = userRoles
                 };
@@ -168,7 +167,7 @@ namespace PingYourPackage.Domain
         {
             var userInRoles = _userinRoleRepo.FindBy(x => x.UserKey == userKey).ToList();
 
-            if(userInRoles != null && userInRoles.Count > 0)
+            if (userInRoles != null && userInRoles.Count > 0)
             {
                 var userRoleKeys = userInRoles.Select(x => x.RoleKey).ToArray();
                 var userRoles = _roleRepository.FindBy(x => userRoleKeys.Contains(x.Key));

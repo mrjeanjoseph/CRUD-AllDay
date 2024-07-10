@@ -63,6 +63,7 @@
     <Compile Include="Entities\Service\MembershipService.cs" />
     <Compile Include="Entities\Service\ServiceInterface.cs" />
     <Compile Include="Entities\Service\OperationResult.cs" />
+    <Compile Include="Entities\Service\ShipmentService.cs" />
     <Compile Include="Entities\Service\UserWithRoles.cs" />
     <Compile Include="Entities\Service\ValidUserContext.cs" />
     <Compile Include="Entities\Shipment.cs" />
