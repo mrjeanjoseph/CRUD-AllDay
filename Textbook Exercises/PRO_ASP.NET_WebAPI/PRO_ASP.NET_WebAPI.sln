@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part2.SampleApp.Test", "Par
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part2.SampleApp.Web", "Part2.SampleApp.Web\Part2.SampleApp.Web.csproj", "{91A4CFBE-B7E3-4527-81E0-EB9C872B8E00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part2.SampleApp.ApiModel", "Part2.SampleApp.ApiModel\Part2.SampleApp.ApiModel.csproj", "{0D5DC857-9793-410A-BC48-DAEC271B97B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{91A4CFBE-B7E3-4527-81E0-EB9C872B8E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91A4CFBE-B7E3-4527-81E0-EB9C872B8E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91A4CFBE-B7E3-4527-81E0-EB9C872B8E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D5DC857-9793-410A-BC48-DAEC271B97B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5DC857-9793-410A-BC48-DAEC271B97B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5DC857-9793-410A-BC48-DAEC271B97B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5DC857-9793-410A-BC48-DAEC271B97B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
