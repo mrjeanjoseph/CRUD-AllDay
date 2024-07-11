@@ -116,6 +116,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Part2.SampleApp.ApiModel\Part2.SampleApp.ApiModel.csproj">
+      <Project>{0D5DC857-9793-410A-BC48-DAEC271B97B4}</Project>
+      <Name>Part2.SampleApp.ApiModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Part2.SampleApp.Domain\Part2.SampleApp.Domain.csproj">
       <Project>{BDEB5763-72B4-4DF9-B00F-07D4CA44AA02}</Project>
       <Name>Part2.SampleApp.Domain</Name>

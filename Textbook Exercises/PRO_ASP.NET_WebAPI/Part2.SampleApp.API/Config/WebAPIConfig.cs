@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using PingYourPackage.ApiModel;
+using System.Linq;
 using System.Net.Http.Formatting;
 using System.Reflection;
 using System.Web.Http;
@@ -16,6 +17,9 @@ namespace PingYourPackage.WebAPI
             config.MessageHandlers.Add(new RequireHttpsMessageHandler());
 
             config.MessageHandlers.Add(new PingYourPackageAuthHandler());
+
+            config.ParameterBindingRules.Insert(0, descriptor => typeof(IRequestCommand)
+            .IsAssignableFrom(descriptor.ParameterType) ? new FromUriAttribute().GetBinding(descriptor) : null);
 
             //Formatters
             var jqueryFormatter = config.Formatters.FirstOrDefault(
