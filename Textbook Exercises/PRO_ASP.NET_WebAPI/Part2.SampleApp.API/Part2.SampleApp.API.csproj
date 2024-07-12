@@ -104,11 +104,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\PaginatedListExtensions.cs" />
     <Compile Include="Common\PingYourPackageAuthHandler.cs" />
     <Compile Include="Config\AutofacWebAPI.cs" />
     <Compile Include="Common\RequireHttpsMessageHandler.cs" />
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Config\WebAPIConfig.cs" />
+    <Compile Include="Controllers\ShipmentsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

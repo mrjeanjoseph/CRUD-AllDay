@@ -36,6 +36,6 @@ namespace PingYourPackage.Domain
 
     public interface IShipmentService
     {
-
+        object GetShipments(int page, int take);
     }
 }

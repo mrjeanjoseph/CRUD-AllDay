@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Http.Metadata.Providers;
 using System.Web.Http.ModelBinding;
 using System.Web.Http.Validation;
+using WebApiDoodle.Web.Filters;
 
 namespace PingYourPackage.WebAPI
 {
@@ -20,6 +21,9 @@ namespace PingYourPackage.WebAPI
 
             config.ParameterBindingRules.Insert(0, descriptor => typeof(IRequestCommand)
             .IsAssignableFrom(descriptor.ParameterType) ? new FromUriAttribute().GetBinding(descriptor) : null);
+
+            //Filters
+            config.Filters.Add(new InvalidModelStateFilterAttribute());
 
             //Formatters
             var jqueryFormatter = config.Formatters.FirstOrDefault(

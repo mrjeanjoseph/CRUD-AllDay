@@ -9,6 +9,7 @@ namespace PingYourPackage.ApiModel
         int PageCount { get; set; }
         int TotalPageCount { get; set; }
 
+        int TotalCount { get; set; } // Looks like this one was missing
         bool HasNextPage { get; set; }
         bool HasPreviousPage { get; set; }
 

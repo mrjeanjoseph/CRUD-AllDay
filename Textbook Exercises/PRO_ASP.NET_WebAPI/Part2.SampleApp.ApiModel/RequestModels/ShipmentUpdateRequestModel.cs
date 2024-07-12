@@ -1,7 +1,4 @@
 ﻿namespace PingYourPackage.ApiModel
 {
-    public class ShipmentUpdateRequestModel : ShipmentBaseRequestModel
-    {
-
-    }
+    public class ShipmentUpdateRequestModel : ShipmentBaseRequestModel { }
 }

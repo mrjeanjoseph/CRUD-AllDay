@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\IDto.cs" />
     <Compile Include="DTOs\IPaginatedDto.cs" />
     <Compile Include="RequestCommands\IRequestCommand.cs" />
     <Compile Include="DTOs\PaginatedDto.cs" />
@@ -52,12 +51,12 @@
     <Compile Include="DTOs\ShipmentTypeDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestCommands\PaginatedRequestCommand.cs" />
+    <Compile Include="Validation\MaximumAttribute.cs" />
+    <Compile Include="Validation\MinimumAttribute.cs" />
     <Compile Include="RequestModels\ShipmentBaseRequestModel.cs" />
     <Compile Include="RequestModels\ShipmentRequestModel.cs" />
     <Compile Include="RequestModels\ShipmentUpdateRequestModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Validation\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
