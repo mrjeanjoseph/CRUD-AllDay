@@ -2,7 +2,7 @@
 
 namespace PingYourPackage.ApiModel
 {
-    public interface IPaginatedDto<out TDto> where TDto : IDto
+    public interface IPaginatedDto<out TDto> where TDto : iDto 
     {
         int PageIndex { get; set; }
         int PageSize { get; set; }
