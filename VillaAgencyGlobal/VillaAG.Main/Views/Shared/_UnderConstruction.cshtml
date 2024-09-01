@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Under Construction";
+}
+
+<div class="coming-soon">
+    <div class="coming-soon-code m-b-10 m-t-20">Coming Soon <i class="fa fa-warning"></i></div>
+    <h2 class="font-bold">Oops! The page you're looking for is not yet available.</h2>
+    <br />
+
+    <div class="coming-soon-desc">
+        Sorry, but the page you are looking for was either not found or does not yet exist. <br />
+        Try refreshing the page or click the button below to go back to the Homepage.
+        <div>
+            <br />
+            @Html.ActionLink("Back to Homepage", "Index", "Home", new { @class = "btn btn-lg btn-primary" })
+        </div>
+    </div>
+</div>

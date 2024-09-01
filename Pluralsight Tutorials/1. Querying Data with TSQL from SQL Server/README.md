@@ -1,1 +1,0 @@
-All TSQL exercises have been moved into it's own repos for easier access
