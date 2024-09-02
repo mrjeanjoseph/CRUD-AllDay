@@ -1,1 +1,2 @@
-New DotNet Project for 2024
+# Objectives*
+This is a .NET8 project pulling data from the AdventureWorks2022 Database.
