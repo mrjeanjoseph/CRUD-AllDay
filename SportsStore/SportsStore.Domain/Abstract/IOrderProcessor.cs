@@ -1,7 +1,7 @@
 ﻿using SportsStore.Domain.Entities;
 
 namespace SportsStore.Domain.Abstract {
-    internal interface IOrderProcessor {
+    public interface IOrderProcessor {
         void ProcessOrder(Cart cart, ShippingDetails shippingDetails);
     }
 }
