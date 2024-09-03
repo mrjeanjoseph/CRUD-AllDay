@@ -20,17 +20,15 @@ namespace SportsStore.WebUI.Infrastructure {
         protected override IController GetControllerInstance(RequestContext
             requestContext, Type controllerType) {
 
-            return controllerType == null
-                ? null
-                : (IController)ninjectKernel.Get(controllerType);
+            return controllerType == null ? null : (IController)ninjectKernel.Get(controllerType);
         }
 
         private void AddBindings() {
             // put bindings here
-            Mock<IProductsRepository> mock = new Mock<IProductRepository>();
+            Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
 
 
-            ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
+            ninjectKernel.Bind<IProductsRepository>().To<EFProductRepository>();
 
             EmailSettings emailSettings = new EmailSettings {
                 WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")

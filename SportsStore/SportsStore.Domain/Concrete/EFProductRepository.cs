@@ -1,8 +1,9 @@
-﻿using SportsStore.Domain.Entities;
+﻿using SportsStore.Domain.Abstract;
+using SportsStore.Domain.Entities;
 using System.Linq;
 
 namespace SportsStore.Domain.Concrete {
-    internal class EFProductRepository {
+    public class EFProductRepository : IProductsRepository {
 
         private EFDbContext _context = new EFDbContext();
 
