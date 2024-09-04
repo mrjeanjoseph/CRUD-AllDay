@@ -25,12 +25,14 @@ namespace SportsStore.WebUI.Models {
     }
 
     public class VerifyCodeViewModel {
+
         [Required]
         public string Provider { get; set; }
 
         [Required]
         [Display(Name = "Code")]
         public string Code { get; set; }
+
         public string ReturnUrl { get; set; }
 
         [Display(Name = "Remember this browser?")]
@@ -40,12 +42,14 @@ namespace SportsStore.WebUI.Models {
     }
 
     public class ForgotViewModel {
+
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel {
+
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]
