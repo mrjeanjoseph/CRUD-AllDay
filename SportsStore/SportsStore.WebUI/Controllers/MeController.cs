@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.Http;
 
 namespace SportsStore.WebUI.Controllers {
-    [Authorize]
+
+    //[Authorize]
     public class MeController : ApiController {
         private ApplicationUserManager _userManager;
 
-        public MeController() {
-        }
+        public MeController() { }
 
         public MeController(ApplicationUserManager userManager) {
             UserManager = userManager;

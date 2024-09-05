@@ -42,6 +42,7 @@ namespace SportsStore.WebUI.Controllers {
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message) {
+
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
@@ -52,6 +53,7 @@ namespace SportsStore.WebUI.Controllers {
                 : "";
 
             var userId = User.Identity.GetUserId();
+
             var model = new IndexViewModel {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
@@ -59,6 +61,7 @@ namespace SportsStore.WebUI.Controllers {
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+
             return View(model);
         }
 
