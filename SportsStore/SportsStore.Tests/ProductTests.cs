@@ -18,7 +18,7 @@ namespace SportsStore.Tests {
         public void CanPaginate() {
 
             //mock product repository
-            Mock<IProductsRepository> _mock = new Mock<IProductsRepository>();
+            Mock<IProductRepository> _mock = new Mock<IProductRepository>();
             _mock.Setup(m => m.Products).Returns(
                 new List<Product> {
                     new Product(){ProductID=1,Name="Product1"},
@@ -81,7 +81,7 @@ namespace SportsStore.Tests {
         public void SendPaginationViewModel() {
 
             //mock product repository
-            Mock<IProductsRepository> _mock = new Mock<IProductsRepository>();
+            Mock<IProductRepository> _mock = new Mock<IProductRepository>();
             _mock.Setup(m => m.Products).Returns(
                 new List<Product> {
                     new Product(){ProductID=1,Name="Product1"},
@@ -114,7 +114,7 @@ namespace SportsStore.Tests {
         public void CanFilterProducts() {
 
             //setup mock product repository
-            Mock<IProductsRepository> _mock = new Mock<IProductsRepository>();
+            Mock<IProductRepository> _mock = new Mock<IProductRepository>();
             _mock.Setup(m => m.Products).Returns(
                 new List<Product> {
                     new Product(){ProductID=1,Name="Product1",Category="c1"},
@@ -142,7 +142,7 @@ namespace SportsStore.Tests {
         public void CanCreateCategories() {
 
             //mock product repository
-            Mock<IProductsRepository> _mock = new Mock<IProductsRepository>();
+            Mock<IProductRepository> _mock = new Mock<IProductRepository>();
 
             _mock.Setup(m => m.Products).Returns(
                 new List<Product> {
@@ -176,7 +176,7 @@ namespace SportsStore.Tests {
         public void IndicatesSelectedCategory() {
 
             //mock product repository
-            Mock<IProductsRepository> _mock = new Mock<IProductsRepository>();
+            Mock<IProductRepository> _mock = new Mock<IProductRepository>();
 
             _mock.Setup(m => m.Products).Returns(
                 new List<Product> {
@@ -205,7 +205,7 @@ namespace SportsStore.Tests {
         public void GenerateCategorySpecificProductCount() {
 
             //mock product repository
-            Mock<IProductsRepository> _mock = new Mock<IProductsRepository>();
+            Mock<IProductRepository> _mock = new Mock<IProductRepository>();
 
             _mock.Setup(m => m.Products).Returns(
                 new List<Product> {

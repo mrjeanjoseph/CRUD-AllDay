@@ -6,11 +6,13 @@ using System.Web.Mvc;
 namespace SportsStore.WebUI.Controllers {
     public class ProductController : Controller {
 
-        private IProductsRepository repository;
+        private IProductRepository repository;
         private int _pageSize = 4;
         public int pageSize { get { return _pageSize; } set { _pageSize = value; } }
 
-        public ProductController(IProductsRepository productRepository) {
+        public ProductController() { }
+
+        public ProductController(IProductRepository productRepository) {
             this.repository = productRepository;
         }
 
@@ -24,9 +26,9 @@ namespace SportsStore.WebUI.Controllers {
             viewModel.Products = repository.Products.Where(m => category == null || m.Category == category)
                 .OrderBy(m => m.ProductID).Skip((page - 1) * pageSize).Take(pageSize);
 
-            viewModel.PagingInfo = new PagingInfo() {TotalItems = repository.Products
+            viewModel.PagingInfo = new PagingInfo() {
+                TotalItems = repository.Products
                 .Where(m => category == null || m.Category == category).Count(),
-
                 ItemsPerPage = pageSize,
                 CurrentPage = page
             };

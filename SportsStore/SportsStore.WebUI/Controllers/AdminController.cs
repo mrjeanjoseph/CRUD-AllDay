@@ -8,9 +8,9 @@ namespace SportsStore.WebUI.Controllers {
     //[Authorize]
     public class AdminController : Controller {
 
-        private IProductsRepository repo;
+        private IProductRepository repo;
 
-        public AdminController(IProductsRepository repo) {
+        public AdminController(IProductRepository repo) {
             this.repo = repo;
         }
         public ViewResult Edit(int productId) {

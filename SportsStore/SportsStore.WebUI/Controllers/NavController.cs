@@ -6,9 +6,9 @@ using System.Web.Mvc;
 namespace SportsStore.WebUI.Controllers {
     public class NavController : Controller {
 
-        private IProductsRepository repository;
+        private IProductRepository repository;
 
-        public NavController(IProductsRepository repository) {
+        public NavController(IProductRepository repository) {
 
             this.repository = repository;
         }

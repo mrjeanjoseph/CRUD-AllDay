@@ -13,7 +13,7 @@ namespace SportsStore.Tests {
         [TestMethod]
         public void IndexContainsAllProducts() {
 
-            Mock<IProductsRepository> mock = new Mock<IProductsRepository>();
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
 
             mock.Setup(m => m.Products).Returns(new List<Product> {
                 new Product(){ProductID=1, Name="Product1"},
