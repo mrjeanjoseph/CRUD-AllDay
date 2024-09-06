@@ -1,4 +1,5 @@
 ﻿using SportsStore.Domain.Abstract;
+using SportsStore.Domain.Entities;
 using SportsStore.WebUI.Models;
 using System.Linq;
 using System.Web.Mvc;
@@ -10,7 +11,7 @@ namespace SportsStore.WebUI.Controllers {
         private int _pageSize = 4;
         public int pageSize { get { return _pageSize; } set { _pageSize = value; } }
 
-        public ProductController() { }
+        //public ProductController() { }
 
         public ProductController(IProductRepository productRepository) {
             this.repository = productRepository;
@@ -36,5 +37,6 @@ namespace SportsStore.WebUI.Controllers {
             viewModel.CurrentCategory = category;
             return View(viewModel);
         }
+
     }
 }
