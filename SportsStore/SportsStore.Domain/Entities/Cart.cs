@@ -24,13 +24,13 @@ namespace SportsStore.Domain.Entities {
         }
 
         public void RemoveLine(Product product) =>
-            lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);        
+            lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);
 
-        public decimal ComputeTotalValue() 
+        public decimal ComputeTotalValue()
             => lineCollection.Sum(e => e.Product.Price * e.Quantity);
-        
+
         public void Clear() => lineCollection.Clear();
-        
+
 
         public IEnumerable<CartLine> Lines {
             get { return lineCollection; }

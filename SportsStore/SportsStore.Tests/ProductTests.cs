@@ -1,14 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 using SportsStore.WebUI.Controllers;
 using SportsStore.WebUI.HtmlHelpers;
 using SportsStore.WebUI.Models;
-using System.Collections.Generic;
-using System.Web.Mvc;
 using System;
-using SportsStore.Domain.Abstract;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 
 namespace SportsStore.Tests {
     [TestClass]

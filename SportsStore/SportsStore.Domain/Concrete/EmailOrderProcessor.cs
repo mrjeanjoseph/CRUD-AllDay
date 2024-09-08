@@ -1,8 +1,8 @@
-﻿using SportsStore.Domain.Entities;
-using System.Net.Mail;
+﻿using SportsStore.Domain.Abstract;
+using SportsStore.Domain.Entities;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
-using SportsStore.Domain.Abstract;
 
 namespace SportsStore.Domain.Concrete {
 
@@ -76,7 +76,7 @@ namespace SportsStore.Domain.Concrete {
                     body.ToString());                // Body
 
                 if (emailSettings.WriteAsFile)
-                    mailMessage.BodyEncoding = Encoding.ASCII;                
+                    mailMessage.BodyEncoding = Encoding.ASCII;
 
                 smtpClient.Send(mailMessage);
             }

@@ -23,7 +23,7 @@ namespace SportsStore.WebUI.Controllers {
 
             if (product != null)
                 cart.AddItem(product, 1);
-            
+
             return RedirectToAction("Index", new { returnUrl });
         }
 
@@ -33,7 +33,7 @@ namespace SportsStore.WebUI.Controllers {
 
             if (product != null)
                 cart.RemoveLine(product);
-            
+
             return RedirectToAction("Index", new { returnUrl });
         }
 
@@ -57,9 +57,9 @@ namespace SportsStore.WebUI.Controllers {
         [HttpPost]
         public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails) {
 
-            if (cart.Lines.Count() == 0) 
+            if (cart.Lines.Count() == 0)
                 ModelState.AddModelError("", "Sorry, your cart is empty!");
-            
+
             if (ModelState.IsValid) {
                 orderProcessor.ProcessOrder(cart, shippingDetails);
                 cart.Clear();
