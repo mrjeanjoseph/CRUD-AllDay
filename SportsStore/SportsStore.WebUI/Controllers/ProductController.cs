@@ -23,7 +23,8 @@ namespace SportsStore.WebUI.Controllers {
 
             ProductsListViewModel viewModel = new ProductsListViewModel();
 
-            viewModel.Products = repository.Products.Where(m => category == null || m.Category == category)
+            viewModel.Products = repository.Products
+                .Where(m => category == null || m.Category == category)
                 .OrderBy(m => m.ProductID).Skip((page - 1) * pageSize).Take(pageSize);
 
             viewModel.PagingInfo = new PagingInfo() {
