@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using VillaAG.Main.DataRepository;
+using VillaAG.Main.Infrastructure;
 
 namespace VillaAG.Main.Controllers {
     public class HomeController : Controller {
@@ -24,6 +25,14 @@ namespace VillaAG.Main.Controllers {
 
         public ActionResult PropertyDetails() {
             return View();
+        }
+
+        public FileActionResults PropertyReportOne() {
+            return new FileActionResults("ReportOne.pdf", "~/Content/Assets/", "application/pdf");
+        }
+
+        public FileActionResults PropertyReportTwo() {
+            return new FileActionResults("ReportTwo.pdf", "~/Content/Assets/", "application/pdf");
         }
     }
 }

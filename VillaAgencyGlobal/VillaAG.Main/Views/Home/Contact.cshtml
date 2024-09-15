@@ -9,6 +9,12 @@
             <div class="col-lg-12">
                 <span class="breadcrumb"><a href="#">Home</a>  /  Contact Us</span>
                 <h3>Contact Us</h3>
+                <div>
+                    @Html.ActionLink("Report One", "PropertyReportOne", "Home",
+                   null, new { @class="btn btn-secondary", target = "_ReportOne"})
+                    @Html.ActionLink("Report Two", "PropertyReportTwo", "Home",
+                   null, new { @class = "btn btn-secondary", target = "_ReportTwo"})
+                </div>
             </div>
         </div>
     </div>
