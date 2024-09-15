@@ -4,29 +4,42 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h1>All Products</h1>
-<table class="Grid">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th class="NumericCol">Price</th>
-        <th>Actions</th>
-    </tr>
 
-    @foreach (var item in Model) {
-        <tr>
-            <td>@item.ProductID</td>
-            <td>@Html.ActionLink(item.Name, "Edit", new { item.ProductID })</td>
-            <td class="NumericCol">@item.Price.ToString("c")</td>
-            <td>
-                @using (Html.BeginForm("Delete", "Admin")) {
-                    @Html.Hidden("ProductID", item.ProductID)
-                    <input type="submit" value="Delete" />
-                }
-        </td>
-    </tr>
+<div class="card">
+    <div class="card-header">
+        <h2 class="text-center">All Merchandise</h2>
+    </div>
 
-}
-</table>
+    <div class="card-body">
+        <table class="table table-striped table-group-divider">
+            <thead class="">
+                <tr>
+                    <th class="text-start">Id</th>
+                    <th>Item Name</th>
+                    <th class="text-start">Price</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model) {
+                <tbody>
+                    <tr>
+                        <th class="text-right">@item.ProductID</th>
+                        <td>@Html.ActionLink(item.Name, "Edit", new { item.ProductID })</td>
+                        <td class="text-right">@item.Price.ToString("c")</td>
+                        <td class="text-center">
+                            @using (Html.BeginForm("Delete", "Admin")) {
+                                @Html.Hidden("Id", item.ProductID)
+                                <input type="submit" class="btn btn-outline-danger" value="Delete" />
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
 
-<p>@Html.ActionLink("Add a new product", "Create")</p>
+    <div class="card-footer w-25">
+        @Html.ActionLink("Add New Item", "Create", null, new { @class = "btn btn-primary btn-lg m-3" })
+    </div>
+
+</div>

@@ -38,7 +38,7 @@ namespace SportsStore.Tests {
 
             //target class
             ProductController target = new ProductController(_mock.Object);
-            target.pageSize = 2;
+            target.PageSize = 2;
             ProductsListViewModel actual;
             actual = (ProductsListViewModel)target.List(null, 1).Model;
             Product[] actualresult;
@@ -101,7 +101,7 @@ namespace SportsStore.Tests {
 
             //target class
             ProductController target = new ProductController(_mock.Object);
-            target.pageSize = 4;
+            target.PageSize = 4;
 
             ProductsListViewModel _m = (ProductsListViewModel)target.List(null, 2).Model;
 
@@ -226,7 +226,7 @@ namespace SportsStore.Tests {
 
             //target class
             ProductController target = new ProductController(_mock.Object);
-            target.pageSize = 10;
+            target.PageSize = 10;
 
             ProductsListViewModel count_c3 = (ProductsListViewModel)target.List("c3", 1).Model;
             ProductsListViewModel count_c2 = (ProductsListViewModel)target.List("c2", 1).Model;

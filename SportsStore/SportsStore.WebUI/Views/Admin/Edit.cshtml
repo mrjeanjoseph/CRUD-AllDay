@@ -3,13 +3,91 @@
 @{
     ViewBag.Title = "Admin: Edit " + @Model.Name;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    string ActionHeader = Model.ProductID == 0 ? "Adding New Item" : $"Editing: {Model.Name}";
+    //HtmlHelper.ClientValidationEnabled = false;
+    //HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
 }
 
-<h1>Edit @Model.Name</h1>
 
-@using (Html.BeginForm("Edit", "Admin")) {
-    @Html.EditorForModel()
-    <input type="submit" value="Save" />
+<div class="card container w-50 my-5">
+    <div class="card-header text-bg-dark">
+        <h3 class="text-center">@ActionHeader</h3>
+    </div>
 
-    @Html.ActionLink("Cancel and return to List", "Index")
-}
+    @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+        <div class="card-body">
+
+            @Html.HiddenFor(m => m.ProductID)
+            
+            @foreach (var property in ViewData.ModelMetadata.Properties) {
+
+                switch (property.PropertyName) {
+                    case "ProductID":
+                    case "ImageData":
+                    case "ImageMimeType":
+                        //
+                        break;
+                    default:
+
+                        <div class="row g-3 my-3">
+                            <div class="col-sm-3">@(property.DisplayName ?? property.PropertyName)</div>
+                            @if (property.PropertyName == "Description") {
+                                <div class="col-sm-9">
+                                    @Html.TextArea(property.PropertyName, null,
+                                        new { @class = "form-control", rows = 6 })
+                                </div>
+                            } else {
+                                <div class="col-sm-9">
+                                    @Html.TextBox(property.PropertyName, null,
+                                        new { @class = "form-control" })
+                                </div>
+                            }
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-9"> @Html.ValidationMessage(property.PropertyName)</div>
+                        </div>
+
+                    break;
+                }
+            }
+
+            <div class="row g-3 my-3">
+                <div class="col-sm-3">Image: </div>
+                <div class="col-sm-9">
+                    <a href="javascript:;">
+                        <input class="form-control  mb-3" type="file" id="formFile" name="Image"
+                               onchange="$('#upload-file-info').html($(this).val());">
+                    </a>
+                </div>
+
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9" style="width:18rem;">
+                    @if (Model.ImageData == null) {
+                        <div class="form-control">No Image</div>
+                    } else {
+                        <img class="img-thumbnail" src="@Url.Action("GetImage", "Merch", new {Model.ProductID})" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer text-center">
+            <input type="submit" class="btn btn-primary" value="Save Changes" />
+            @Html.ActionLink("Cancel Changes", "Index", null, new {
+                @class = "btn btn-primary",
+                @title = "Cancel changes and return to list of merchandises"
+            })
+        </div>
+    }
+</div>
+
+
+
+@*<h1>Edit @Model.Name</h1>
+
+    @using (Html.BeginForm("Edit", "Admin")) {
+        @Html.EditorForModel()
+        <input type="submit" value="Save" />
+
+        @Html.ActionLink("Cancel and return to List", "Index")
+    }*@

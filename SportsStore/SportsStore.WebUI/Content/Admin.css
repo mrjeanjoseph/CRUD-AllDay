@@ -35,7 +35,7 @@ FORM {
 }
 
 DIV.Message {
-    background: gray;
+    background: red;
     color: White;
     padding: .2em;
     margin-top: .25em;

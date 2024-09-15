@@ -8,15 +8,17 @@ namespace SportsStore.WebUI.Controllers {
     //[Authorize]
     public class AdminController : Controller {
 
-        private IProductRepository repo;
+        private readonly IProductRepository repo;
 
         public AdminController(IProductRepository repo) {
             this.repo = repo;
         }
+
         public ViewResult Edit(int productId) {
             Product product = repo.Products.FirstOrDefault(p => p.ProductID == productId);
             return View(product);
         }
+
         // GET: Admin
         public ViewResult Index() {
             return View(repo.Products);
@@ -37,6 +39,7 @@ namespace SportsStore.WebUI.Controllers {
         public ActionResult Create() {
             return View("Edit", new Product());
         }
+
         [HttpPost]
         public ActionResult Delete(int productId) {
             Product p = repo.DeleteProduct(productId);
@@ -45,5 +48,6 @@ namespace SportsStore.WebUI.Controllers {
             }
             return RedirectToAction("Index");
         }
+
     }
 }

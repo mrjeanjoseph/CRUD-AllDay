@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace SportsStore.Domain.Entities {
     public class Cart {
-        private List<CartLine> lineCollection = new List<CartLine>();
+        private readonly List<CartLine> lineCollection = new List<CartLine>();
 
         public void AddItem(Product product, int quantity) {
 
@@ -19,7 +19,6 @@ namespace SportsStore.Domain.Entities {
                 });
             } else {
                 line.Quantity += quantity;
-
             }
         }
 
