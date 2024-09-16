@@ -12,7 +12,10 @@
 </head>
 <body>
 
-    @{ string applicationName = "Sports Store"; }
+    @{
+        string applicationName = "Sports Store";
+        string myInfo = "A product of Jean-Joseph";
+    }
     <nav class="navbar bg-dark navbar-expand-lg border-bottom border-bottom-dark bg-body-tertiary" data-bs-theme="dark">
         <div class="container">
             @Html.ActionLink(applicationName, "List", "Product", null, new { @class = "navbar-brand" })
@@ -26,10 +29,16 @@
         @if (TempData["message"] != null) {
             <div class="alert alert-success mx-auto mt-2 w-25">@TempData["message"]</div>
         }
-
         @RenderBody()
-
+        <hr />
     </div>
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="footer container">
+            <p>&copy; @DateTime.Now.Year -- @myInfo</p>
+        </div>
+    </nav>
+
 </body>
 
 </html>
