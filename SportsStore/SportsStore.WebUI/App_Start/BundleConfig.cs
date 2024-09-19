@@ -5,11 +5,9 @@ namespace SportsStore.WebUI {
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles) {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                "~/Scripts/jquery-{version}.min.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                "~/Scripts/jquery.unobtrusive*",
-                "~/Scripts/jquery.validate*"));
+                "~/Scripts/jquery-{version}.min.js",
+                "~/Scripts/jquery.validate*",
+                "~/Scripts/jquery.unobtrusive*"));
 
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                 "~/Scripts/knockout-{version}.js",
@@ -30,6 +28,11 @@ namespace SportsStore.WebUI {
 
             bundles.Add(new Bundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.bundle.min.js"));
+
+            bundles.Add(new Bundle("~/bundles/site").Include(
+                "~/Scripts/site/home.js",
+                "~/Scripts/site/admin.js",
+                "~/Scripts/site/product.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                  "~/Content/bootstrap.min.css",
