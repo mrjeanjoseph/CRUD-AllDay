@@ -1,6 +1,12 @@
 ﻿@model IEnumerable<string>
 
-@Html.ActionLink("Home", "List", "Product")
+
+@{
+    string categoryBtnStyling = "btn mb-3 d-grid gap-2 btn-outline-secondary btn-lg";
+}
+
+
+@Html.ActionLink("Home", "List", "Product", null, new { @class = categoryBtnStyling })
 
 @foreach (var link in Model) {
     @Html.RouteLink(link, new {
@@ -8,8 +14,8 @@
     action = "List",
     category = link,
     page = 1
-   },
-   new { @class = link == @ViewBag.selectedcategory ? "selected" : null }
-
-   )
+}, new {
+        @class = (link == ViewBag.SelectedCategory ? categoryBtnStyling
+            .Replace("btn-outline-secondary", "btn-secondary") : categoryBtnStyling)
+    })
 }

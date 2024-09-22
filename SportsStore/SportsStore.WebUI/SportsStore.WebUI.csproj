@@ -241,8 +241,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Admin.css" />
-    <Content Include="Content\Site - Copy.css" />
+    <Content Include="Content\Site.old1.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site.old2.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\_run.js" />

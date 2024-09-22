@@ -14,7 +14,7 @@ namespace SportsStore.Domain.Concrete {
         public string Password = "add-password-here";
         public string ServerName = "smtp.mail.yahoo.com";
         public int ServerPort = 587;
-        public bool WriteAsFile = false;
+        public bool WriteAsFile = true;
         public string FileLocation = @"c:\sports_store_emails";
     }
 

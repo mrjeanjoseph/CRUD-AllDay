@@ -1,5 +1,5 @@
 ﻿var AdminArea = {
     AdminAreaInit: function () {
-        console.log("AdminAreaInit is now loaded");
+        console.log("AdminAreaInit loads in the admin cshtml file");
     }
 }
