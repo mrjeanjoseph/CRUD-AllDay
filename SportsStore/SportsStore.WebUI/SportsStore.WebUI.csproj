@@ -322,6 +322,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Privacy.cshtml" />
+    <Content Include="Views\Nav\MenuFlex.cshtml" />
+    <Content Include="Views\Nav\MenuFlex.Mobile.cshtml" />
+    <Content Include="Views\Nav\MenuHorizontal.cshtml" />
+    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\Shared\_NavHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
