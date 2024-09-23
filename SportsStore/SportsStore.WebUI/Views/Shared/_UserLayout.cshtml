@@ -27,14 +27,16 @@
                 </div>
             </div>
         </div>
+
+        @{ string myInfo = "Build here; at crudallday.com";}
+        <nav class="navbar fixed-bottom bg-body-tertiary">
+            <div class="container-fluid">
+                <p>&copy; @DateTime.Now.Year - @myInfo</p>
+            </div>
+        </nav>
+
     </div>
 
-    @{ string myInfo = "Jean Built this!";}
-    <nav class="navbar fixed-bottom bg-body-tertiary">
-        <div class="container-fluid">
-            <p>&copy; @DateTime.Now.Year - @myInfo</p>
-        </div>
-    </nav>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
     <script src="~/Scripts/jquery-3.7.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>

@@ -339,7 +339,7 @@
     <Content Include="Views\Nav\MenuHorizontal.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_NavHeader.cshtml" />
-    <Content Include="Views\Admin\ActionLog.cshtml" />
+    <Content Include="Views\Admin\UserActivityLog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

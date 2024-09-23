@@ -11,5 +11,7 @@ namespace SportsStore.Domain.Abstract {
         //void SaveLog(ActionLog actionLog);
 
         Product DeleteProduct(int productId);
+
+        IEnumerable<ActionLog> GetActionLogs { get; }
     }
 }

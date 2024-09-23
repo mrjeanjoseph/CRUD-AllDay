@@ -1,7 +1,6 @@
 ﻿using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SportsStore.Domain.Concrete {
     public class EFProductRepository : IProductRepository {
@@ -10,6 +9,10 @@ namespace SportsStore.Domain.Concrete {
 
         public IEnumerable<Product> Products {
             get { return _context.Products; }
+        }
+
+        public IEnumerable<ActionLog> GetActionLogs {
+            get { return _context.ActionLogs; }
         }
 
         public void SaveProduct(Product product) {
@@ -37,19 +40,5 @@ namespace SportsStore.Domain.Concrete {
             }
             return dbEntry;
         }
-
-        //public void SaveLog(ActionLog actionLog) {
-
-        //    ActionLog dbEntry = _context.ActionLogs.Find(actionLog.LogId);
-
-        //    if(dbEntry != null) {
-
-        //        dbEntry.Controller = actionLog.Controller;
-        //        dbEntry.Action = actionLog.Action;
-        //        dbEntry.HttpMethod = actionLog.HttpMethod;
-        //        dbEntry.URL = actionLog.URL;
-        //        dbEntry.ActionDate = actionLog.ActionDate;
-        //    }
-        //}
     }
 }

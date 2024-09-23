@@ -50,13 +50,8 @@ namespace SportsStore.WebUI.Controllers {
             return RedirectToAction("Index");
         }
 
-        public ActionResult ActionLog() {
-            using (EFDbContext dbcontext = new EFDbContext()) {
-
-                var actionLogs = (from al in dbcontext.ActionLogs select al).ToList();
-
-                return View(actionLogs);
-            }
+        public ActionResult UserActivityLog() {
+            return View(repo.GetActionLogs);
         }
     }
 }

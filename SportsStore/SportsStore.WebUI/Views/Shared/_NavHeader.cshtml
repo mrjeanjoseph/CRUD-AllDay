@@ -1,7 +1,7 @@
 ﻿@model string
 @{
     string adminAccess = "";
-    if (DateTime.Now.Hour > 6) {
+    if (DateTime.Now.Hour > 9 && DateTime.Now.Hour < 5) {
         adminAccess = "disabled";
     }
 
@@ -24,7 +24,6 @@
                     <ul class="dropdown-menu dropdown-menu-center">
                         <li class="nav-item disabled text-center"><h4>All Services</h4></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li>@Html.ActionLink("In Progress", "List", "ProductVendor", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
                         <li>@Html.ActionLink("Dropdown Link 1", "UnderConstruction", "InProgress", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
                         <li>@Html.ActionLink("Dropdown Link 2", "UnderConstruction", "InProgress", new { area = "" }, new { @class = "nav-link dropdown-item" })</li>
                         <li>@Html.ActionLink("Dropdown Link 2", "UnderConstruction", "InProgress", new { area = "" }, new { @class = "nav-link dropdown-item disabled" })</li>
@@ -48,7 +47,6 @@
                 <li class="nav-item">
                     @Html.ActionLink("Admin", "Index", "Admin", new { area = "" }, new { @class = $"nav-link {adminAccess}"})
                 </li>
-                <li class="nav-item"><a class="nav-link disabled"><i class="bi bi-person-lock ytp-bigger"></i></a></li>
             </ul>
         </div>
     </div>
