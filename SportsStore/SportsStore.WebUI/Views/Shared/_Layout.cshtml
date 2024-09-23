@@ -12,21 +12,8 @@
 
     @Html.Partial("_NavHeader", applicationName)
 
-    <div class="card container mt-2">
-        @Html.Action("Summary", "Cart")
-        <div class="d-block d-md-none">
-            @Html.Action("Menu", "Nav", new { horizontalLayout = true })
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div id="categories" class="col-md-3 d-none d-md-block">
-                    @Html.Action("Menu", "Nav")
-                </div>
-                <div class="col-sm-12 col-md-9">
-                    @RenderBody()
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        @RenderBody()
     </div>
 
     @{ string myInfo = "Jean Built this!";}

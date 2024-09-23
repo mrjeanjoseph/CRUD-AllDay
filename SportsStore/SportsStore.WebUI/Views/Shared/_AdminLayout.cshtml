@@ -14,14 +14,26 @@
 
     @{
         string applicationName = "Sports Store";
-        string myInfo = "A product of Jean-Joseph";
+        string myInfo = "Here at crudallday.com";
     }
     <nav class="navbar bg-dark navbar-expand-lg border-bottom border-bottom-dark bg-body-tertiary" data-bs-theme="dark">
         <div class="container">
-            @Html.ActionLink(applicationName, "List", "Product", null, new { @class = "navbar-brand" })
+            @Html.ActionLink("ADMIN AREA", "Index", "Admin", null, new { @class = "navbar-brand" })
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        @Html.ActionLink(applicationName, "List", "Product", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Log Activities", "ActionLog", "Admin", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </nav>
 
@@ -31,13 +43,13 @@
         }
         @RenderBody()
         <hr />
-    </div>
 
-    <nav class="navbar bg-body-tertiary">
-        <div class="footer container">
-            <p>&copy; @DateTime.Now.Year -- @myInfo</p>
-        </div>
-    </nav>
+        <nav class="navbar bg-body-tertiary">
+            <div class="footer">
+                <p>&copy; @DateTime.Now.Year -- @myInfo</p>
+            </div>
+        </nav>
+    </div>
 
     @Scripts.Render("~/bundles/site")
     @RenderSection("scripts", required: false)

@@ -1,4 +1,5 @@
 ﻿using SportsStore.Domain.Abstract;
+using SportsStore.Domain.Concrete;
 using SportsStore.Domain.Entities;
 using System.Linq;
 using System.Web.Mvc;
@@ -49,5 +50,13 @@ namespace SportsStore.WebUI.Controllers {
             return RedirectToAction("Index");
         }
 
+        public ActionResult ActionLog() {
+            using (EFDbContext dbcontext = new EFDbContext()) {
+
+                var actionLogs = (from al in dbcontext.ActionLogs select al).ToList();
+
+                return View(actionLogs);
+            }
+        }
     }
 }

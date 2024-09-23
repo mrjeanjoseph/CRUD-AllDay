@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SportsStore.Domain.Entities.ActionLog>
+
+@{
+    ViewBag.Title = "Log Activity";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>User Log Activity</h2>
+
+
+<table class="table small">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Controller)</th>
+        <th>@Html.DisplayNameFor(model => model.Action)</th>
+        <th>@Html.DisplayNameFor(model => model.HttpMethod)</th>
+        <th>@Html.DisplayNameFor(model => model.URL)</th>
+        <th>@Html.DisplayNameFor(model => model.ActionDate)</th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Controller)</td>
+            <td>@Html.DisplayFor(modelItem => item.Action)</td>
+            <td>@Html.DisplayFor(modelItem => item.HttpMethod)</td>
+            <td>@Html.DisplayFor(modelItem => item.URL)</td>
+            <td>@Html.DisplayFor(modelItem => item.ActionDate)</td>
+        </tr>
+    }
+
+</table>
