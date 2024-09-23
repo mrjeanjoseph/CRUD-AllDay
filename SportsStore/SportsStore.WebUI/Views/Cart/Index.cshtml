@@ -20,9 +20,7 @@
                 <td>@line.Quantity</td>
                 <td>@line.Product.Name</td>
                 <td>@line.Product.Price.ToString("c")</td>
-                <td>
-                    @((line.Quantity * line.Product.Price).ToString("c"))
-                </td>
+                <td>@((line.Quantity * line.Product.Price).ToString("c"))</td>
                 <td>
                     @using (Html.BeginForm("RemoveFromCart", "Cart")) {
                         @Html.Hidden("ProductID", line.Product.ProductID)

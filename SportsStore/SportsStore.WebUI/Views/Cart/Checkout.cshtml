@@ -8,27 +8,48 @@
 <h2>Check out now</h2>
 
 Please enter your details, and we'll ship your goods right away!
-@using (Html.BeginForm()) {
 
+@using (Html.BeginForm()) {
     @Html.ValidationSummary()
 
-    <h3>Ship to</h3>
-    <div>Name: @Html.EditorFor(x => x.Name)</div>
-    <h3>Address</h3>
+    <h4>Ship To: </h4>
+    <div class="row g-3 mb-3">
+        <div class="col-sm-2">@Html.LabelFor(x => x.Name)</div>
+        <div class="col-sm-7">
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Enter your Full Name" })
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
 
-    <div>Line 1: @Html.EditorFor(x => x.Line1)</div>
-    <div>Line 2: @Html.EditorFor(x => x.Line2)</div>
-    <div>Line 3: @Html.EditorFor(x => x.Line3)</div>
-    <div>City: @Html.EditorFor(x => x.City)</div>
-    <div>State: @Html.EditorFor(x => x.State)</div>
-    <div>Zip: @Html.EditorFor(x => x.Zip)</div>
-    <div>Country: @Html.EditorFor(x => x.Country)</div>
-    <h3>Options</h3>
+    <h4>Address Information: </h4>
+    foreach (var property in ViewData.ModelMetadata.Properties) {
 
-    <label>
-        @Html.EditorFor(x => x.GiftWrap) Gift wrap these items    
-    </label>
-    <p align="center">
-        <input class="actionButtons" type="submit" value="Complete order" />
-    </p>
+        if (property.PropertyName != "Name"
+            && property.PropertyName != "GiftWrap"
+            && property.PropertyName != "Id") {
+            <div class="row g-3 mb-3">
+                <div class="col-sm-2">@(property.DisplayName ?? property.PropertyName)</div>
+                <div class="col-sm-7">
+                    @Html.TextBox(property.PropertyName, null,
+                new { @class = "form-control" })
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+        }
+    }
+
+    <h4>Options: </h4>
+    <div class="row g-3 mb-4">
+        <div class="col-sm-4">
+            <div class="form-check">
+                @Html.EditorFor(x => x.GiftWrap, new { @class = "form-check-input", @id = "gridCheck" })
+                <label class="form-check-label" for="gridCheck">
+                    Giftwrap these items
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <input type="submit" class="btn btn-primary" value="Complete Order" />
+        </div>
+    </div>
 }
