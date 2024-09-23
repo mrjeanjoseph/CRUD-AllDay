@@ -4,31 +4,30 @@
     ViewBag.Title = "Sports Store: Your Cart";
 }
 
-<h2>Your cart</h2>
-<table width="90%" align="center">
+<h2>Your Cart: </h2>
+<table class="table">
     <thead>
         <tr>
-            <th align="center">Quantity</th>
-            <th align="left">Item</th>
-            <th align="right">Price</th>
-            <th align="right">Subtotal</th>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Subtotal</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var line in Model.Cart.Lines) {
             <tr>
-                <td align="center">@line.Quantity</td>
-                <td align="left">@line.Product.Name</td>
-                <td align="right">@line.Product.Price.ToString("c")</td>
-                <td align="right">
-                    @((line.Quantity
-                    * line.Product.Price).ToString("c"))
+                <td>@line.Quantity</td>
+                <td>@line.Product.Name</td>
+                <td>@line.Product.Price.ToString("c")</td>
+                <td>
+                    @((line.Quantity * line.Product.Price).ToString("c"))
                 </td>
                 <td>
                     @using (Html.BeginForm("RemoveFromCart", "Cart")) {
-                        @Html.Hidden("ProductId", line.Product.ProductID)
+                        @Html.Hidden("ProductID", line.Product.ProductID)
                         @Html.HiddenFor(x => x.ReturnUrl)
-                        <input class="actionButtons" type="submit" value="Remove" />
+                        <input type="submit" class="btn btn-danger btn-sm" value="Remove" />
                     }
                 </td>
             </tr>
@@ -36,15 +35,13 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="3" align="right">Total:</td>
-            <td align="right">
-                @Model.Cart.ComputeTotalValue().ToString("c")
-            </td>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">@Model.Cart.ComputeTotalValue().ToString("c")</td>
         </tr>
     </tfoot>
 </table>
-<p align="center" class="actionButtons">
-    <a href="@Model.ReturnUrl">Continue shopping</a>
-    @Html.ActionLink("Checkout now", "Checkout")
-</p>
 
+<div class="text-center">
+    <a class="btn btn-primary btn-lg" href="@Model.ReturnUrl">Continue Shopping</a>
+    @Html.ActionLink("Checkout now", "Checkout", null, new { @class = "btn btn-primary btn-lg" })
+</div>
