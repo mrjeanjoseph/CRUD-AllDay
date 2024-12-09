@@ -64,7 +64,7 @@ $scriptBlock = {
     $currentLocation
     
 
-    $outputFile = "C:\PowerShell\OutputFile.txt"
+    $outputFile = "$currentLocation\LogOutput-Files\PowerShell\OutputFile.txt"
     Test-Connection -ComputerName www.example.local | Out-File -FilePath $outputFile -Append
     Test-NetConnection -ComputerName www.example.local -Port 80 | Out-File -FilePath $outputFile -Append
     Get-NetIPAddress | Out-File -FilePath $outputFile -Append
