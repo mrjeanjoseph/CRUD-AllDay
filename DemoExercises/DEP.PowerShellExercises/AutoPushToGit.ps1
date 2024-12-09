@@ -3,7 +3,7 @@
 function Find-SourceLocation {
     param([string]$Path)
 
-    $destFolderWrites = "DemoExercises\DEP.LearningPowerShell\LogFilesOutput";
+    $destFolderWrites = "DemoExercises\DEP.PowerShellExercises\LogFilesOutput";
     $files = Get-ChildItem -Path "$Path\$destFolderWrites" -File;
     $fileCount = ($files).Count;    
 
