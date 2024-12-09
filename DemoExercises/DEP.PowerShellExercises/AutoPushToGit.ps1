@@ -1,6 +1,5 @@
 #The idea here is to implement a sort of CICD where a scheduled tasks runs this scripts 10 - 15 times per day.
 #New logic: Delete some of the content but not everything. Also add the date and time at the top
-
 function Find-SourceLocation {
     param([string]$Path)
 

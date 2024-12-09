@@ -1,19 +1,19 @@
 
 #excludes all IP version 6 addresses and returns IP version 4 addresses plus the current DNS Server entries:
 Get-NetAdapter | `
-    Select-Object `
-    -Property Name, LinkSpeed, Status,
-    @{ 
-        Name = "IPv4 Address";
-        Expression = { 
-            (Get-NetIPAddress -InterfaceIndex $_.ifIndex -AddressFamily IPv4).IPAddress
-        }
-    }, @{ 
-        Name = "IPv4 DNS Servers";
-        Expression = { 
-            (Get-DnsClientServerAddress -InterfaceIndex $_.ifIndex -AddressFamily IPv4).ServerAddresses
-        }
-    } | Format-Table -AutoSize
+Select-Object `
+-Property Name, LinkSpeed, Status,
+@{ 
+    Name = "IPv4 Address";
+    Expression = { 
+        (Get-NetIPAddress -InterfaceIndex $_.ifIndex -AddressFamily IPv4).IPAddress
+    }
+}, @{ 
+    Name = "IPv4 DNS Servers";
+    Expression = { 
+        (Get-DnsClientServerAddress -InterfaceIndex $_.ifIndex -AddressFamily IPv4).ServerAddresses
+    }
+} | Format-Table -AutoSize
 
 
 #send a network request (like a ping) to test a route’s functionality to the destination:
@@ -36,7 +36,7 @@ foreach ($route in $routeEntries) {
 #       172.26.192.1
 
 #For bandwidth issues, we can test network speed with Test-Connection cmdlet:
-$computerName = "172.28.96.1" 
+$computerName = "172.28.96.1" # Or we can use "JeanPC"
 $port = 80
 $tcpTestResult = Test-NetConnection `
 	-ComputerName $computerName `
@@ -59,19 +59,16 @@ $result | Format-Table -AutoSize
 #==================================================================
 
 # A script to automate diagnostics and run it regularly or when issues are detected.
-$scriptBlock = {
-    $currentLocation = Get-Location;
-    $currentLocation
-    
+$scriptBlock = {    
+    $outputFile = "C:\LogResults\diagnostics-results.txt";
 
-    $outputFile = "$currentLocation\LogOutput-Files\PowerShell\OutputFile.txt"
-    Test-Connection -ComputerName www.example.local | Out-File -FilePath $outputFile -Append
-    Test-NetConnection -ComputerName www.example.local -Port 80 | Out-File -FilePath $outputFile -Append
+    Test-Connection -ComputerName "JeanPC" | Out-File -FilePath $outputFile -Append
+    Test-NetConnection -ComputerName "JeanPC" -Port 80 | Out-File -FilePath $outputFile -Append
     Get-NetIPAddress | Out-File -FilePath $outputFile -Append
-    Resolve-DnsName www.example.local | Out-File -FilePath $outputFile -Append
+    Resolve-DnsName "JeanPC" | Out-File -FilePath $outputFile -Append
     Get-NetRoute | Out-File -FilePath $outputFile -Append
     Get-NetAdapter | Select-Object Name, Status, LinkSpeed | Out-File -FilePath $outputFile -Append
     Get-Counter -Counter "\Network Interface(*)\Bytes Total/sec" | Out-File -FilePath $outputFile -Append
-    }
-    & $scriptBlock
+} 
+& $scriptBlock
 
