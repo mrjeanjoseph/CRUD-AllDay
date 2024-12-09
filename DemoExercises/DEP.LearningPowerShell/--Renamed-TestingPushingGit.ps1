@@ -41,6 +41,8 @@ function Find-SourceLocation {
     }
 }
 
+Rename-AllFiles -Path $destFolderWrites -Prefix "-";
+
 function Get-GitStatus {
     param ( [string]$Path, [string]$word )
 
@@ -83,7 +85,6 @@ function Get-GitStatus {
     }
 }
 
-Rename-AllFiles -Path $destFolderWrites -Prefix "-";
 
 Get-GitStatus -Path "C:\_workspace\CRUD-AllDay" -word "Untracked Files";
 
