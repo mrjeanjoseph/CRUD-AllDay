@@ -1,12 +1,35 @@
 #The plan here is to set up a scheduled task that runs this scripts 10 - 15 times per day.
 
 #New logic: Delete some of the content but not everything. Also add the date and time at the top
+
+
+function Rename-AllFiles {
+    param ( [string]$Path, [string]$Prefix )
+
+    try {
+        # Get all files in the specified directory
+        $files = Get-ChildItem -Path $Path -File
+
+        # Rename each file by adding the prefix
+        foreach ($file in $files) {
+            $newName = $Prefix + $file.Name
+            Rename-Item -Path $file.FullName -NewName $newName
+        }
+
+        Write-Output "All files in the directory '$Path' have been renamed with the prefix '$Prefix'."
+    }
+    catch {
+        Write-Error "An error occurred: $_"
+    }
+
+}
 function Find-SourceLocation {
     param([string]$Path)
 
     $destFolderWrites = "DemoExercises\DEP.LearningPowerShell\log";
     $files = Get-ChildItem -Path "$Path\$destFolderWrites" -File;
-    $fileCount = ($files).Count;
+    $fileCount = ($files).Count;    
+
     if ($fileCount -gt 3) {
         foreach ($file in $files) {
             Remove-Item -Path $file.FullName -Force 
@@ -60,7 +83,8 @@ function Get-GitStatus {
     }
 }
 
-# Example usage:
+Rename-AllFiles -Path $destFolderWrites -Prefix "Renamed-";
+
 Get-GitStatus -Path "C:\_workspace\CRUD-AllDay" -word "Untracked Files";
 
 
