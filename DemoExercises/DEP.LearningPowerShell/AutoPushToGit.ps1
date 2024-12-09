@@ -4,7 +4,7 @@
 function Find-SourceLocation {
     param([string]$Path)
 
-    $destFolderWrites = "DemoExercises\DEP.LearningPowerShell\log";
+    $destFolderWrites = "DemoExercises\DEP.LearningPowerShell\LogFilesOutput";
     $files = Get-ChildItem -Path "$Path\$destFolderWrites" -File;
     $fileCount = ($files).Count;    
 
@@ -61,5 +61,5 @@ function Get-GitStatus {
     }
 }
 Get-GitStatus -Path "C:\_workspace\CRUD-AllDay" -word "Untracked Files";
-
+#
 
