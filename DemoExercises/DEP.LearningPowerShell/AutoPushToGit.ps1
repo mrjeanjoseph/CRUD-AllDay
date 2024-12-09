@@ -1,28 +1,6 @@
-#The plan here is to set up a scheduled task that runs this scripts 10 - 15 times per day.
-
+#The idea here is to implement a sort of CICD where a scheduled tasks runs this scripts 10 - 15 times per day.
 #New logic: Delete some of the content but not everything. Also add the date and time at the top
 
-
-function Rename-AllFiles {
-    param ( [string]$Path, [string]$Prefix )
-
-    try {
-        # Get all files in the specified directory
-        $files = Get-ChildItem -Path $Path -File
-
-        # Rename each file by adding the prefix
-        foreach ($file in $files) {
-            $newName = $Prefix + $file.Name
-            Rename-Item -Path $file.FullName -NewName $newName
-        }
-
-        Write-Output "All files in the directory '$Path' have been renamed with the prefix '$Prefix'."
-    }
-    catch {
-        Write-Error "An error occurred: $_"
-    }
-
-}
 function Find-SourceLocation {
     param([string]$Path)
 
@@ -40,8 +18,6 @@ function Find-SourceLocation {
         $_ | Out-File "$Path\$destFolderWrites\SmallFiles-$num.txt" -Append;
     }
 }
-
-Rename-AllFiles -Path $destFolderWrites -Prefix "-";
 
 function Get-GitStatus {
     param ( [string]$Path, [string]$word )
@@ -84,8 +60,29 @@ function Get-GitStatus {
         Set-Location -Path $currentLocation;
     }
 }
-
-
 Get-GitStatus -Path "C:\_workspace\CRUD-AllDay" -word "Untracked Files";
 
 
+
+#-------------------------------------------------------------
+#Currently not working but want to make use of it.
+function Rename-AllFiles {
+    param ( [string]$Path, [string]$Prefix )
+
+    try {
+        # Get all files in the specified directory
+        $files = Get-ChildItem -Path $Path -File
+
+        # Rename each file by adding the prefix
+        foreach ($file in $files) {
+            $newName = $Prefix + $file.Name
+            Rename-Item -Path $file.FullName -NewName $newName
+        }
+
+        Write-Output "All files in the directory '$Path' have been renamed with the prefix '$Prefix'."
+    }
+    catch {
+        Write-Error "An error occurred: $_"
+    }
+
+}
