@@ -83,7 +83,7 @@ function Get-GitStatus {
     }
 }
 
-Rename-AllFiles -Path $destFolderWrites -Prefix "Renamed-";
+Rename-AllFiles -Path $destFolderWrites -Prefix "-";
 
 Get-GitStatus -Path "C:\_workspace\CRUD-AllDay" -word "Untracked Files";
 
