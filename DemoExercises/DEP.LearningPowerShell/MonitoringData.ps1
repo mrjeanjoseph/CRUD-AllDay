@@ -1,4 +1,4 @@
-$scriptBlock = {
+
     $monitoringData = @()
     $cpuUsage = Get-Counter `
         -Counter "\Processor(_Total)\% Processor Time" `
@@ -30,17 +30,5 @@ $scriptBlock = {
             Value        = "$($interface.CookedValue) Bytes/sec"
         }
     }
-    $monitoringData | Export-Clixml -Path "C:\PowerShell\MonitoringData.xml"
-}
-$scriptPath = "C:\PowerShell\MonitoringData.ps1"
-$scriptBlock | Out-File -FilePath $scriptPath
-$trigger = New-ScheduledTaskTrigger `
-    -AtStartup -RandomDelay (New-TimeSpan -Minutes 30)
-$action = New-ScheduledTaskAction `
-    -Execute "`"C:\Program Files\PowerShell\7\pwsh.exe`"" `
-    -Argument "-File `"$scriptPath`""
-Register-ScheduledTask `
-    -TaskName "SystemPerformanceMonitoring" `
-    -Trigger $trigger `
-    -Action $action `
-    -Description "System Performance Monitoring Task"
+    $monitoringData | Export-Clixml -Path "$fileLocation\log\MonitoringData.xml"
+
