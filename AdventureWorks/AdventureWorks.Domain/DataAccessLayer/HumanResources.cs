@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Domain.Models;
+using AdventureWorks.Domain.Models.HumanResources;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdventureWorks.Domain.DataAccessLayer;

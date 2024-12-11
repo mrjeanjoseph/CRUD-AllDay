@@ -1,4 +1,6 @@
-﻿namespace AdventureWorks.Domain.Models;
+﻿using AdventureWorks.Domain.Models.HumanResources;
+
+namespace AdventureWorks.Domain.Models;
 
 /// <summary>
 /// Employee department transfers.

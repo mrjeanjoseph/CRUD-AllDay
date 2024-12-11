@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventureWorks.ConsoleApp",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Infrastructure", "AdventureWorks.Infrastructure\AdventureWorks.Infrastructure.csproj", "{939C438B-04EC-4282-A4E9-53436B35B7E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.ServiceAPI", "AdventureWorks.ServiceAPI\AdventureWorks.ServiceAPI.csproj", "{D736736E-435E-4764-A10C-5F113F043207}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{939C438B-04EC-4282-A4E9-53436B35B7E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{939C438B-04EC-4282-A4E9-53436B35B7E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{939C438B-04EC-4282-A4E9-53436B35B7E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D736736E-435E-4764-A10C-5F113F043207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D736736E-435E-4764-A10C-5F113F043207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D736736E-435E-4764-A10C-5F113F043207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D736736E-435E-4764-A10C-5F113F043207}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

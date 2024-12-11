@@ -1,5 +1,6 @@
 ﻿using AdventureWorks.Domain.Interface;
 using AdventureWorks.Domain.Models;
+using AdventureWorks.Domain.Models.HumanResources;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 

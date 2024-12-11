@@ -1,4 +1,4 @@
-﻿namespace AdventureWorks.Domain.Models;
+﻿namespace AdventureWorks.Domain.Models.HumanResources;
 
 /// <summary>
 /// Lookup table containing the departments within the Adventure Works Cycles company.
