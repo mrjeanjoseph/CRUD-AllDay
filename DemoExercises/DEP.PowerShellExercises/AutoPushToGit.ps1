@@ -4,17 +4,18 @@ function Find-SourceLocation {
     param([string]$Path)
 
     $destFolderWrites = "DemoExercises\DEP.PowerShellExercises\LogFilesOutput";
-    $files = Get-ChildItem -Path "$Path\$destFolderWrites" -File;
-    $fileCount = ($files).Count;    
 
+    $num = Get-Random -Minimum 1 -Maximum 11
+    Get-ChildItem $Path | ForEach-Object {
+        $_ | Out-File "$Path\$destFolderWrites\SmallFiles-$num.txt" -Append;
+    }
+
+    $files = Get-ChildItem -Path "$Path\$destFolderWrites" -File;
+    $fileCount = ($files).Count;
     if ($fileCount -gt 3) {
         foreach ($file in $files) {
             Remove-Item -Path $file.FullName -Force 
         }
-    }
-    $num = Get-Random -Minimum 1 -Maximum 11
-    Get-ChildItem $Path | ForEach-Object {
-        $_ | Out-File "$Path\$destFolderWrites\SmallFiles-$num.txt" -Append;
     }
 }
 
@@ -41,7 +42,7 @@ function Get-GitStatus {
             #$gitStatus = git status;
             git status
             git add .
-            git commit -m 'project file update in progress'
+            git commit -m 'Changes found. CI to remote'
             git push
 
         }
