@@ -8,9 +8,12 @@ $height = $Host.UI.RawUI.WindowSize.Height
 # Function to generate a random string of characters
 function Get-RandomString {
     param($length)
-    $string = ""
+    $string = "";
+
+    $ranNum = Get-Random -Minimum 1 -Maximum $chars.Length
+
     for ($i = 0; $i -lt $length; $i++) {
-        $string += $chars[Get-Random -Maximum $chars.Length]
+        $string += $chars[$ranNum]
     }
     return $string
 }
@@ -25,10 +28,11 @@ while ($true) {
         $string = Get-RandomString $length
         Write-Host -NoNewLine " " * $x
         Write-Host -ForegroundColor Green $string
+        Start-Sleep -Milliseconds 750
     }
 
     # Sleep to control the speed of the rain
-    Start-Sleep -Milliseconds 50
+    Start-Sleep -Milliseconds 200
 
     # Clear the console
     Clear-Host
