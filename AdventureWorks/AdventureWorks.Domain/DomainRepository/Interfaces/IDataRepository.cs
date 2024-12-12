@@ -1,5 +1,5 @@
 ﻿using AdventureWorks.Domain.DataAccessLayer;
-using AdventureWorks.Domain.Models.HumanResources;
+using AdventureWorks.Domain.Models;
 
 namespace AdventureWorks.DomainRepository {
     public interface IDataRepository : IDisposable {

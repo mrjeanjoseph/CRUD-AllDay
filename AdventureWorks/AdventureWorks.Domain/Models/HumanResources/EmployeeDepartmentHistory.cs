@@ -1,4 +1,4 @@
-﻿using AdventureWorks.Domain.Models.HumanResources;
+﻿using AdventureWorks.Domain.Models;
 
 namespace AdventureWorks.Domain.Models;
 

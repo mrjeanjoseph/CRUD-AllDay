@@ -1,6 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using AdventureWorks.Domain.DataAccessLayer;
-using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdventureWorks.ServiceAPI;
 
@@ -10,18 +9,18 @@ public class Program {
 
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
-
         builder.Services.AddControllers();
 
-        var connectionString = builder.Configuration.GetConnectionString("AdWConnStr") ?? 
+        //Connecting to the DB
+        var connectionString = builder.Configuration.GetConnectionString("AdWConnStr") ??
             throw new InvalidOperationException("Connection string 'AdWConnStr' not found.");
-
         builder.Services.AddDbContext<AdWDbContext>(options =>
             options.UseSqlServer(connectionString));
-
         //builder.Services.AddDbContext<AdWDbContext>(options => options
         //.UseSqlServer(builder.Configuration.GetConnectionString("AdWConnStr")));
+
+        builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
