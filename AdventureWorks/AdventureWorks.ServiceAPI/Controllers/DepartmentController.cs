@@ -1,5 +1,7 @@
 ﻿using AdventureWorks.Domain.DataAccessLayer;
 using AdventureWorks.Domain.Models;
+using AdventureWorks.ServiceAPI.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,33 +11,37 @@ namespace AdventureWorks.ServiceAPI.Controllers;
 [ApiController]
 public class DepartmentController : ControllerBase {
     private readonly ILogger<DepartmentController> _logger;
+    private readonly IMapper _mapper;
     private readonly AdWDbContext _context;
 
-    public DepartmentController(ILogger<DepartmentController> logger, AdWDbContext context) {
+    public DepartmentController(ILogger<DepartmentController> logger, AdWDbContext context, IMapper mapper) {
         _logger = logger;
         _context = context;
+        _mapper = mapper;
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Department>>> GetDepartments() {
-        // This is working as expected
-        return await _context.Departments.ToListAsync();
+    public async Task<ActionResult<IEnumerable<DepartmentDTO>>> GetDepartments() {
+        var departments = await _context.Departments.ToListAsync();
+
+        return _mapper.Map<List<DepartmentDTO>>(departments);        
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Department>> GetDepartment(short id) {
+    public async Task<ActionResult<DepartmentDTO>> GetDepartment(short id) {
         var department = await _context.Departments.FindAsync(id);
         if (department == null) {
             return NotFound();
         }
-        return department;
+        return _mapper.Map<DepartmentDTO>(department);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutDepartment(int id, Department department) {
-        if (id != department.DepartmentId) {
+    public async Task<IActionResult> PutDepartment(int id, DepartmentDTO dto) {
+        if (id != dto.DepartmentId) {
             return BadRequest();
         }
+        var department = _mapper.Map<Department>(dto);
         _context.Entry(department).State = EntityState.Modified;
         try {
             await _context.SaveChangesAsync();
@@ -50,10 +56,11 @@ public class DepartmentController : ControllerBase {
     }
 
     [HttpPost]
-    public async Task<ActionResult<Department>> PostDepartment(Department department) {
+    public async Task<ActionResult<DepartmentDTO>> PostDepartment(DepartmentDTO dto) {
+        var department = _mapper.Map<Department>(dto);
         _context.Departments.Add(department);
         await _context.SaveChangesAsync();
-        return CreatedAtAction("GetDepartment", new { id = department.DepartmentId }, department);
+        return CreatedAtAction("GetDepartment", new { id = department.DepartmentId }, dto);
     }
 
     [HttpDelete("{id}")]

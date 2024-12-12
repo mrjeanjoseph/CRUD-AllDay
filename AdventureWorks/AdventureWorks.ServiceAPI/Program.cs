@@ -1,6 +1,8 @@
 using AdventureWorks.Domain.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 
+using System;
+
 namespace AdventureWorks.ServiceAPI;
 
 public class Program {
@@ -19,8 +21,9 @@ public class Program {
         //builder.Services.AddDbContext<AdWDbContext>(options => options
         //.UseSqlServer(builder.Configuration.GetConnectionString("AdWConnStr")));
 
+        // AutoMapper and AutoMapper.Extentions.Microsoft.DependencyInjection packages
+        // must be in the same version -> Currently 12.0.0 for both
         builder.Services.AddAutoMapper(typeof(MappingProfile));
-
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
