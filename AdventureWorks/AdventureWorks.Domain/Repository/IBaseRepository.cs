@@ -10,4 +10,11 @@ public interface IBaseRepository<TEntity> where TEntity : class {
     void Remove(TEntity entity);
 
     void RemoveMultiple(IEnumerable<TEntity> entities);
+
+
+    //Task<IQueryable<TEntity>> GetAllAsync();
+    //Task<TEntity> AddOrInsertAsync(TEntity entity);
+    //Task<IEnumerable<TEntity>> AddOrInsertMultipleAsync(IEnumerable<TEntity> entities);
+    //Task RemoveAsync(TEntity entity);
+    //Task RemoveMultipleAsync(IEnumerable<TEntity> entities);
 }

@@ -1,7 +1,6 @@
 using AdventureWorks.Domain.DataAccessLayer;
+using AdventureWorks.ServiceAPI.Services;
 using Microsoft.EntityFrameworkCore;
-
-using System;
 
 namespace AdventureWorks.ServiceAPI;
 
@@ -24,6 +23,7 @@ public class Program {
         // AutoMapper and AutoMapper.Extentions.Microsoft.DependencyInjection packages
         // must be in the same version -> Currently 12.0.0 for both
         builder.Services.AddAutoMapper(typeof(MappingProfile));
+        builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

@@ -7,4 +7,6 @@ public interface IDataRepository : IDisposable {
     AdWDbContext Context { get; }
 
     IBaseRepository<Department> DepartmentRepository { get; }
+
+
 }

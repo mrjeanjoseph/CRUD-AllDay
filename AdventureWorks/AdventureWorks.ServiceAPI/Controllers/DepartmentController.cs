@@ -1,35 +1,37 @@
 ﻿using AdventureWorks.Domain.DataAccessLayer;
 using AdventureWorks.Domain.Models;
 using AdventureWorks.ServiceAPI.Models;
+using AdventureWorks.ServiceAPI.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace AdventureWorks.ServiceAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
 public class DepartmentController : ControllerBase {
+    private readonly IDepartmentService _departmentService;
     private readonly ILogger<DepartmentController> _logger;
     private readonly IMapper _mapper;
-    private readonly AdWDbContext _context;
 
-    public DepartmentController(ILogger<DepartmentController> logger, AdWDbContext context, IMapper mapper) {
+    public DepartmentController(ILogger<DepartmentController> logger, AdWDbContext context, IMapper mapper, IDepartmentService service) {
         _logger = logger;
-        _context = context;
         _mapper = mapper;
+        _departmentService = service;
     }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<DepartmentDTO>>> GetDepartments() {
-        var departments = await _context.Departments.ToListAsync();
+        var departments = await _departmentService.GetAllDepartmentsAsync();
 
-        return _mapper.Map<List<DepartmentDTO>>(departments);        
+        var departmentdtos = _mapper.Map<List<DepartmentDTO>>(departments);
+
+        return departmentdtos;
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<DepartmentDTO>> GetDepartment(short id) {
-        var department = await _context.Departments.FindAsync(id);
+        var department = await _departmentService.GetDepartmentByIdAsync(id);
         if (department == null) {
             return NotFound();
         }
@@ -37,44 +39,31 @@ public class DepartmentController : ControllerBase {
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutDepartment(int id, DepartmentDTO dto) {
-        if (id != dto.DepartmentId) {
+    public async Task<IActionResult> PutDepartment(int id, DepartmentDTO model) {
+        if (id != model.DepartmentId)
             return BadRequest();
-        }
-        var department = _mapper.Map<Department>(dto);
-        _context.Entry(department).State = EntityState.Modified;
-        try {
-            await _context.SaveChangesAsync();
-        } catch (DbUpdateConcurrencyException) {
-            if (!DepartmentExists(id)) {
-                return NotFound();
-            } else {
-                throw;
-            }
-        }
+
+        var department = _mapper.Map<Department>(model);
+        await _departmentService.UpdateDepartmentAsync(department);
+
         return NoContent();
     }
 
     [HttpPost]
-    public async Task<ActionResult<DepartmentDTO>> PostDepartment(DepartmentDTO dto) {
-        var department = _mapper.Map<Department>(dto);
-        _context.Departments.Add(department);
-        await _context.SaveChangesAsync();
-        return CreatedAtAction("GetDepartment", new { id = department.DepartmentId }, dto);
+    public async Task<ActionResult<DepartmentDTO>> PostDepartment(DepartmentDTO model) {
+        var department = _mapper.Map<Department>(model);
+        await _departmentService.AddDepartmentAsync(department);
+        return CreatedAtAction(nameof(GetDepartment), new { id = department.DepartmentId }, model);
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDepartment(int id) {
-        var department = await _context.Departments.FindAsync(id);
-        if (department == null) {
-            return NotFound();
-        }
-        _context.Departments.Remove(department);
-        await _context.SaveChangesAsync();
-        return NoContent();
-    }
+        var department = await _departmentService.GetDepartmentByIdAsync(id);
 
-    private bool DepartmentExists(int id) {
-        return _context.Departments.Any(e => e.DepartmentId == id);
+        if (department == null)
+            return NotFound();
+
+        await _departmentService.DeleteDepartmentAsync(id);
+        return NoContent();
     }
 }

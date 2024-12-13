@@ -1,4 +1,6 @@
-﻿namespace AdventureWorks.ServiceAPI.Services {
+﻿using AdventureWorks.Domain.Repository;
+
+namespace AdventureWorks.ServiceAPI.Services {
     public class ApplicationService {
 
     }

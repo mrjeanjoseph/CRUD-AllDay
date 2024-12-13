@@ -1,4 +1,5 @@
 ﻿using AdventureWorks.Domain.DataAccessLayer;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace AdventureWorks.Domain.Repository;
@@ -30,4 +31,25 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
     public void RemoveMultiple(IEnumerable<TEntity> entities) {
         _context.Set<TEntity>().RemoveRange(entities);
     }
+
+    //------------------------------------
+    //public async Task<IQueryable<TEntity>> GetAllAsync() {
+    //    return await _context.Set<TEntity>().ToListAsync();
+    //}
+
+    //public Task<TEntity> AddOrInsertAsync(TEntity entity) {
+    //    throw new NotImplementedException();
+    //}
+
+    //public Task<IEnumerable<TEntity>> AddOrInsertMultipleAsync(IEnumerable<TEntity> entities) {
+    //    throw new NotImplementedException();
+    //}
+
+    //public Task RemoveAsync(TEntity entity) {
+    //    throw new NotImplementedException();
+    //}
+
+    //public Task RemoveMultipleAsync(IEnumerable<TEntity> entities) {
+    //    throw new NotImplementedException();
+    //}
 }
