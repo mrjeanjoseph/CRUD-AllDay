@@ -11,9 +11,10 @@ public class DataRepository : IDataRepository {
     private bool _disposed = false;
 
     public DataRepository(AdWDbContext context) {
+        //_context.Database.EnsureCreated();
         _context = context;
         _context.Database.SetCommandTimeout(500);
-        //_context.Database.EnsureCreated();
+        Context = context; // Initialize the Context field
     }
     #endregion
 
