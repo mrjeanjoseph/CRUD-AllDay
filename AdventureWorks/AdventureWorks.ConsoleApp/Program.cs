@@ -21,9 +21,11 @@ internal class Program {
 
         using var context = new AdWDbContext(optionsBuilder.Options);
         var departments = context.Departments.ToList();
-
+        var counts = 0;
         foreach (var dept in departments) {
-            WriteLine($"Id: {dept.DepartmentId}, Name: {dept.Name}, Price: {dept.GroupName}");
+            counts++;
+            WriteLine($"-{counts} -- Id: {dept.DepartmentId}, Name: {dept.Name}, Price: {dept.GroupName}");
+
         }
     }
 }
