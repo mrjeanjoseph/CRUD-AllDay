@@ -25,11 +25,13 @@ public class DepartmentController : ControllerBase {
     public async Task<ActionResult<IEnumerable<DepartmentDTO>>> GetDepartments() {
 
         _logger.LogInformation("GetDepartments called");
+        
         var departments = await _departmentService.GetAllDepartmentsAsync();
 
         var departmentdtos = _mapper.Map<List<DepartmentDTO>>(departments);
 
-        _logger.LogTrace("Departments retrieved");
+        var logid = departmentdtos.Take(1).FirstOrDefault();
+        _logger.LogTrace("Departments retrieved: {0}", logid);
         return departmentdtos;
     }
 
