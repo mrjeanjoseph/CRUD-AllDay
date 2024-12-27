@@ -17,6 +17,8 @@ public class Program {
             throw new InvalidOperationException("Connection string 'AdWConnStr' not found.");
         builder.Services.AddDbContext<AdWDbContext>(options =>
             options.UseSqlServer(connectionString));
+
+        //Another way to configure the connection string
         //builder.Services.AddDbContext<AdWDbContext>(options => options
         //.UseSqlServer(builder.Configuration.GetConnectionString("AdWConnStr")));
 
@@ -44,4 +46,22 @@ public class Program {
 
         app.Run();
     }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureLogging((context, logging) => {
+
+
+                logging.AdwFileLogger(options => {
+                    context.Configuration.GetSection("Logging").GetSection("AdwFileLogger").Bind(options);
+                })
+
+
+                logging.ClearProviders(options => {
+
+                });
+                logging.AddConfiguration(context.Configuration.GetSection("Logging"));
+                logging.AddConsole();
+                logging.AddDebug();
+            })
 }

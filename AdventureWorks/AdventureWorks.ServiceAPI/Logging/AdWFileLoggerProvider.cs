@@ -1,20 +1,21 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace AdventureWorks.ServiceAPI.Logging {
-    public class AdWFileLoggerProvider : ILoggerProvider {
-        public readonly AdWFileLoggerOptions _options;
-        public AdWFileLoggerProvider(IOptions<AdWFileLoggerOptions> fileOptions) {
+namespace AdventureWorks.ServiceAPI.Logging;
 
-            _options = fileOptions.Value;
+[ProviderAlias("AdWDataLogs")]
+public class AdWFileLoggerProvider : ILoggerProvider {
+    public readonly AdWFileLoggerOptions _options;
+    public AdWFileLoggerProvider(IOptions<AdWFileLoggerOptions> fileOptions) {
 
-            if (!Directory.Exists(_options.FolderPath))
-                Directory.CreateDirectory(_options.FolderPath);            
-        }
+        _options = fileOptions.Value;
 
-        public ILogger CreateLogger(string categoryName) {
-            return new AdWFileLogger(this);
-        }
-
-        public void Dispose() { }
+        if (!Directory.Exists(_options.FolderPath))
+            Directory.CreateDirectory(_options.FolderPath);            
     }
+
+    public ILogger CreateLogger(string categoryName) {
+        return new AdWFileLogger(this);
+    }
+
+    public void Dispose() { }
 }
