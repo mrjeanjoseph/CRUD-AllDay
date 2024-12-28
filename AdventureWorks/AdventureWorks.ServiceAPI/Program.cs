@@ -1,4 +1,5 @@
 using AdventureWorks.Domain.DataAccessLayer;
+using AdventureWorks.ServiceAPI.Logging;
 using AdventureWorks.ServiceAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,6 +31,12 @@ public class Program {
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        //builder.Services.AddLogging(logging => {
+        //    logging.AddAdWFileLogger(options => {
+        //        builder.Configuration.GetSection("Logging").GetSection("AdwFileLogger").Bind(options);
+        //    });
+        //});
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -44,24 +51,9 @@ public class Program {
 
         app.MapControllers();
 
+        app.Configuration.GetSection("Logging").GetSection("AdwFileLogger").Bind(new AdWFileLoggerOptions());
+
         app.Run();
+        
     }
-
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureLogging((context, logging) => {
-
-
-                logging.AdwFileLogger(options => {
-                    context.Configuration.GetSection("Logging").GetSection("AdwFileLogger").Bind(options);
-                })
-
-
-                logging.ClearProviders(options => {
-
-                });
-                logging.AddConfiguration(context.Configuration.GetSection("Logging"));
-                logging.AddConsole();
-                logging.AddDebug();
-            })
 }

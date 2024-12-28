@@ -1,0 +1,2 @@
+﻿Documentation added: 12/27/2024
+	Logging to text file currently not working. No compile error at this time.
