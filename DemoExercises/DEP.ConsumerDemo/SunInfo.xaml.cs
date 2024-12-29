@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DemoLibrary48;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DEP.ConsumerDemo {
     /// <summary>
@@ -19,6 +8,14 @@ namespace DEP.ConsumerDemo {
     public partial class SunInfo : Window {
         public SunInfo() {
             InitializeComponent();
+        }
+
+        private async void LoadSunDataBtn_Click(object sender, RoutedEventArgs e) {
+            var sunData = await SunProcessor.LoadSunData();
+
+            sunriseText.Text = $"Sunrise is at {sunData.Sunrise.ToLocalTime().ToShortTimeString()}";
+
+            sunsetText.Text = $"Sunrise is at {sunData.Sunset.ToLocalTime().ToShortTimeString()}";
         }
     }
 }

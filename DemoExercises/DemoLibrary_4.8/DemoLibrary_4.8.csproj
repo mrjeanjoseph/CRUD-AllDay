@@ -48,6 +48,9 @@
     <Compile Include="ComicModel.cs" />
     <Compile Include="ComicProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SunModel.cs" />
+    <Compile Include="SunProcessor.cs" />
+    <Compile Include="SunResultModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

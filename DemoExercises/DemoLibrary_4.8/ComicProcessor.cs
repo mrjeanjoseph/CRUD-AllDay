@@ -7,7 +7,7 @@ namespace DemoLibrary48 {
     public class ComicProcessor {
         //public int MaxComicNumber { get; set; }
 
-        public async Task<ComicModel> LoadComic(int comicNumber = 0) {
+        public static async Task<ComicModel> LoadComic(int comicNumber = 0) {
 
             string url;
             if (comicNumber > 0) url = $"https://xkcd.com/{comicNumber}/info.0.json";
@@ -17,11 +17,10 @@ namespace DemoLibrary48 {
 
                 if (response.IsSuccessStatusCode) {
 
-                    //ComicModel comic2 = await response.Content.ReadAsAsync<ComicModel>();
-
                     string jsonResponse = await response.Content.ReadAsStringAsync();
                     ComicModel comic = JsonConvert.DeserializeObject<ComicModel>(jsonResponse);
 
+                    //ComicModel comic2 = await response.Content.ReadAsAsync<ComicModel>();
                     //if(comicNumber == 0) MaxComicNumber = comic.Num;
 
                     return comic;
