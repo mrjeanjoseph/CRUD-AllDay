@@ -1,0 +1,15 @@
+﻿<Window x:Class="DEP.ConsumerDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DEP.ConsumerDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Previous" Margin="85,40,560,335"/>
+        <Button Content="Sun Information" Margin="305,40,340,335"/>
+        <Button Content="Next" Margin="550,40,95,335"/>
+
+    </Grid>
+</Window>
