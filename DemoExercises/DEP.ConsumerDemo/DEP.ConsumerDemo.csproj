@@ -101,5 +101,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DemoLibrary_4.8\DemoLibrary_4.8.csproj">
+      <Project>{1AA84D54-0996-47EF-917B-B2B33D9C97CA}</Project>
+      <Name>DemoLibrary_4.8</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
