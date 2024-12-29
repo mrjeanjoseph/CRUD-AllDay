@@ -5,7 +5,7 @@ namespace DEP.ExampleProject.API.Controllers {
     public class ValuesController : ApiController {
         // GET api/values
         public IEnumerable<string> Get() {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value 1", "value 2" };
         }
 
         // GET api/values/5

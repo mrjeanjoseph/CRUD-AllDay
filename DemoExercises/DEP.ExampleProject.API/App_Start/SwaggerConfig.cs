@@ -248,7 +248,7 @@ namespace DEP.ExampleProject.API {
 
             GlobalConfiguration.Configuration
                 .EnableSwagger(c => {
-                    c.SingleApiVersion("v1", "DEP.ExampleProject.API");
+                    c.SingleApiVersion("v1", "DEP ExampleProject API");
                 }).EnableSwaggerUi(c => { });
         }
     }
