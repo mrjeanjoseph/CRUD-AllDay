@@ -12,8 +12,8 @@
             <ColumnDefinition Width="11*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="loadSunDataBtn" Content="Load Sun Data" Click="LoadSunDataBtn_Click" Margin="258,25,203,370"/>
-        <TextBlock x:Name="sunriseText" Margin="20,20,373,240"/>
-        <TextBlock x:Name="sunsetText" Margin="20,20,540,325"/>
+        <TextBlock x:Name="sunriseText" Margin="48,284,345,45"/>
+        <TextBlock x:Name="sunsetText" Margin="48,172,345,172"/>
 
     </Grid>
 </Window>
