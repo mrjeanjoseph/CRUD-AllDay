@@ -69,14 +69,42 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PatientInfo.svc" />
+    <Content Include="PatientService.svc" />
+    <Content Include="PatientInfoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PatientInfoModel.edmx</DependentUpon>
+      <LastGenOutput>PatientInfoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PatientInfoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PatientInfoModel.edmx</DependentUpon>
+      <LastGenOutput>PatientInfoModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PatientInfo.svc.cs">
-      <DependentUpon>PatientInfo.svc</DependentUpon>
+    <Compile Include="PatientInfo.cs">
+      <DependentUpon>PatientInfoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="IPatientInfo.cs" />
+    <Compile Include="PatientService.svc.cs">
+      <DependentUpon>PatientService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IPatientService.cs" />
+    <Compile Include="PatientInfoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientInfoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientInfoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientInfoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientInfoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatientInfoModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +112,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <EntityDeploy Include="PatientInfoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PatientInfoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="PatientInfoModel.edmx.diagram">
+      <DependentUpon>PatientInfoModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
