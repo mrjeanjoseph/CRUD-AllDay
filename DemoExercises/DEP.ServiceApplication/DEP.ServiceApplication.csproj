@@ -69,42 +69,21 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PatientInfo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PatientInfo.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Service1.svc" />
+    <Content Include="PatientInfo.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PatientInfo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PatientInfo.Context.tt</DependentUpon>
+    <Compile Include="PatientInfo.svc.cs">
+      <DependentUpon>PatientInfo.svc</DependentUpon>
     </Compile>
-    <Compile Include="PatientInfo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PatientInfo.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
-    </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="IPatientInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="PatientInfo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PatientInfo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="packages.config" />
-    <None Include="PatientInfo.edmx.diagram">
-      <DependentUpon>PatientInfo.edmx</DependentUpon>
-    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
