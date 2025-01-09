@@ -27,6 +27,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DPE.WCFServiceExample", "DP
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.ConsumingWCF", "DPE.ConsumingWCF\DPE.ConsumingWCF.csproj", "{FC47F7C6-D410-491B-B15E-0AF761B33A08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{249B1D35-3326-409A-8B09-756B97C9FF6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{249B1D35-3326-409A-8B09-756B97C9FF6D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{249B1D35-3326-409A-8B09-756B97C9FF6D}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{FC47F7C6-D410-491B-B15E-0AF761B33A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC47F7C6-D410-491B-B15E-0AF761B33A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC47F7C6-D410-491B-B15E-0AF761B33A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC47F7C6-D410-491B-B15E-0AF761B33A08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
