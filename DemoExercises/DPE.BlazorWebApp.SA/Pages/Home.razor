@@ -1,8 +1,16 @@
 ﻿@page "/"
+@using Microsoft.FluentUI.AspNetCore.Components
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app. 
-Did it work without deploying?
+<FluentCard Width="350px" Height="250px">
+
+    <h1>Hello, world!</h1>
+
+    Welcome to your new app.
+    Did it work without deploying?
+
+    <FluentButton Appearance="@Appearance.Accent">Click Me</FluentButton>
+
+</FluentCard>
