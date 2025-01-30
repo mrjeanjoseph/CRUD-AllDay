@@ -29,6 +29,7 @@ namespace DPE.ConsumingWCF.Controllers
                 using (var client = new ServiceClient())
                 {
                     result = client.GetData(value);
+
                     client.Close();
                 }
                 return Json(result);
@@ -47,6 +48,7 @@ namespace DPE.ConsumingWCF.Controllers
             if (int.TryParse(inputValue, out value))
             {
                 List<int> result;
+
                 using (var client = new ServiceClient())
                 {
                     result = client.GetAllData(value).ToList();
