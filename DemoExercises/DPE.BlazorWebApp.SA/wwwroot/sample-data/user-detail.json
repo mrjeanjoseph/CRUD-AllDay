@@ -1,0 +1,20 @@
+﻿[
+  {
+    "firstName": "Johnson",
+    "lastName": "McDonix",
+    "location": "Sarasota, FL",
+    "summary": "soccer player"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Sudoku",
+    "location": "Jacksonville, NC",
+    "summary": "Top Salesperson in NC"
+  },
+  {
+    "firstName": "Caroline",
+    "lastName": "Leath",
+    "location": "Columbus, OH",
+    "summary": "CEO of CL-Infinity"
+  }
+]

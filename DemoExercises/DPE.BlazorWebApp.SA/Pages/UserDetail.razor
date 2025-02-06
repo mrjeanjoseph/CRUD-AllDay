@@ -1,0 +1,57 @@
+﻿@page "/user-detail"
+@inject HttpClient Http
+
+<PageTitle>User Detail</PageTitle>
+
+<h1>User Detail</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (user_details == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ud in user_details)
+            {
+                <tr>
+                    <td>@ud.FirstName</td>
+                    <td>@ud.LastName</td>
+                    <td>@ud.Location</td>
+                    <td>@ud.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private UserDetails[]? user_details;
+
+    protected override async Task OnInitializedAsync()
+    {
+        user_details = await Http.GetFromJsonAsync<UserDetails[]>("sample-data/user-detail.json");
+    }
+
+    public class UserDetails
+    {
+        public string? FirstName { get; set; }
+
+        public string? LastName { get; set; }
+
+        public string? Location { get; set; }
+
+        public string? Summary { get; set; }
+    }
+}
