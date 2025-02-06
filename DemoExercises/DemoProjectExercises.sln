@@ -3,30 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "DPE.WCFServiceExample", "DPE.WCFServiceExample\", "{249B1D35-3326-409A-8B09-756B97C9FF6D}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8.1"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_65086"
-		Debug.AspNetCompiler.PhysicalPath = "DPE.WCFServiceExample\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65086\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_65086"
-		Release.AspNetCompiler.PhysicalPath = "DPE.WCFServiceExample\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65086\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "65086"
-		SlnRelativePath = "DPE.WCFServiceExample\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.ConsumingWCF", "DPE.ConsumingWCF\DPE.ConsumingWCF.csproj", "{FC47F7C6-D410-491B-B15E-0AF761B33A08}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.BlazorWebApp.SA", "DPE.BlazorWebApp.SA\DPE.BlazorWebApp.SA.csproj", "{87867BA9-439F-425A-BE2F-F5906C8E07DA}"
 EndProject
 Global
@@ -35,14 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{249B1D35-3326-409A-8B09-756B97C9FF6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{249B1D35-3326-409A-8B09-756B97C9FF6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{249B1D35-3326-409A-8B09-756B97C9FF6D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{249B1D35-3326-409A-8B09-756B97C9FF6D}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{FC47F7C6-D410-491B-B15E-0AF761B33A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC47F7C6-D410-491B-B15E-0AF761B33A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC47F7C6-D410-491B-B15E-0AF761B33A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC47F7C6-D410-491B-B15E-0AF761B33A08}.Release|Any CPU.Build.0 = Release|Any CPU
 		{87867BA9-439F-425A-BE2F-F5906C8E07DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{87867BA9-439F-425A-BE2F-F5906C8E07DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87867BA9-439F-425A-BE2F-F5906C8E07DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
