@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.BlazorWebApp.SA", "DPE.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.EFCoreGettingStarted", "DPE.EFCoreGettingStarted\DPE.EFCoreGettingStarted.csproj", "{F3C08003-371F-CCBA-5CAF-04831FB74FE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.EFCoreContosoApp", "DPE.EFCoreContosoApp\DPE.EFCoreContosoApp.csproj", "{FC66D8D5-0B5D-490A-87B4-11529FFC39F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F3C08003-371F-CCBA-5CAF-04831FB74FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3C08003-371F-CCBA-5CAF-04831FB74FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3C08003-371F-CCBA-5CAF-04831FB74FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC66D8D5-0B5D-490A-87B4-11529FFC39F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC66D8D5-0B5D-490A-87B4-11529FFC39F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC66D8D5-0B5D-490A-87B4-11529FFC39F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC66D8D5-0B5D-490A-87B4-11529FFC39F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
