@@ -16,16 +16,11 @@ public class Program {
         //Connecting to the DB
         var connectionString = builder.Configuration.GetConnectionString("AdWConnStr") ??
             throw new InvalidOperationException("Connection string 'AdWConnStr' not found.");
-        builder.Services.AddDbContext<AdWDbContext>(options =>
-            options.UseSqlServer(connectionString));
+        builder.Services.AddDbContext<AdWDbContext>(options => options.UseSqlServer(connectionString));
 
-        //Another way to configure the connection string
-        //builder.Services.AddDbContext<AdWDbContext>(options => options
-        //.UseSqlServer(builder.Configuration.GetConnectionString("AdWConnStr")));
-
-        // AutoMapper and AutoMapper.Extentions.Microsoft.DependencyInjection packages
-        // must be in the same version -> Currently 12.0.0 for both
+        // Existing code
         builder.Services.AddAutoMapper(typeof(MappingProfile));
+        
         builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 
         builder.Services.AddEndpointsApiExplorer();
@@ -46,14 +41,9 @@ public class Program {
         }
 
         app.UseHttpsRedirection();
-
         app.UseAuthorization();
-
         app.MapControllers();
-
         app.Configuration.GetSection("Logging").GetSection("AdwFileLogger").Bind(new AdWFileLoggerOptions());
-
-        app.Run();
-        
+        app.Run();        
     }
 }
