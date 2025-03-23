@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.BlazorWebApp.SA", "DPE.BlazorWebApp.SA\DPE.BlazorWebApp.SA.csproj", "{87867BA9-439F-425A-BE2F-F5906C8E07DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.EFCoreGettingStarted", "DPE.EFCoreGettingStarted\DPE.EFCoreGettingStarted.csproj", "{F3C08003-371F-CCBA-5CAF-04831FB74FE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{87867BA9-439F-425A-BE2F-F5906C8E07DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87867BA9-439F-425A-BE2F-F5906C8E07DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87867BA9-439F-425A-BE2F-F5906C8E07DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C08003-371F-CCBA-5CAF-04831FB74FE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C08003-371F-CCBA-5CAF-04831FB74FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C08003-371F-CCBA-5CAF-04831FB74FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C08003-371F-CCBA-5CAF-04831FB74FE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
