@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option csharp_namespace = "DPE.ProductServiceGRPC.Protos";
+
+import "google/protobuf/empty.proto";
+package product;
+
+message Product{
+	int32 id = 1;
+	string name = 2;
+	string description = 3;
+	double price = 4;
+}
+
+message GetProductRequest {
+	int32 id = 1;
+}
+
+message ProductListResponse{
+	repeated Product products = 1;
+}
+
+message CreateProductRequest{
+	string name = 1;
+	string description = 2;
+	double price = 3;
+}
+
+message UpdateProductRequest {
+	int32 id = 1;
+	string name = 2;
+	string description = 3;
+	double price = 4;
+}
+
+message DeleteProductRequest {
+	int32 id = 1;
+}
+
+service ProductProtoService{
+	rpc GetProduct(GetProductRequest) returns(Product);
+	rpc ListProduct(google.protobuf.Empty) returns(ProductListResponse);
+	rpc CreateProduct(CreateProductRequest) returns(Product);
+	rpc UpdateProduct(UpdateProductRequest) returns(Product);
+	rpc DeleteProduct(DeleteProductRequest) returns(google.protobuf.Empty);
+}
+

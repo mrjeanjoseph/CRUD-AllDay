@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.EFCoreGettingStarted", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.EFCoreContosoApp", "DPE.EFCoreContosoApp\DPE.EFCoreContosoApp.csproj", "{FC66D8D5-0B5D-490A-87B4-11529FFC39F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DPE.ProductServiceGRPC", "DPE.ProductServiceGRPC\DPE.ProductServiceGRPC.csproj", "{282DE9F3-2E3A-4A20-81D4-F9F190799B59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{FC66D8D5-0B5D-490A-87B4-11529FFC39F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC66D8D5-0B5D-490A-87B4-11529FFC39F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC66D8D5-0B5D-490A-87B4-11529FFC39F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{282DE9F3-2E3A-4A20-81D4-F9F190799B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{282DE9F3-2E3A-4A20-81D4-F9F190799B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{282DE9F3-2E3A-4A20-81D4-F9F190799B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{282DE9F3-2E3A-4A20-81D4-F9F190799B59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
