@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Product]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [ProductName] NVARCHAR(128) NOT NULL, 
+    [Description] NVARCHAR(2048) NOT NULL,
+    [QuantityInStock] INT NOT NULL DEFAULT 1,
+    [RetailPrice] MONEY NOT NULL,
+    [CreateDate] DATETIME2 NOT NULL DEFAULT GETUTCDATE(), 
+    [LastModified] DATETIME2 NOT NULL DEFAULT GETUTCDATE(), 
+    [IsTaxable] BIT NOT NULL DEFAULT 1
+)
