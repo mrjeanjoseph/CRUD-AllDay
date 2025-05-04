@@ -25,34 +25,23 @@ public class DepartmentController : ControllerBase
         _configuration = configuration;
     }
 
-    [HttpGet("connectionString")]
-    public IActionResult GetConnectionString() => Ok(_configuration.GetConnectionString("AdWConnStr"));
-    
-
+    // GET: api/Department
     [HttpGet]
     public async Task<ActionResult<IEnumerable<DepartmentDTO>>> GetDepartments()
     {
-
-        _logger.LogInformation("GetDepartments called");
-
         var departments = await _departmentService.GetAllDepartmentsAsync();
-
-        var departmentdtos = _mapper.Map<List<DepartmentDTO>>(departments);
-
-        var logid = departmentdtos.Take(1).FirstOrDefault();
-        _logger.LogTrace("Departments retrieved: {0}", logid);
-        return departmentdtos;
+        return Ok(departments);
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<DepartmentDTO>> GetDepartment(short id)
     {
-        var department = await _departmentService.GetDepartmentByIdAsync(id);
-        if (department == null)
+        var departmentDto = await _departmentService.GetDepartmentByIdAsync(id);
+        if (departmentDto == null)
         {
             return NotFound();
         }
-        return _mapper.Map<DepartmentDTO>(department);
+        return Ok(departmentDto);
     }
 
     [HttpPut("{id}")]

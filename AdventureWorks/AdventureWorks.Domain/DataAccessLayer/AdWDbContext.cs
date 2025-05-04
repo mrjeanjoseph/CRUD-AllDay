@@ -3013,5 +3013,4 @@ public partial class AdWDbContext : DbContext, IAdWDbContext {
         OnModelCreatingPartial(modelBuilder);
     }
 
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

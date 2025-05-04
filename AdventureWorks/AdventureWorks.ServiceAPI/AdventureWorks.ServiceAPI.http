@@ -1,6 +1,11 @@
-@AdventureWorks.ServiceAPI_HostAddress = http://localhost:5124
+@AdventureWorks.ServiceAPI_HostAddress = https://localhost:7061
+@id=16
 
-GET {{AdventureWorks.ServiceAPI_HostAddress}}/weatherforecast/
-Accept: application/json
+
+GET {{AdventureWorks.ServiceAPI_HostAddress}}/api/department
+
+###
+
+GET {{AdventureWorks.ServiceAPI_HostAddress}}/api/department/{{id}}
 
 ###

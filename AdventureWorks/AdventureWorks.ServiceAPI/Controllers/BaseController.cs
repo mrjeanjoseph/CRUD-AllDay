@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AdventureWorks.ServiceAPI.Controllers
+namespace AdventureWorks.ServiceAPI.Controllers;
+
+public class BaseController : Controller
 {
-    public class BaseController : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }

@@ -5,22 +5,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdventureWorks.ServiceAPI;
 
-public class Program {
+public class Program
+{
 
-    public static void Main(string[] args) {
+    public static void Main(string[] args)
+    {
 
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllers();
 
+        // This convert the json into an ugly looking json format
+        //builder.Services.AddControllers()
+        //    .AddJsonOptions(options =>
+        //    {
+        //        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        //        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        //    });
+
         //Connecting to the DB
-        var connectionString = builder.Configuration.GetConnectionString("AdWConnStr") ??
+        var connectionString = builder.Configuration.GetConnectionString("AdWConn") ??
             throw new InvalidOperationException("Connection string 'AdWConnStr' not found.");
         builder.Services.AddDbContext<AdWDbContext>(options => options.UseSqlServer(connectionString));
 
         // Existing code
         builder.Services.AddAutoMapper(typeof(MappingProfile));
-        
+
         builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 
         builder.Services.AddEndpointsApiExplorer();
@@ -35,7 +45,8 @@ public class Program {
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment()) {
+        if (app.Environment.IsDevelopment())
+        {
             app.UseSwagger();
             app.UseSwaggerUI();
         }
@@ -44,6 +55,6 @@ public class Program {
         app.UseAuthorization();
         app.MapControllers();
         app.Configuration.GetSection("Logging").GetSection("AdwFileLogger").Bind(new AdWFileLoggerOptions());
-        app.Run();        
+        app.Run();
     }
 }
