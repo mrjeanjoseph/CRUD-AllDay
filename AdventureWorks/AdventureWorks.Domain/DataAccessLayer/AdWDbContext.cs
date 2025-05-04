@@ -685,7 +685,7 @@ public partial class AdWDbContext : DbContext, IAdWDbContext {
                 .HasComment("Date and time the record was last updated.")
                 .HasColumnType("datetime");
 
-            entity.HasOne(d => d.BusinessEntity).WithMany(p => p.EmployeeDepartmentHistories)
+            entity.HasOne(d => d.EmployeeHistoryDetail).WithMany(p => p.EmployeeDepartmentHistories)
                 .HasForeignKey(d => d.BusinessEntityId)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 

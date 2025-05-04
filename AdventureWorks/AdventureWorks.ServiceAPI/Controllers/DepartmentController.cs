@@ -1,5 +1,4 @@
 ﻿using AdventureWorks.Domain.DataAccessLayer;
-using AdventureWorks.Domain.Models;
 using AdventureWorks.ServiceAPI.Models;
 using AdventureWorks.ServiceAPI.Services;
 using AutoMapper;
@@ -48,10 +47,17 @@ public class DepartmentController : ControllerBase
     public async Task<IActionResult> PutDepartment(int id, DepartmentDTO model)
     {
         if (id != model.DepartmentId)
-            return BadRequest();
+            return BadRequest("The ID in the URL does not match the ID in the body.");
 
-        var department = _mapper.Map<Department>(model);
-        await _departmentService.UpdateDepartmentAsync(department);
+        try
+        {
+            await _departmentService.UpdateDepartmentAsync(model);
+        }
+        catch (KeyNotFoundException ex)
+        {
+            _logger.LogWarning(ex.Message);
+            return NotFound(new { message = ex.Message });
+        }
 
         return NoContent();
     }
@@ -59,25 +65,38 @@ public class DepartmentController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<DepartmentDTO>> PostDepartment(DepartmentDTO model)
     {
-
         _logger.LogInformation("PostDepartment called");
 
-        var department = _mapper.Map<Department>(model);
-        await _departmentService.AddDepartmentAsync(department);
+        try
+        {
+            await _departmentService.AddDepartmentAsync(model);
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogWarning(ex.Message);
+            return Conflict(new { message = ex.Message });
+        }
 
         _logger.LogTrace("Department added");
-        return CreatedAtAction(nameof(GetDepartment), new { id = department.DepartmentId }, model);
+        return CreatedAtAction(nameof(GetDepartment), new { id = model.DepartmentId }, model);
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteDepartment(int id)
     {
-        var department = await _departmentService.GetDepartmentByIdAsync(id);
+        if (id <= 0)
+            return BadRequest("Invalid department ID.");
 
-        if (department == null)
-            return NotFound();
+        try
+        {
+            await _departmentService.DeleteDepartmentAsync(id);
+        }
+        catch (KeyNotFoundException ex)
+        {
+            _logger.LogWarning(ex.Message);
+            return NotFound(new { message = ex.Message });
+        }
 
-        await _departmentService.DeleteDepartmentAsync(id);
         return NoContent();
     }
 }

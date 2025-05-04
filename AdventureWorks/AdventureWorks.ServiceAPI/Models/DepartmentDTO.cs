@@ -16,12 +16,12 @@ public class EmployeeDepartmentHistoryDto
 {
     public short DepartmentId { get; set; }
     public int BusinessEntityId { get; set; }
-    public virtual ICollection<BusinessEntityDTO> EmployeeDetails { get; set; } = new List<BusinessEntityDTO>();
+    public virtual ICollection<EmpDepartmentDetailDTO> EmployeeDetails { get; set; } = new List<EmpDepartmentDetailDTO>();
     public DateOnly StartDate { get; set; }
     public DateOnly? EndDate { get; set; }
 }
 
-public class BusinessEntityDTO
+public class EmpDepartmentDetailDTO
 {
     public int BusinessEntityId { get; set; }
     public string LoginId { get; set; } = null!;

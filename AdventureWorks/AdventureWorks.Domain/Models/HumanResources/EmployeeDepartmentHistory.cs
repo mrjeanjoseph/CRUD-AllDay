@@ -36,8 +36,7 @@ public partial class EmployeeDepartmentHistory {
     /// </summary>
     public DateTime ModifiedDate { get; set; }
 
-    public virtual Employee BusinessEntity { get; set; } = null!;
-    //public virtual Person GeneralEntity { get; set; } = null!;
+    public virtual Employee EmployeeHistoryDetail { get; set; } = null!;
 
     public virtual Department Department { get; set; } = null!;
 

@@ -1,5 +1,5 @@
 @AdventureWorks.ServiceAPI_HostAddress = https://localhost:7061
-@id=16
+@id=17
 
 
 GET {{AdventureWorks.ServiceAPI_HostAddress}}/api/department
@@ -7,5 +7,28 @@ GET {{AdventureWorks.ServiceAPI_HostAddress}}/api/department
 ###
 
 GET {{AdventureWorks.ServiceAPI_HostAddress}}/api/department/{{id}}
+
+###
+POST {{AdventureWorks.ServiceAPI_HostAddress}}/api/department
+Content-Type: application/json
+
+{
+  "name": "Testing",
+  "groupName": "Testing and Testing"
+}
+
+###
+
+PUT {{AdventureWorks.ServiceAPI_HostAddress}}/api/department/{{id}}
+Content-Type: application/json
+
+{
+  "name": "Testing+",
+  "groupName": "Testing and Testing"
+}
+
+###
+
+DELETE {{AdventureWorks.ServiceAPI_HostAddress}}/api/department
 
 ###

@@ -11,8 +11,8 @@ public interface IDepartmentService
 {
     Task<IEnumerable<DepartmentDTO>> GetAllDepartmentsAsync();
     Task<DepartmentDTO> GetDepartmentByIdAsync(int id);
-    Task AddDepartmentAsync(Department department);
-    Task UpdateDepartmentAsync(Department department);
+    Task AddDepartmentAsync(DepartmentDTO department);
+    Task UpdateDepartmentAsync(DepartmentDTO department);
     Task DeleteDepartmentAsync(int departmentId);
 }
 
@@ -36,7 +36,7 @@ public class DepartmentService : IDepartmentService
         // Eagerly load EmployeeDepartmentHistories
         var departments = await _context.Departments
             .Include(d => d.EmployeeDepartmentHistories)
-            .ThenInclude(h => h.BusinessEntity) // Include related Employee data if needed
+            .ThenInclude(h => h.EmployeeHistoryDetail)
             .ToListAsync();
 
         // Map entities to DTOs
@@ -48,15 +48,14 @@ public class DepartmentService : IDepartmentService
             EmployeeDepartmentHistories = d.EmployeeDepartmentHistories.Select(h => new EmployeeDepartmentHistoryDto
             {
                 DepartmentId = h.DepartmentId,
-                //BusinessEntityId = h.BusinessEntityId,// Adjust based on your entity structure
-                EmployeeDetails = h.BusinessEntity != null ? new List<BusinessEntityDTO>
+                EmployeeDetails = h.EmployeeHistoryDetail != null ? new List<EmpDepartmentDetailDTO>
                 {
-                    new BusinessEntityDTO
+                    new EmpDepartmentDetailDTO
                     {
-                        BusinessEntityId = h.BusinessEntity.BusinessEntityId,
-                        LoginId = h.BusinessEntity.LoginId,
-                        JobTitle = h.BusinessEntity.JobTitle,
-                        BirthDate = h.BusinessEntity.BirthDate
+                        BusinessEntityId = h.EmployeeHistoryDetail.BusinessEntityId,
+                        LoginId = h.EmployeeHistoryDetail.LoginId,
+                        JobTitle = h.EmployeeHistoryDetail.JobTitle,
+                        BirthDate = h.EmployeeHistoryDetail.BirthDate
                     }
                 } : [],
                 StartDate = h.StartDate,
@@ -75,7 +74,7 @@ public class DepartmentService : IDepartmentService
     {
         var department = await _context.Departments
             .Include(d => d.EmployeeDepartmentHistories)
-            .ThenInclude(h => h.BusinessEntity)
+            .ThenInclude(h => h.EmployeeHistoryDetail)
             .FirstOrDefaultAsync(d => d.DepartmentId == (short)id);
 
         if (department == null)
@@ -91,16 +90,16 @@ public class DepartmentService : IDepartmentService
             {
                 DepartmentId = h.DepartmentId,
                 BusinessEntityId = h.BusinessEntityId,
-                EmployeeDetails = h.BusinessEntity != null ? new List<BusinessEntityDTO>
+                EmployeeDetails = h.EmployeeHistoryDetail != null ? new List<EmpDepartmentDetailDTO>
                {
-                   new BusinessEntityDTO
+                   new EmpDepartmentDetailDTO
                    {
-                       BusinessEntityId = h.BusinessEntity.BusinessEntityId,
-                       LoginId = h.BusinessEntity.LoginId,
-                       JobTitle = h.BusinessEntity.JobTitle,
-                       BirthDate = h.BusinessEntity.BirthDate
+                       BusinessEntityId = h.EmployeeHistoryDetail.BusinessEntityId,
+                       LoginId = h.EmployeeHistoryDetail.LoginId,
+                       JobTitle = h.EmployeeHistoryDetail.JobTitle,
+                       BirthDate = h.EmployeeHistoryDetail.BirthDate
                    }
-               } : new List<BusinessEntityDTO>(),
+               } : new List<EmpDepartmentDetailDTO>(),
                 StartDate = h.StartDate,
                 EndDate = h.EndDate
             }).ToList()
@@ -109,27 +108,58 @@ public class DepartmentService : IDepartmentService
         return departmentDto;
     }
 
-    public Task AddDepartmentAsync(Department department)
+    public async Task AddDepartmentAsync(DepartmentDTO departmentDto)
     {
-        //_context.Departments.Add(department);
-        _context.Entry(department).State = EntityState.Added;
-        return _context.SaveChangesAsync();
+        if (departmentDto == null)
+            throw new ArgumentNullException(nameof(departmentDto));
+
+        // Check if a department with the same name already exists
+        var existingDepartment = await _context.Departments
+            .FirstOrDefaultAsync(d => d.Name == departmentDto.Name);
+
+        if (existingDepartment != null)        
+            throw new InvalidOperationException($"A department with the name '{departmentDto.Name}' already exists.");        
+
+        var department = new Department
+        {
+            Name = departmentDto.Name,
+            GroupName = departmentDto.GroupName
+        };
+
+        _context.Departments.Add(department);
+        await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateDepartmentAsync(Department department)
+    public async Task UpdateDepartmentAsync(DepartmentDTO? departmentDto = null)
     {
-        _context.Entry(department).State = EntityState.Modified;
+        if (departmentDto == null)
+            throw new ArgumentNullException(nameof(departmentDto));
+
+        // Find the existing department
+        var existingDepartment = await _context.Departments
+            .FirstOrDefaultAsync(d => d.DepartmentId == departmentDto.DepartmentId);
+
+        if (existingDepartment == null)
+            throw new KeyNotFoundException($"Department with ID {departmentDto.DepartmentId} not found.");
+
+        // Update the department fields
+        existingDepartment.Name = departmentDto.Name;
+        existingDepartment.GroupName = departmentDto.GroupName;
+
+        _context.Entry(existingDepartment).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
 
     public async Task DeleteDepartmentAsync(int departmentId)
     {
-        var department = await _context.Departments.FindAsync(departmentId);
+        // Find the department by ID
+        var department = await _context.Departments
+            .FirstOrDefaultAsync(d => d.DepartmentId == departmentId);
 
-        if (department != null)
-        {
-            _context.Departments.Remove(department);
-            await _context.SaveChangesAsync();
-        }
+        if (department == null)
+            throw new KeyNotFoundException($"Department with ID {departmentId} not found.");
+
+        _context.Departments.Remove(department);
+        await _context.SaveChangesAsync();
     }
 }
