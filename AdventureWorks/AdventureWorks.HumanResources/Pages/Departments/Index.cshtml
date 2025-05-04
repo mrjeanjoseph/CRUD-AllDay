@@ -1,0 +1,32 @@
+﻿@page
+@model AdventureWorks.HumanResources.Pages.Departments.IndexModel
+@inject AdventureWorks.HumanResources.Services.DepartmentService DepartmentService
+
+<h1>Departments</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Department ID</th>
+            <th>Name</th>
+            <th>Group Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model.Departments)
+        {
+            <tr>
+                <td>@department.DepartmentId</td>
+                <td>@department.Name</td>
+                <td>@department.GroupName</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@department.DepartmentId">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@department.DepartmentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="./Create" class="btn btn-primary">Add New Department</a>
