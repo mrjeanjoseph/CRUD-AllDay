@@ -1,36 +1,41 @@
 ﻿using AdventureWorks.Domain.DataAccessLayer;
+using AdventureWorks.Domain.Events;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Http.Json;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using static System.Console;
 
 namespace AdventureWorks.ConsoleApp;
 
-internal class Program {
-    static void Main(string[] args) {
-
+internal class Program
+{
+    private static void Main(string[] args)
+    {
         WriteLine("Welcome to Adventure works");
-        ConnectionGetDepartments();
-        ReadLine();
-    }
+        var services = new ServiceCollection();
 
-    private static async void ConnectionGetDepartments() {
-        //This connection queries the database just fine
-        //var connstring = "Data Source=JEANPC-WIN10\\DEVENV;Initial Catalog=AdventureWorks2022;Integrated Security=True;Trust Server Certificate=True";
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(AppContext.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
 
-        var apiUrl = "https://localhost:5001/api/department/connectionstring";
-        using var httpClient = new HttpClient();
-        var connstring = await httpClient.GetFromJsonAsync<string>(apiUrl);
+        var connectionString = configuration.GetConnectionString("AdWConn");
+        var getEnvVar = Environment.GetEnvironmentVariable("AdWConn");
 
-        var optionsBuilder = new DbContextOptionsBuilder<AdWDbContext>();
-        optionsBuilder.UseSqlServer(connstring);
-        //The plan is move this to the appsettings.json file.
+        WriteLine($"Connection String: {connectionString ?? "Not Found"}");
+        WriteLine($"Environment Connection String: {getEnvVar}");
+        // For some reason, even though the connection string is not found,
+        // it still connects to the DB successfully
 
-        using var context = new AdWDbContext(optionsBuilder.Options);
-        var departments = context.Departments.ToList();
-        var counts = 0;
-        foreach (var dept in departments) {
-            counts++;
-            WriteLine($"-{counts} -- Id: {dept.DepartmentId}, Name: {dept.Name}, Price: {dept.GroupName}");
-        }
+        services.AddDbContext<AdWDbContext>(options =>
+            options.UseSqlServer(connectionString));
+
+        var serviceProvider = services.BuildServiceProvider();
+        using var scope = serviceProvider.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<AdWDbContext>();
+
+        bool isHealthy = AdvWDB_HealthCheck.CheckDatabaseAsync(serviceProvider).Result;
+
+        WriteLine($"Database Health: {(isHealthy ? "Healthy" : "Unhealthy")}");
     }
 }

@@ -7,11 +7,6 @@ namespace AdventureWorks.Domain.DataAccessLayer;
 
 public partial class AdWDbContext : DbContext, IAdWDbContext {
 
-    //private readonly IConfiguration _configuration;
-
-    //public AdWDbContext(IConfiguration configuration) {
-    //    _configuration = configuration;
-    //}
     public AdWDbContext() : base() { }
 
     public AdWDbContext(DbContextOptions<AdWDbContext> options) : base(options) { }
@@ -33,14 +28,6 @@ public partial class AdWDbContext : DbContext, IAdWDbContext {
     public void EditedOrUpdated(object entity) => Entry(entity).State = EntityState.Modified;
 
     public int SaveOrSubmitChanges() => SaveChanges();
-
-
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-
-    //    var connString = _configuration.GetConnectionString("ConnStr");
-
-    //    optionsBuilder.UseSqlServer(connString);
-    //}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         modelBuilder.Entity<Address>(entity => {

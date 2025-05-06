@@ -32,6 +32,9 @@ public class Program
         builder.Services.AddAutoMapper(typeof(MappingProfile));
 
         builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+        builder.Services.AddSingleton<ApplicationService>();
+
+        builder.Services.AddHostedService<ApplicationRefresh>();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -50,6 +53,8 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+
+        app.MapGet("/messages", (ApplicationService appData) => appData.Data.Order());
 
         app.UseHttpsRedirection();
         app.UseAuthorization();

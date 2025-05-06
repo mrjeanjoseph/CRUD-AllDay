@@ -2,31 +2,43 @@
 @model AdventureWorks.HumanResources.Pages.Departments.IndexModel
 @inject AdventureWorks.HumanResources.Services.DepartmentService DepartmentService
 
-<h1>Departments</h1>
+<h1 class="text-center mb-4">Departments</h1>
+<a asp-page="./Create" class="btn btn-primary mb-3">Add New Department</a>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Department ID</th>
-            <th>Name</th>
-            <th>Group Name</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var department in Model.Departments)
-        {
+<div class="table-responsive shadow-lg rounded">
+    <table id="departmentsTable" class="table table-hover table-striped table-bordered align-middle">
+        <thead class="table-dark">
             <tr>
-                <td>@department.DepartmentId</td>
-                <td>@department.Name</td>
-                <td>@department.GroupName</td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@department.DepartmentId">Edit</a> |
-                    <a asp-page="./Delete" asp-route-id="@department.DepartmentId">Delete</a>
-                </td>
+                <th>Department ID</th>
+                <th>Name</th>
+                <th>Group Name</th>
+                <th class="text-center">Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var department in Model.Departments)
+            {
+                <tr>
+                    <td>@department.DepartmentId</td>
+                    <td>@department.Name</td>
+                    <td>@department.GroupName</td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-1">
+                            <a class="btn btn-secondary btn-sm px-2" asp-page="./Detail" asp-route-id="@department.DepartmentId">Detail</a>
+                            <a class="btn btn-warning btn-sm px-2" asp-page="./Edit" asp-route-id="@department.DepartmentId">Edit</a>
+                            <a class="btn btn-danger btn-sm px-2" asp-page="./Delete" asp-route-id="@department.DepartmentId">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-<a asp-page="./Create" class="btn btn-primary">Add New Department</a>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            new DataTable('#departmentsTable');
+        });
+    </script>
+}
