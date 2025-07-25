@@ -1,6 +1,0 @@
-@DPE.PresentationNg.Server_HostAddress = http://localhost:5114
-
-GET {{DPE.PresentationNg.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
