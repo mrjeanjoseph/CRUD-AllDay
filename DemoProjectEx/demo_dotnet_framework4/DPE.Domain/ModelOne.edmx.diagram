@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b69fa406f36747d8aa11bf04e2e038a2" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelOne.Department" Width="1.5" PointX="8.25" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.Employee" Width="1.5" PointX="5.25" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.EmployeeDepartmentHistory" Width="1.5" PointX="10.5" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.EmployeePayHistory" Width="1.5" PointX="7.5" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.JobCandidate" Width="1.5" PointX="7.5" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.Shift" Width="1.5" PointX="8.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.Address" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.AddressType" Width="1.5" PointX="0.75" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.BusinessEntity" Width="1.5" PointX="0.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.BusinessEntityAddress" Width="1.5" PointX="3" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.BusinessEntityContact" Width="1.5" PointX="8.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.ContactType" Width="1.5" PointX="6" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.CountryRegion" Width="1.5" PointX="1.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.EmailAddress" Width="1.5" PointX="5.25" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.Password" Width="1.5" PointX="5.25" PointY="35.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.Person" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.PersonPhone" Width="1.5" PointX="10.25" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.PhoneNumberType" Width="1.5" PointX="8" PointY="39.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.StateProvince" Width="1.5" PointX="1.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.CountryRegionCurrency" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.CreditCard" Width="1.5" PointX="10.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.Currency" Width="1.5" PointX="8.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.CurrencyRate" Width="1.5" PointX="10.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.Customer" Width="1.5" PointX="18" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.PersonCreditCard" Width="1.5" PointX="8.25" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SalesOrderDetail" Width="1.5" PointX="18" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SalesOrderHeader" Width="1.5" PointX="12.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SalesOrderHeaderSalesReason" Width="1.5" PointX="15" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SalesPerson" Width="1.5" PointX="10.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SalesPersonQuotaHistory" Width="1.5" PointX="12.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SalesReason" Width="1.5" PointX="12.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SalesTaxRate" Width="1.5" PointX="3.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SalesTerritory" Width="1.5" PointX="1.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SalesTerritoryHistory" Width="1.5" PointX="15.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.ShoppingCartItem" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SpecialOffer" Width="1.5" PointX="13.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.SpecialOfferProduct" Width="1.5" PointX="15.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelOne.Store" Width="1.5" PointX="15.75" PointY="27.25" IsExpanded="true" />
+        <AssociationConnector Association="ModelOne.FK_EmployeeDepartmentHistory_Department_DepartmentID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_Employee_Person_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_EmployeeDepartmentHistory_Employee_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_EmployeePayHistory_Employee_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_JobCandidate_Employee_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesPerson_Employee_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_EmployeeDepartmentHistory_Shift_ShiftID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_Address_StateProvince_StateProvinceID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_BusinessEntityAddress_Address_AddressID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderHeader_Address_BillToAddressID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderHeader_Address_ShipToAddressID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_BusinessEntityAddress_AddressType_AddressTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_BusinessEntityAddress_BusinessEntity_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_BusinessEntityContact_BusinessEntity_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_Person_BusinessEntity_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_Store_BusinessEntity_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_BusinessEntityContact_ContactType_ContactTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_BusinessEntityContact_Person_PersonID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_CountryRegionCurrency_CountryRegion_CountryRegionCode" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesTerritory_CountryRegion_CountryRegionCode" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_StateProvince_CountryRegion_CountryRegionCode" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_EmailAddress_Person_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_Password_Person_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_Customer_Person_PersonID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_PersonCreditCard_Person_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_PersonPhone_Person_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_PersonPhone_PhoneNumberType_PhoneNumberTypeID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesTaxRate_StateProvince_StateProvinceID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_StateProvince_SalesTerritory_TerritoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_CountryRegionCurrency_Currency_CurrencyCode" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_PersonCreditCard_CreditCard_CreditCardID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderHeader_CreditCard_CreditCardID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_CurrencyRate_Currency_FromCurrencyCode" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_CurrencyRate_Currency_ToCurrencyCode" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderHeader_CurrencyRate_CurrencyRateID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_Customer_SalesTerritory_TerritoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_Customer_Store_StoreID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderHeader_Customer_CustomerID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderDetail_SalesOrderHeader_SalesOrderID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderDetail_SpecialOfferProduct_SpecialOfferIDProductID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderHeader_SalesPerson_SalesPersonID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderHeader_SalesTerritory_TerritoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderHeaderSalesReason_SalesOrderHeader_SalesOrderID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesOrderHeaderSalesReason_SalesReason_SalesReasonID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesPerson_SalesTerritory_TerritoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesPersonQuotaHistory_SalesPerson_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesTerritoryHistory_SalesPerson_BusinessEntityID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_Store_SalesPerson_SalesPersonID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SalesTerritoryHistory_SalesTerritory_TerritoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelOne.FK_SpecialOfferProduct_SpecialOffer_SpecialOfferID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

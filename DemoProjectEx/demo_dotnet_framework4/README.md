@@ -1,3 +1,3 @@
 # Objectives*
-Everyday coding activities. This is dev working env. 
-Projects completed here are moved out to their separate repo; which never happens b/c I keep creating new projects and never finish them. 
+These projects are designed to help you practice and demonstrate your skills in .NET
+Each project includes a brief description, the main objectives, and the key concepts to learn.
