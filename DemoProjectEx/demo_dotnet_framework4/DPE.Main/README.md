@@ -1,2 +1,2 @@
 # Objectives*
-This is a single-page application (SPA) built with
+This is a single-page application (SPA)
