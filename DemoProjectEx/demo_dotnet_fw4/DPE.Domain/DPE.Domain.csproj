@@ -59,6 +59,10 @@
     <Compile Include="AddressType.cs">
       <DependentUpon>ModelOne.tt</DependentUpon>
     </Compile>
+    <Compile Include="Aggregates\HumanResources\Employee.cs" />
+    <Compile Include="Aggregates\HumanResources\NationalId.cs" />
+    <Compile Include="Aggregates\Person\IPersonRepository.cs" />
+    <Compile Include="Aggregates\Person\Person.cs" />
     <Compile Include="BusinessEntity.cs">
       <DependentUpon>ModelOne.tt</DependentUpon>
     </Compile>
@@ -89,7 +93,7 @@
     <Compile Include="Customer.cs">
       <DependentUpon>ModelOne.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Class1.cs" />
+    <Compile Include="Aggregates\Person\Name.cs" />
     <Compile Include="Department.cs">
       <DependentUpon>ModelOne.tt</DependentUpon>
     </Compile>
@@ -186,8 +190,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Aggregates\Production\" />
+    <Folder Include="Aggregates\Sales\" />
+    <Folder Include="DataAccess\" />
     <Folder Include="Events\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
