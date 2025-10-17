@@ -56,7 +56,7 @@ a,
 
 /* Portfolio Custom Styles */
 .hero-section {
-    background: linear-gradient(135deg, #1b6ec2 0%, #0d47a1 100%);
+    background: var(--hero-gradient);
     position: relative;
     overflow: hidden;
 }
@@ -409,4 +409,252 @@ html {
 
 code {
     color: #c02d76;
+}
+
+/* Dark Mode Styles */
+.dark-mode-toggle {
+    transition: all 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.05);
+}
+
+/* Dark Mode Variables */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --hero-gradient: linear-gradient(135deg, #1b6ec2 0%, #0d47a1 100%);
+    --sidebar-bg: #1f2937;
+    --sidebar-text: #ffffff;
+    --nav-hover: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode {
+    --bg-color: #0d1117;
+    --text-color: #f0f6fc;
+    --card-bg: #161b22;
+    --border-color: #21262d;
+    --hero-gradient: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    --sidebar-bg: #0d1117;
+    --sidebar-text: #f0f6fc;
+    --nav-hover: rgba(240, 246, 252, 0.1);
+}
+
+/* Apply dark mode styles */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body.dark-mode .hero-section {
+    background: var(--hero-gradient);
+}
+
+body.dark-mode .bg-light {
+    background-color: var(--card-bg) !important;
+}
+
+body.dark-mode .text-muted {
+    color: #8b949e !important;
+}
+
+body.dark-mode .border {
+    border-color: var(--border-color) !important;
+}
+
+/* Sidebar dark mode */
+body.dark-mode .sidebar {
+    background-color: var(--sidebar-bg);
+}
+
+body.dark-mode .navbar-dark {
+    background-color: var(--sidebar-bg) !important;
+}
+
+body.dark-mode .nav-link {
+    color: var(--sidebar-text) !important;
+}
+
+body.dark-mode .nav-link:hover {
+    background-color: var(--nav-hover);
+    color: var(--sidebar-text) !important;
+}
+
+body.dark-mode .navbar-brand {
+    color: var(--sidebar-text) !important;
+}
+
+/* Form controls dark mode */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+    background-color: var(--card-bg);
+    border-color: #1b6ec2;
+    color: var(--text-color);
+    box-shadow: 0 0 0 0.2rem rgba(27, 110, 194, 0.25);
+}
+
+/* Button adjustments for dark mode */
+body.dark-mode .btn-outline-secondary {
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+    background-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body.dark-mode .btn-outline-primary:disabled,
+body.dark-mode .btn-outline-secondary:disabled {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Badge adjustments */
+body.dark-mode .badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+body.dark-mode .badge.bg-light {
+    background-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Timeline dark mode */
+body.dark-mode .timeline::before {
+    background: linear-gradient(to bottom, #6c757d, #495057);
+}
+
+body.dark-mode .timeline-marker-icon {
+    background: #6c757d;
+    border-color: var(--card-bg);
+}
+
+/* Progress bar dark mode */
+body.dark-mode .progress {
+    background-color: var(--border-color);
+}
+
+/* Top row styling */
+.top-row {
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .top-row a {
+    color: var(--text-color) !important;
+}
+
+body.dark-mode .top-row a:hover {
+    color: #1b6ec2 !important;
+}
+
+/* Alert adjustments */
+body.dark-mode .alert-success {
+    background-color: #0f2419;
+    border-color: #1e4d30;
+    color: #75b798;
+}
+
+/* Table adjustments if any */
+body.dark-mode .table {
+    color: var(--text-color);
+}
+
+body.dark-mode .table th,
+body.dark-mode .table td {
+    border-color: var(--border-color);
+}
+
+/* Contact form specific */
+body.dark-mode .contact-icon {
+    background: rgba(108, 117, 125, 0.2);
+}
+
+body.dark-mode .cert-icon {
+    background: rgba(108, 117, 125, 0.2);
+}
+
+body.dark-mode .project-icon {
+    background: rgba(27, 110, 194, 0.2);
+}
+
+/* Dropdown Styles */
+.dropdown-toggle {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+    transform: translateY(-1px);
+}
+
+.dropdown-menu {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    padding: 0.75rem 1.25rem;
+    border-radius: 0;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(27, 110, 194, 0.1);
+    color: #1b6ec2;
+    transform: translateX(2px);
+}
+
+.dropdown-item i {
+    font-size: 1rem;
+    width: 20px;
+}
+
+/* Dark mode dropdown styles */
+body.dark-mode .dropdown-menu {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .dropdown-item {
+    color: var(--text-color);
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: rgba(27, 110, 194, 0.2);
+    color: #4a9eff;
+}
+
+body.dark-mode .dropdown-divider {
+    border-color: var(--border-color);
+}
+
+/* Top row gap adjustment */
+.top-row .gap-3 {
+    gap: 1rem !important;
 }

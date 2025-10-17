@@ -1,44 +1,92 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand fw-bold" href="">Frednel Jean-Joseph</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+﻿<div class="modern-sidebar @(collapseNavMenu ? "" : "show")">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <img src="https://mrjeanjoseph.github.io/src/img/portrait2.jpg" 
+                 alt="Frednel Jean-Joseph" 
+                 class="avatar-img">
+        </div>
+        <div class="profile-info">
+            <h6 class="profile-name">Frednel Jean-Joseph</h6>
+            <p class="profile-title">Software Engineer</p>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="modern-nav">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <NavLink class="nav-link-modern" href="" Match="NavLinkMatch.All" @onclick="CloseNavOnMobile">
+                    <div class="nav-icon">
+                        <i class="bi bi-house-door"></i>
+                    </div>
+                    <span class="nav-text">Home</span>
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link-modern" href="projects" @onclick="CloseNavOnMobile">
+                    <div class="nav-icon">
+                        <i class="bi bi-folder-plus"></i>
+                    </div>
+                    <span class="nav-text">Projects</span>
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link-modern" href="experience" @onclick="CloseNavOnMobile">
+                    <div class="nav-icon">
+                        <i class="bi bi-briefcase"></i>
+                    </div>
+                    <span class="nav-text">Experience</span>
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link-modern" href="contact" @onclick="CloseNavOnMobile">
+                    <div class="nav-icon">
+                        <i class="bi bi-chat-dots"></i>
+                    </div>
+                    <span class="nav-text">Contact</span>
+                </NavLink>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Footer Section -->
+    <div class="nav-footer">
+        <div class="social-links-nav">
+            <a href="https://github.com/mrjeanjoseph" target="_blank" class="social-link" title="GitHub">
+                <i class="bi bi-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/frednel-jean-joseph" target="_blank" class="social-link" title="LinkedIn">
+                <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="mailto:frednel@example.com" class="social-link" title="Email">
+                <i class="bi bi-envelope"></i>
+            </a>
+        </div>
+        <div class="nav-version">
+            <small class="text-muted">v2.0</small>
+        </div>
     </div>
 </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="projects">
-                <span class="bi bi-folder-fill-nav-menu" aria-hidden="true"></span> Projects
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="experience">
-                <span class="bi bi-briefcase-fill-nav-menu" aria-hidden="true"></span> Experience
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="contact">
-                <span class="bi bi-envelope-fill-nav-menu" aria-hidden="true"></span> Contact
-            </NavLink>
-        </div>
-    </nav>
-</div>
+<!-- Mobile Toggle -->
+<button class="mobile-toggle d-md-none" @onclick="ToggleNavMenu" title="Toggle navigation">
+    <i class="bi @(collapseNavMenu ? "bi-list" : "bi-x")"></i>
+</button>
+
+<!-- Mobile Overlay -->
+<div class="mobile-overlay @(collapseNavMenu ? "" : "show")" @onclick="ToggleNavMenu"></div>
 
 @code {
     private bool collapseNavMenu = true;
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private void CloseNavOnMobile()
+    {
+        collapseNavMenu = true;
     }
 }

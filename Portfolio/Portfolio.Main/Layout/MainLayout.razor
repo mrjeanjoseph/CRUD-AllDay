@@ -1,12 +1,46 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
+@inject IJSRuntime JSRuntime
+
+<div class="page" id="app-container">
     <div class="sidebar">
         <NavMenu />
     </div>
 
     <main>
         <div class="top-row px-4">
-            <a href="https://github.com/mrjeanjoseph" target="_blank">More about me</a>
+            <div class="d-flex justify-content-end align-items-center w-100 gap-3">
+                <button class="btn btn-sm btn-outline-secondary border-0 dark-mode-toggle" @onclick="ToggleDarkMode"
+                    title="Toggle dark mode">
+                    <i class="bi @(isDarkMode ? "bi-sun-fill" : "bi-moon-fill")"></i>
+                    <span class="ms-1 d-none d-md-inline">@(isDarkMode ? "Light" : "Dark")</span>
+                </button>
+                
+                <!-- More about me dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="moreAboutMeDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person-circle me-1"></i>More about me
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAboutMeDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#" @onclick="DownloadCV" @onclick:preventDefault="true">
+                                <i class="bi bi-file-earmark-person me-2"></i>Get CV
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" @onclick="DownloadCertifications" @onclick:preventDefault="true">
+                                <i class="bi bi-award me-2"></i>Get Certifications
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="https://github.com/mrjeanjoseph" target="_blank">
+                                <i class="bi bi-github me-2"></i>Visit GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <article class="content px-4">
@@ -14,3 +48,56 @@
         </article>
     </main>
 </div>
+
+@code {
+    private bool isDarkMode = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Check if dark mode preference is stored
+            var darkModePreference = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "darkMode");
+            isDarkMode = darkModePreference == "true";
+
+            if (isDarkMode)
+            {
+                await JSRuntime.InvokeVoidAsync("document.body.classList.add", "dark-mode");
+            }
+
+            StateHasChanged();
+        }
+    }
+
+    private async Task ToggleDarkMode()
+    {
+        isDarkMode = !isDarkMode;
+
+        // Store preference in localStorage
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "darkMode", isDarkMode.ToString().ToLower());
+
+        // Toggle dark mode class on body
+        if (isDarkMode)
+        {
+            await JSRuntime.InvokeVoidAsync("document.body.classList.add", "dark-mode");
+        }
+        else
+        {
+            await JSRuntime.InvokeVoidAsync("document.body.classList.remove", "dark-mode");
+        }
+    }
+
+    private async Task DownloadCV()
+    {
+        // In a real application, you would have a CV file to download
+        // For now, we'll show a message that this feature is coming soon
+        await JSRuntime.InvokeVoidAsync("alert", "CV download feature coming soon! This would download your resume/CV file.");
+    }
+
+    private async Task DownloadCertifications()
+    {
+        // In a real application, you would have a certifications document to download
+        // For now, we'll show a message that this feature is coming soon
+        await JSRuntime.InvokeVoidAsync("alert", "Certifications download feature coming soon! This would download your certificates portfolio.");
+    }
+}
