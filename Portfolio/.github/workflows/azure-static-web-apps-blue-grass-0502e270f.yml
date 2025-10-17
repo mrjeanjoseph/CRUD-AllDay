@@ -1,0 +1,99 @@
+name: Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+  workflow_dispatch: {}
+
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          lfs: false
+
+      - name: Debug — list repository root and portfolio.main
+        run: |
+          echo "Repository root:"
+          ls -la
+          echo "--- portfolio.main contents ---"
+          ls -la portfolio.main || true
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Prepare and build Blazor app (dotnet publish)
+        id: prepare
+        run: |
+          # set correct app_location
+          echo "app_location=portfolio.main" >> $GITHUB_OUTPUT
+
+          proj=$(ls portfolio.main/*.csproj 2>/dev/null | head -n1 || true)
+          if [ -n "$proj" ]; then
+            echo "Found project: $proj"
+            dotnet restore "$proj"
+            dotnet publish "$proj" -c Release -o portfolio.main/publish
+
+            deploy_output=""
+            if [ -f "portfolio.main/publish/index.html" ]; then
+              deploy_output="publish"
+            elif [ -f "portfolio.main/publish/wwwroot/index.html" ]; then
+              deploy_output="publish/wwwroot"
+            else
+              found=$(find portfolio.main/publish -type f -name "index.html" -print -quit || true)
+              if [ -n "$found" ]; then
+                parent_dir=$(dirname "$found")
+                rel=${parent_dir#portfolio.main/}
+                if [ "$rel" = "$parent_dir" ]; then
+                  rel=""
+                fi
+                deploy_output="$rel"
+              fi
+            fi
+
+            if [ -n "$deploy_output" ]; then
+              echo "Detected artifact folder relative to app_location: '${deploy_output}'"
+              echo "deploy_output=${deploy_output}" >> $GITHUB_OUTPUT
+            else
+              echo "::warning::No index.html detected in portfolio.main/publish."
+              echo "deploy_output=" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "::warning::No .csproj found in portfolio.main."
+            echo "deploy_output=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_GRASS_0502E270F || secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "portfolio.main"
+          output_location: ${{ steps.prepare.outputs.deploy_output }}
+          skip_app_build: true
+          api_location: ""  # no API folder present
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_GRASS_0502E270F || secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: "close"
