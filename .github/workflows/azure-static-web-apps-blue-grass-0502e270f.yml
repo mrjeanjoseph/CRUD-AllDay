@@ -23,63 +23,68 @@ jobs:
 
       - name: Debug — list repository root and Portfolio
         run: |
-          echo "Repository files at root:"
+          echo "Repository root:"
           ls -la
           echo "--- Portfolio contents ---"
           ls -la Portfolio || true
 
-      - name: Prepare app artifact (install & build if needed)
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          # Adjust SDK version if you need a different one (e.g. 7.0.x)
+          dotnet-version: '8.0.x'
+
+      - name: Prepare and build Blazor app (dotnet publish)
         id: prepare
         run: |
-          # Default app_location (adjust if your app isn't in Portfolio)
+          # default app_location (change if your app is not in Portfolio)
           echo "app_location=Portfolio" >> $GITHUB_OUTPUT
 
-          # If there's a package.json, try to build and then detect common build folders
-          if [ -f "Portfolio/package.json" ]; then
-            echo "Found Portfolio/package.json — running install and build (if present)"
-            # Install Node (use Node 18). If runner already has node this is harmless.
-            curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - || true
-            sudo apt-get install -y nodejs || true
-            cd Portfolio
-            npm ci
-            npm run build --if-present
+          # find a project file inside Portfolio
+          proj=$(ls Portfolio/*.csproj 2>/dev/null | head -n1 || true)
+          if [ -n "$proj" ]; then
+            echo "Found project: $proj"
+            # Restore and publish into Portfolio/publish
+            dotnet restore "$proj"
+            dotnet publish "$proj" -c Release -o Portfolio/publish
 
-            # Look for common build/output folders inside Portfolio
-            found=""
-            for d in build dist wwwroot public out; do
-              if [ -d "$d" ] && [ -n "$(ls -A $d 2>/dev/null)" ]; then
-                found="$d"
-                break
-              fi
-              # also allow a single index.html at the folder (serve-root)
-              if [ -f "$d/index.html" ]; then
-                found="$d"
-                break
-              fi
-            done
-
-            if [ -n "$found" ]; then
-              echo "Detected artifact folder: $found"
-              echo "deploy_output=$found" >> $GITHUB_OUTPUT
+            # Detect where index.html landed
+            deploy_output=""
+            if [ -f "Portfolio/publish/index.html" ]; then
+              deploy_output="publish"
+            elif [ -f "Portfolio/publish/wwwroot/index.html" ]; then
+              deploy_output="publish/wwwroot"
             else
-              # Maybe the build produced files directly into Portfolio root
-              if [ -f "index.html" ]; then
-                echo "No common build folder found, but index.html exists in Portfolio root — deploying root"
-                echo "deploy_output=" >> $GITHUB_OUTPUT
-              else
-                echo "::warning::No build artifacts detected inside Portfolio after build. Deployment may fail."
-                # Leave deploy_output empty so action can be configured manually if needed
-                echo "deploy_output=" >> $GITHUB_OUTPUT
+              # attempt to find any index.html under publish and use its parent folder
+              found=$(find Portfolio/publish -type f -name "index.html" -print -quit || true)
+              if [ -n "$found" ]; then
+                # derive relative folder from Portfolio/
+                parent_dir=$(dirname "$found")
+                # make it relative to Portfolio
+                rel=${parent_dir#Portfolio/}
+                # if parent_dir == Portfolio then rel becomes parent_dir; handle that
+                if [ "$rel" = "$parent_dir" ]; then
+                  rel=""
+                fi
+                deploy_output="$rel"
               fi
             fi
-            cd -
+
+            if [ -n "$deploy_output" ]; then
+              echo "Detected artifact folder relative to app_location: '${deploy_output}'"
+              echo "deploy_output=${deploy_output}" >> $GITHUB_OUTPUT
+            else
+              echo "::warning::No index.html detected in Portfolio/publish. If this is a Blazor Server app, Azure Static Web Apps is not a supported host; consider an Azure Web App instead."
+              # leave empty so user can set output_location explicitly
+              echo "deploy_output=" >> $GITHUB_OUTPUT
+            fi
           else
-            # No package.json: assume static assets live in Portfolio root (index.html)
+            echo "::warning::No .csproj found in Portfolio. Checking for static index.html..."
             if [ -f "Portfolio/index.html" ]; then
-              echo "No package.json and found Portfolio/index.html — deploying Portfolio root"
+              echo "Found Portfolio/index.html — will deploy Portfolio root"
               echo "deploy_output=" >> $GITHUB_OUTPUT
             else
-              echo "::warning::No package.json and no Portfolio/index.html found — check app_location or add build steps"
+              echo "::warning::No .csproj and no Portfolio/index.html found. Check app_location or add build steps."
               echo "deploy_output=" >> $GITHUB_OUTPUT
             fi
           fi
@@ -88,18 +93,19 @@ jobs:
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          # Fallback: use specific token or generic AZURE_STATIC_WEB_APPS_API_TOKEN
+          # Fallback: try specific token then generic token
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLUE_GRASS_0502E270F || secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           ###### Repository/Build Configurations - update these to match your project ######
-          # For more info: https://aka.ms/swaworkflowconfig
-          app_location: "Portfolio" # App source code path (change to "/" or another folder if needed)
-          # output_location is relative to app_location. If empty string, deploy will use app_location root.
+          # app_location is the folder containing your source (relative to repo root)
+          app_location: "Portfolio"
+          # output_location is relative to app_location; empty string deploys app_location root.
           output_location: ${{ steps.prepare.outputs.deploy_output }}
-          # We've built (or not) in previous step; skip Oryx app build to avoid detection issues
+          # We built the app ourselves (dotnet publish), so skip the Oryx app build step
           skip_app_build: true
-          api_location: "Api"       # Api source code path - optional (set to "" if none)
+          # If you have an API folder (Azure Functions), set it here. Otherwise set to "".
+          api_location: "Api"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
