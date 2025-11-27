@@ -30,6 +30,93 @@ a,
     padding-top: 1.1rem;
 }
 
+/* Coffee Loader - startup */
+.coffee-loader {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 1050;
+}
+
+.coffee-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.coffee-wrap {
+    position: relative;
+    z-index: 1;
+}
+
+.coffee-pot {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border: 8px solid #5b4636;
+    /* pot outline */
+    border-radius: 12px 12px 60px 60px;
+    background: #f6f4f1;
+    /* glass */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+.coffee-spout {
+    position: absolute;
+    right: -26px;
+    top: 30px;
+    width: 40px;
+    height: 26px;
+    border: 8px solid #5b4636;
+    border-left: none;
+    border-bottom: none;
+    border-radius: 0 16px 0 0;
+}
+
+.coffee-handle {
+    position: absolute;
+    left: -34px;
+    top: 40px;
+    width: 26px;
+    height: 60px;
+    border: 8px solid #5b4636;
+    border-radius: 26px;
+    background: transparent;
+}
+
+.coffee-liquid {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    height: 0px;
+    /* container */
+    border-radius: 0 0 52px 52px;
+    overflow: hidden;
+}
+
+.coffee-level {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0%;
+    background: linear-gradient(180deg, #7b4b2a, #4a2d18);
+}
+
+.coffee-status {
+    text-align: center;
+    color: #f6f4f1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    font-weight: 600;
+}
+
+/* Dark mode: slightly stronger overlay */
+body.dark-mode .coffee-overlay {
+    background: rgba(0, 0, 0, 0.35);
+}
+
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
@@ -77,16 +164,7 @@ a,
     z-index: 1;
 }
 
-.profile-image {
-    width: 200px;
-    height: 200px;
-    border: 4px solid rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.profile-image:hover {
-    transform: scale(1.05);
-}
+/* removed homepage profile image styles */
 
 .project-card {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -324,38 +402,7 @@ html {
 }
 
 /* Profile section styling */
-.profile-image-container {
-    position: relative;
-}
-
-.profile-image-container::after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scale(1.05);
-        opacity: 0.7;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
+/* removed homepage profile image container pulse styles */
 
 #blazor-error-ui .dismiss {
     cursor: pointer;
@@ -654,7 +701,156 @@ body.dark-mode .dropdown-divider {
     border-color: var(--border-color);
 }
 
+/* Modal theming (light + dark mode) */
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+    background: transparent;
+}
+
+.modal-title {
+    font-weight: 600;
+    letter-spacing: -.01em;
+}
+
+.modal-body {
+    background: var(--card-bg);
+}
+
+.modal-backdrop.show {
+    opacity: .6;
+}
+
+/* Header action buttons inside modal */
+.modal-header .btn-outline-light {
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.modal-header .btn-outline-light:hover {
+    background: var(--border-color);
+    color: var(--text-color);
+}
+
+/* Close button visibility in dark mode */
+body.dark-mode .btn-close {
+    filter: invert(1);
+    opacity: .85;
+}
+
+body.dark-mode .btn-close:hover {
+    opacity: 1;
+}
+
+/* Ensure links inside modal keep readable contrast */
+.modal-content a {
+    color: #1b6ec2;
+}
+
+body.dark-mode .modal-content a {
+    color: #4a9eff;
+}
+
 /* Top row gap adjustment */
 .top-row .gap-3 {
     gap: 1rem !important;
+}
+
+/* Modal global fallback (ensures overlay displays even if isolated CSS fails) */
+.app-modal-overlay {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000 !important;
+    background: rgba(0, 0, 0, .6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.app-modal {
+    height: 100%;
+    background: var(--card-bg, #fff);
+    color: var(--text-color, #212529);
+    border: 1px solid var(--border-color, #dee2e6);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .35);
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: .75rem 1rem;
+    border-bottom: 1px solid var(--border-color, #dee2e6);
+}
+
+.app-modal-title {
+    margin: 0;
+    font-weight: 700;
+}
+
+.app-modal-actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.app-modal-body {
+    padding: 0;
+    overflow: auto;
+}
+
+.doc-viewer {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (max-width:768px) {
+    .doc-viewer {
+        height: 100%;
+    }
+}
+
+/* Certifications grid sizing inside modal */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.cert-card {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card-bg);
+}
+
+.cert-thumb {
+    width: 100%;
+    height: 20vh;
+    max-height: 20vh;
+    object-fit: cover;
+}
+
+.cert-caption {
+    padding: .5rem .75rem;
+    font-weight: 600;
+    font-size: .9rem;
 }
