@@ -54,13 +54,7 @@
     <Content Remove="C:\Users\fjeanjoseph\.nuget\packages\bootstrap\5.3.8\contentFiles\any\any\wwwroot\js\bootstrap.min.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <Content Update="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
-    <PackageReference Include="bootstrap" Version="5.3.8" />
     <PackageReference Include="ClosedXML" Version="0.105.0" />
     <PackageReference Include="ClosedXML.Parser" Version="2.0.0" />
     <PackageReference Include="Dapper" Version="2.1.66" />
@@ -68,7 +62,6 @@
     <PackageReference Include="DocumentFormat.OpenXml.Framework" Version="3.3.0" />
     <PackageReference Include="EntityFramework" Version="6.5.1" />
     <PackageReference Include="ExcelNumberFormat" Version="1.1.0" />
-    <PackageReference Include="jQuery" Version="3.7.1" />
     <PackageReference Include="jQuery.Validation" Version="1.21.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.23.0" />
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.0" />

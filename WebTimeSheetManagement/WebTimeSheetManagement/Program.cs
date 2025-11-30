@@ -10,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 var timesheetConn = builder.Configuration.GetConnectionString("TimesheetDBEntities");
 builder.Services.AddSingleton(new DbSettings(timesheetConn));
 
+// Application Insights for ASP.NET Core
+builder.Services.AddApplicationInsightsTelemetry();
+
 // MVC + views
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
