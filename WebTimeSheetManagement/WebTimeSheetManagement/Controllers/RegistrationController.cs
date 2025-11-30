@@ -1,4 +1,4 @@
-﻿using EventApplicationCore.Library;
+﻿using WebTimeSheetManagement.Library;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using WebTimeSheetManagement.Concrete;
@@ -42,8 +42,8 @@ namespace WebTimeSheetManagement.Controllers
                 {
                     registration.CreatedOn = DateTime.Now;
                     registration.RoleID = _IRoles.getRolesofUserbyRolename("Users");
-                    registration.Password = EncryptionLibrary.EncryptText(registration.Password);
-                    registration.ConfirmPassword = EncryptionLibrary.EncryptText(registration.ConfirmPassword);
+                    registration.Password = EncryptionLibrary.EncryptText(registration.Password, "Registration.Password");
+                    registration.ConfirmPassword = EncryptionLibrary.EncryptText(registration.ConfirmPassword, "Registration.ConfirmPassword");
                     if (_IRegistration.AddUser(registration) > 0)
                     {
                         TempData["MessageRegistration"] = "Data Saved Successfully!";

@@ -1,4 +1,4 @@
-﻿using EventApplicationCore.Library;
+﻿using WebTimeSheetManagement.Library;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -31,13 +31,13 @@ namespace WebTimeSheetManagement.Controllers
         {
             try
             {
-                var password = EncryptionLibrary.EncryptText(changepasswordmodel.OldPassword);
+                var password = EncryptionLibrary.EncryptText(changepasswordmodel.OldPassword, "UserProfile.OldPassword");
 
                 var storedPassword = _ILogin.GetPasswordbyUserID(Convert.ToInt32(HttpContext.Session.GetString("UserID")));
 
                 if (storedPassword == password)
                 {
-                    var result = _ILogin.UpdatePassword(EncryptionLibrary.EncryptText(changepasswordmodel.NewPassword), Convert.ToInt32(HttpContext.Session.GetString("UserID")));
+                    var result = _ILogin.UpdatePassword(EncryptionLibrary.EncryptText(changepasswordmodel.NewPassword, "UserProfile.NewPassword"), Convert.ToInt32(HttpContext.Session.GetString("UserID")));
 
                     if (result)
                     {

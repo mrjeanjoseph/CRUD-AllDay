@@ -1,156 +1,48 @@
 ﻿using System;
-using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.DataProtection;
 
-namespace EventApplicationCore.Library
+namespace WebTimeSheetManagement.Library
 {
     public class EncryptionLibrary
     {
-        public static byte[] AES_Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
+        private static readonly IDataProtectionProvider _provider = DataProtectionProvider.Create("WebTimeSheetManagement");
+
+        // Protect plaintext using Data Protection with a given purpose
+        public static string EncryptText(string input, string purpose)
         {
-            byte[] encryptedBytes = null;
+            if (input == null) throw new ArgumentNullException(nameof(input));
+            if (string.IsNullOrWhiteSpace(purpose)) throw new ArgumentException("Purpose is required", nameof(purpose));
 
-            // Set your salt here, change it to meet your flavor:
-            // The salt bytes must be at least 8 bytes.
-            byte[] saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
-
-            using (MemoryStream ms = new MemoryStream())
-            {
-                using (RijndaelManaged AES = new RijndaelManaged())
-                {
-                    AES.KeySize = 256;
-                    AES.BlockSize = 128;
-
-                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
-                    AES.Key = key.GetBytes(AES.KeySize / 8);
-                    AES.IV = key.GetBytes(AES.BlockSize / 8);
-
-                    AES.Mode = CipherMode.CBC;
-
-                    using (var cs = new CryptoStream(ms, AES.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(bytesToBeEncrypted, 0, bytesToBeEncrypted.Length);
-                        cs.Close();
-                    }
-                    encryptedBytes = ms.ToArray();
-                }
-            }
-
-            return encryptedBytes;
+            var protector = _provider.CreateProtector(purpose);
+            return protector.Protect(input);
         }
 
-        public static byte[] AES_Decrypt(byte[] bytesToBeDecrypted, byte[] passwordBytes)
+        // Unprotect ciphertext using Data Protection with the same purpose
+        public static string DecryptText(string input, string purpose)
         {
-            try
-            {
-                byte[] decryptedBytes = null;
+            if (input == null) throw new ArgumentNullException(nameof(input));
+            if (string.IsNullOrWhiteSpace(purpose)) throw new ArgumentException("Purpose is required", nameof(purpose));
 
-                // Set your salt here, change it to meet your flavor:
-                // The salt bytes must be at least 8 bytes.
-                byte[] saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
-
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    using (RijndaelManaged AES = new RijndaelManaged())
-                    {
-                        AES.KeySize = 256;
-                        AES.BlockSize = 128;
-
-                        var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
-                        AES.Key = key.GetBytes(AES.KeySize / 8);
-                        AES.IV = key.GetBytes(AES.BlockSize / 8);
-
-                        AES.Mode = CipherMode.CBC;
-
-                        using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
-                        {
-                            cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
-                            cs.Close();
-                        }
-                        decryptedBytes = ms.ToArray();
-                    }
-                }
-
-                return decryptedBytes;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public static string EncryptText(string input, string password = "E6t187^D43%F")
-        {
-            try
-            {
-                // Get the bytes of the string
-                byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(input);
-                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-
-                // Hash the password with SHA256
-                passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
-
-                byte[] bytesEncrypted = AES_Encrypt(bytesToBeEncrypted, passwordBytes);
-
-                string result = Convert.ToBase64String(bytesEncrypted);
-
-                return result;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public static string DecryptText(string input, string password = "E6t187^D43%F")
-        {
-            try
-            {
-                // Get the bytes of the string
-                byte[] bytesToBeDecrypted = Convert.FromBase64String(input);
-                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-                passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
-
-                byte[] bytesDecrypted = AES_Decrypt(bytesToBeDecrypted, passwordBytes);
-
-                string result = Encoding.UTF8.GetString(bytesDecrypted);
-
-                return result;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            var protector = _provider.CreateProtector(purpose);
+            return protector.Unprotect(input);
         }
 
         public static class KeyGenerator
         {
             public static string GetUniqueKey(int maxSize = 15)
             {
-                try
-                {
-                    char[] chars = new char[62];
-                    chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".ToCharArray();
-                    byte[] data = new byte[1];
-                    using (RNGCryptoServiceProvider crypto = new RNGCryptoServiceProvider())
-                    {
-                        crypto.GetNonZeroBytes(data);
-                        data = new byte[maxSize];
-                        crypto.GetNonZeroBytes(data);
-                    }
-                    StringBuilder result = new StringBuilder(maxSize);
-                    foreach (byte b in data)
-                    {
-                        result.Append(chars[b % (chars.Length)]);
-                    }
-                    return result.ToString();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                if (maxSize <= 0) throw new ArgumentOutOfRangeException(nameof(maxSize));
+
+                byte[] data = new byte[maxSize];
+                RandomNumberGenerator.Fill(data);
+
+                // Return base64-url without padding to avoid bias and keep URL-safe
+                return Convert.ToBase64String(data)
+                    .TrimEnd('=')
+                    .Replace('+', '-')
+                    .Replace('/', '_');
             }
         }
     }

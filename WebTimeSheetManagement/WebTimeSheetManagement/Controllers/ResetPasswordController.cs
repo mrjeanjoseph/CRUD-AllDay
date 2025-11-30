@@ -1,4 +1,4 @@
-﻿using EventApplicationCore.Library;
+﻿using WebTimeSheetManagement.Library;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -75,7 +75,7 @@ namespace WebTimeSheetManagement.Controllers
                     return Json("Error");
                 }
 
-                var Password = EncryptionLibrary.EncryptText("default@123");
+                var Password = EncryptionLibrary.EncryptText("default@123", "ResetPassword.Default");
                 var isPasswordUpdated = _IRegistration.UpdatePassword(RegistrationID, Password);
 
                 if (isPasswordUpdated)
