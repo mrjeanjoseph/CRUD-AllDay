@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AssemblyTitle>WebTimeSheetManagement.Interface</AssemblyTitle>
+    <Product>WebTimeSheetManagement.Interface</Product>
+    <Copyright>Copyright ©  2017</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebTimeSheetManagement.Models\WebTimeSheetManagement.Models.csproj" />
+  </ItemGroup>
+</Project>
