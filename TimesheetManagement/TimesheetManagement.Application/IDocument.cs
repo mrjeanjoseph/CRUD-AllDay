@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using TimesheetManagement.Models;
+using TimesheetManagement.Domain;
 
 namespace TimesheetManagement.Application
 {

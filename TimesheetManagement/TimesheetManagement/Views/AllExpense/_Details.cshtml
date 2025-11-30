@@ -1,4 +1,4 @@
-﻿@model TimesheetManagement.Models.ExpenseModelView
+﻿@model TimesheetManagement.Domain.ExpenseModelView
 
 <div style="margin-top:10px;"></div>
 <div class="panel panel-default">
@@ -81,7 +81,7 @@
     <div class="panel-heading">Documents Attached</div>
     <div class="panel-body">
         @{
-            var documents = (List<TimesheetManagement.Models.DocumentsVM>)ViewBag.documents;
+            var documents = (List<TimesheetManagement.Domain.DocumentsVM>)ViewBag.documents;
             foreach (var document in documents)
             {
 

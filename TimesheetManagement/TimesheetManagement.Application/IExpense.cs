@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using TimesheetManagement.Models;
+using TimesheetManagement.Domain;
 
 namespace TimesheetManagement.Application
 {

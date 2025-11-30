@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using TimesheetManagement.Models;
+using TimesheetManagement.Domain;
 
 namespace TimesheetManagement.Helpers
 {

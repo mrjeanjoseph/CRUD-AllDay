@@ -13,7 +13,7 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimesheetManagement.Interface\TimesheetManagement.Application.csproj" />
-    <ProjectReference Include="..\TimesheetManagement.Models\TimesheetManagement.Domain.csproj" />
+    <ProjectReference Include="..\TimesheetManagement.Application\TimesheetManagement.Application.csproj" />
+    <ProjectReference Include="..\TimesheetManagement.Domain\TimesheetManagement.Domain.csproj" />
   </ItemGroup>
 </Project>

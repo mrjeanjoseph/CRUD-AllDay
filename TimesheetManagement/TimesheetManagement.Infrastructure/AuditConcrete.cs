@@ -1,5 +1,5 @@
 ﻿using TimesheetManagement.Application;
-using TimesheetManagement.Models;
+using TimesheetManagement.Domain;
 
 namespace TimesheetManagement.Infrastructure
 {

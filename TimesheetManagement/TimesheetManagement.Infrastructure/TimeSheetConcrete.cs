@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using TimesheetManagement.Application;
-using TimesheetManagement.Models;
+using TimesheetManagement.Domain;
 
 namespace TimesheetManagement.Infrastructure
 {

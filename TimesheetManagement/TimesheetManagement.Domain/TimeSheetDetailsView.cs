@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TimesheetManagement.Models
+namespace TimesheetManagement.Domain
 {
     public class TimeSheetDetailsView
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TimesheetManagement.Models
+namespace TimesheetManagement.Domain
 {
     public class TimeSheetExportModel
     {

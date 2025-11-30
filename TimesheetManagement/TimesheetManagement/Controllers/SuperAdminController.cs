@@ -7,7 +7,7 @@ using TimesheetManagement.Infrastructure;
 using TimesheetManagement.Filters;
 using TimesheetManagement.Helpers;
 using TimesheetManagement.Application;
-using TimesheetManagement.Models;
+using TimesheetManagement.Domain;
 
 namespace TimesheetManagement.Controllers
 {

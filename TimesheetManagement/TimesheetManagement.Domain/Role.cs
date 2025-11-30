@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TimesheetManagement.Models
+namespace TimesheetManagement.Domain
 {
     [Table("Roles")]
     public class Roles

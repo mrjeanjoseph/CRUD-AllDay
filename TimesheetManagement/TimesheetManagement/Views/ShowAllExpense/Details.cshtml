@@ -1,4 +1,4 @@
-﻿@model TimesheetManagement.Models.ExpenseModelView
+﻿@model TimesheetManagement.Domain.ExpenseModelView
 
 @{
     ViewBag.Title = "Details";
@@ -90,7 +90,7 @@
            
 
                 @{
-                    var documents = (List<TimesheetManagement.Models.DocumentsVM>)ViewBag.documents;
+                    var documents = (List<TimesheetManagement.Domain.DocumentsVM>)ViewBag.documents;
 
                     foreach (var document in documents)
                     {

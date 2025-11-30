@@ -2,8 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <AssemblyTitle>TimesheetManagement.Models</AssemblyTitle>
-    <Product>TimesheetManagement.Models</Product>
+    <AssemblyTitle>TimesheetManagement.Domain</AssemblyTitle>
+    <Product>TimesheetManagement.Domain</Product>
     <Copyright>Copyright ©  2017</Copyright>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>

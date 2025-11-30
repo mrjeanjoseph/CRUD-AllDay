@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TimesheetManagement.Models
+namespace TimesheetManagement.Domain
 {
     [NotMapped]
     public class TimeSheetMasterView

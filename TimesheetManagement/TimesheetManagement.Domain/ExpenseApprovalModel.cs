@@ -1,4 +1,4 @@
-﻿namespace TimesheetManagement.Models
+﻿namespace TimesheetManagement.Domain
 {
     public class ExpenseApprovalModel
     {

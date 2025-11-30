@@ -1,4 +1,4 @@
-﻿using TimesheetManagement.Models;
+﻿using TimesheetManagement.Domain;
 
 namespace TimesheetManagement.Application
 {
