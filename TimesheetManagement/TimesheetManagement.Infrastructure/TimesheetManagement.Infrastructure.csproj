@@ -16,4 +16,8 @@
     <ProjectReference Include="..\TimesheetManagement.Application\TimesheetManagement.Application.csproj" />
     <ProjectReference Include="..\TimesheetManagement.Domain\TimesheetManagement.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repository\" />
+    <Folder Include="Persistence\Configuration\" />
+  </ItemGroup>
 </Project>

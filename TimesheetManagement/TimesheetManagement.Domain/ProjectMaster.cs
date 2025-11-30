@@ -3,19 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TimesheetManagement.Domain
 {
-    [Table("ProjectMaster")]
+    // Legacy EF POCO retained for migration; replaced by Project aggregate in Projects folder. reviewed
     public class ProjectMaster
     {
-        [Key]
         public int ProjectID { get; set; }
-
-        [Required(ErrorMessage = "Enter Project Code")]
         public string ProjectCode { get; set; }
-
-        [Required(ErrorMessage = "Enter Nature of Industry")]
         public string NatureofIndustry { get; set; }
-
-        [Required(ErrorMessage = "Enter ProjectName")]
         public string ProjectName { get; set; }
     }
 }

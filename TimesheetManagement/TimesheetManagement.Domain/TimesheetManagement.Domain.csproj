@@ -8,4 +8,11 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Dispatchers\" />
+    <Folder Include="Events\Handlers\" />
+    <Folder Include="Expenses\ExpenseReport\" />
+    <Folder Include="ValueObjects\" />
+  </ItemGroup>
 </Project>
