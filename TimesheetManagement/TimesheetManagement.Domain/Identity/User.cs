@@ -1,8 +1,8 @@
-namespace TimesheetManagement.Domain.Identity;
-
 using System;
 using System.Diagnostics.CodeAnalysis;
 using TimesheetManagement.Domain.Common;
+
+namespace TimesheetManagement.Domain.Identity;
 public class User : Entity
 {
     public required string Username { get; init; }

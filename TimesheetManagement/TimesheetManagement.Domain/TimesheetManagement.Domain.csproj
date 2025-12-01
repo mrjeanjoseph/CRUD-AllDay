@@ -12,7 +12,6 @@
     <Folder Include="Entities\" />
     <Folder Include="Dispatchers\" />
     <Folder Include="Events\Handlers\" />
-    <Folder Include="Expenses\ExpenseReport\" />
     <Folder Include="ValueObjects\" />
   </ItemGroup>
 </Project>
