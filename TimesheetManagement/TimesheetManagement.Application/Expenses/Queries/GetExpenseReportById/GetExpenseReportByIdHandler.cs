@@ -1,7 +1,11 @@
-namespace TimesheetManagement.Application.Expenses.Queries.GetExpenseReportById;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.Domain.Expenses.Repositories;
+
+namespace TimesheetManagement.Application.Expenses.Queries.GetExpenseReportById;
 
 public sealed class GetExpenseReportByIdHandler : IQueryHandler<GetExpenseReportByIdQuery, ExpenseReportDetailsDto>
 {

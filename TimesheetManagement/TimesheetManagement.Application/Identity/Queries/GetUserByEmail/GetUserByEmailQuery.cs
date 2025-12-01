@@ -1,6 +1,7 @@
-namespace TimesheetManagement.Application.Identity.Queries.GetUserByEmail;
-
+using System;
 using TimesheetManagement.Application.Common.Abstractions;
+
+namespace TimesheetManagement.Application.Identity.Queries.GetUserByEmail;
 
 public sealed record GetUserByEmailQuery(string Email) : IQuery<UserDto>;
 

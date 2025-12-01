@@ -1,7 +1,11 @@
-namespace TimesheetManagement.Application.Expenses.Queries.GetExpenseReportsForUser;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.Domain.Expenses.Repositories;
+
+namespace TimesheetManagement.Application.Expenses.Queries.GetExpenseReportsForUser;
 
 public sealed class GetExpenseReportsForUserHandler : IQueryHandler<GetExpenseReportsForUserQuery, IReadOnlyList<ExpenseReportSummaryDto>>
 {

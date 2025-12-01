@@ -1,6 +1,8 @@
-namespace TimesheetManagement.Application.Expenses.Queries.GetExpenseReportsForUser;
-
+using System;
+using System.Collections.Generic;
 using TimesheetManagement.Application.Common.Abstractions;
+
+namespace TimesheetManagement.Application.Expenses.Queries.GetExpenseReportsForUser;
 
 public sealed record GetExpenseReportsForUserQuery(Guid UserId, DateOnly? From = null, DateOnly? To = null) : IQuery<IReadOnlyList<ExpenseReportSummaryDto>>;
 

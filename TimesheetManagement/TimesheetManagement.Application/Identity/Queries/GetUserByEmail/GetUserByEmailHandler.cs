@@ -1,8 +1,11 @@
-namespace TimesheetManagement.Application.Identity.Queries.GetUserByEmail;
-
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.Domain.Identity;
 using TimesheetManagement.Domain.Identity.Repositories;
+
+namespace TimesheetManagement.Application.Identity.Queries.GetUserByEmail;
 
 public sealed class GetUserByEmailHandler : IQueryHandler<GetUserByEmailQuery, UserDto>
 {
