@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using TimesheetManagement.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Bind connection string from appsettings
-var timesheetConn = builder.Configuration.GetConnectionString("TimesheetDBEntities");
-builder.Services.AddSingleton(new DbSettings(timesheetConn));
+// Add Infrastructure (EF Core DbContext, repositories, UoW)
+builder.Services.AddInfrastructure(builder.Configuration);
 
 // Application Insights for ASP.NET Core
 builder.Services.AddApplicationInsightsTelemetry();
@@ -44,5 +43,3 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-
-public record DbSettings(string TimesheetDBEntities);

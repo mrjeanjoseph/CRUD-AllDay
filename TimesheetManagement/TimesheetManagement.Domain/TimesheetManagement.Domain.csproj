@@ -9,9 +9,9 @@
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Dispatchers\" />
     <Folder Include="Events\Handlers\" />
-    <Folder Include="ValueObjects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".readme\domain.md" />
   </ItemGroup>
 </Project>
