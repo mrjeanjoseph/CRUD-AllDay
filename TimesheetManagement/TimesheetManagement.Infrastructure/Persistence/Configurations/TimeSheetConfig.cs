@@ -28,6 +28,12 @@ public class TimeSheetConfig : IEntityTypeConfiguration<TimeSheet>
         // Add composite index for overlap queries
         b.HasIndex("UserId", "FromDate", "ToDate");
 
+        // Index on Status for pending approvals
+        b.HasIndex(x => x.Status);
+
+        // Concurrency token
+        b.Property<byte[]>("RowVersion").IsRowVersion();
+
         var entriesNav = b.Navigation(x => x.Entries);
         entriesNav.HasField("_entries");
         entriesNav.UsePropertyAccessMode(PropertyAccessMode.Field);

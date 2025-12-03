@@ -3,11 +3,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using TimesheetManagement.Infrastructure;
+using TimesheetManagement.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add Infrastructure (EF Core DbContext, repositories, UoW)
 builder.Services.AddInfrastructure(builder.Configuration);
+
+// Add NotificationSender
+builder.Services.AddScoped<TimesheetManagement.Application.Common.Abstractions.INotificationSender, NotificationSender>();
 
 // Application Insights for ASP.NET Core
 builder.Services.AddApplicationInsightsTelemetry();

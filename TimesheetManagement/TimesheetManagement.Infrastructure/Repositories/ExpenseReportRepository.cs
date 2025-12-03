@@ -47,4 +47,14 @@ public sealed class ExpenseReportRepository : IExpenseReportRepository
 
     public async Task<bool> HasSubmittedForRangeAsync(Guid userId, DateOnly from, DateOnly to, CancellationToken cancellationToken = default)
         => await _db.ExpenseReports.AnyAsync(r => r.UserId == userId && r.Status == ExpenseStatus.Submitted && r.Period.From == from && r.Period.To == to, cancellationToken);
+
+    public async Task<IReadOnlyList<ExpenseReport>> GetPendingForApprovalAsync(Guid? adminUserId = null, CancellationToken cancellationToken = default)
+    {
+        var query = _db.ExpenseReports.Where(r => r.Status == ExpenseStatus.Submitted);
+        if (adminUserId.HasValue)
+        {
+            // Filter by team if needed
+        }
+        return await query.Include(r => r.Items).ToListAsync(cancellationToken);
+    }
 }

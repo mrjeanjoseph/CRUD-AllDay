@@ -9,6 +9,7 @@ using TimesheetManagement.Domain.Teams.Repositories;
 using TimesheetManagement.Domain.TimeTracking.Repositories;
 using TimesheetManagement.Infrastructure.Persistence;
 using TimesheetManagement.Infrastructure.Repositories;
+using TimesheetManagement.Infrastructure.Services;
 
 namespace TimesheetManagement.Infrastructure;
 
@@ -24,6 +25,7 @@ public static class DependencyInjection
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
+        services.AddScoped<IAuditLogWriter, AuditLogWriter>();
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IRoleAssignmentRepository, RoleAssignmentRepository>();

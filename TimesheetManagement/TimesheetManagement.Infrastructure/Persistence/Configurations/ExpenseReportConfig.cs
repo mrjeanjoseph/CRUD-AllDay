@@ -26,8 +26,14 @@ public class ExpenseReportConfig : IEntityTypeConfiguration<ExpenseReport>
         b.Property<DateOnly>("FromDate").HasColumnType("date");
         b.Property<DateOnly>("ToDate").HasColumnType("date");
 
-        // Index for overlap queries
+        // Add composite index for overlap queries
         b.HasIndex("UserId", "FromDate", "ToDate");
+
+        // Index on Status for pending approvals
+        b.HasIndex(x => x.Status);
+
+        // Concurrency token
+        b.Property<byte[]>("RowVersion").IsRowVersion();
 
         var itemsNav = b.Navigation(x => x.Items);
         itemsNav.HasField("_items");

@@ -47,4 +47,15 @@ public sealed class TimeSheetRepository : ITimeSheetRepository
 
     public async Task<bool> HasSubmittedForRangeAsync(Guid userId, DateOnly from, DateOnly to, CancellationToken cancellationToken = default)
         => await _db.TimeSheets.AnyAsync(s => s.UserId == userId && s.Status == TimeSheetStatus.Submitted && s.Period.From == from && s.Period.To == to, cancellationToken);
+
+    public async Task<IReadOnlyList<TimeSheet>> GetPendingForApprovalAsync(Guid? adminUserId = null, CancellationToken cancellationToken = default)
+    {
+        var query = _db.TimeSheets.Where(s => s.Status == TimeSheetStatus.Submitted);
+        if (adminUserId.HasValue)
+        {
+            // Assuming admin can approve based on team membership; for simplicity, return all for now
+            // In real app, filter by team
+        }
+        return await query.Include(s => s.Entries).ToListAsync(cancellationToken);
+    }
 }

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TimesheetManagement.Domain.Audit;
 using TimesheetManagement.Domain.Expenses;
 using TimesheetManagement.Domain.Identity;
 using TimesheetManagement.Domain.Projects;
@@ -24,6 +25,8 @@ public class AppDbContext : DbContext
 
     public DbSet<Team> Teams => Set<Team>();
     public DbSet<TeamMember> TeamMembers => Set<TeamMember>();
+
+    public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

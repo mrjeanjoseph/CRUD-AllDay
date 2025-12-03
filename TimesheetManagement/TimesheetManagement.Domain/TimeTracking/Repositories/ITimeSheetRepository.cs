@@ -11,4 +11,5 @@ public interface ITimeSheetRepository
     Task AddAsync(TimeSheet sheet, CancellationToken cancellationToken = default);
     Task UpdateAsync(TimeSheet sheet, CancellationToken cancellationToken = default);
     Task<bool> HasSubmittedForRangeAsync(Guid userId, DateOnly from, DateOnly to, CancellationToken cancellationToken = default);
+    Task<IReadOnlyList<TimeSheet>> GetPendingForApprovalAsync(Guid? adminUserId = null, CancellationToken cancellationToken = default);
 }
