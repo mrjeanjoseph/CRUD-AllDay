@@ -1,9 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using TimesheetManagement.Domain.TimeTracking;
 using TimesheetManagement.Domain.TimeTracking.Repositories;
 using TimesheetManagement.Infrastructure.Persistence;

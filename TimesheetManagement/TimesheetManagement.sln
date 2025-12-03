@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Applica
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Infrastructure", "TimesheetManagement.Infrastructure\TimesheetManagement.Infrastructure.csproj", "{1E845406-E8A3-4FE0-A201-F99A3AB52481}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.API", "TimesheetManagement.API\TimesheetManagement.API.csproj", "{81F08F16-5D96-460E-B845-99EA16A6860F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1E845406-E8A3-4FE0-A201-F99A3AB52481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E845406-E8A3-4FE0-A201-F99A3AB52481}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E845406-E8A3-4FE0-A201-F99A3AB52481}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81F08F16-5D96-460E-B845-99EA16A6860F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81F08F16-5D96-460E-B845-99EA16A6860F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81F08F16-5D96-460E-B845-99EA16A6860F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81F08F16-5D96-460E-B845-99EA16A6860F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

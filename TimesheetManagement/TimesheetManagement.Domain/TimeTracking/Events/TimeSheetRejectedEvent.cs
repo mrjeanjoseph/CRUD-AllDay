@@ -1,4 +1,3 @@
-using System;
 using TimesheetManagement.Domain.Common;
 
 namespace TimesheetManagement.Domain.TimeTracking.Events;

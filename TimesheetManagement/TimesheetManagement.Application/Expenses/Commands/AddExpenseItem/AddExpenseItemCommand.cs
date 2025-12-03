@@ -1,6 +1,4 @@
-using System;
 using TimesheetManagement.Application.Common.Abstractions;
-using TimesheetManagement.Domain.Expenses.ValueObjects;
 
 namespace TimesheetManagement.Application.Expenses.Commands.AddExpenseItem;
 public sealed record AddExpenseItemCommand(

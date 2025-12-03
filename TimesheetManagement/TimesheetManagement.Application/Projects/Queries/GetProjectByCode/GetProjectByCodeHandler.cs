@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.Application.Projects.Queries.GetAllProjects;
 using TimesheetManagement.Domain.Projects.Repositories;

@@ -1,8 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using TimesheetManagement.Domain.Teams;
 using TimesheetManagement.Domain.Teams.Repositories;
 using TimesheetManagement.Infrastructure.Persistence;

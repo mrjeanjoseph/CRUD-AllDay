@@ -1,4 +1,3 @@
-using System;
 using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.Application.Teams.Queries.GetAllTeams;
 

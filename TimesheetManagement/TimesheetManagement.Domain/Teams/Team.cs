@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using TimesheetManagement.Domain.Common;
 
 namespace TimesheetManagement.Domain.Teams;

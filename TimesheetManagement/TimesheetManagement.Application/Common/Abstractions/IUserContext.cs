@@ -1,5 +1,3 @@
-using System;
-
 namespace TimesheetManagement.Application.Common.Abstractions;
 public interface IUserContext
 {

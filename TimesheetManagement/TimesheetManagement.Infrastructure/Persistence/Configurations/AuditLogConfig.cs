@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TimesheetManagement.Domain.Audit;
-using System;
 
 namespace TimesheetManagement.Infrastructure.Persistence.Configurations;
 

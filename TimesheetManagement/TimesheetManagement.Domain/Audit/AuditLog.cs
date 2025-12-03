@@ -1,5 +1,4 @@
 using TimesheetManagement.Domain.Common;
-using System;
 
 namespace TimesheetManagement.Domain.Audit;
 

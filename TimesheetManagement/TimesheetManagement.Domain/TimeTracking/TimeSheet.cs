@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using TimesheetManagement.Domain.Common;
 using TimesheetManagement.Domain.Common.ValueObjects;
 using TimesheetManagement.Domain.TimeTracking.Events;

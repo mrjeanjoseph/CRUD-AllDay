@@ -1,5 +1,3 @@
-using System;
-
 namespace TimesheetManagement.Domain.Expenses.ValueObjects;
 public readonly record struct Money
 {

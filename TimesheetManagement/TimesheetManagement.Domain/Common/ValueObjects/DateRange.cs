@@ -1,5 +1,3 @@
-using System;
-
 namespace TimesheetManagement.Domain.Common.ValueObjects;
 public readonly record struct DateRange
 {

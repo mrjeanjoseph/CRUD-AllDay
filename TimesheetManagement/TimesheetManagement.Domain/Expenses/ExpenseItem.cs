@@ -1,4 +1,3 @@
-using System;
 using TimesheetManagement.Domain.Common;
 using TimesheetManagement.Domain.Expenses.ValueObjects;
 

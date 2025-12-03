@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
 
 namespace TimesheetManagement.Infrastructure.Persistence;

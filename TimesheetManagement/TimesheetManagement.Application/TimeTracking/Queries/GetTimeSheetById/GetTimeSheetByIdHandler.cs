@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.Domain.TimeTracking.Repositories;
 

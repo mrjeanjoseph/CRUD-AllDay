@@ -1,5 +1,3 @@
-using System;
-
 namespace TimesheetManagement.Domain.TimeTracking.ValueObjects;
 public readonly record struct HoursWorked
 {

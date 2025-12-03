@@ -1,7 +1,3 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace TimesheetManagement.Domain.Identity.Repositories;
 public interface IUserRepository
 {

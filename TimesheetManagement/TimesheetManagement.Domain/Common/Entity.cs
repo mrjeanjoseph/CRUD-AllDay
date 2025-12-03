@@ -1,5 +1,3 @@
-using System;
-
 namespace TimesheetManagement.Domain.Common;
 public abstract class Entity
 {

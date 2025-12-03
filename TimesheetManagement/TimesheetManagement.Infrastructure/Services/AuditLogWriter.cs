@@ -1,6 +1,3 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.Domain.Audit;
 using TimesheetManagement.Infrastructure.Persistence;

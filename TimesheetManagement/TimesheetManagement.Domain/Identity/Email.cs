@@ -1,5 +1,3 @@
-using System;
-
 namespace TimesheetManagement.Domain.Identity;
 public readonly record struct Email
 {
