@@ -15,7 +15,7 @@ public sealed class TeamRepository : ITeamRepository
     public TeamRepository(AppDbContext db) => _db = db;
 
     public async Task<Team?> GetAsync(Guid id, CancellationToken cancellationToken = default)
-        => await _db.Teams.FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
+        => await _db.Teams.Include(t => t.Members).FirstOrDefaultAsync(t => t.Id == id, cancellationToken);
 
     public async Task<bool> NameExistsAsync(string name, CancellationToken cancellationToken = default)
         => await _db.Teams.AnyAsync(t => t.Name == name, cancellationToken);
@@ -30,5 +30,5 @@ public sealed class TeamRepository : ITeamRepository
     }
 
     public async Task<IReadOnlyList<Team>> GetAllAsync(CancellationToken cancellationToken = default)
-        => await _db.Teams.ToListAsync(cancellationToken);
+        => await _db.Teams.Include(t => t.Members).ToListAsync(cancellationToken);
 }

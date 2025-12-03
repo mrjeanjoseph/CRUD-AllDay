@@ -8,12 +8,12 @@ public class ExpenseItem : Entity
     public DateOnly Date { get; private set; }
     public string Category { get; private set; } = string.Empty;
     public Money Amount { get; private set; }
-    public string? ReceiptPath { get; private set; }
-    public string? Notes { get; private set; }
+    public string ReceiptPath { get; private set; }
+    public string Notes { get; private set; }
 
     private ExpenseItem() { }
 
-    public ExpenseItem(DateOnly date, string category, Money amount, string? receiptPath = null, string? notes = null)
+    public ExpenseItem(DateOnly date, string category, Money amount, string receiptPath = null, string notes = null)
     {
         if (string.IsNullOrWhiteSpace(category)) throw new ArgumentException("Category required", nameof(category));
         Date = date;
@@ -23,7 +23,7 @@ public class ExpenseItem : Entity
         Notes = notes;
     }
 
-    public void Update(string category, Money amount, string? receiptPath, string? notes)
+    public void Update(string category, Money amount, string receiptPath, string notes)
     {
         if (string.IsNullOrWhiteSpace(category)) throw new ArgumentException("Category required", nameof(category));
         Category = category.Trim();

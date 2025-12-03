@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TimesheetManagement.Domain.Common;
 
 namespace TimesheetManagement.Domain.Teams;
@@ -7,8 +8,8 @@ public class Team : Entity
 {
     public string Name { get; private set; }
     public bool IsArchived { get; private set; }
-    private readonly List<Guid> _memberIds = new();
-    public IReadOnlyList<Guid> MemberIds => _memberIds;
+    private readonly List<TeamMember> _members = new();
+    public IReadOnlyList<TeamMember> Members => _members;
 
     private Team() { }
 
@@ -29,14 +30,14 @@ public class Team : Entity
     {
         if (IsArchived) throw new InvalidOperationException("Cannot modify archived team");
         if (userId == Guid.Empty) throw new ArgumentException("UserId required", nameof(userId));
-        if (_memberIds.Contains(userId)) return;
-        _memberIds.Add(userId);
+        if (_members.Any(m => m.UserId == userId)) return;
+        _members.Add(new TeamMember(Id, userId));
     }
 
     public void RemoveMember(Guid userId)
     {
         if (IsArchived) throw new InvalidOperationException("Cannot modify archived team");
-        _memberIds.Remove(userId);
+        _members.RemoveAll(m => m.UserId == userId);
     }
 
     public void Archive() => IsArchived = true;

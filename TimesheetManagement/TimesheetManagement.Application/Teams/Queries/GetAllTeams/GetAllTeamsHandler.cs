@@ -3,9 +3,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
+using TimesheetManagement.Application.Teams.Queries.GetAllTeams;
 using TimesheetManagement.Domain.Teams.Repositories;
-namespace TimesheetManagement.Application.Teams.Queries.GetAllTeams;
-
 
 public sealed class GetAllTeamsHandler : IQueryHandler<GetAllTeamsQuery, IReadOnlyList<TeamDto>>
 {
@@ -19,6 +18,6 @@ public sealed class GetAllTeamsHandler : IQueryHandler<GetAllTeamsQuery, IReadOn
     public async Task<IReadOnlyList<TeamDto>> Handle(GetAllTeamsQuery query, CancellationToken cancellationToken)
     {
         var teams = await _repo.GetAllAsync(cancellationToken);
-        return teams.Select(t => new TeamDto(t.Id, t.Name, t.IsArchived, t.MemberIds)).ToList();
+        return teams.Select(t => new TeamDto(t.Id, t.Name, t.IsArchived, t.Members.Select(m => m.UserId).ToList())).ToList();
     }
 }

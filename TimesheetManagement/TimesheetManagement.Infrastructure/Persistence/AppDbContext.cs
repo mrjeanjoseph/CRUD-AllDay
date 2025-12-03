@@ -23,6 +23,7 @@ public class AppDbContext : DbContext
     public DbSet<Project> Projects => Set<Project>();
 
     public DbSet<Team> Teams => Set<Team>();
+    public DbSet<TeamMember> TeamMembers => Set<TeamMember>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
@@ -19,6 +20,6 @@ public sealed class GetTeamByIdHandler : IQueryHandler<GetTeamByIdQuery, TeamDto
     {
         var team = await _repo.GetAsync(query.TeamId, cancellationToken);
         if (team is null) throw new KeyNotFoundException("Team not found");
-        return new TeamDto(team.Id, team.Name, team.IsArchived, team.MemberIds);
+        return new TeamDto(team.Id, team.Name, team.IsArchived, team.Members.Select(m => m.UserId).ToList());
     }
 }

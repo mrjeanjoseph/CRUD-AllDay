@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TimesheetManagement.Domain.Expenses;
@@ -20,6 +21,13 @@ public class ExpenseReportConfig : IEntityTypeConfiguration<ExpenseReport>
             nb.Property(p => p.From).HasColumnName("FromDate").HasColumnType("date");
             nb.Property(p => p.To).HasColumnName("ToDate").HasColumnType("date");
         });
+
+        // Define shadow properties for indexing
+        b.Property<DateOnly>("FromDate").HasColumnType("date");
+        b.Property<DateOnly>("ToDate").HasColumnType("date");
+
+        // Index for overlap queries
+        b.HasIndex("UserId", "FromDate", "ToDate");
 
         var itemsNav = b.Navigation(x => x.Items);
         itemsNav.HasField("_items");

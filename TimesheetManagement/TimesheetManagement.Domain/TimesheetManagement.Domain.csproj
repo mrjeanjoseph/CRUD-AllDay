@@ -8,10 +8,4 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="Events\Handlers\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".readme\domain.md" />
-  </ItemGroup>
 </Project>

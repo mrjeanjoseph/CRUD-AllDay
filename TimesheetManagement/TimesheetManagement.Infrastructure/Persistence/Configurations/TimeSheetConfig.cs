@@ -1,3 +1,4 @@
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TimesheetManagement.Domain.TimeTracking;
@@ -20,7 +21,13 @@ public class TimeSheetConfig : IEntityTypeConfiguration<TimeSheet>
             nb.Property(p => p.To).HasColumnName("ToDate").HasColumnType("date");
         });
 
-        // Configure backing field for Entries so EF can properly map and include
+        // Define shadow properties for indexing
+        b.Property<DateOnly>("FromDate").HasColumnType("date");
+        b.Property<DateOnly>("ToDate").HasColumnType("date");
+
+        // Add composite index for overlap queries
+        b.HasIndex("UserId", "FromDate", "ToDate");
+
         var entriesNav = b.Navigation(x => x.Entries);
         entriesNav.HasField("_entries");
         entriesNav.UsePropertyAccessMode(PropertyAccessMode.Field);
