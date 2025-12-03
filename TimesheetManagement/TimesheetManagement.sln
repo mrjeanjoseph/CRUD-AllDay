@@ -5,6 +5,10 @@ VisualStudioVersion = 17.14.36327.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Domain", "TimesheetManagement.Domain\TimesheetManagement.Domain.csproj", "{96D58329-8596-4F39-A958-B0F159605073}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Application", "TimesheetManagement.Application\TimesheetManagement.Application.csproj", "{C29A00E6-88D8-4405-8EA8-E1995B626E40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Infrastructure", "TimesheetManagement.Infrastructure\TimesheetManagement.Infrastructure.csproj", "{1E845406-E8A3-4FE0-A201-F99A3AB52481}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{96D58329-8596-4F39-A958-B0F159605073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96D58329-8596-4F39-A958-B0F159605073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96D58329-8596-4F39-A958-B0F159605073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C29A00E6-88D8-4405-8EA8-E1995B626E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C29A00E6-88D8-4405-8EA8-E1995B626E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C29A00E6-88D8-4405-8EA8-E1995B626E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C29A00E6-88D8-4405-8EA8-E1995B626E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E845406-E8A3-4FE0-A201-F99A3AB52481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E845406-E8A3-4FE0-A201-F99A3AB52481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E845406-E8A3-4FE0-A201-F99A3AB52481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E845406-E8A3-4FE0-A201-F99A3AB52481}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
