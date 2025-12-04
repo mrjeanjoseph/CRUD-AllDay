@@ -2,11 +2,12 @@ using FluentAssertions;
 using Moq;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using TimesheetManagement.Application.Identity.Queries.GetUserById;
 using TimesheetManagement.Domain.Identity;
 using TimesheetManagement.Domain.Identity.Repositories;
+using TimesheetManagement.UnitTests.TestHelpers;
 using Xunit;
 
 namespace TimesheetManagement.UnitTests.Application.Identity.Queries.GetUserById;
@@ -18,7 +19,7 @@ public class GetUserByIdHandlerTests
 
     public GetUserByIdHandlerTests()
     {
-        _userRepoMock = new Mock<IUserRepository>();
+        _userRepoMock = ApplicationTestHelpers.CreateUserRepository();
         _handler = new GetUserByIdHandler(_userRepoMock.Object);
     }
 
@@ -27,10 +28,8 @@ public class GetUserByIdHandlerTests
     {
         // Arrange
         var userId = Guid.NewGuid();
-        var user = new User("testuser", new Email("test@example.com"));
-        var idProperty = typeof(User).GetProperty("Id", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-        idProperty!.SetValue(user, userId);
-        _userRepoMock.Setup(x => x.GetAsync(userId, default)).ReturnsAsync(user);
+        var user = TestData.CreateSampleUser(userId);
+        _userRepoMock.Setup(x => x.GetAsync(userId, It.IsAny<CancellationToken>())).ReturnsAsync(user);
         var query = new GetUserByIdQuery(userId);
 
         // Act

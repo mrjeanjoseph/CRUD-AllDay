@@ -3,9 +3,9 @@ using TimesheetManagement.Domain.Common;
 namespace TimesheetManagement.Domain.Projects;
 public class Project : Entity
 {
-    public string Code { get; private set; }
-    public string Name { get; private set; }
-    public string Industry { get; private set; }
+    public string Code { get; private set; } = string.Empty;
+    public string Name { get; private set; } = string.Empty;
+    public string Industry { get; private set; } = string.Empty;
     public bool IsArchived { get; private set; }
     public DateTime CreatedOn { get; private set; } = DateTime.UtcNow;
 

@@ -7,6 +7,7 @@ using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.Application.Identity.Commands.ChangePassword;
 using TimesheetManagement.Domain.Identity;
 using TimesheetManagement.Domain.Identity.Repositories;
+using TimesheetManagement.UnitTests.TestHelpers;
 using Xunit;
 
 namespace TimesheetManagement.UnitTests.Application.Identity.Commands.ChangePassword;
@@ -19,8 +20,8 @@ public class ChangePasswordValidatorTests
 
     public ChangePasswordValidatorTests()
     {
-        _userRepoMock = new Mock<IUserRepository>();
-        _userContextMock = new Mock<IUserContext>();
+        _userRepoMock = ApplicationTestHelpers.CreateUserRepository();
+        _userContextMock = ApplicationTestHelpers.CreateUserContext();
         _validator = new ChangePasswordValidator(_userRepoMock.Object, _userContextMock.Object);
     }
 
@@ -29,7 +30,7 @@ public class ChangePasswordValidatorTests
     {
         // Arrange
         var userId = Guid.NewGuid();
-        var user = new User("testuser", new Email("test@example.com"));
+        var user = TestData.CreateSampleUser(userId);
         _userRepoMock.Setup(x => x.GetAsync(userId, It.IsAny<CancellationToken>())).ReturnsAsync(user);
         _userContextMock.Setup(x => x.UserId).Returns(userId);
         var command = new ChangePasswordCommand(userId, "newhashedpassword123456789012345678901234567890123456789012345678901234567890");
@@ -46,7 +47,7 @@ public class ChangePasswordValidatorTests
     {
         // Arrange
         var userId = Guid.NewGuid();
-        var user = new User("testuser", new Email("test@example.com"));
+        var user = TestData.CreateSampleUser(userId);
         _userRepoMock.Setup(x => x.GetAsync(userId, It.IsAny<CancellationToken>())).ReturnsAsync(user);
         _userContextMock.Setup(x => x.UserId).Returns(Guid.NewGuid()); // Different user
         _userContextMock.Setup(x => x.IsInRole("Admin")).Returns(true);

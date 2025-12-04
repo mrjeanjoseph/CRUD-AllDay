@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using TimesheetManagement.Application.Identity.Commands.RegisterUser;
 using TimesheetManagement.Domain.Identity;
 using TimesheetManagement.Domain.Identity.Repositories;
+using TimesheetManagement.UnitTests.TestHelpers;
 using Xunit;
 
 namespace TimesheetManagement.UnitTests.Application.Identity.Commands.RegisterUser;
@@ -16,7 +17,7 @@ public class RegisterUserValidatorTests
 
     public RegisterUserValidatorTests()
     {
-        _userRepoMock = new Mock<IUserRepository>();
+        _userRepoMock = ApplicationTestHelpers.CreateUserRepository();
         _validator = new RegisterUserValidator(_userRepoMock.Object);
     }
 
@@ -25,7 +26,7 @@ public class RegisterUserValidatorTests
     {
         // Arrange
         var command = new RegisterUserCommand("testuser", "test@example.com", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", Role.User);
-        _userRepoMock.Setup(x => x.ExistsAsync(It.IsAny<Email>(), It.IsAny<CancellationToken>())).ReturnsAsync(false);
+        _userRepoMock.Setup(x => x.ExistsAsync(It.Is<Email>(e => e.Value == "test@example.com"), It.IsAny<CancellationToken>())).ReturnsAsync(false);
 
         // Act
         var result = await _validator.ValidateAsync(command);
@@ -67,7 +68,7 @@ public class RegisterUserValidatorTests
     {
         // Arrange
         var command = new RegisterUserCommand("testuser", "test@example.com", "hashedpassword", Role.User);
-        _userRepoMock.Setup(x => x.ExistsAsync(It.IsAny<Email>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
+        _userRepoMock.Setup(x => x.ExistsAsync(It.Is<Email>(e => e.Value == "test@example.com"), It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
         // Act
         var result = await _validator.ValidateAsync(command);

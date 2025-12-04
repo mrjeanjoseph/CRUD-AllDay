@@ -8,6 +8,7 @@ using TimesheetManagement.Application.TimeTracking.Commands.ApproveTimeSheet;
 using TimesheetManagement.Domain.TimeTracking;
 using TimesheetManagement.Domain.TimeTracking.Repositories;
 using TimesheetManagement.Domain.TimeTracking.ValueObjects;
+using TimesheetManagement.UnitTests.TestHelpers;
 using Xunit;
 
 namespace TimesheetManagement.UnitTests.Application.TimeTracking.Commands.ApproveTimeSheet;
@@ -20,8 +21,8 @@ public class ApproveTimeSheetValidatorTests
 
     public ApproveTimeSheetValidatorTests()
     {
-        _repoMock = new Mock<ITimeSheetRepository>();
-        _contextMock = new Mock<IUserContext>();
+        _repoMock = ApplicationTestHelpers.CreateTimeSheetRepository();
+        _contextMock = ApplicationTestHelpers.CreateUserContext();
         _validator = new ApproveTimeSheetValidator(_repoMock.Object, _contextMock.Object);
     }
 
@@ -30,7 +31,7 @@ public class ApproveTimeSheetValidatorTests
     {
         // Arrange
         var tsId = Guid.NewGuid();
-        var ts = new TimeSheet(Guid.NewGuid(), DateOnly.FromDateTime(DateTime.Today), DateOnly.FromDateTime(DateTime.Today.AddDays(7)));
+        var ts = TestData.CreateSampleTimeSheet(id: tsId);
         ts.AddEntry(new TimeEntry(Guid.NewGuid(), DateOnly.FromDateTime(DateTime.Today), new HoursWorked(8)));
         ts.Submit();
         var command = new ApproveTimeSheetCommand(tsId, Guid.NewGuid(), "Approved");
