@@ -3,6 +3,7 @@ using TimesheetManagement.Domain.Common.ValueObjects;
 using TimesheetManagement.Domain.Expenses;
 using TimesheetManagement.Domain.Expenses.ValueObjects;
 using TimesheetManagement.Domain.Identity;
+using TimesheetManagement.Domain.Projects;
 using TimesheetManagement.Domain.TimeTracking;
 using TimesheetManagement.Domain.TimeTracking.ValueObjects;
 
@@ -42,5 +43,15 @@ public static class TestData
             typeof(ExpenseReport).GetProperty("Id", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.SetValue(report, id.Value);
         }
         return report;
+    }
+
+    public static Project CreateSampleProject(Guid? id = null)
+    {
+        var project = new Project("PROJ001", "Test Project", "Tech");
+        if (id.HasValue)
+        {
+            typeof(Project).GetProperty("Id", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.SetValue(project, id.Value);
+        }
+        return project;
     }
 }
