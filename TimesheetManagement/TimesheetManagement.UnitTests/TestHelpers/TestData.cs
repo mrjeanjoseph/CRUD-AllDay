@@ -4,6 +4,7 @@ using TimesheetManagement.Domain.Expenses;
 using TimesheetManagement.Domain.Expenses.ValueObjects;
 using TimesheetManagement.Domain.Identity;
 using TimesheetManagement.Domain.Projects;
+using TimesheetManagement.Domain.Teams;
 using TimesheetManagement.Domain.TimeTracking;
 using TimesheetManagement.Domain.TimeTracking.ValueObjects;
 
@@ -53,5 +54,15 @@ public static class TestData
             typeof(Project).GetProperty("Id", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.SetValue(project, id.Value);
         }
         return project;
+    }
+
+    public static Team CreateSampleTeam(Guid? id = null)
+    {
+        var team = new Team("Test Team");
+        if (id.HasValue)
+        {
+            typeof(Team).GetProperty("Id", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.SetValue(team, id.Value);
+        }
+        return team;
     }
 }

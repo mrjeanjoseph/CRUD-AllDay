@@ -4,6 +4,7 @@ using TimesheetManagement.Domain.Identity.Repositories;
 using TimesheetManagement.Domain.TimeTracking.Repositories;
 using TimesheetManagement.Domain.Expenses.Repositories;
 using TimesheetManagement.Domain.Projects.Repositories;
+using TimesheetManagement.Domain.Teams.Repositories;
 
 namespace TimesheetManagement.UnitTests.TestHelpers;
 
@@ -32,6 +33,11 @@ public static class ApplicationTestHelpers
     public static Mock<IProjectRepository> CreateProjectRepository()
     {
         return new Mock<IProjectRepository>();
+    }
+
+    public static Mock<ITeamRepository> CreateTeamRepository()
+    {
+        return new Mock<ITeamRepository>();
     }
 
     // Add more as needed for other repositories or services
