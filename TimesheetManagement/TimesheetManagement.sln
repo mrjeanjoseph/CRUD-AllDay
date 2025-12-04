@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Infrast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.API", "TimesheetManagement.API\TimesheetManagement.API.csproj", "{81F08F16-5D96-460E-B845-99EA16A6860F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Legacy", "Legacy", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Tests", "TimesheetManagement.Tests\TimesheetManagement.Tests.csproj", "{D06A0681-066A-78DD-5ADD-DF8CB90DA05B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{81F08F16-5D96-460E-B845-99EA16A6860F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81F08F16-5D96-460E-B845-99EA16A6860F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81F08F16-5D96-460E-B845-99EA16A6860F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D06A0681-066A-78DD-5ADD-DF8CB90DA05B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D06A0681-066A-78DD-5ADD-DF8CB90DA05B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D06A0681-066A-78DD-5ADD-DF8CB90DA05B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D06A0681-066A-78DD-5ADD-DF8CB90DA05B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -25,6 +25,7 @@ public static class DependencyInjection
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
+        services.AddScoped<IAuditLogRepository, AuditLogRepository>();
         services.AddScoped<IAuditLogWriter, AuditLogWriter>();
 
         services.AddScoped<IUserRepository, UserRepository>();
