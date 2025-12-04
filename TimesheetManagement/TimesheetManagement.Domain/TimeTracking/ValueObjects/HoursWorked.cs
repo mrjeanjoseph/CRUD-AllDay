@@ -7,6 +7,6 @@ public readonly record struct HoursWorked
         if (value <= 0 || value > 24) throw new ArgumentOutOfRangeException(nameof(value));
         Value = decimal.Round(value, 2);
     }
-    public override string ToString() => Value.ToString("0.##");
+    public override string ToString() => Value.ToString("0.00");
     public static implicit operator decimal(HoursWorked hw) => hw.Value;
 }

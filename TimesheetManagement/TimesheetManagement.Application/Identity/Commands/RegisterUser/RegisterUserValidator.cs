@@ -10,20 +10,15 @@ public sealed class RegisterUserValidator : AbstractValidator<RegisterUserComman
             .NotEmpty().MinimumLength(3);
 
         RuleFor(x => x.Email)
-            .NotEmpty().EmailAddress();
+            .NotEmpty()
+            .Must(email => !string.IsNullOrWhiteSpace(email) && email.Contains('@'))
+            .WithMessage("Invalid email format");
 
         RuleFor(x => x.Email)
             .MustAsync(async (email, ct) =>
             {
-                try
-                {
-                    var emailObj = new TimesheetManagement.Domain.Identity.Email(email);
-                    return !(await users.ExistsAsync(emailObj, ct));
-                }
-                catch
-                {
-                    return true; // If invalid, don't check existence
-                }
+                var emailObj = new TimesheetManagement.Domain.Identity.Email(email);
+                return !(await users.ExistsAsync(emailObj, ct));
             })
             .WithMessage("Email already registered");
 

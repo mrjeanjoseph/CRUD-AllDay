@@ -37,7 +37,7 @@ public class HoursWorkedTests
         var hours = new HoursWorked(8.5m);
 
         // Act & Assert
-        hours.ToString().Should().Be("8.5");
+        hours.ToString().Should().Be("8.50");
     }
 
     [Fact]

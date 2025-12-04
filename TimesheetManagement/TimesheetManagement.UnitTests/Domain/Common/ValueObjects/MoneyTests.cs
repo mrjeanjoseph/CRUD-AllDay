@@ -25,10 +25,10 @@ public class MoneyTests
     [Theory]
     [InlineData(-1.0)]
     [InlineData(0.0)]
-    public void Constructor_InvalidAmount_ShouldThrowArgumentOutOfRangeException(decimal amount)
+    public void Constructor_InvalidAmount_ShouldThrowArgumentException(decimal amount)
     {
         // Act & Assert
-        Assert.Throws<ArgumentOutOfRangeException>(() => new Money(amount, "USD"));
+        Assert.Throws<ArgumentException>(() => new Money(amount, "USD"));
     }
 
     [Fact]

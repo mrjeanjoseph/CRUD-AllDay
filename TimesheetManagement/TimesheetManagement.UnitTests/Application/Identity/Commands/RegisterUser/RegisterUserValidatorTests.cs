@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Moq;
+using System.Threading;
 using System.Threading.Tasks;
 using TimesheetManagement.Application.Identity.Commands.RegisterUser;
 using TimesheetManagement.Domain.Identity;
@@ -24,7 +25,7 @@ public class RegisterUserValidatorTests
     {
         // Arrange
         var command = new RegisterUserCommand("testuser", "test@example.com", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", Role.User);
-        _userRepoMock.Setup(x => x.ExistsAsync(It.IsAny<Email>(), default)).ReturnsAsync(false);
+        _userRepoMock.Setup(x => x.ExistsAsync(It.IsAny<Email>(), It.IsAny<CancellationToken>())).ReturnsAsync(false);
 
         // Act
         var result = await _validator.ValidateAsync(command);
@@ -66,7 +67,7 @@ public class RegisterUserValidatorTests
     {
         // Arrange
         var command = new RegisterUserCommand("testuser", "test@example.com", "hashedpassword", Role.User);
-        _userRepoMock.Setup(x => x.ExistsAsync(It.IsAny<Email>(), default)).ReturnsAsync(true);
+        _userRepoMock.Setup(x => x.ExistsAsync(It.IsAny<Email>(), It.IsAny<CancellationToken>())).ReturnsAsync(true);
 
         // Act
         var result = await _validator.ValidateAsync(command);
@@ -81,7 +82,7 @@ public class RegisterUserValidatorTests
     {
         // Arrange
         var command = new RegisterUserCommand("testuser", "test@example.com", "short", Role.User);
-        _userRepoMock.Setup(x => x.ExistsAsync(It.IsAny<Email>(), default)).ReturnsAsync(false);
+        _userRepoMock.Setup(x => x.ExistsAsync(It.IsAny<Email>(), It.IsAny<CancellationToken>())).ReturnsAsync(false);
 
         // Act
         var result = await _validator.ValidateAsync(command);

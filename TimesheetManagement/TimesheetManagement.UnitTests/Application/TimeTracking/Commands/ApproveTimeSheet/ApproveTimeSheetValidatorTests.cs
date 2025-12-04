@@ -98,7 +98,7 @@ public class ApproveTimeSheetValidatorTests
         // Arrange
         var tsId = Guid.NewGuid();
         var ts = new TimeSheet(Guid.NewGuid(), DateOnly.FromDateTime(DateTime.Today), DateOnly.FromDateTime(DateTime.Today.AddDays(7)));
-        typeof(TimeSheet).GetProperty("Status")!.SetValue(ts, TimeSheetStatus.Submitted);
+        typeof(TimeSheet).GetProperty("Status")!.SetValue(ts, TimeSheetStatus.Draft);
         var command = new ApproveTimeSheetCommand(tsId, Guid.NewGuid(), "Approved");
         _repoMock.Setup(x => x.GetAsync(tsId, default)).ReturnsAsync(ts);
         _contextMock.Setup(x => x.IsInRole("Admin")).Returns(true);

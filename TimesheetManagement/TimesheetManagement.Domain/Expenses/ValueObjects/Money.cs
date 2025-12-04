@@ -6,7 +6,7 @@ public readonly record struct Money
 
     public Money(decimal amount, string currency)
     {
-        if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount));
+        if (amount <= 0) throw new ArgumentException("Amount must be positive", nameof(amount));
         if (string.IsNullOrWhiteSpace(currency)) throw new ArgumentException("Currency required", nameof(currency));
         Amount = amount;
         Currency = currency.ToUpperInvariant();

@@ -1,6 +1,7 @@
 using FluentAssertions;
 using Moq;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.Application.Identity.Commands.ChangePassword;
@@ -29,7 +30,7 @@ public class ChangePasswordValidatorTests
         // Arrange
         var userId = Guid.NewGuid();
         var user = new User("testuser", new Email("test@example.com"));
-        _userRepoMock.Setup(x => x.GetAsync(userId, default)).ReturnsAsync(user);
+        _userRepoMock.Setup(x => x.GetAsync(userId, It.IsAny<CancellationToken>())).ReturnsAsync(user);
         _userContextMock.Setup(x => x.UserId).Returns(userId);
         var command = new ChangePasswordCommand(userId, "newhashedpassword123456789012345678901234567890123456789012345678901234567890");
 
@@ -46,7 +47,7 @@ public class ChangePasswordValidatorTests
         // Arrange
         var userId = Guid.NewGuid();
         var user = new User("testuser", new Email("test@example.com"));
-        _userRepoMock.Setup(x => x.GetAsync(userId, default)).ReturnsAsync(user);
+        _userRepoMock.Setup(x => x.GetAsync(userId, It.IsAny<CancellationToken>())).ReturnsAsync(user);
         _userContextMock.Setup(x => x.UserId).Returns(Guid.NewGuid()); // Different user
         _userContextMock.Setup(x => x.IsInRole("Admin")).Returns(true);
         var command = new ChangePasswordCommand(userId, "newhashedpassword123456789012345678901234567890123456789012345678901234567890");
@@ -96,7 +97,7 @@ public class ChangePasswordValidatorTests
     {
         // Arrange
         var userId = Guid.NewGuid();
-        _userRepoMock.Setup(x => x.GetAsync(userId, default)).ReturnsAsync((User)null);
+        _userRepoMock.Setup(x => x.GetAsync(userId, It.IsAny<System.Threading.CancellationToken>())).ReturnsAsync((User)null);
         _userContextMock.Setup(x => x.UserId).Returns(userId);
         var command = new ChangePasswordCommand(userId, "newhashedpassword123456789");
 
