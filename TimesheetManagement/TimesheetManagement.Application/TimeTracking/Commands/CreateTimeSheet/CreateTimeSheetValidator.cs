@@ -6,7 +6,7 @@ public sealed class CreateTimeSheetValidator : AbstractValidator<CreateTimeSheet
 {
     public CreateTimeSheetValidator(ITimeSheetRepository repo)
     {
-        RuleFor(x => x.UserId).NotEmpty();
+        RuleFor(x => x.UserId).Must(x => x != Guid.Empty);
         RuleFor(x => x.From).NotEmpty();
         RuleFor(x => x.To).NotEmpty().GreaterThanOrEqualTo(x => x.From);
 

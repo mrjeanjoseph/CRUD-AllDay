@@ -8,7 +8,7 @@ public sealed class RejectTimeSheetValidator : AbstractValidator<RejectTimeSheet
 {
     public RejectTimeSheetValidator(ITimeSheetRepository repo, IUserContext context)
     {
-        RuleFor(x => x.TimeSheetId).NotEmpty();
+        RuleFor(x => x.TimeSheetId).Must(x => x != Guid.Empty);
         RuleFor(x => x.Comment).NotEmpty();
 
         RuleFor(x => x)

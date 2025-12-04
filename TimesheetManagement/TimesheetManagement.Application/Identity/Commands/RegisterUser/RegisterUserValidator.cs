@@ -13,7 +13,18 @@ public sealed class RegisterUserValidator : AbstractValidator<RegisterUserComman
             .NotEmpty().EmailAddress();
 
         RuleFor(x => x.Email)
-            .MustAsync(async (email, ct) => !(await users.ExistsAsync(new TimesheetManagement.Domain.Identity.Email(email), ct)))
+            .MustAsync(async (email, ct) =>
+            {
+                try
+                {
+                    var emailObj = new TimesheetManagement.Domain.Identity.Email(email);
+                    return !(await users.ExistsAsync(emailObj, ct));
+                }
+                catch
+                {
+                    return true; // If invalid, don't check existence
+                }
+            })
             .WithMessage("Email already registered");
 
         RuleFor(x => x.PasswordHash)

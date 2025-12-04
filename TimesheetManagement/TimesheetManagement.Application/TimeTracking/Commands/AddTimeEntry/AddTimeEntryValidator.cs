@@ -6,7 +6,7 @@ public sealed class AddTimeEntryValidator : AbstractValidator<AddTimeEntryComman
 {
     public AddTimeEntryValidator(ITimeSheetRepository repo)
     {
-        RuleFor(x => x.ProjectId).NotEmpty();
+        RuleFor(x => x.ProjectId).Must(x => x != Guid.Empty);
         RuleFor(x => x.Date).NotEmpty();
         RuleFor(x => x.Hours).GreaterThan(0).LessThanOrEqualTo(24);
 

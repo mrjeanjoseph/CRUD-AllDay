@@ -9,7 +9,7 @@ public sealed class ApproveTimeSheetValidator : AbstractValidator<ApproveTimeShe
 {
     public ApproveTimeSheetValidator(ITimeSheetRepository repo, IUserContext context)
     {
-        RuleFor(x => x.TimeSheetId).NotEmpty();
+        RuleFor(x => x.TimeSheetId).Must(x => x != Guid.Empty);
 
         RuleFor(x => x)
             .Must(_ => context.IsInRole("Admin") || context.IsInRole("SuperAdmin"))

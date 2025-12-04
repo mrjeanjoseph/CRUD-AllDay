@@ -8,7 +8,7 @@ public sealed class SubmitTimeSheetValidator : AbstractValidator<SubmitTimeSheet
 {
     public SubmitTimeSheetValidator(ITimeSheetRepository repo)
     {
-        RuleFor(x => x.TimeSheetId).NotEmpty();
+        RuleFor(x => x.TimeSheetId).Must(x => x != Guid.Empty);
 
         RuleFor(x => x.TimeSheetId)
             .MustAsync(async (id, ct) =>
