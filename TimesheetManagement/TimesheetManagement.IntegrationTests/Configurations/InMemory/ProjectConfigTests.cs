@@ -1,13 +1,10 @@
-using System.Linq;
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
 using TimesheetManagement.Domain.Projects;
 using TimesheetManagement.IntegrationTests.TestHelpers;
-using Xunit;
 
 namespace TimesheetManagement.IntegrationTests.Configurations.InMemory;
 
-[Trait("Category","InMemory")]
+[Trait("Category", "InMemory")]
 public class ProjectConfigTests : IClassFixture<InMemoryDatabaseFixture>
 {
     private readonly InMemoryDatabaseFixture _fixture;
@@ -29,5 +26,14 @@ public class ProjectConfigTests : IClassFixture<InMemoryDatabaseFixture>
         hasNameIndex.Should().BeTrue();
         var nameIdx = et.GetIndexes().First(ix => ix.Properties.Any(p => p.Name == "Name"));
         nameIdx.IsUnique.Should().BeTrue();
+
+        var codeProp = et.GetProperties().First(p => p.Name == "Code");
+        codeProp.GetMaxLength().Should().Be(64);
+        var nameProp = et.GetProperties().First(p => p.Name == "Name");
+        nameProp.GetMaxLength().Should().Be(128);
+
+        var isArchived = et.GetProperties().First(p => p.Name == "IsArchived");
+        // Default value metadata may be unavailable in relational model for in-memory provider; check existence
+        isArchived.Should().NotBeNull();
     }
 }

@@ -12,11 +12,15 @@ public class UserConfig : IEntityTypeConfiguration<User>
         b.HasKey(x => x.Id);
         b.Property(x => x.Username).HasMaxLength(64).IsRequired();
 
-        // Map Email value object via ComplexProperty (record struct)
-        b.ComplexProperty(x => x.Email, nb =>
-        {
-            nb.Property(v => v.Value).HasColumnName("Email").HasMaxLength(256).IsRequired();
-        });
+        // Map Email value object via HasConversion to a single Email column
+        b.Property(x => x.Email)
+            .HasConversion(v => v.Value, v => new Email(v))
+            .HasColumnName("Email")
+            .HasMaxLength(256)
+            .IsRequired();
+
+        // Create unique index on Email
+        b.HasIndex(x => x.Email).IsUnique();
 
         b.Property(x => x.PasswordHash)
             .HasConversion(v => v.Value, v => new PasswordHash(v))

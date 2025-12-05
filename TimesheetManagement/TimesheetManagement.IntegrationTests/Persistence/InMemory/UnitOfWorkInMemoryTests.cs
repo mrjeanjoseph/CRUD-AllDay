@@ -1,20 +1,14 @@
 using FluentAssertions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using TimesheetManagement.Application.Common.Abstractions;
-using TimesheetManagement.Infrastructure.Persistence;
-using TimesheetManagement.IntegrationTests.TestHelpers;
 using TimesheetManagement.Domain.TimeTracking;
 using TimesheetManagement.Domain.TimeTracking.Events;
-using Microsoft.EntityFrameworkCore;
-using Xunit;
+using TimesheetManagement.Infrastructure.Persistence;
+using TimesheetManagement.IntegrationTests.TestHelpers;
 
 namespace TimesheetManagement.IntegrationTests.Persistence.InMemory;
 
-[Trait("Category","InMemory")]
+[Trait("Category", "InMemory")]
 public class UnitOfWorkInMemoryTests : IClassFixture<InMemoryDatabaseFixture>
 {
     private readonly InMemoryDatabaseFixture _fixture;
@@ -40,7 +34,7 @@ public class UnitOfWorkInMemoryTests : IClassFixture<InMemoryDatabaseFixture>
         var from = new DateOnly(2024, 2, 1);
         var to = new DateOnly(2024, 2, 7);
         var ts = new TimeSheet(userId, from, to);
-        ts.AddEntry(new TimeEntry(Guid.NewGuid(), from, 
+        ts.AddEntry(new TimeEntry(Guid.NewGuid(), from,
             new Domain.TimeTracking.ValueObjects.HoursWorked(8), "Work"));
         ts.Submit(); // raises TimeSheetSubmittedEvent
 

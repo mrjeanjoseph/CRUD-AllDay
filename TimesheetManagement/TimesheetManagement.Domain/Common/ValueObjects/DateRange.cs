@@ -1,5 +1,5 @@
 namespace TimesheetManagement.Domain.Common.ValueObjects;
-public readonly record struct DateRange
+public record DateRange
 {
     public DateOnly From { get; }
     public DateOnly To { get; }

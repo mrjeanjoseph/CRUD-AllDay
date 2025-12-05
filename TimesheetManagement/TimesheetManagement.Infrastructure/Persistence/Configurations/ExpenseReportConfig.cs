@@ -14,8 +14,8 @@ public class ExpenseReportConfig : IEntityTypeConfiguration<ExpenseReport>
         b.Property(x => x.Status).HasConversion<int>();
         b.Property(x => x.Comment).HasMaxLength(1024);
 
-        // Map DateRange using ComplexProperty (record struct)
-        b.ComplexProperty(x => x.Period, nb =>
+        // Map DateRange using OwnsOne
+        b.OwnsOne(x => x.Period, nb =>
         {
             nb.Property(p => p.From).HasColumnName("FromDate").HasColumnType("date");
             nb.Property(p => p.To).HasColumnName("ToDate").HasColumnType("date");

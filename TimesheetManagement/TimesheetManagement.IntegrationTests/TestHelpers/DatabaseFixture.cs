@@ -1,14 +1,13 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using TimesheetManagement.Infrastructure.Persistence;
-using Xunit;
 
 namespace TimesheetManagement.IntegrationTests.TestHelpers;
 
 public class InMemoryDatabaseFixture : IAsyncLifetime
 {
     private SqliteConnection _connection = null!;
-    
+
     public AppDbContext DbContext { get; private set; } = null!;
 
     public async Task InitializeAsync()

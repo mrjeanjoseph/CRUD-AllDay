@@ -1,13 +1,11 @@
-using System.Linq;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using TimesheetManagement.Domain.Expenses;
 using TimesheetManagement.IntegrationTests.TestHelpers;
-using Xunit;
 
 namespace TimesheetManagement.IntegrationTests.Configurations.InMemory;
 
-[Trait("Category","InMemory")]
+[Trait("Category", "InMemory")]
 public class ExpenseItemConfigTests : IClassFixture<InMemoryDatabaseFixture>
 {
     private readonly InMemoryDatabaseFixture _fixture;
@@ -20,11 +18,15 @@ public class ExpenseItemConfigTests : IClassFixture<InMemoryDatabaseFixture>
         var et = model.FindEntityType(typeof(ExpenseItem));
         et.Should().NotBeNull();
 
-        var amount = et.GetProperties().FirstOrDefault(p => p.Name == "Amount");
-        amount.Should().NotBeNull();
-        amount.GetColumnType().Should().Contain("decimal");
+        var storeId = Microsoft.EntityFrameworkCore.Metadata.StoreObjectIdentifier.Table(et.GetTableName(), et.GetSchema());
 
-        var currency = et.GetProperties().FirstOrDefault(p => p.Name == "Currency") ?? et.GetProperties().FirstOrDefault(p => p.GetColumnName(Microsoft.EntityFrameworkCore.Metadata.StoreObjectIdentifier.Table(et.GetTableName(), et.GetSchema())) == "Currency");
-        currency.Should().NotBeNull();
+        var amountProp = et.GetProperties().FirstOrDefault(p => p.GetColumnName(storeId) == "Amount");
+        amountProp.Should().NotBeNull();
+        amountProp.GetColumnType().Should().Contain("decimal");
+
+        var currencyProp = et.GetProperties().FirstOrDefault(p => p.GetColumnName(storeId) == "Currency") ?? et.GetProperties().FirstOrDefault(p => p.Name == "Currency");
+        currencyProp.Should().NotBeNull();
+        currencyProp.GetMaxLength().Should().Be(3);
+        currencyProp.IsUnicode().Should().BeFalse();
     }
 }

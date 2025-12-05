@@ -14,7 +14,7 @@ public sealed class UserRepository : IUserRepository
         => await _db.Users.FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
 
     public async Task<User?> GetByEmailAsync(Email email, CancellationToken cancellationToken = default)
-        => await _db.Users.FirstOrDefaultAsync(u => u.Email.Value == email.Value, cancellationToken);
+        => await _db.Users.FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
 
     public async Task AddAsync(User user, CancellationToken cancellationToken = default)
         => await _db.Users.AddAsync(user, cancellationToken);
@@ -26,5 +26,5 @@ public sealed class UserRepository : IUserRepository
     }
 
     public async Task<bool> ExistsAsync(Email email, CancellationToken cancellationToken = default)
-        => await _db.Users.AnyAsync(u => u.Email.Value == email.Value, cancellationToken);
+        => await _db.Users.AnyAsync(u => u.Email == email, cancellationToken);
 }

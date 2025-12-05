@@ -1,15 +1,12 @@
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading.Tasks;
 using TimesheetManagement.Domain.Projects;
 using TimesheetManagement.Domain.TimeTracking;
 using TimesheetManagement.IntegrationTests.TestHelpers;
-using Xunit;
 
 namespace TimesheetManagement.IntegrationTests.Persistence.InMemory;
 
-[Trait("Category","InMemory")]
+[Trait("Category", "InMemory")]
 public class AppDbContextInMemoryTests : IClassFixture<InMemoryDatabaseFixture>
 {
     private readonly InMemoryDatabaseFixture _fixture;
@@ -42,7 +39,7 @@ public class AppDbContextInMemoryTests : IClassFixture<InMemoryDatabaseFixture>
         var from = new DateOnly(2024, 1, 1);
         var to = new DateOnly(2024, 1, 7);
         var ts = new TimeSheet(userId, from, to);
-        ts.AddEntry(new TimeEntry(Guid.NewGuid(), from, 
+        ts.AddEntry(new TimeEntry(Guid.NewGuid(), from,
             new Domain.TimeTracking.ValueObjects.HoursWorked(8), "Work"));
 
         // Act

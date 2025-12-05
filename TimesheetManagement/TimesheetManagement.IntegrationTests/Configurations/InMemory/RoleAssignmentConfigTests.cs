@@ -1,13 +1,11 @@
-using System.Linq;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using TimesheetManagement.Domain.Identity;
 using TimesheetManagement.IntegrationTests.TestHelpers;
-using Xunit;
 
 namespace TimesheetManagement.IntegrationTests.Configurations.InMemory;
 
-[Trait("Category","InMemory")]
+[Trait("Category", "InMemory")]
 public class RoleAssignmentConfigTests : IClassFixture<InMemoryDatabaseFixture>
 {
     private readonly InMemoryDatabaseFixture _fixture;
