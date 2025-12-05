@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using TimesheetManagement.Infrastructure.Persistence;
-using Xunit;
 
 namespace TimesheetManagement.IntegrationTests.TestHelpers;
 

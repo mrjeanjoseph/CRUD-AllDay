@@ -1,10 +1,7 @@
 using FluentAssertions;
-using System;
-using System.Threading.Tasks;
 using TimesheetManagement.Domain.Projects;
 using TimesheetManagement.Infrastructure.Repositories;
 using TimesheetManagement.IntegrationTests.TestHelpers;
-using Xunit;
 
 namespace TimesheetManagement.IntegrationTests.Repositories.InMemory;
 
