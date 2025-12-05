@@ -8,7 +8,7 @@ using TimesheetManagement.Infrastructure.Persistence;
 using TimesheetManagement.Infrastructure.Repositories;
 using Xunit;
 
-namespace TimesheetManagement.UnitTests.Repositories;
+namespace TimesheetManagement.IntegrationTests.Repositories;
 
 public class ExpenseReportRepositoryTests
 {
