@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TimesheetManagement.Application.Teams.Queries.GetTeamById;
-using TimesheetManagement.Domain.Teams;
 using TimesheetManagement.Domain.Teams.Repositories;
 using TimesheetManagement.UnitTests.TestHelpers;
 using Xunit;

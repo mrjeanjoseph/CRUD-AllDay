@@ -1,5 +1,3 @@
-using FluentAssertions;
-using System;
 using TimesheetManagement.Domain.Identity;
 using Xunit;
 

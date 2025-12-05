@@ -4,7 +4,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using TimesheetManagement.Application.Expenses.Commands.CreateExpenseReport;
-using TimesheetManagement.Domain.Expenses;
 using TimesheetManagement.Domain.Expenses.Repositories;
 using TimesheetManagement.UnitTests.TestHelpers;
 using Xunit;

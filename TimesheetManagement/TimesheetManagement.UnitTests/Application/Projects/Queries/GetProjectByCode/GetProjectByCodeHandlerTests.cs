@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TimesheetManagement.Application.Projects.Queries.GetProjectByCode;
-using TimesheetManagement.Domain.Projects;
 using TimesheetManagement.Domain.Projects.Repositories;
 using TimesheetManagement.UnitTests.TestHelpers;
 using Xunit;
