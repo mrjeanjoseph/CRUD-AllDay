@@ -12,7 +12,7 @@ public enum TimeSheetStatus
     Rejected = 3
 }
 
-public class TimeSheet : Entity
+public class TimeSheet : Entity, IHasDomainEvents
 {
     public Guid UserId { get; private set; }
     public DateRange Period { get; private set; }
@@ -22,8 +22,8 @@ public class TimeSheet : Entity
     private readonly List<TimeEntry> _entries = new();
     public IReadOnlyList<TimeEntry> Entries => _entries;
 
-    private readonly List<object> _domainEvents = new();
-    public IReadOnlyList<object> DomainEvents => _domainEvents;
+    private readonly List<IDomainEvent> _domainEvents = new();
+    public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents;
 
     private TimeSheet() { }
 
