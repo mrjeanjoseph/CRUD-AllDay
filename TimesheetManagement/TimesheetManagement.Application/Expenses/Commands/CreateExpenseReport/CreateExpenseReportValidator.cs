@@ -8,7 +8,12 @@ public sealed class CreateExpenseReportValidator : AbstractValidator<CreateExpen
     {
         RuleFor(x => x.UserId).NotEmpty();
         RuleFor(x => x.From).NotEmpty();
-        RuleFor(x => x.To).NotEmpty().GreaterThanOrEqualTo(x => x.From);
+        RuleFor(x => x.From)
+            .LessThanOrEqualTo(x => x.To)
+            .WithMessage("From must be less than or equal to To");
+
+        RuleFor(x => x.To).NotEmpty();
+        RuleFor(x => x.To).GreaterThanOrEqualTo(x => x.From).WithMessage("To must be greater than or equal to From");
 
         RuleFor(x => x)
             .MustAsync(async (cmd, ct) => !(await repo.HasSubmittedForRangeAsync(cmd.UserId, cmd.From, cmd.To, ct)))

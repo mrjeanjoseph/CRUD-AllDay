@@ -28,7 +28,8 @@ public static class TestData
 
     public static TimeSheet CreateSampleTimeSheet(Guid? userId = null, Guid? id = null)
     {
-        var ts = new TimeSheet(userId ?? Guid.NewGuid(), new DateOnly(2023, 1, 1), new DateOnly(2023, 1, 31));
+        var today = DateOnly.FromDateTime(DateTime.Today);
+        var ts = new TimeSheet(userId ?? Guid.NewGuid(), today, today.AddDays(6));
         if (id.HasValue)
         {
             typeof(TimeSheet).GetProperty("Id", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.SetValue(ts, id.Value);
@@ -38,7 +39,8 @@ public static class TestData
 
     public static ExpenseReport CreateSampleExpenseReport(Guid? userId = null, Guid? id = null)
     {
-        var report = new ExpenseReport(userId ?? Guid.NewGuid(), new DateOnly(2023, 1, 1), new DateOnly(2023, 1, 31));
+        // Use fixed sample date range so tests that add items with hardcoded dates remain valid
+        var report = new ExpenseReport(userId ?? Guid.NewGuid(), SampleDateRange.From, SampleDateRange.To);
         if (id.HasValue)
         {
             typeof(ExpenseReport).GetProperty("Id", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)?.SetValue(report, id.Value);

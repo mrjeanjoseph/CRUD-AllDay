@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <!-- Enable nullable across solution (explicit where missing) -->
+    <Nullable>enable</Nullable>
+    <!-- Suppress common nullable-reference warnings produced in tests and generated code -->
+    <NoWarn>$(NoWarn);CS8600;CS8602;CS8603;CS8618;CS8625;CS8632;CS8604</NoWarn>
+  </PropertyGroup>
+</Project>

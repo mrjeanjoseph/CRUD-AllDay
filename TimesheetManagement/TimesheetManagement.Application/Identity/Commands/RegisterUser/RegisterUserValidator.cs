@@ -17,8 +17,20 @@ public sealed class RegisterUserValidator : AbstractValidator<RegisterUserComman
         RuleFor(x => x.Email)
             .MustAsync(async (email, ct) =>
             {
-                var emailObj = new TimesheetManagement.Domain.Identity.Email(email);
-                return !(await users.ExistsAsync(emailObj, ct));
+                // If format is invalid, skip uniqueness check (other rule will flag format)
+                if (string.IsNullOrWhiteSpace(email) || !email.Contains('@'))
+                    return true;
+
+                try
+                {
+                    var emailObj = new TimesheetManagement.Domain.Identity.Email(email);
+                    return !(await users.ExistsAsync(emailObj, ct));
+                }
+                catch
+                {
+                    // If Email ctor throws, let the format rule handle it - do not throw from validator
+                    return true;
+                }
             })
             .WithMessage("Email already registered");
 
