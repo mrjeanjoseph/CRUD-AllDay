@@ -21,13 +21,6 @@ public class ExpenseReportConfig : IEntityTypeConfiguration<ExpenseReport>
             nb.Property(p => p.To).HasColumnName("ToDate").HasColumnType("date");
         });
 
-        // Define shadow properties for indexing
-        b.Property<DateOnly>("FromDate").HasColumnType("date");
-        b.Property<DateOnly>("ToDate").HasColumnType("date");
-
-        // Add composite index for overlap queries
-        b.HasIndex("UserId", "FromDate", "ToDate");
-
         // Index on Status for pending approvals
         b.HasIndex(x => x.Status);
 

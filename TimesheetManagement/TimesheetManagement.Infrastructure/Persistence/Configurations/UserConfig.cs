@@ -12,7 +12,7 @@ public class UserConfig : IEntityTypeConfiguration<User>
         b.HasKey(x => x.Id);
         b.Property(x => x.Username).HasMaxLength(64).IsRequired();
 
-        // Map Email value object via ComplexProperty (record struct) without duplicating navigation
+        // Map Email value object via ComplexProperty (record struct)
         b.ComplexProperty(x => x.Email, nb =>
         {
             nb.Property(v => v.Value).HasColumnName("Email").HasMaxLength(256).IsRequired();
@@ -25,6 +25,5 @@ public class UserConfig : IEntityTypeConfiguration<User>
         b.Property(x => x.Role).HasConversion<int>();
 
         b.HasIndex(x => x.Username).IsUnique();
-        // Avoid separate Email index until EF supports indexing ComplexProperty easily; can add shadow property if needed.
     }
 }
