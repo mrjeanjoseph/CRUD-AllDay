@@ -1,200 +1,103 @@
-# Sample Test Suite Structure for Application Layer
+# Integration Test Suite Structure for Infrastructure Layer
 
-Based on the CQRS commands, queries, handlers, and validators implemented in `TimesheetManagement.Application`, here's a high-level test suite structure using xUnit (common for .NET 8). Focus on unit tests for handlers, validators, and business logic, and integration tests for end-to-end scenarios with in-memory repositories. Place tests in `TimesheetManagement.UnitTests` project, organized by namespace.
+Based on the Infrastructure components implemented in `TimesheetManagement.Infrastructure` (e.g., repositories, DbContext, UnitOfWork), here's a recommended test suite structure using xUnit (common for .NET 8). Focus on integration tests that validate persistence, queries, and external interactions with a real or simulated database. Place tests in `TimesheetManagement.IntegrationTests` project, organized by component.
 
 ## Test Project Setup
 
-**Framework:** xUnit with FluentAssertions for readable assertions, Moq for mocking.
+**Framework:** xUnit with FluentAssertions for readable assertions, Testcontainers (or Respawn) for database isolation, EF Core in-memory or SQLite for lightweight tests.
 
-**Unit Tests:** Test individual components (handlers, validators) in isolation using mocks.
-
-**Integration Tests:** Test workflows with in-memory repositories and unit of work to verify interactions.
+**Integration Tests:** Test Infrastructure components against a real database (e.g., SQL Server via Testcontainers) to verify mappings, queries, transactions, and performance. Use a test database per test class or suite to ensure isolation.
 
 **Directory Structure:**
 
 ```
-TimesheetManagement.UnitTests/
-├── Application/
-│   ├── UnitTests/
-│   │   ├── Common/
-│   │   │   ├── DomainEventDispatcherTests.cs
-│   │   │   └── ValidatorBaseTests.cs
-│   │   ├── Identity/
-│   │   │   ├── Commands/
-│   │   │   │   ├── RegisterUser/
-│   │   │   │   │   ├── RegisterUserHandlerTests.cs
-│   │   │   │   │   └── RegisterUserValidatorTests.cs
-│   │   │   │   ├── AssignRole/
-│   │   │   │   │   ├── AssignRoleHandlerTests.cs
-│   │   │   │   │   └── AssignRoleValidatorTests.cs
-│   │   │   │   └── ChangePassword/
-│   │   │   │       ├── ChangePasswordHandlerTests.cs
-│   │   │   │       └── ChangePasswordValidatorTests.cs
-│   │   │   └── Queries/
-│   │   │       ├── GetUserById/
-│   │   │       │   └── GetUserByIdHandlerTests.cs
-│   │   │       └── GetUserByEmail/
-│   │   │           └── GetUserByEmailHandlerTests.cs
-│   │   ├── TimeTracking/
-│   │   │   ├── Commands/
-│   │   │   │   ├── CreateTimeSheet/
-│   │   │   │   │   ├── CreateTimeSheetHandlerTests.cs
-│   │   │   │   │   └── CreateTimeSheetValidatorTests.cs
-│   │   │   │   ├── AddTimeEntry/
-│   │   │   │   │   ├── AddTimeEntryHandlerTests.cs
-│   │   │   │   │   └── AddTimeEntryValidatorTests.cs
-│   │   │   │   ├── SubmitTimeSheet/
-│   │   │   │   │   ├── SubmitTimeSheetHandlerTests.cs
-│   │   │   │   │   └── SubmitTimeSheetValidatorTests.cs
-│   │   │   │   ├── ApproveTimeSheet/
-│   │   │   │   │   ├── ApproveTimeSheetHandlerTests.cs
-│   │   │   │   │   └── ApproveTimeSheetValidatorTests.cs
-│   │   │   │   ├── RejectTimeSheet/
-│   │   │   │   │   ├── RejectTimeSheetHandlerTests.cs
-│   │   │   │   │   └── RejectTimeSheetValidatorTests.cs
-│   │   │   │   ├── RemoveTimeEntry/
-│   │   │   │   │   └── RemoveTimeEntryHandlerTests.cs
-│   │   │   │   └── EditAfterRejection/
-│   │   │   │       └── EditAfterRejectionHandlerTests.cs
-│   │   │   └── Queries/
-│   │   │       ├── GetTimeSheetById/
-│   │   │       │   └── GetTimeSheetByIdHandlerTests.cs
-│   │   │       └── GetTimeSheetsForUser/
-│   │   │           └── GetTimeSheetsForUserHandlerTests.cs
-│   │   ├── Expenses/
-│   │   │   ├── Commands/
-│   │   │   │   ├── CreateExpenseReport/
-│   │   │   │   │   ├── CreateExpenseReportHandlerTests.cs
-│   │   │   │   │   └── CreateExpenseReportValidatorTests.cs
-│   │   │   │   ├── AddExpenseItem/
-│   │   │   │   │   ├── AddExpenseItemHandlerTests.cs
-│   │   │   │   │   └── AddExpenseItemValidatorTests.cs
-│   │   │   │   ├── SubmitExpenseReport/
-│   │   │   │   │   ├── SubmitExpenseReportHandlerTests.cs
-│   │   │   │   │   └── SubmitExpenseReportValidatorTests.cs
-│   │   │   │   ├── ApproveExpenseReport/
-│   │   │   │   │   ├── ApproveExpenseReportHandlerTests.cs
-│   │   │   │   │   └── ApproveExpenseReportValidatorTests.cs
-│   │   │   │   ├── RejectExpenseReport/
-│   │   │   │   │   ├── RejectExpenseReportHandlerTests.cs
-│   │   │   │   │   └── RejectExpenseReportValidatorTests.cs
-│   │   │   │   ├── RemoveExpenseItem/
-│   │   │   │   │   └── RemoveExpenseItemHandlerTests.cs
-│   │   │   │   └── EditExpenseAfterRejection/
-│   │   │   │       └── EditExpenseAfterRejectionHandlerTests.cs
-│   │   │   └── Queries/
-│   │   │       ├── GetExpenseReportById/
-│   │   │       │   └── GetExpenseReportByIdHandlerTests.cs
-│   │   │       └── GetExpenseReportsForUser/
-│   │   │           └── GetExpenseReportsForUserHandlerTests.cs
-│   │   ├── Projects/
-│   │   │   ├── Commands/
-│   │   │   │   ├── CreateProject/
-│   │   │   │   │   ├── CreateProjectHandlerTests.cs
-│   │   │   │   │   └── CreateProjectValidatorTests.cs
-│   │   │   │   ├── ArchiveProject/
-│   │   │   │   │   └── ArchiveProjectHandlerTests.cs
-│   │   │   │   └── RestoreProject/
-│   │   │   │       └── RestoreProjectHandlerTests.cs
-│   │   │   └── Queries/
-│   │   │       ├── GetAllProjects/
-│   │   │       │   └── GetAllProjectsHandlerTests.cs
-│   │   │       └── GetProjectByCode/
-│   │   │           └── GetProjectByCodeHandlerTests.cs
-│   │   └── Teams/
-│   │       ├── Commands/
-│   │       │   ├── CreateTeam/
-│   │       │   │   └── CreateTeamHandlerTests.cs
-│   │       │   ├── AddTeamMember/
-│   │       │   │   └── AddTeamMemberHandlerTests.cs
-│   │       │   ├── RemoveTeamMember/
-│   │       │   │   └── RemoveTeamMemberHandlerTests.cs
-│   │       │   ├── ArchiveTeam/
-│   │       │   │   └── ArchiveTeamHandlerTests.cs
-│   │       │   └── RestoreTeam/
-│   │       │       └── RestoreTeamHandlerTests.cs
-│   │       └── Queries/
-│   │           ├── GetAllTeams/
-│   │           │   └── GetAllTeamsHandlerTests.cs
-│   │           └── GetTeamById/
-│   │               └── GetTeamByIdHandlerTests.cs
-│   └── IntegrationTests/
-│       ├── Identity/
-│       │   ├── RegisterUserIntegrationTests.cs
-│       │   ├── AssignRoleIntegrationTests.cs
-│       │   └── ChangePasswordIntegrationTests.cs
-│       ├── TimeTracking/
-│       │   ├── CreateTimeSheetIntegrationTests.cs
-│       │   ├── SubmitTimeSheetIntegrationTests.cs
-│       │   └── ApproveTimeSheetIntegrationTests.cs
-│       ├── Expenses/
-│       │   ├── CreateExpenseReportIntegrationTests.cs
-│       │   ├── SubmitExpenseReportIntegrationTests.cs
-│       │   └── ApproveExpenseReportIntegrationTests.cs
-│       ├── Projects/
-│       │   ├── CreateProjectIntegrationTests.cs
-│       │   └── ArchiveProjectIntegrationTests.cs
-│       └── Teams/
-│           ├── CreateTeamIntegrationTests.cs
-│           └── AddTeamMemberIntegrationTests.cs
+TimesheetManagement.IntegrationTests/
+├── Repositories/
+│   ├── UserRepositoryTests.cs
+│   ├── RoleAssignmentRepositoryTests.cs
+│   ├── TimeSheetRepositoryTests.cs
+│   ├── ExpenseReportRepositoryTests.cs
+│   ├── ProjectRepositoryTests.cs
+│   └── TeamRepositoryTests.cs
+├── Persistence/
+│   ├── AppDbContextTests.cs  // Test migrations, configurations, and basic CRUD
+│   └── UnitOfWorkTests.cs    // Test transaction handling and event dispatching
+├── Configurations/
+│   ├── UserConfigTests.cs
+│   ├── TimeSheetConfigTests.cs
+│   └── (Other config tests as needed)
 └── TestHelpers/
-    ├── ApplicationTestHelpers.cs  // Mocks, in-memory repos, unit of work setup
-    └── TestData.cs  // Shared fixtures
+    ├── DatabaseFixture.cs    // Shared DB setup/teardown
+    ├── TestDataSeeder.cs     // Seed test data
+    └── IntegrationTestHelpers.cs  // Mocks for external services if any
 ```
 
 ## Key Test Examples
 
-### Unit Tests
+### Repository Integration Tests
 
-#### Identity/Commands/RegisterUser/RegisterUserHandlerTests.cs
+#### Repositories/TimeSheetRepositoryTests.cs
 
-- **Handle:** Creates user, assigns role, raises events, calls audit log.
-- **Handle_InvalidData:** Throws validation exception.
+- **AddAndRetrieveTimeSheet_WithEntries:** Adds a timesheet with entries, commits via UnitOfWork, retrieves and verifies data integrity (e.g., cascade deletes, includes).
+- **HasSubmittedForRangeAsync_OverlapExists:** Seeds overlapping timesheets, verifies query logic and indexes.
+- **ConcurrencyHandling:** Tests optimistic concurrency with rowversion (if implemented).
 
-#### Identity/Commands/RegisterUser/RegisterUserValidatorTests.cs
+#### Repositories/ProjectRepositoryTests.cs
 
-- **Validate:** Passes for valid email/password, fails for invalid.
+- **AddProject_CodeExists:** Adds project, checks uniqueness constraint throws exception.
+- **GetByCodeAsync_Found:** Retrieves project by code, verifies all properties.
+- **ArchiveAndRestore:** Tests state changes and updates.
 
-#### TimeTracking/Commands/CreateTimeSheet/CreateTimeSheetHandlerTests.cs
+#### Persistence/AppDbContextTests.cs
 
-- **Handle:** Creates time sheet, validates period, saves via unit of work.
+- **MigrationsApplied:** Ensures all migrations run without errors, tables created with correct schemas.
+- **OwnedTypesMapped:** Verifies value objects (e.g., DateRange, Money) map correctly.
+- **CascadeDeletes:** Tests FK relationships prevent or allow deletes as configured.
 
-#### TimeTracking/Queries/GetTimeSheetById/GetTimeSheetByIdHandlerTests.cs
+#### Persistence/UnitOfWorkTests.cs
 
-- **Handle:** Retrieves time sheet, throws if not found.
-
-### Integration Tests
-
-#### Identity/RegisterUserIntegrationTests.cs
-
-- **RegisterUser_Success:** Registers user, verifies in repo, events dispatched.
-- **RegisterUser_DuplicateEmail:** Throws exception.
-
-#### TimeTracking/CreateTimeSheetIntegrationTests.cs
-
-- **CreateTimeSheet_Valid:** Creates and saves time sheet, verifies state.
+- **SaveChanges_CommitsTransaction:** Adds entities, calls SaveChanges, verifies persistence.
+- **RollbackOnFailure:** Simulates failure, ensures no partial commits.
+- **DomainEventsDispatched:** If implemented, verifies events are published post-commit.
 
 ## Testing Guidelines
 
-- **Unit Tests:** Mock repositories, unit of work, user context. Test handler logic, validation, exceptions.
-- **Integration Tests:** Use in-memory repositories (e.g., EF Core in-memory), real unit of work. Test full workflows, data persistence, event dispatching.
-- **Naming Convention:** `[Handler]_[Scenario]_Should_[Expected]` or `[Feature]_[Scenario]_Should_[Expected]`.
-- **Test Structure:** Follow Arrange-Act-Assert pattern. One behavior per test.
-- **Fixtures:** Use `ApplicationTestHelpers.cs` for setup, `TestData.cs` for entities.
-- **Coverage:** Aim for happy paths, error cases, authorization (via user context).
+- **Database Setup:** Use Testcontainers for a real SQL Server container per test run. Alternatively, use EF in-memory for speed, but prefer real DB for accuracy (e.g., constraints, indexes).
+- **Isolation:** Reset DB state per test (e.g., via Respawn or custom scripts). Avoid shared state.
+- **Test Data:** Seed minimal data using `TestDataSeeder.cs`. Use factories for entities.
+- **Naming Convention:** `[Component]_[Scenario]_Should_[Expected]`.
+- **Test Structure:** Arrange (setup DB/data), Act (execute operation), Assert (verify DB state/results).
+- **Coverage:** Focus on CRUD, constraints, queries, transactions. Include edge cases like concurrency, large datasets.
+- **Performance:** Add basic perf tests for heavy queries (e.g., GetAll with 1000+ records).
 
-This structure covers application logic. Expand to API/End-to-End tests later.
+## Recommended Tools and Setup
+
+- **Testcontainers:** For real DB isolation. Add NuGet `Testcontainers.SqlServer` and configure in `DatabaseFixture.cs`.
+- **Respawn:** For fast DB resets. NuGet `Respawn`.
+- **EF Core Tools:** Run migrations in tests if needed.
+- **Connection String:** Use a test-specific string (e.g., local SQL instance or container).
 
 ## Running Tests
 
-**Run Unit Tests:**
+**Run All Integration Tests:**
 
 ```bash
-dotnet test --filter "Application.UnitTests"
+dotnet test TimesheetManagement.IntegrationTests --filter "IntegrationTests"
 ```
 
-**Run Integration Tests:**
+**Run Specific Repository Tests:**
 
 ```bash
-dotnet test --filter "Application.IntegrationTests"
+dotnet test TimesheetManagement.IntegrationTests --filter "Repositories"
 ```
+
+## Recommendations and Rationale
+
+- **Why Integration for Infrastructure?** Infrastructure components (e.g., repositories) depend on external systems (DB). Unit tests with mocks don't validate real mappings/queries. Integration tests ensure correctness in production-like environments.
+- **Database Choice:** Prefer Testcontainers for realism (tests real SQL Server behavior). In-memory EF is faster but misses provider-specific issues (e.g., DateOnly conversions).
+- **Scope:** Test only Infrastructure; avoid Application logic (that's for UnitTests). Focus on data persistence, not business rules.
+- **CI/CD:** These tests are slower; run them in a separate pipeline stage. Use parallel execution if possible.
+- **Expansion:** Add API integration tests later (e.g., full HTTP requests to TimesheetManagement.API).
+- **Alignment with app-target.md:** Tests validate DbContext configs, repository implementations, UnitOfWork, and migrations as outlined. Ensures indexes, cascades, and mappings work as specified.
+
+This structure provides robust coverage for Infrastructure reliability. Update as components evolve.

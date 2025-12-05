@@ -1,39 +1,66 @@
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading.Tasks;
 using TimesheetManagement.Domain.Projects;
-using TimesheetManagement.Infrastructure.Persistence;
 using TimesheetManagement.Infrastructure.Repositories;
-using Xunit;
+using TimesheetManagement.IntegrationTests.TestHelpers;
 
 namespace TimesheetManagement.IntegrationTests.Repositories;
 
-public class ProjectRepositoryTests
+public class ProjectRepositoryTests : IClassFixture<DatabaseFixture>
 {
-    private static AppDbContext CreateDb()
+    private readonly DatabaseFixture _fixture;
+
+    public ProjectRepositoryTests(DatabaseFixture fixture)
     {
-        var options = new DbContextOptionsBuilder<AppDbContext>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString())
-            .Options;
-        return new AppDbContext(options);
+        _fixture = fixture;
     }
 
     [Fact]
-    public async Task AddAndGetByCode_ShouldPersistProject()
+    public async Task AddProject_CodeExists_ShouldPersistAndCheckUniqueness()
     {
-        using var db = CreateDb();
-        var repo = new ProjectRepository(db);
-        var project = new Project("PRJ1", "Demo", "IT");
+        // Arrange
+        var repo = new ProjectRepository(_fixture.DbContext);
+        var code = Guid.NewGuid().ToString().Substring(0, 8);
+        var project = new Project(code, "Test Project", "Tech");
 
+        // Act
         await repo.AddAsync(project);
-        await db.SaveChangesAsync();
+        await _fixture.DbContext.SaveChangesAsync();
 
-        var exists = await repo.CodeExistsAsync("PRJ1");
+        // Assert
+        var exists = await repo.CodeExistsAsync(code);
         exists.Should().BeTrue();
 
-        var loaded = await repo.GetByCodeAsync("PRJ1");
+        var loaded = await repo.GetByCodeAsync(code);
         loaded.Should().NotBeNull();
-        loaded!.Name.Should().Be("Demo");
+        loaded!.Name.Should().Be("Test Project");
+        loaded.Industry.Should().Be("Tech");
+    }
+
+    [Fact]
+    public async Task ArchiveAndRestore_ShouldUpdateState()
+    {
+        // Arrange
+        var repo = new ProjectRepository(_fixture.DbContext);
+        var code = Guid.NewGuid().ToString().Substring(0, 8);
+        var project = new Project(code, "Archivable Project", "Ops");
+        await repo.AddAsync(project);
+        await _fixture.DbContext.SaveChangesAsync();
+
+        // Act
+        project.Archive();
+        await repo.UpdateAsync(project);
+        await _fixture.DbContext.SaveChangesAsync();
+
+        // Assert
+        var loaded = await repo.GetByCodeAsync(code);
+        loaded!.IsArchived.Should().BeTrue();
+
+        // Restore
+        project.Restore();
+        await repo.UpdateAsync(project);
+        await _fixture.DbContext.SaveChangesAsync();
+
+        loaded = await repo.GetByCodeAsync(code);
+        loaded!.IsArchived.Should().BeFalse();
     }
 }
