@@ -1,16 +1,21 @@
 using FluentAssertions;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using TimesheetManagement.Domain.Expenses;
 using TimesheetManagement.Domain.Expenses.ValueObjects;
 using TimesheetManagement.Infrastructure.Repositories;
 using TimesheetManagement.IntegrationTests.TestHelpers;
+using Xunit;
 
-namespace TimesheetManagement.IntegrationTests.Repositories;
+namespace TimesheetManagement.IntegrationTests.Repositories.InMemory;
 
-public class ExpenseReportRepositoryTests : IClassFixture<DatabaseFixture>
+[Trait("Category", "InMemory")]
+public class ExpenseReportRepositoryInMemoryTests : IClassFixture<InMemoryDatabaseFixture>
 {
-    private readonly DatabaseFixture _fixture;
+    private readonly InMemoryDatabaseFixture _fixture;
 
-    public ExpenseReportRepositoryTests(DatabaseFixture fixture)
+    public ExpenseReportRepositoryInMemoryTests(InMemoryDatabaseFixture fixture)
     {
         _fixture = fixture;
     }

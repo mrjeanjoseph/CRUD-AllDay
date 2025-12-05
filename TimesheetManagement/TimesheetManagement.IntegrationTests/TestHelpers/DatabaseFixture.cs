@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using TimesheetManagement.Infrastructure.Persistence;
+using Xunit;
 
 namespace TimesheetManagement.IntegrationTests.TestHelpers;
 
-public class DatabaseFixture : IAsyncLifetime
+public class InMemoryDatabaseFixture : IAsyncLifetime
 {
     public AppDbContext DbContext { get; private set; } = null!;
 

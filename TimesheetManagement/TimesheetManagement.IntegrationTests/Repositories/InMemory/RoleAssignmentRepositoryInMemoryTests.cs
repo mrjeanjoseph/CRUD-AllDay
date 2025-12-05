@@ -1,15 +1,20 @@
 using FluentAssertions;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using TimesheetManagement.Domain.Identity;
 using TimesheetManagement.Infrastructure.Repositories;
 using TimesheetManagement.IntegrationTests.TestHelpers;
+using Xunit;
 
-namespace TimesheetManagement.IntegrationTests.Repositories;
+namespace TimesheetManagement.IntegrationTests.Repositories.InMemory;
 
-public class RoleAssignmentRepositoryTests : IClassFixture<DatabaseFixture>
+[Trait("Category", "InMemory")]
+public class RoleAssignmentRepositoryInMemoryTests : IClassFixture<InMemoryDatabaseFixture>
 {
-    private readonly DatabaseFixture _fixture;
+    private readonly InMemoryDatabaseFixture _fixture;
 
-    public RoleAssignmentRepositoryTests(DatabaseFixture fixture)
+    public RoleAssignmentRepositoryInMemoryTests(InMemoryDatabaseFixture fixture)
     {
         _fixture = fixture;
     }
