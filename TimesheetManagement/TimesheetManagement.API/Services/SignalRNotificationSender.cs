@@ -1,9 +1,15 @@
 using Microsoft.AspNetCore.SignalR;
-using TimesheetManagement.Application.Common.Abstractions;
 using TimesheetManagement.API.Hubs;
 
+// TODO: Create INotificationSender interface in Application.Common.Abstractions
+// public interface INotificationSender
+// {
+//     Task SendToUserAsync(Guid userId, string message, CancellationToken cancellationToken = default);
+//     Task SendToRoleAsync(string role, string message, CancellationToken cancellationToken = default);
+// }
+
 namespace TimesheetManagement.API.Services;
-public sealed class SignalRNotificationSender : INotificationSender
+public sealed class SignalRNotificationSender // : INotificationSender
 {
     private readonly IHubContext<NotificationHub> _hubContext;
 

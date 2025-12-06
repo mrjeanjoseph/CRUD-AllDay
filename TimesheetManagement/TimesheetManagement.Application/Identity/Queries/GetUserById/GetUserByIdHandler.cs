@@ -1,7 +1,9 @@
 using TimesheetManagement.Application.Common.Abstractions;
+using TimesheetManagement.Application.Identity.Shared;
 using TimesheetManagement.Domain.Identity.Repositories;
 
 namespace TimesheetManagement.Application.Identity.Queries.GetUserById;
+
 public sealed class GetUserByIdHandler : IQueryHandler<GetUserByIdQuery, UserDto>
 {
     private readonly IUserRepository _users;

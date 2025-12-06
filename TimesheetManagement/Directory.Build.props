@@ -1,5 +1,7 @@
 <Project>
   <PropertyGroup>
+    <!-- Set language version to C# 12.0 for .NET 8 -->
+    <LangVersion>12.0</LangVersion>
     <!-- Enable nullable across solution (explicit where missing) -->
     <Nullable>enable</Nullable>
     <!-- Suppress common nullable-reference warnings produced in tests and generated code -->

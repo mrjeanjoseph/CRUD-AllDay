@@ -1,4 +1,5 @@
 using TimesheetManagement.Application.Common.Abstractions;
+using TimesheetManagement.Application.Identity.Shared;
 using TimesheetManagement.Domain.Identity;
 using TimesheetManagement.Domain.Identity.Repositories;
 
