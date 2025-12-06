@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.Integra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetManagement.UnitTests", "TimesheetManagement.UnitTests\TimesheetManagement.UnitTests.csproj", "{707A1E81-7FCF-880E-AF37-591ABD33AB46}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TimesheetManagement.Database", "TimesheetManagement.Database\TimesheetManagement.Database.sqlproj", "{4D3BC476-E7EC-4B9A-B5DC-D3F0DA539D46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,12 @@ Global
 		{707A1E81-7FCF-880E-AF37-591ABD33AB46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{707A1E81-7FCF-880E-AF37-591ABD33AB46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{707A1E81-7FCF-880E-AF37-591ABD33AB46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D3BC476-E7EC-4B9A-B5DC-D3F0DA539D46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D3BC476-E7EC-4B9A-B5DC-D3F0DA539D46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D3BC476-E7EC-4B9A-B5DC-D3F0DA539D46}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4D3BC476-E7EC-4B9A-B5DC-D3F0DA539D46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D3BC476-E7EC-4B9A-B5DC-D3F0DA539D46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D3BC476-E7EC-4B9A-B5DC-D3F0DA539D46}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
